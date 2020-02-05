@@ -1,7 +1,6 @@
 import App, { Container } from "next/app"
 import React from "react"
 import Head from "next/head"
-import GlobalStyle from '../styles/global'
 
 // import { Provider } from "react-redux"
 // import withReduxStore from "../store/withReduxStore"
@@ -20,13 +19,9 @@ class MyApp extends App {
   render() {
     // const { Component, pageProps, reduxStore } = this.props
     const { Component, pageProps } = this.props
-    
+
     return (
       <Container>
-        <GlobalStyle />
-        <Head>
-          <title>convos</title>
-        </Head>
         {/* <Provider store={reduxStore} > */}
           <Component {...pageProps} />
         {/* </Provider> */}
