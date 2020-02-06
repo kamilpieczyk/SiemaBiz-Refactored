@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
-// import Navbar from '../components/Layout/navbar'
 import Layout from '../components/Layout'
 
 export default () => (
@@ -10,7 +9,6 @@ export default () => (
       <Head>
         <title>Siemabiz Forum</title>
       </Head>
-      {/* <Navbar /> */}
       
     </Container>
   </Layout>

@@ -37,4 +37,5 @@ export const Text = styled.span`
   transform: translate(-50%) translateY(-50%);
   text-transform: uppercase;
   z-index: 99;
+  color: ${ colors.grey };
 `

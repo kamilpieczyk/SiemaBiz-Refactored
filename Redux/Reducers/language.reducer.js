@@ -1,4 +1,5 @@
 export default ( state = 'PL', action ) => {
+
   switch( action.type ){
 
     case 'CHANGE_LANGUAGE_TO_PL':
@@ -6,7 +7,7 @@ export default ( state = 'PL', action ) => {
       return state;
     
     case 'CHANGE_LANGUAGE_TO_ENG':
-      state = 'ENG'
+      state = 'EN'
       return state;
     
     default: return state
