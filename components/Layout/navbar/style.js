@@ -17,9 +17,16 @@ export const Container = styled.nav`
 `
 
 export const LogoContainer = styled.div`
-
+  flex: 3;
   img{
     width: 155px;
     height: 85px;
   }
+`
+
+export const ButtonsContainer = styled.div`
+  flex: 7;
+  display: flex;
+  justify-content: flex-end;
+
 `
