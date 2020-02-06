@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container } from './style'
+import { Container, LogoContainer } from './style'
 
 export default () => (
   <Container>
-    navbar
+    <LogoContainer>
+      <img src='/images/logo.png' />
+    </LogoContainer>
   </Container>
 )

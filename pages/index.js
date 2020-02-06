@@ -15,4 +15,6 @@ export default () => (
 
 const Container = styled.div`
   width: 100vw;
+  height: 120vh;
+  background: url('/images/index-desktop.png');
 `
