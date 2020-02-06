@@ -30,6 +30,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <link rel='icon' href='/favicon.ico' />
+          <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700" rel="stylesheet" />
           {this.props.styleTags}
         </Head>
         <body>
