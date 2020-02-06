@@ -8,11 +8,15 @@ import Switcher from '../../UI/switcher'
 
 const LanguageSwitcher = withLanguageSwitch( Switcher )
 
-export default () => (
-  <Container>
+export default ({ scroll }) => (
+  <Container scroll = { scroll }>
 
-    <LogoContainer>
-      <img src='/images/logo.png' />
+    <LogoContainer scroll = { scroll }>
+      <img src = {
+        scroll > 150
+          ? '/images/logo-mini.png'
+          : '/images/logo.png'
+      } />
     </LogoContainer>
 
     <ButtonsContainer>
