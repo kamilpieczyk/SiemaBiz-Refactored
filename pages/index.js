@@ -1,16 +1,19 @@
 import React from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
-import Navbar from '../components/Layout/navbar'
+// import Navbar from '../components/Layout/navbar'
+import Layout from '../components/Layout'
 
 export default () => (
-  <Container>
-    <Head>
-      <title>Siemabiz Forum</title>
-    </Head>
-    <Navbar />
-    
-  </Container>
+  <Layout>
+    <Container>
+      <Head>
+        <title>Siemabiz Forum</title>
+      </Head>
+      {/* <Navbar /> */}
+      
+    </Container>
+  </Layout>
 )
 
 const Container = styled.div`
