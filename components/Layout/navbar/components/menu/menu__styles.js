@@ -33,3 +33,30 @@ export const Container = styled.nav`
     }
   }
 `
+export const Option = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+
+  :not(:last-child)::after{
+    content: "";
+    border-right: 1px dashed ${ colors.main };
+    height: 60%;
+    position: absolute;
+    right: 0;
+  }
+        
+  p{
+    color: ${ colors.main };
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+   }
+`
