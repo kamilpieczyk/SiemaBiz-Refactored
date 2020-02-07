@@ -5,7 +5,7 @@ export const Container = styled.nav`
   position: fixed;
   width: 100vw;
   height: ${ ({ scroll }) => scroll > 150 ? '60px' : '100px' };
-  background: ${ colors.white };
+  background: ${ colors.ultraWhite };
   display: flex;
   align-items: center;
   padding: 0 10% 0 10%;

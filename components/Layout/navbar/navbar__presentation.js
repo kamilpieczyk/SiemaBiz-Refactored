@@ -5,6 +5,7 @@ import { Container, LogoContainer, ButtonsContainer } from './style'
 
 import withLanguageSwitch from '../../HOC/withLanguageSwitch'
 import Switcher from '../../UI/switcher'
+import MenuButton from './components/menu-button'
 
 const LanguageSwitcher = withLanguageSwitch( Switcher )
 
@@ -20,7 +21,8 @@ export default ({ scroll }) => (
     </LogoContainer>
 
     <ButtonsContainer>
-
+      
+      <MenuButton />
       <LanguageSwitcher text = "PL" />
 
     </ButtonsContainer>

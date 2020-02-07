@@ -4,6 +4,7 @@ export default {
   focus: "rgb(148, 84, 77)",
   black: "rgb(7, 7, 7)",
   white: "rgb(238, 238, 238)",
+  ultraWhite: "rgb(255, 255, 255)",
   error: "rgb(255, 51, 51)",
   menuBg: "rgb(221, 227, 219)",
   link: "rgb(175, 18, 13)",
