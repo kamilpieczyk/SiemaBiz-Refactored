@@ -1,4 +1,3 @@
-import { useDispatchd } from 'react-redux'
 import { useSelector } from 'react-redux'
 
 export default ({ render }) => {

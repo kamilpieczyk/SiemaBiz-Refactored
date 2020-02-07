@@ -4,13 +4,15 @@ import PropTypes from 'prop-types'
 import { Container, LogoContainer, ButtonsContainer } from './style'
 
 import withLanguageSwitch from '../../HOC/withLanguageSwitch'
+
 import Switcher from '../../UI/switcher'
 import MenuButton from './components/menu-button'
 import Menu from './components/menu'
+import Button from '../../UI/small-button'
 
 const LanguageSwitcher = withLanguageSwitch( Switcher )
 
-const Presentation = ({ scroll, isMenuActive }) => (
+const Presentation = ({ scroll, isMenuActive, languageSource }) => (
 
   <Container scroll = { scroll }>
 
@@ -25,6 +27,8 @@ const Presentation = ({ scroll, isMenuActive }) => (
     <ButtonsContainer>
       
       <MenuButton />
+      <Button thin>{ languageSource.navbarSignUp }</Button>
+      <Button>{ languageSource.navbarSignIn }</Button>
       <LanguageSwitcher text = "PL" />
 
     </ButtonsContainer>
@@ -36,7 +40,8 @@ const Presentation = ({ scroll, isMenuActive }) => (
 
 Presentation.propTypes = {
   scroll: PropTypes.number.isRequired,
-  isMenuActive: PropTypes.bool
+  isMenuActive: PropTypes.bool,
+  languageSource: PropTypes.object.isRequired
 }
 
 export default Presentation

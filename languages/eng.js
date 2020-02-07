@@ -35,5 +35,7 @@ export default {
       icon: "contact_mail",
       href: "/contacts"
     }
-  ]
+  ],
+  navbarSignUp: 'sign up',
+  navbarSignIn: 'sign in'
 }

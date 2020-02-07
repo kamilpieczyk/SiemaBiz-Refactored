@@ -4,6 +4,7 @@ import colors from '../../../../../styles/colors'
 export const Container = styled.div`
   position: relative;
   cursor: pointer;
+  margin-right: 5px;
 `
 
 export const Text = styled.div`

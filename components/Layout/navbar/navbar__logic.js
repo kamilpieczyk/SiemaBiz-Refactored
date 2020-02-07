@@ -5,6 +5,7 @@ export default memo( (props) => {
 
   const [ scrollY, setScrollY ] = useState( 0 )
   const isMenuActive = useSelector( state => state.globalMenu )
+  const languageSource = useSelector( state => state.language.source )
 
   useEffect( () => {
     window.addEventListener( 'scroll', () => {
@@ -15,6 +16,7 @@ export default memo( (props) => {
 
   return props.render({
     scroll: scrollY,
-    isMenuActive
+    isMenuActive,
+    languageSource
   })
 } )
