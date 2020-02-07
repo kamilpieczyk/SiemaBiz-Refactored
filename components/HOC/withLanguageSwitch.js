@@ -7,7 +7,7 @@ const withLanguage = ( Component ) => {
 
   const ComponentWithLanguage = () => {
 
-    const language = useSelector( state => state.language )
+    const language = useSelector( state => state.language.current )
     const dispatch = useDispatch()
 
     const handleLanguageChanger = () => {
