@@ -36,6 +36,14 @@ export default {
       href: "/contacts"
     }
   ],
-  navbarSignUp: 'sign up',
-  navbarSignIn: 'sign in'
+  navbar: {
+    signUp: 'sign-up',
+    signIn: 'sign-in',
+    login: 'username',
+    password: 'password',
+    submit: 'sign in',
+    loading: 'logging in progress',
+    userNotExist: 'this user doesn\'t exist',
+    wrongPassword: 'this password is incorrect'
+  }
 }
