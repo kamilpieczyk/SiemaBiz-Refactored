@@ -4,14 +4,14 @@ import colors from '../../../styles/colors'
 export const Container = styled.nav`
   position: fixed;
   width: 100vw;
-  height: ${ ({ scroll }) => scroll > 150 ? '60px' : '100px' };
+  height: ${ ({ scroll }) => scroll ? '60px' : '100px' };
   background: ${ colors.ultraWhite };
   display: flex;
   align-items: center;
   padding: 0 10% 0 10%;
   transition-duration: .5s;
   ${
-    ({ scroll }) => scroll > 150 && `box-shadow:  0px 1px 30px ${ colors.grey };`
+    ({ scroll }) => scroll && `box-shadow:  0px 1px 30px ${ colors.grey };`
   }
   
   
@@ -24,8 +24,8 @@ export const Container = styled.nav`
 export const LogoContainer = styled.div`
   flex: 3;
   img{
-    width: ${ ({ scroll }) => scroll > 150 ? '40px' : '155px' };
-    height: ${ ({ scroll }) => scroll > 150 ? '40px' : '85px' };
+    width: ${ ({ scroll }) => scroll ? '40px' : '155px' };
+    height: ${ ({ scroll }) => scroll ? '40px' : '85px' };
   }
 `
 

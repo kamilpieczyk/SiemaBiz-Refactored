@@ -36,6 +36,16 @@ export default {
       href: "/contacts"
     }
   ],
-  navbarSignUp: 'zarejestruj się',
-  navbarSignIn: 'zaloguj'
+  navbar: {
+    signUp: 'zarejestruj się',
+    signIn: 'zaloguj',
+    logout: 'wyloguj',
+    login: 'nazwa użytkownika',
+    password: 'hasło',
+    submit: 'zaloguj',
+    loading: 'trwa logowanie',
+    userNotExist: 'podany użytkownik nie istnieje',
+    wrongPassword: 'podane hasło jest błędne',
+    somethingWentWrong: 'coś poszło nie tak :-('
+  }
 }

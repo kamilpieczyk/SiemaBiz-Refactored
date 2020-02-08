@@ -1,22 +1,33 @@
 import { memo, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { setScroll } from '../../../Redux/actions'
 
 export default memo( (props) => {
 
-  const [ scrollY, setScrollY ] = useState( 0 )
-  const isMenuActive = useSelector( state => state.globalMenu )
-  const languageSource = useSelector( state => state.language.source )
+  const [ isLoginPopup, setLoginPopup ] = useState( false )
+  const dispatch = useDispatch();
+  const isMenuActive = useSelector( state => state.globalMenu );
+  const languageSource = useSelector( state => state.language.source );
+  const isScrolled = useSelector( state => state.isPageScrolled );
+  const isUserLogged = useSelector( state => state.user.username );
 
   useEffect( () => {
     window.addEventListener( 'scroll', () => {
       const scrlY = window.scrollY
-      setScrollY( scrlY )
+      if( scrlY > 150 ) dispatch( setScroll( true ) )
+      else dispatch( setScroll( false ) )
     } )
   }, [] )
 
   return props.render({
-    scroll: scrollY,
+    scroll: isScrolled,
     isMenuActive,
-    languageSource
+    languageSource,
+    isUserLogged,
+    loginPopup: {
+      isLoginPopup,
+      setLoginPopup
+    }
   })
 } )

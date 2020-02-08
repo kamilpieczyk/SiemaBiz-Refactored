@@ -9,39 +9,71 @@ import Switcher from '../../UI/switcher'
 import MenuButton from './components/menu-button'
 import Menu from './components/menu'
 import Button from '../../UI/small-button'
+import LoginPopup from './components/login-popup'
+import withClick from '../../HOC/withClick'
+
 
 const LanguageSwitcher = withLanguageSwitch( Switcher )
+const ClickableButton = withClick( Button )
 
-const Presentation = ({ scroll, isMenuActive, languageSource }) => (
+const Presentation = ({ scroll, isMenuActive, isUserLogged, languageSource, loginPopup }) => (
+  <React.Fragment>
+    <Container scroll = { scroll }>
 
-  <Container scroll = { scroll }>
+      <LogoContainer scroll = { scroll }>
+        <img src = {
+          scroll
+            ? '/images/logo-mini.png'
+            : '/images/logo.png'
+        } />
+      </LogoContainer>
 
-    <LogoContainer scroll = { scroll }>
-      <img src = {
-        scroll > 150
-          ? '/images/logo-mini.png'
-          : '/images/logo.png'
-      } />
-    </LogoContainer>
+      <ButtonsContainer>
+        
+        <MenuButton />
 
-    <ButtonsContainer>
-      
-      <MenuButton />
-      <Button thin>{ languageSource.navbarSignUp }</Button>
-      <Button>{ languageSource.navbarSignIn }</Button>
-      <LanguageSwitcher text = "PL" />
+        {
+          // THIS SECTION IS VISIBLE ONLY FOR NON LOGGED IN USERS
+          !isUserLogged && (
+            <React.Fragment>
+              <Button thin>{ languageSource.navbar.signUp }</Button>
+              <ClickableButton 
+                onClickFunction = { () => loginPopup.setLoginPopup( !loginPopup.isLoginPopup ) }
+              >
+                { languageSource.navbar.signIn }
+              </ClickableButton>
+            </React.Fragment>
+          )
+        }
 
-    </ButtonsContainer>
+        {
+          // THIS SECTION IS VISIBLE ONLY FOR LOGGED USERS
+          isUserLogged && (
+            <React.Fragment>
+              <Button>{ languageSource.navbar.logout }</Button>
+            </React.Fragment>
+          )
+        }
 
-    { isMenuActive && <Menu /> }
+        <LanguageSwitcher text = "PL" />
 
-  </Container>
+      </ButtonsContainer>
+
+      { isMenuActive && <Menu /> }
+
+    </Container>
+
+    { loginPopup.isLoginPopup && !isUserLogged && <LoginPopup /> }
+ 
+  </React.Fragment>
 )
 
 Presentation.propTypes = {
-  scroll: PropTypes.number.isRequired,
+  scroll: PropTypes.bool.isRequired,
   isMenuActive: PropTypes.bool,
-  languageSource: PropTypes.object.isRequired
+  languageSource: PropTypes.object.isRequired,
+  loginPopup: PropTypes.object.isRequired,
+  isUserLogged: PropTypes.string
 }
 
 export default Presentation
