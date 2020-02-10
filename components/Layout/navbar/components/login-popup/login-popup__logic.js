@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Cookies from 'js-cookie'
 
 import POST from '../../../../../API/post'
 import auth from '../../../../../API/authorisation'
+import { loginUser } from '../../../../../Redux/actions'
 
 const Logic = ({ render }) => {
   const [ login, setLogin ] = useState( '' );
@@ -16,6 +17,8 @@ const Logic = ({ render }) => {
   const isScrolled = useSelector( state => state.isPageScrolled );
   const languageSource = useSelector( state => state.language.source );
 
+  const dispatch = useDispatch();
+
   const handleSubmitForm = e => {
     e.preventDefault();
     setLoading( true );
@@ -23,7 +26,7 @@ const Logic = ({ render }) => {
     messangePassword && setMessangePassword( "" );
     POST( 'login', { username: login, password } )
       .then( res => {
-        console.log( res )
+        
         setLoading( false );
         if( res.status === 'user_not_exisit' ) setMessangeLogin( languageSource.navbar.userNotExist )
         if( res.status === 'wrong_pwd' ){
@@ -32,11 +35,33 @@ const Logic = ({ render }) => {
         }
         if( res.status === 'logged' ){
           Cookies.set( 'passport', res.passport );
+          const {
+            username,
+            privileges,
+            email,
+            name,
+            surname,
+            phone,
+            id
+          } = res
           auth( res.passport )
-            .then( res => console.log( res ) )
-          // place for login things to do
-          //
-          //
+            .then( res => {
+              if( res.status === 'authorised' ){
+                dispatch( loginUser({
+                  username,
+                  privileges,
+                  email,
+                  name,
+                  surname,
+                  phone,
+                  id
+                }) )
+              }
+              else{
+                setMessangeLogin( languageSource.navbar.somethingWentWrong )
+              }
+            } )
+
         }
       } )
   }

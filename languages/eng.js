@@ -39,11 +39,13 @@ export default {
   navbar: {
     signUp: 'sign-up',
     signIn: 'sign-in',
+    logout: 'logout',
     login: 'username',
     password: 'password',
     submit: 'sign in',
     loading: 'logging in progress',
     userNotExist: 'this user doesn\'t exist',
-    wrongPassword: 'this password is incorrect'
+    wrongPassword: 'this password is incorrect',
+    somethingWentWrong: 'semething went wrong :-('
   }
 }

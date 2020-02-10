@@ -31,10 +31,27 @@ export const setScroll = ( bool ) => ({
 
 // login system actions
 
-export const loginUser = ({ username, privileges }) => ({
+export const loginUser = ({
+  username,
+  privileges,
+  email,
+  name,
+  surname,
+  phone,
+  id
+}) => ({
   type: 'LOGIN',
   payload: {
     username,
-    privileges
+    privileges,
+    email,
+    name,
+    surname,
+    phone,
+    id
   }
+})
+
+export const logoutUser = () => ({
+  type: 'LOGOUT'
 })

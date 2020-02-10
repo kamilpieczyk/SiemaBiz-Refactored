@@ -16,7 +16,7 @@ import withClick from '../../HOC/withClick'
 const LanguageSwitcher = withLanguageSwitch( Switcher )
 const ClickableButton = withClick( Button )
 
-const Presentation = ({ scroll, isMenuActive, languageSource, loginPopup }) => (
+const Presentation = ({ scroll, isMenuActive, isUserLogged, languageSource, loginPopup }) => (
   <React.Fragment>
     <Container scroll = { scroll }>
 
@@ -31,12 +31,30 @@ const Presentation = ({ scroll, isMenuActive, languageSource, loginPopup }) => (
       <ButtonsContainer>
         
         <MenuButton />
-        <Button thin>{ languageSource.navbar.signUp }</Button>
-        <ClickableButton 
-          onClickFunction = { () => loginPopup.setLoginPopup( !loginPopup.isLoginPopup ) }
-        >
-          { languageSource.navbar.signIn }
-        </ClickableButton>
+
+        {
+          // THIS SECTION IS VISIBLE ONLY FOR NON LOGGED IN USERS
+          !isUserLogged && (
+            <React.Fragment>
+              <Button thin>{ languageSource.navbar.signUp }</Button>
+              <ClickableButton 
+                onClickFunction = { () => loginPopup.setLoginPopup( !loginPopup.isLoginPopup ) }
+              >
+                { languageSource.navbar.signIn }
+              </ClickableButton>
+            </React.Fragment>
+          )
+        }
+
+        {
+          // THIS SECTION IS VISIBLE ONLY FOR LOGGED USERS
+          isUserLogged && (
+            <React.Fragment>
+              <Button>{ languageSource.navbar.logout }</Button>
+            </React.Fragment>
+          )
+        }
+
         <LanguageSwitcher text = "PL" />
 
       </ButtonsContainer>
@@ -45,7 +63,7 @@ const Presentation = ({ scroll, isMenuActive, languageSource, loginPopup }) => (
 
     </Container>
 
-    { loginPopup.isLoginPopup && <LoginPopup /> }
+    { loginPopup.isLoginPopup && !isUserLogged && <LoginPopup /> }
  
   </React.Fragment>
 )
@@ -54,7 +72,8 @@ Presentation.propTypes = {
   scroll: PropTypes.bool.isRequired,
   isMenuActive: PropTypes.bool,
   languageSource: PropTypes.object.isRequired,
-  loginPopup: PropTypes.object.isRequired
+  loginPopup: PropTypes.object.isRequired,
+  isUserLogged: PropTypes.string
 }
 
 export default Presentation

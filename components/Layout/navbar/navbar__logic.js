@@ -10,6 +10,7 @@ export default memo( (props) => {
   const isMenuActive = useSelector( state => state.globalMenu );
   const languageSource = useSelector( state => state.language.source );
   const isScrolled = useSelector( state => state.isPageScrolled );
+  const isUserLogged = useSelector( state => state.user.username );
 
   useEffect( () => {
     window.addEventListener( 'scroll', () => {
@@ -23,6 +24,7 @@ export default memo( (props) => {
     scroll: isScrolled,
     isMenuActive,
     languageSource,
+    isUserLogged,
     loginPopup: {
       isLoginPopup,
       setLoginPopup
