@@ -16,7 +16,7 @@ import withClick from '../../HOC/withClick'
 const LanguageSwitcher = withLanguageSwitch( Switcher )
 const ClickableButton = withClick( Button )
 
-const Presentation = ({ scroll, isMenuActive, isUserLogged, languageSource, loginPopup }) => (
+const Presentation = ({ scroll, isMenuActive, isUserLogged, languageSource, loginPopup, logout }) => (
   <React.Fragment>
     <Container scroll = { scroll }>
 
@@ -50,7 +50,9 @@ const Presentation = ({ scroll, isMenuActive, isUserLogged, languageSource, logi
           // THIS SECTION IS VISIBLE ONLY FOR LOGGED USERS
           isUserLogged && (
             <React.Fragment>
-              <Button>{ languageSource.navbar.logout }</Button>
+              <ClickableButton
+                onClickFunction = { logout }
+              >{ languageSource.navbar.logout }</ClickableButton>
             </React.Fragment>
           )
         }
@@ -73,7 +75,8 @@ Presentation.propTypes = {
   isMenuActive: PropTypes.bool,
   languageSource: PropTypes.object.isRequired,
   loginPopup: PropTypes.object.isRequired,
-  isUserLogged: PropTypes.string
+  isUserLogged: PropTypes.string,
+  logout: PropTypes.func.isRequired
 }
 
 export default Presentation

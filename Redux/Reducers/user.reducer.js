@@ -1,3 +1,5 @@
+import cookies from 'js-cookie'
+
 const model = {
   username: '',
   privileges: null,
@@ -25,9 +27,12 @@ export default ( state = model, action ) =>{
         id: payload.id
       }
       return state
+
     case 'LOGOUT':
-      state = model
+      state = model;
+      cookies.remove( 'passport' )
       return state
+      
     default: 
       return state
   }

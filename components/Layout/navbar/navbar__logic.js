@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { setScroll } from '../../../Redux/actions'
+import { setScroll, logoutUser } from '../../../Redux/actions'
 
 export default memo( (props) => {
 
@@ -28,6 +28,7 @@ export default memo( (props) => {
     loginPopup: {
       isLoginPopup,
       setLoginPopup
-    }
+    },
+    logout: () => dispatch( logoutUser() )
   })
 } )
