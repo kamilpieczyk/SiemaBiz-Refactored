@@ -9,7 +9,8 @@ export const Container = styled.nav`
   position: fixed;
   border-radius: 5px;
   left: 0;
-  top: 110px;
+  top: ${ ({ isPageScrolled }) => isPageScrolled ? '70px' : '110px' };
+  transition-duration: .3s;
   display: flex;
   background-color: ${ colors.white };
   box-shadow: 0px 0px 15px 1px ${ colors.grey };
