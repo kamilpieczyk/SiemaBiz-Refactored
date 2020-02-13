@@ -3,14 +3,13 @@ import { Provider } from 'react-redux'
 
 import store from '../../Redux/store'
 
-import Navbar from './navbar'
-import { Container } from './layaut__style'
+import Logic from './layout__logic'
+import Presentation from './layout__presentation'
 
 export default ({ children }) => (
   <Provider store = { store } >
-    <Container>
-      <Navbar />
-      { children }
-    </Container>
+    <Logic
+      render = { props => <Presentation { ...props } >{ children }</Presentation> }
+    />
   </Provider>
 )

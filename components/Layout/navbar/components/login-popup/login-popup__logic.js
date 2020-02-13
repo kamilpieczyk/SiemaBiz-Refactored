@@ -35,26 +35,18 @@ const Logic = ({ render }) => {
         }
         if( res.status === 'logged' ){
           Cookies.set( 'passport', res.passport );
-          const {
-            username,
-            privileges,
-            email,
-            name,
-            surname,
-            phone,
-            id
-          } = res
+
           auth( res.passport )
             .then( res => {
               if( res.status === 'authorised' ){
                 dispatch( loginUser({
-                  username,
-                  privileges,
-                  email,
-                  name,
-                  surname,
-                  phone,
-                  id
+                  username: res.username,
+                  privileges: res.privileges,
+                  email: res.email,
+                  name: res.name,
+                  surname: res.surname,
+                  phone: res.phone,
+                  id: res.id
                 }) )
               }
               else{
