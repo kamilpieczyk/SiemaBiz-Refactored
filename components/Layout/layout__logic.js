@@ -2,8 +2,14 @@ import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Cookies from 'js-cookie'
 
-import { loginUser, changeLanguageToENG, changeLanguageToPL } from '../../Redux/actions'
 import authorisation from '../../API/authorisation'
+import {
+  loginUser,
+  changeLanguageToENG,
+  changeLanguageToPL,
+  setScreenResolutionToMobile,
+  setScreenResolutionToDesktop
+} from '../../Redux/actions'
 
 class LayoutLogic extends PureComponent{
 
@@ -25,6 +31,20 @@ class LayoutLogic extends PureComponent{
     }
   }
 
+  checkDeviceScreenResolution = () => {
+    const mobileResolution = 800;
+    let windowResolution = window.innerWidth;
+    if( windowResolution <= mobileResolution ) this.props.setScreenResolutionToMobile()
+    else this.props.setScreenResolutionToDesktop()
+
+    window.addEventListener( 'resize', () => {
+      windowResolution = window.innerWidth;
+      if( windowResolution <= mobileResolution ) this.props.setScreenResolutionToMobile()
+      else this.props.setScreenResolutionToDesktop()
+    } )
+    
+  }
+
   checkBrowserLanguage = () => {
     const browserLanguage = navigator.language;
 
@@ -40,6 +60,11 @@ class LayoutLogic extends PureComponent{
   componentDidMount(){
     this.checkIfUserIsLogged();
     this.checkBrowserLanguage();
+    this.checkDeviceScreenResolution();
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener( 'resize' )
   }
   
   render(){
@@ -52,11 +77,13 @@ class LayoutLogic extends PureComponent{
 export default connect(
   state => ({
     user: state.user,
-    language: state => language
+    deviceScreen: state.deviceScreen
   }),
   dispatch => ({
     login: user => dispatch( loginUser( user ) ),
     setLanguageToPL: () => dispatch( changeLanguageToPL() ),
-    setLanguageToEN: () => dispatch( changeLanguageToENG() )
+    setLanguageToEN: () => dispatch( changeLanguageToENG() ),
+    setScreenResolutionToMobile: () => dispatch( setScreenResolutionToMobile() ),
+    setScreenResolutionToDesktop: () => dispatch( setScreenResolutionToDesktop() ),
   })
 )(LayoutLogic)
