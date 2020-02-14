@@ -30,6 +30,11 @@ const GlobalStyle = createGlobalStyle`
 
   }
 
+  button{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+  }
+
 `
 
 export default GlobalStyle
