@@ -65,3 +65,13 @@ export const loginUser = ({
 export const logoutUser = () => ({
   type: 'LOGOUT'
 })
+
+// Screen resolution actions
+
+export const setScreenResolutionToDesktop = () => ({
+  type: 'SET_SCREEN_RESOLUTION_TO_DESKTOP'
+})
+
+export const setScreenResolutionToMobile = () => ({
+  type: 'SET_SCREEN_RESOLUTION_TO_MOBILE'
+})
