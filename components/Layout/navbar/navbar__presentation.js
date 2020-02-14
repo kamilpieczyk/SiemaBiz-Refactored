@@ -11,6 +11,7 @@ import Menu from './components/menu'
 import Button from '../../UI/small-button'
 import LoginPopup from './components/login-popup'
 import withClick from '../../HOC/withClick'
+import LoggedUserButton from './components/logged-user-button'
 
 
 const LanguageSwitcher = withLanguageSwitch( Switcher )
@@ -50,6 +51,7 @@ const Presentation = ({ scroll, isMenuActive, isUserLogged, languageSource, logi
           // THIS SECTION IS VISIBLE ONLY FOR LOGGED USERS
           isUserLogged && (
             <React.Fragment>
+              <LoggedUserButton />
               <ClickableButton
                 onClickFunction = { logout }
               >{ languageSource.navbar.logout }</ClickableButton>
