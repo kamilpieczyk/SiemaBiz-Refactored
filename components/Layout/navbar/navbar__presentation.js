@@ -18,15 +18,17 @@ import UserMenu from './components/user-menu'
 const LanguageSwitcher = withLanguageSwitch( Switcher )
 const ClickableButton = withClick( Button )
 
-const Presentation = ({ scroll, isMenuActive, isUserMenuActive, isUserLogged, languageSource, loginPopup, logout }) => (
+const Presentation = ({ scroll, isMenuActive, isUserMenuActive, isUserLogged, languageSource, loginPopup, logout, deviceScreenResolution }) => (
   <React.Fragment>
     <Container scroll = { scroll }>
 
-      <LogoContainer scroll = { scroll }>
+      <LogoContainer scroll = { scroll } device = { deviceScreenResolution } >
         <img src = {
-          scroll
+          deviceScreenResolution === 'mobile'
             ? '/images/logo-mini.png'
-            : '/images/logo.png'
+            : scroll
+              ? '/images/logo-mini.png'
+              : '/images/logo.png'
         } />
       </LogoContainer>
 
@@ -52,10 +54,16 @@ const Presentation = ({ scroll, isMenuActive, isUserMenuActive, isUserLogged, la
           // THIS SECTION IS VISIBLE ONLY FOR LOGGED USERS
           isUserLogged && (
             <React.Fragment>
-              <LoggedUserButton />
-              <ClickableButton
-                onClickFunction = { logout }
-              >{ languageSource.navbar.logout }</ClickableButton>
+              { deviceScreenResolution === 'desktop' && <LoggedUserButton /> }
+              {
+                deviceScreenResolution === 'desktop' && (
+                  <ClickableButton
+                    onClickFunction = { logout }
+                  >
+                    { languageSource.navbar.logout }
+                  </ClickableButton>
+                )
+              }
               { isUserMenuActive && <UserMenu /> }
             </React.Fragment>
           )
@@ -81,7 +89,8 @@ Presentation.propTypes = {
   loginPopup: PropTypes.object.isRequired,
   isUserLogged: PropTypes.string,
   logout: PropTypes.func.isRequired,
-  isUserMenuActive: PropTypes.bool
+  isUserMenuActive: PropTypes.bool,
+  deviceScreenResolution: PropTypes.string.isRequired
 }
 
 export default Presentation

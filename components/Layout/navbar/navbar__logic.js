@@ -12,6 +12,7 @@ export default memo( (props) => {
   const isScrolled = useSelector( state => state.isPageScrolled );
   const isUserLogged = useSelector( state => state.user.username );
   const isUserMenuActive = useSelector( state => state.isUserMenuActiv );
+  const deviceScreenResolution = useSelector( state => state.deviceScreen );
 
   useEffect( () => {
     window.addEventListener( 'scroll', () => {
@@ -27,6 +28,7 @@ export default memo( (props) => {
     isUserMenuActive,
     languageSource,
     isUserLogged,
+    deviceScreenResolution,
     loginPopup: {
       isLoginPopup,
       setLoginPopup

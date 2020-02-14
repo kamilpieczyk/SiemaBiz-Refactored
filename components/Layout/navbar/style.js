@@ -24,8 +24,8 @@ export const Container = styled.nav`
 export const LogoContainer = styled.div`
   flex: 3;
   img{
-    width: ${ ({ scroll }) => scroll ? '40px' : '155px' };
-    height: ${ ({ scroll }) => scroll ? '40px' : '85px' };
+    width: ${ ({ scroll, device }) => device === "mobile" ? '40px' : scroll ? '40px' : '155px' };
+    height: ${ ({ scroll, device }) => device === "mobile" ? '40px' : scroll ? '40px' : '85px' };
   }
 `
 

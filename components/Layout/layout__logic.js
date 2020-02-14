@@ -33,9 +33,9 @@ class LayoutLogic extends PureComponent{
   }
 
   checkDeviceScreenResolution = () => {
-    const mobileResolution = 800;
+    const mobileResolution = 767;
     let windowResolution = window.innerWidth;
-    if( windowResolution <= mobileResolution ) this.props.setScreenResolutionToMobile()
+    if( windowResolution < mobileResolution ) this.props.setScreenResolutionToMobile()
     else this.props.setScreenResolutionToDesktop()
 
     window.addEventListener( 'resize', () => {
