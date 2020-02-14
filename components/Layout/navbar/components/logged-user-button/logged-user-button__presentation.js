@@ -2,13 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from '@material/react-material-icon'
 
-import { Container } from './logged-user-button__styles'
+import { Button } from './logged-user-button__styles'
 
-const LoggedUserButtonPresentationLayer = ({ username }) => (
-  <Container>
-    <Icon icon = 'person' />
-    { username }
-  </Container>
+const LoggedUserButtonPresentationLayer = ({ username, handleClickButton }) => (
+  <React.Fragment>
+    <Button id = 'logged-user-button' onClick = { handleClickButton } >
+      <Icon icon = 'person' />
+      { username }
+    </Button>
+  </React.Fragment>
 )
 
 LoggedUserButtonPresentationLayer.propTypes = {

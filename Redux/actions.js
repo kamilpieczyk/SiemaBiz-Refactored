@@ -22,6 +22,16 @@ export const setMenuInactive = () => ({
   type: 'SET_MENU_INACTIVE'
 })
 
+// User menu actions
+
+export const setUserMenuActive = () => ({
+  type: 'SET_USERMENU_ACTIVE'
+})
+
+export const setUserMenuInactive = () => ({
+  type: 'SET_USERMENU_INACTIVE'
+})
+
 // Scroll action
 
 export const setScroll = ( bool ) => ({

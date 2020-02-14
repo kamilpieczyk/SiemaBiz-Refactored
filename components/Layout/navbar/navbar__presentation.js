@@ -12,12 +12,13 @@ import Button from '../../UI/small-button'
 import LoginPopup from './components/login-popup'
 import withClick from '../../HOC/withClick'
 import LoggedUserButton from './components/logged-user-button'
+import UserMenu from './components/user-menu'
 
 
 const LanguageSwitcher = withLanguageSwitch( Switcher )
 const ClickableButton = withClick( Button )
 
-const Presentation = ({ scroll, isMenuActive, isUserLogged, languageSource, loginPopup, logout }) => (
+const Presentation = ({ scroll, isMenuActive, isUserMenuActive, isUserLogged, languageSource, loginPopup, logout }) => (
   <React.Fragment>
     <Container scroll = { scroll }>
 
@@ -55,6 +56,7 @@ const Presentation = ({ scroll, isMenuActive, isUserLogged, languageSource, logi
               <ClickableButton
                 onClickFunction = { logout }
               >{ languageSource.navbar.logout }</ClickableButton>
+              { isUserMenuActive && <UserMenu /> }
             </React.Fragment>
           )
         }
@@ -78,7 +80,8 @@ Presentation.propTypes = {
   languageSource: PropTypes.object.isRequired,
   loginPopup: PropTypes.object.isRequired,
   isUserLogged: PropTypes.string,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  isUserMenuActive: PropTypes.bool
 }
 
 export default Presentation

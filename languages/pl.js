@@ -46,6 +46,24 @@ export default {
     loading: 'trwa logowanie',
     userNotExist: 'podany użytkownik nie istnieje',
     wrongPassword: 'podane hasło jest błędne',
-    somethingWentWrong: 'coś poszło nie tak :-('
+    somethingWentWrong: 'coś poszło nie tak :-(',
+    usermenu: [
+      {
+        title: 'ustawienia profilu',
+        href: '/user-panel/profile-settings'
+      },
+      {
+        title: 'moje cv',
+        href: '/user-panel/my-cv'
+      },
+      {
+        title: 'zmień hasło',
+        href: '/user-panel/change-password'
+      },
+      {
+        title: 'usuń konto',
+        href: '/user-panel/delete-account'
+      },
+    ]
   }
 }
