@@ -2,7 +2,7 @@ import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Cookies from 'js-cookie'
 
-import { loginUser } from '../../Redux/actions'
+import { loginUser, changeLanguageToENG, changeLanguageToPL } from '../../Redux/actions'
 import authorisation from '../../API/authorisation'
 
 class LayoutLogic extends PureComponent{
@@ -25,8 +25,21 @@ class LayoutLogic extends PureComponent{
     }
   }
 
+  checkBrowserLanguage = () => {
+    const browserLanguage = navigator.language;
+
+    if( browserLanguage === 'pl-PL' ){
+      this.props.setLanguageToPL();
+    }
+    else{
+      this.props.setLanguageToEN();
+    }
+
+  }
+
   componentDidMount(){
-    this.checkIfUserIsLogged()
+    this.checkIfUserIsLogged();
+    this.checkBrowserLanguage();
   }
   
   render(){
@@ -38,9 +51,12 @@ class LayoutLogic extends PureComponent{
 
 export default connect(
   state => ({
-    user: state.user
+    user: state.user,
+    language: state => language
   }),
   dispatch => ({
-    login: user => dispatch( loginUser( user ) )
+    login: user => dispatch( loginUser( user ) ),
+    setLanguageToPL: () => dispatch( changeLanguageToPL() ),
+    setLanguageToEN: () => dispatch( changeLanguageToENG() )
   })
 )(LayoutLogic)
