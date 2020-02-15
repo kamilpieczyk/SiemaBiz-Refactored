@@ -13,6 +13,7 @@ import LoginPopup from './components/login-popup'
 import withClick from '../../HOC/withClick'
 import LoggedUserButton from './components/logged-user-button'
 import UserMenu from './components/user-menu'
+import MobileMenu from './components/mobile-menu'
 
 
 const LanguageSwitcher = withLanguageSwitch( Switcher )
@@ -40,12 +41,20 @@ const Presentation = ({ scroll, isMenuActive, isUserMenuActive, isUserLogged, la
           // THIS SECTION IS VISIBLE ONLY FOR NON LOGGED IN USERS
           !isUserLogged && (
             <React.Fragment>
-              <Button thin>{ languageSource.navbar.signUp }</Button>
-              <ClickableButton 
-                onClickFunction = { () => loginPopup.setLoginPopup( !loginPopup.isLoginPopup ) }
-              >
-                { languageSource.navbar.signIn }
-              </ClickableButton>
+              {
+                deviceScreenResolution === 'desktop' && ( 
+                  <Button thin>{ languageSource.navbar.signUp }</Button>
+                )
+              }
+              {
+                deviceScreenResolution === 'desktop' &&(
+                  <ClickableButton 
+                    onClickFunction = { () => loginPopup.setLoginPopup( !loginPopup.isLoginPopup ) }
+                  >
+                    { languageSource.navbar.signIn }
+                  </ClickableButton>
+                )
+              }
             </React.Fragment>
           )
         }
@@ -73,7 +82,14 @@ const Presentation = ({ scroll, isMenuActive, isUserMenuActive, isUserLogged, la
 
       </ButtonsContainer>
 
-      { isMenuActive && <Menu /> }
+      { 
+        // THIS SECTION SHOWS MENU IF IS ACTIVE
+        isMenuActive && (
+          deviceScreenResolution === 'mobile'
+            ? <MobileMenu />
+            : <Menu />
+        )
+      }
 
     </Container>
 

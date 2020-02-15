@@ -35,6 +35,14 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
+  input{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 100;
+    ::placeholder{
+      color: ${ colors.grey };
+    }
+  }
+
 `
 
 export default GlobalStyle
