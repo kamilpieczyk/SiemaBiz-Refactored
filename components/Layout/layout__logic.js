@@ -1,6 +1,5 @@
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import Cookies from 'js-cookie'
 
 import authorisation from '../../API/authorisation'
 import {
@@ -14,7 +13,9 @@ import {
 class LayoutLogic extends PureComponent{
 
   checkIfUserIsLogged = async () => {
-    const passport = Cookies.get( 'passport' )
+    
+    const passport = window.localStorage.getItem( 'passport' );
+
     if( passport ){
       const user = await authorisation( passport )
       if( user ){
