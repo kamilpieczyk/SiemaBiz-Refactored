@@ -22,7 +22,7 @@ const LoggedUserButtonLogic = ({ render }) => {
   })
 }
 
-LoggedUserButtonLogic.PropTypes = {
+LoggedUserButtonLogic.propTypes = {
   render: PropTypes.func.isRequired
 }
 

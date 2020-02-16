@@ -6,7 +6,7 @@ import POST from '../../../../../API/post'
 import auth from '../../../../../API/authorisation'
 import { loginUser } from '../../../../../Redux/actions'
 
-const Logic = ({ render }) => {
+const Logic = ({ render, close }) => {
   const [ login, setLogin ] = useState( '' );
   const [ password, setPassword ] = useState( '' );
   const [ isLoading, setLoading ] = useState( false );
@@ -39,6 +39,7 @@ const Logic = ({ render }) => {
           auth( res.passport )
             .then( res => {
               if( res.status === 'authorised' ){
+                
                 dispatch( loginUser({
                   username: res.username,
                   privileges: res.privileges,
@@ -47,7 +48,9 @@ const Logic = ({ render }) => {
                   surname: res.surname,
                   phone: res.phone,
                   id: res.id
-                }) )
+                }) );
+                close();
+                
               }
               else{
                 setMessangeLogin( languageSource.navbar.somethingWentWrong )
@@ -73,7 +76,8 @@ const Logic = ({ render }) => {
 }
 
 Logic.propTypes = {
-  render: PropTypes.func.isRequired
+  render: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired
 }
 
 export default Logic

@@ -4,15 +4,19 @@ import Link from 'next/link'
 
 import { Container, Option } from './mobile-menu__style'
 import UserSignIn from './components/user-sign-in'
+import LoggedUserContainer from './components/logged-user-container'
+import UserMenu from './components/user-menu'
 
 const MobileMenuPresentationLayer = ({ isPageScrolled, menuItems, isUserLogged }) => (
   <Container isPageScrolled = { isPageScrolled } >
-    {
+
+    { // VISIBLE ONLY FOR LOGGED USER
       isUserLogged
-        ? null
+        ? <LoggedUserContainer />
         : <UserSignIn />
     }
-    {
+
+    { // MENU STUFF
       menuItems.map( ( item, index ) => (
         <Option key = { index } >
           <Link href = { item.href }>
@@ -20,6 +24,12 @@ const MobileMenuPresentationLayer = ({ isPageScrolled, menuItems, isUserLogged }
           </Link>
         </Option>
       ))
+    }
+
+    { // VISIBLE ONLY FOR LOGGED USER
+      isUserLogged && (
+        <UserMenu />
+      )
     }
   </Container>
 )

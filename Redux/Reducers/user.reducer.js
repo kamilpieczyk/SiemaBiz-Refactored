@@ -1,4 +1,3 @@
-import cookies from 'js-cookie'
 
 const model = {
   username: '',
@@ -29,8 +28,8 @@ export default ( state = model, action ) =>{
       return state
 
     case 'LOGOUT':
+      window.localStorage.removeItem( 'passport' );
       state = model;
-      cookies.remove( 'passport' )
       return state
       
     default: 

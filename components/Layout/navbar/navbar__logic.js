@@ -6,6 +6,7 @@ import { setScroll, logoutUser } from '../../../Redux/actions'
 export default memo( (props) => {
 
   const [ isLoginPopup, setLoginPopup ] = useState( false )
+  
   const dispatch = useDispatch();
   const isMenuActive = useSelector( state => state.globalMenu );
   const languageSource = useSelector( state => state.language.source );

@@ -93,7 +93,7 @@ const Presentation = ({ scroll, isMenuActive, isUserMenuActive, isUserLogged, la
 
     </Container>
 
-    { loginPopup.isLoginPopup && !isUserLogged && <LoginPopup /> }
+    { loginPopup.isLoginPopup && !isUserLogged && <LoginPopup close = { () => loginPopup.setLoginPopup( false ) } /> }
  
   </React.Fragment>
 )

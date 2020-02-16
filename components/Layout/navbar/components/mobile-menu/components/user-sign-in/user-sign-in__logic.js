@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Cookies from 'js-cookie'
 
 import POST from '../../../../../../../API/post'
 import auth from '../../../../../../../API/authorisation'
@@ -34,7 +33,8 @@ const UserSignInLogic = ({ render }) => {
           setPassword( '' )
         }
         if( res.status === 'logged' ){
-          Cookies.set( 'passport', res.passport );
+
+          window.localStorage.setItem( 'passport', res.passport );
 
           auth( res.passport )
             .then( res => {
