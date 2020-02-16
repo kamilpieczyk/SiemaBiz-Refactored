@@ -65,5 +65,10 @@ export default {
         href: '/user-panel/delete-account'
       },
     ]
+  },
+  userPanel: {
+    userSettings: {
+      title: 'ustawienia konta użytkownika'
+    }
   }
 }
