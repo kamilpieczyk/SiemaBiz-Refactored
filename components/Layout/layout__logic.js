@@ -1,7 +1,6 @@
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
-import authorisation from '../../API/authorisation'
 import {
   loginUser,
   changeLanguageToENG,
@@ -12,38 +11,11 @@ import {
 
 class LayoutLogic extends PureComponent{
 
-  checkIfUserIsLogged = async () => {
-    
-    const passport = window.localStorage.getItem( 'passport' );
-
-    if( passport ){
-      const user = await authorisation( passport )
-      if( user ){
-        this.props.login({
-          username: user.username,
-          privileges: user.privileges,
-          email: user.email,
-          name: user.name,
-          surname: user.surname,
-          phone: user.phone,
-          id: user.id
-        })
-      }
-    }
-  }
-
   checkDeviceScreenResolution = () => {
     const mobileResolution = 767;
     let windowResolution = window.innerWidth;
-    if( windowResolution < mobileResolution ) this.props.setScreenResolutionToMobile()
-    else this.props.setScreenResolutionToDesktop()
-
-    window.addEventListener( 'resize', () => {
-      windowResolution = window.innerWidth;
-      if( windowResolution <= mobileResolution ) this.props.setScreenResolutionToMobile()
-      else this.props.setScreenResolutionToDesktop()
-    } )
-    
+    if( windowResolution <= mobileResolution ) this.props.setScreenResolutionToMobile()
+    else this.props.setScreenResolutionToDesktop()    
   }
 
   checkBrowserLanguage = () => {
@@ -59,13 +31,13 @@ class LayoutLogic extends PureComponent{
   }
 
   componentDidMount(){
-    this.checkIfUserIsLogged();
     this.checkBrowserLanguage();
     this.checkDeviceScreenResolution();
+    window.addEventListener( 'resize', this.checkDeviceScreenResolution );
   }
 
   componentWillUnmount(){
-    window.removeEventListener( 'resize' )
+    window.removeEventListener( 'resize', this.checkDeviceScreenResolution );
   }
   
   render(){

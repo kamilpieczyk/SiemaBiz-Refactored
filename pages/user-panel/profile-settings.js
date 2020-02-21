@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 
 import Layout from '../../components/Layout'
+import UserPanel from '../../components/User-panel'
 
 const ProfileSettings = () => {
 
@@ -16,6 +17,10 @@ const ProfileSettings = () => {
           { languageSource.userPanel.userSettings.title } - SiemaBiz Forum
         </title>
       </Head>
+
+      <UserPanel>
+        <p>grergr</p>
+      </UserPanel>
 
     </Layout>
   )

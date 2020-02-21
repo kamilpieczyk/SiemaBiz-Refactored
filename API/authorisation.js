@@ -1,6 +1,9 @@
 import POST from './post'
 
-export default async passport => {
+
+export default async () => {
+
+  const passport = window.localStorage.getItem( 'passport' );
 
   try{
     const res = await POST( 'authorisation', { passport } );
@@ -10,6 +13,9 @@ export default async passport => {
   }
   catch( err ){
     console.error( err )
+
+    if( passport ) window.localStorage.removeItem( 'passport' )
+
     return null
   }
 
