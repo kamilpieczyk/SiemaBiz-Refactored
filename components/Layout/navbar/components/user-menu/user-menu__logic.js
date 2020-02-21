@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 const UserMenuLogicLayer = ({ render }) => {
-  const [ buttonPosition, setButtonPosition ] = useState( document.getElementById( 'logged-user-button' ) );
+  const [ buttonPosition, setButtonPosition ] = useState( document.getElementById( 'logged-user-button' ).offsetLeft );
 
   const isPageScrolled = useSelector( state => state.isPageScrolled );
   const languageSource = useSelector( state => state.language.source );
@@ -17,7 +17,8 @@ const UserMenuLogicLayer = ({ render }) => {
 
   const getTheButtonPosition = () => {
     const button = document.getElementById( 'logged-user-button' );
-    setButtonPosition( button.offsetLeft )
+    const position = button.offsetLeft;
+    setButtonPosition( position )
   }
 
   return render({
