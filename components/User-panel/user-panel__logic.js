@@ -3,7 +3,9 @@ import { useSelector } from 'react-redux'
 import router from 'next/router'
 import PropTypes from 'prop-types'
 
-const UserPanelLogicLayer = ({ render }) => {
+const UserPanelLogicLayer = ({ render, menu }) => {
+
+  const device = useSelector( s => s.deviceScreen );
 
   const redirectToHomepageIfUserIsNotLogged = () => {
     const isUserLogged = window.localStorage.getItem( 'passport' );
@@ -21,12 +23,14 @@ const UserPanelLogicLayer = ({ render }) => {
   )
 
   return render({
-
+    device,
+    menu,
   })
 }
 
 UserPanelLogicLayer.propTypes = {
   render: PropTypes.func.isRequired,
+  menu: PropTypes.array.isRequired
 }
 
 export default UserPanelLogicLayer

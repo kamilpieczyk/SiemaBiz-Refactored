@@ -4,8 +4,9 @@ import PropTypes from 'prop-types'
 import LogicLayer from './user-panel__logic'
 import PresentationLayer from './user-panel__presentation'
 
-const UserPanel = ({ children }) => (
+const UserPanel = ({ menu, children }) => (
   <LogicLayer
+    menu = { menu } 
     render = { props => (
       <PresentationLayer { ...props } >
         { children }
@@ -15,7 +16,8 @@ const UserPanel = ({ children }) => (
 )
 
 UserPanel.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
+  menu: PropTypes.array.isRequired
 }
 
 export default UserPanel

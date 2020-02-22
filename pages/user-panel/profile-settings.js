@@ -18,7 +18,7 @@ const ProfileSettings = () => {
         </title>
       </Head>
 
-      <UserPanel>
+      <UserPanel menu = { languageSource.navbar.usermenu } >
         <p>grergr</p>
       </UserPanel>
 

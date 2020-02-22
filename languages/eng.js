@@ -46,22 +46,26 @@ export default {
     loading: 'logging in progress',
     userNotExist: 'this user doesn\'t exist',
     wrongPassword: 'this password is incorrect',
-    somethingWentWrong: 'semething went wrong :-(',
+    somethingWentWrong: 'something went wrong :-(',
     usermenu: [
       {
         title: 'profile settings',
+        icon: 'person_pin',
         href: '/user-panel/profile-settings'
       },
       {
         title: 'my cv',
+        icon: 'assignment_ind',
         href: '/user-panel/my-cv'
       },
       {
         title: 'change password',
+        icon: 'build',
         href: '/user-panel/change-password'
       },
       {
         title: 'remove my profile',
+        icon: 'delete_sweep',
         href: '/user-panel/delete-account'
       },
     ]

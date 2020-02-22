@@ -8,11 +8,12 @@ import {
   setScreenResolutionToMobile,
   setScreenResolutionToDesktop
 } from '../../Redux/actions'
+import { mobile } from '../../styles/devices'
 
 class LayoutLogic extends PureComponent{
 
   checkDeviceScreenResolution = () => {
-    const mobileResolution = 767;
+    const mobileResolution = mobile;
     let windowResolution = window.innerWidth;
     if( windowResolution <= mobileResolution ) this.props.setScreenResolutionToMobile()
     else this.props.setScreenResolutionToDesktop()    

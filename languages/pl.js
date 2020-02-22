@@ -50,18 +50,22 @@ export default {
     usermenu: [
       {
         title: 'ustawienia profilu',
+        icon: 'person_pin',
         href: '/user-panel/profile-settings'
       },
       {
         title: 'moje cv',
+        icon: 'assignment_ind',
         href: '/user-panel/my-cv'
       },
       {
         title: 'zmień hasło',
+        icon: 'build',
         href: '/user-panel/change-password'
       },
       {
         title: 'usuń konto',
+        icon: 'delete_sweep',
         href: '/user-panel/delete-account'
       },
     ]
