@@ -9,6 +9,7 @@ export const Container = styled.nav`
   border-radius: 5px;
   color: ${ colors.white };
   padding: 10px 30px;
+  z-index: 10000;
 
   ::before{
     content: "";

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 
 import Layout from '../../components/Layout'
 import UserPanel from '../../components/User-panel'
+import ProfileSettingsComponent from '../../components/User-panel/profile-settings'
 
 const ProfileSettings = () => {
 
@@ -19,7 +20,7 @@ const ProfileSettings = () => {
       </Head>
 
       <UserPanel menu = { languageSource.navbar.usermenu } >
-        <p>grergr</p>
+        <ProfileSettingsComponent />
       </UserPanel>
 
     </Layout>

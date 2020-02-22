@@ -71,6 +71,7 @@ export default {
     ]
   },
   userPanel: {
+    title: 'panel użytkownika',
     userSettings: {
       title: 'ustawienia konta użytkownika'
     }
