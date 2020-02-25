@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 export default ( Component ) => {
 
-  const ClicableButton = ({ onClickFunction, thin, children }) => {
+  const ClicableButton = ({ onClickFunction, children, ...restProps }) => {
 
     return (
       <div onClick = { onClickFunction }>
-        <Component thin = { thin }>
+        <Component { ...restProps }>
           { children }
         </Component>
       </div>

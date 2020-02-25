@@ -3,14 +3,15 @@ import PropTypes from 'prop-types'
 
 import { Button } from './small-button__styles'
 
-const SmallButton = ({ thin, children }) => (
-  <Button thin = { thin }>
+const SmallButton = ({ thin, maxWidth, children }) => (
+  <Button thin = { thin } maxWidth = { maxWidth } >
     { children }
   </Button>
 )
 
 SmallButton.propTypes = {
   thin: PropTypes.bool,
+  maxWidth: PropTypes.bool,
 }
 
 export default SmallButton

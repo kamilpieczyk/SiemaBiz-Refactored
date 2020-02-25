@@ -73,7 +73,13 @@ export default {
   userPanel: {
     title: 'panel użytkownika',
     userSettings: {
-      title: 'ustawienia konta użytkownika'
+      title: 'ustawienia konta',
+      email: 'adres email',
+      phone: 'numer telefonu',
+      name: 'imię',
+      surname: 'nazwisko',
+      button: 'potwierdź zmiany',
+      loading: 'aktualizowanie danych'
     }
   }
 }

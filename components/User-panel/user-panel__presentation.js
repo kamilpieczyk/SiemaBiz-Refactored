@@ -11,7 +11,7 @@ const UserPanelPresentationLayer = ({ device, menu, children }) => (
       { children }
     </Content>
     <SideMenu>
-    <SidebarBox menu = { menu } />
+      <SidebarBox menu = { menu } />
     </SideMenu>
 
   </Container>

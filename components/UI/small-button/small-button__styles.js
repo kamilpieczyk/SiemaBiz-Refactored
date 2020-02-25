@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import colors from '../../../styles/colors'
 
 export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: ${ ({ thin }) => thin ? 'none' : colors.main };
   border-radius: 5px;
   text-align: center;
@@ -13,4 +16,5 @@ export const Button = styled.button`
   font-size: 0.8rem;
   cursor: pointer;
   font-family: 'Josefin Sans';
+  ${ ({ maxWidth }) => `width: 100%` }
 `

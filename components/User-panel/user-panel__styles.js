@@ -20,7 +20,7 @@ export const Container = styled.div`
   }
 
   @media( max-width: ${ mobile }px ){
-    flex-direction: column;
+    flex-direction: column-reverse;
     background-size: 300% 100%;
     background-position-x: 80%;
   }
@@ -43,5 +43,6 @@ export const SideMenu = styled.nav`
   @media( max-width: ${ mobile }px ){
     flex: initial;
     width: 100%;
+    margin-bottom: 30px;
   }
 `

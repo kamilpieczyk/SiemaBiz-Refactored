@@ -73,7 +73,13 @@ export default {
   userPanel: {
     title: 'user panel',
     userSettings: {
-      title: 'user profile settings'
+      title: 'user profile settings',
+      email: 'email address',
+      phone: 'phone number',
+      name: 'name',
+      surname: 'surname',
+      button: 'accept changes',
+      loading: 'updating data'
     }
   }
 }
