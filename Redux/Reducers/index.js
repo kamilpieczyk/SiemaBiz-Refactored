@@ -6,6 +6,7 @@ import scroll from './scroll.reducer'
 import user from './user.reducer'
 import userMenu from './user-menu.reducer'
 import deviceScreen from './device.reducer'
+import popup from './popup.reducer'
 
 export default combineReducers( {
   language,
@@ -13,5 +14,6 @@ export default combineReducers( {
   isPageScrolled: scroll,
   user,
   isUserMenuActiv: userMenu,
-  deviceScreen
+  deviceScreen,
+  popup
 } )

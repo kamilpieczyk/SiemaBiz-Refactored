@@ -75,3 +75,15 @@ export const setScreenResolutionToDesktop = () => ({
 export const setScreenResolutionToMobile = () => ({
   type: 'SET_SCREEN_RESOLUTION_TO_MOBILE'
 })
+
+
+// POPUP window actions
+
+export const setPopupWindowActive = ({ title, message }) => ({
+  type: 'SET_POPUP_WINDOW_ACTIVE',
+  payload: { title, messenge }
+})
+
+export const setPopupWindowInactive = () => ({
+  type: 'SET_POPUP_WINDOW_INACTIVE'
+})
