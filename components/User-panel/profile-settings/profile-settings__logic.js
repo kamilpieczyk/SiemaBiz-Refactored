@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useState, useRef, useEffect } from 'react'
 
 import POST from '../../../API/post'
 import auth from '../../../API/authorisation'
+import { setPopupWindowActive } from '../../../Redux/actions'
 
 const ProfileSettingsLogicLayer = ({ render }) => {
 
@@ -25,6 +26,8 @@ const ProfileSettingsLogicLayer = ({ render }) => {
   const surnameRedux = useSelector( s => s.user.surname );
 
   const language = useSelector( s => s.language.source );
+
+  const dispatch = useDispatch();
 
   const breadcrumbs = [ language.userPanel.title ];
 
@@ -87,6 +90,17 @@ const ProfileSettingsLogicLayer = ({ render }) => {
       const res = await POST( 'edit-user-details', body );
       if( res.status = 'updated' ){
         setLoading( false );
+        dispatch( setPopupWindowActive( {
+          title: language.userPanel.userSettings.popup.title,
+          messenge: language.userPanel.userSettings.popup.messenge
+        } ) )
+      }
+      else{
+        setLoading( false);
+        dispatch( setPopupWindowActive( {
+          title: language.general.popups.wrong.title,
+          messenge: language.general.popups.wrong.messenge
+        } ) )
       }
     }
   }

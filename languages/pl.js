@@ -1,4 +1,12 @@
 export default {
+  general: {
+    popups: {
+      wrong: {
+        title: 'uuups',
+        messenge: 'coś poszło nie tak - spróbuj ponownie później'
+      }
+    }
+  },
   menu: [
     {
       title: "strona główna",
@@ -79,7 +87,11 @@ export default {
       name: 'imię',
       surname: 'nazwisko',
       button: 'potwierdź zmiany',
-      loading: 'aktualizowanie danych'
+      loading: 'aktualizowanie danych',
+      popup: {
+        title: 'akutalizacja pomyślna',
+        messenge: 'twoje dane zostały poprawnie zaktualizowane'
+      }
     }
   }
 }

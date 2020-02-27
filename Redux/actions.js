@@ -79,7 +79,7 @@ export const setScreenResolutionToMobile = () => ({
 
 // POPUP window actions
 
-export const setPopupWindowActive = ({ title, message }) => ({
+export const setPopupWindowActive = ({ title, messenge }) => ({
   type: 'SET_POPUP_WINDOW_ACTIVE',
   payload: { title, messenge }
 })

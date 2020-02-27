@@ -1,4 +1,12 @@
 export default {
+  general: {
+    popups: {
+      wrong: {
+        title: 'oooooops',
+        messenge: 'something went wrong - try again later'
+      }
+    }
+  },
   menu: [
     {
       title: "home",
@@ -79,7 +87,11 @@ export default {
       name: 'name',
       surname: 'surname',
       button: 'accept changes',
-      loading: 'updating data'
+      loading: 'updating data',
+      popup: {
+        title: 'actualization compled',
+        messenge: 'your data has been corectly updated'
+      }
     }
   }
 }
