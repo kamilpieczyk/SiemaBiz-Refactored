@@ -92,6 +92,9 @@ export default {
         title: 'actualization compled',
         messenge: 'your data has been corectly updated'
       }
+    },
+    myCv:{
+      title: 'my cv'
     }
   }
 }

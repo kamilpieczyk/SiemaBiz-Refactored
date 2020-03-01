@@ -11,8 +11,8 @@ export const Container = styled.div`
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
   width: 100vw;
-  height: 100vh;
   padding: 150px 5% 0 5%;
 
   p{

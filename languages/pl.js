@@ -81,7 +81,7 @@ export default {
   userPanel: {
     title: 'panel użytkownika',
     userSettings: {
-      title: 'ustawienia konta',
+      title: 'ustawienia profilu',
       email: 'adres email',
       phone: 'numer telefonu',
       name: 'imię',
@@ -92,6 +92,9 @@ export default {
         title: 'akutalizacja pomyślna',
         messenge: 'twoje dane zostały poprawnie zaktualizowane'
       }
+    },
+    myCv:{
+      title: 'moje cv'
     }
   }
 }

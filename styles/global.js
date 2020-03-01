@@ -17,7 +17,9 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 200;
     background-color: ${ colors.white };
 
-    &::-webkit-scrollbar{
+    overflow-x: hidden;
+
+    /* &::-webkit-scrollbar{
         width: 5px;
         background-color: $transparent-black;
         backdrop-filter: blur(5px);
@@ -26,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
     &::-webkit-scrollbar-thumb{
         background-color: $main;
         border-radius: 2px;
-    }
+    } */
 
   }
 
