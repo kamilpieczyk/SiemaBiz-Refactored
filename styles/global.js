@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
 
   html, body{
     margin: 0;
+    scroll-behavior: smooth;
   }
 
   *, *::after, *::before{
@@ -16,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-weight: 200;
     background-color: ${ colors.white };
-
     overflow-x: hidden;
 
     /* &::-webkit-scrollbar{

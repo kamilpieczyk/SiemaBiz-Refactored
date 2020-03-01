@@ -64,17 +64,17 @@ export default {
       {
         title: 'moje cv',
         icon: 'assignment_ind',
-        href: '/user-panel/my-cv'
+        href: '/user-panel/profile-settings/#my-cv'
       },
       {
         title: 'zmień hasło',
         icon: 'build',
-        href: '/user-panel/change-password'
+        href: '/user-panel/profile-settings/#change-password'
       },
       {
         title: 'usuń konto',
         icon: 'delete_sweep',
-        href: '/user-panel/delete-account'
+        href: '/user-panel/profile-settings/#delete-account'
       },
     ]
   },
@@ -94,7 +94,13 @@ export default {
       }
     },
     myCv:{
-      title: 'moje cv'
+      title: 'moje cv',
+      name: 'imię',
+      surname: 'nazwisko',
+      dateOfBirdth: 'data urodzenia',
+      email: 'adres email',
+      phone: 'numer telefonu',
+      city: 'miasto zamieszkania'
     }
   }
 }

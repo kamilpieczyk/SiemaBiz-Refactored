@@ -25,6 +25,7 @@ const ProfileSettings = () => {
         <ProfileSettingsComponent />
         <Separator height = "30px" />
         <MyCv />
+        <Separator height = "30px" />
       </UserPanel>
 
     </Layout>
