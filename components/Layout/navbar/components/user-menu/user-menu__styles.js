@@ -7,9 +7,10 @@ export const Container = styled.nav`
   top: ${ ({ isScrolled }) => isScrolled ? '70px' : '100px' };
   background: ${ colors.main };
   border-radius: 5px;
+  box-shadow: 0px 0px 20px 0px ${ colors.black };
   color: ${ colors.white };
   padding: 10px 30px;
-  z-index: 10000;
+
 
   ::before{
     content: "";

@@ -10,6 +10,7 @@ export const Container = styled.nav`
   align-items: center;
   padding: 0 10% 0 10%;
   transition-duration: .5s;
+  z-index: 1000;
   ${
     ({ scroll }) => scroll && `box-shadow:  0px 1px 30px ${ colors.grey };`
   }
