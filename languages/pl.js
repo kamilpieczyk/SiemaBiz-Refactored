@@ -100,7 +100,16 @@ export default {
       dateOfBirdth: 'data urodzenia',
       email: 'adres email',
       phone: 'numer telefonu',
-      city: 'miasto zamieszkania'
+      city: 'miasto zamieszkania',
+      education: {
+        title: 'przebieg edukacji',
+        schoolName: 'nazwa szkoły',
+        yearOfOrigin :'rok rozpoczęcia',
+        yearOfEnd: 'rok zakończenia',
+        graduation: 'zdobyty tytuł',
+        button: 'dodaj uczelnię'
+      },
+
     }
   }
 }

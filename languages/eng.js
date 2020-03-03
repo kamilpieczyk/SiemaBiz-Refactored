@@ -100,7 +100,15 @@ export default {
       dateOfBirdth: 'date of bitdth',
       email: 'email',
       phone: 'phone number',
-      city: 'city'
+      city: 'city',
+      education: {
+        title: 'education history',
+        schoolName: 'school name',
+        yearOfOrigin: 'year of origin',
+        yearOfEnd: 'year of graduation',
+        graduation: 'graduated title',
+        button: 'add school'
+      },
     }
   }
 }

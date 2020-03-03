@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import colors, { white, ultraTransparentBlack } from '../../../styles/colors'
+import colors, { white, ultraTransparentBlack, main } from '../../../styles/colors'
 import { backdropFilter } from '../../../styles/mixins'
 import { mobile } from '../../../styles/devices'
 
@@ -28,24 +28,24 @@ export const MainDetails = styled.div`
 `
 
 export const Section = styled.div`
-    margin-top: 3px;
-    background: ${ colors.transparentWhite };
-    width: 100%;
-    padding: 50px 20px;
-    backdrop-filter: blur( 10px );
+  width: 80%;
+  margin-left: 10%;
+  border-top: 1px dotted ${ colors.grey };
 
-    div{
-        display: flex;
-        flex-direction: column;
-        padding: 15px 0;
+  @media ( max-width: ${ mobile }px ) {
+    margin-left: 5%;
+    width: 90%;
+  }
+`
 
-        input{
-            border: none;
-            border-radius: 3px;
-            font-size: 1rem;
-            padding: 5px;
-            margin: 5px 0;
-            outline-color: ${ colors.main };
-        }
-    }
+export const SectionInSection = styled.div`
+  border: 1px dotted ${ main };
+  border-radius: 5px;
+  padding: 15px;
+`
+
+export const TitleOfSection = styled.h2`
+  width: 100%;
+  text-align: center;
+  color: ${ main };
 `

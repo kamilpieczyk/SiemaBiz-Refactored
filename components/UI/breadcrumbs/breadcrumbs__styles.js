@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { black, grey } from '../../../styles/colors'
+import { black, darkGrey } from '../../../styles/colors'
 import { mobile } from '../../../styles/devices'
 
 export const Container = styled.div`
@@ -12,7 +12,7 @@ export const PreTitle = styled.h2`
   margin: 0;
   font-weight: 100;
   font-size: 1.7rem;
-  color: ${ grey };
+  color: ${ darkGrey };
 
   @media( max-width: ${ mobile }px ){
     font-size: .9rem;

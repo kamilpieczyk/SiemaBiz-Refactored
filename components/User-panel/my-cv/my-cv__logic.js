@@ -68,6 +68,23 @@ const MyCvLogicLayer = ({ render }) => {
     }
   }
 
+  const handleEducationButton = () => {
+    // this function handle "add education" button
+    let newEducation
+    if( education === null ) newEducation = []
+    else newEducation = [ ...education ]
+    
+    newEducation.push({
+        startYear: "",
+        endYear: "",
+        schoolName: "",
+        graduatedTitle: ""
+    })
+
+    setEducation( newEducation )
+
+  }
+
   const mainInformationInputs = [
     {
       value: name,
@@ -140,7 +157,8 @@ const MyCvLogicLayer = ({ render }) => {
       hobbies: setHobbies,
       sending: setSending
     },
-    mainInformationInputs
+    mainInformationInputs,
+    handleEducationButton
   })
 }
 
