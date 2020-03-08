@@ -109,7 +109,14 @@ export default {
         graduation: 'zdobyty tytuł',
         button: 'dodaj uczelnię'
       },
-
+      experience: {
+        title: 'doświadczenie zawodowe',
+        employerName: 'nazwa firmy',
+        yearOfOrigin: 'rok rozpoczęcia pracy',
+        yearOfEnd: 'rok zakończenia pracy',
+        position: 'zajmowane stanowisko',
+        button: 'dodaj miejse pracy'
+      }
     }
   }
 }

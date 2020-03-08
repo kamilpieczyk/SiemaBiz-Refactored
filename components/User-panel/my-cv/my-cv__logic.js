@@ -70,8 +70,8 @@ const MyCvLogicLayer = ({ render }) => {
 
   const handleEducationButton = () => {
     // this function handle "add education" button
-    let newEducation
-    if( education === null ) newEducation = []
+    let newEducation;
+    if( education === null ) newEducation = [];
     else newEducation = [ ...education ]
     
     newEducation.push({
@@ -83,6 +83,53 @@ const MyCvLogicLayer = ({ render }) => {
 
     setEducation( newEducation )
 
+  }
+
+  const handleWorkplacesButton = () => {
+    // this function handle "add workplaces" button
+    let newWorkplaces;
+    if( workplaces === null ) newWorkplaces = [];
+    else newWorkplaces = [ ...workplaces ];
+    
+    newWorkplaces.push({
+      startYear: "",
+      endYear: "",
+      employerName: "",
+      role: ""
+    })
+
+    setWorkplaces( newWorkplaces )
+
+  }
+
+  const handleWorkplacesInput = ( e, index, name ) => {
+    const value = e.target.value;
+    const newWorkplaces = [ ...workplaces ];
+    if( name === 'employerName' ){
+      newWorkplaces[index] = {
+        ...newWorkplaces[index],
+        employerName: value
+      };
+    }
+    else if( name === 'yearOfOrigin' ){
+      newWorkplaces[index] = {
+        ...newWorkplaces[index],
+        startYear: value
+      };
+    }
+    else if( name === 'yearOfEnd' ){
+      newWorkplaces[index] = {
+        ...newWorkplaces[index],
+        endYear: value
+      };
+    }
+    else if( name === 'position' ){
+      newWorkplaces[index] = {
+        ...newWorkplaces[index],
+        role: value
+      };
+    }
+    setWorkplaces( newWorkplaces );
   }
 
   const mainInformationInputs = [
@@ -158,7 +205,9 @@ const MyCvLogicLayer = ({ render }) => {
       sending: setSending
     },
     mainInformationInputs,
-    handleEducationButton
+    handleEducationButton,
+    handleWorkplacesButton,
+    handleWorkplacesInput
   })
 }
 

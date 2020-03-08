@@ -30,7 +30,7 @@ export const MainDetails = styled.div`
 export const Section = styled.div`
   width: 80%;
   margin-left: 10%;
-  border-top: 1px dotted ${ colors.grey };
+  /* border-top: 1px dotted ${ colors.grey }; */
 
   @media ( max-width: ${ mobile }px ) {
     margin-left: 5%;
@@ -39,9 +39,9 @@ export const Section = styled.div`
 `
 
 export const SectionInSection = styled.div`
-  border: 1px dotted ${ main };
+  border: 1px solid ${ colors.main };
   border-radius: 5px;
-  padding: 15px;
+  padding: 30px;
 `
 
 export const TitleOfSection = styled.h2`

@@ -109,6 +109,14 @@ export default {
         graduation: 'graduated title',
         button: 'add school'
       },
+      experience: {
+        title: 'work experience',
+        employerName: 'company name',
+        yearOfOrigin: 'the year of job origin',
+        yearOfEnd: 'the year of job end',
+        position: 'position',
+        button: 'add workplace'
+      }
     }
   }
 }

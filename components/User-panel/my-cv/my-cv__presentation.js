@@ -14,7 +14,15 @@ import withClick from '../../HOC/withClick'
 
 const SubmitButton = withClick( Button );
 
-const MyCvPresentationLayer = ({ breadcrumbs, mainInformationInputs, state, setState, handleEducationButton }) => {
+const MyCvPresentationLayer = ({
+  breadcrumbs,
+  mainInformationInputs,
+  state,
+  setState,
+  handleEducationButton,
+  handleWorkplacesButton,
+  handleWorkplacesInput
+}) => {
 
   const language = useSelector( s => s.language.source );
 
@@ -53,7 +61,7 @@ const MyCvPresentationLayer = ({ breadcrumbs, mainInformationInputs, state, setS
         <Separator height = '20px' />
         {
           state.education && state.education.map( ( school, i ) => (
-            <>
+            <React.Fragment key = { i } >
               <SectionInSection>
                   <Input
                     name = "startYear"
@@ -113,7 +121,7 @@ const MyCvPresentationLayer = ({ breadcrumbs, mainInformationInputs, state, setS
                   />
               </SectionInSection>
               <Separator height = '20px' />
-            </>
+            </React.Fragment>
           ) )
         }
         <Separator height = '20px' />
@@ -121,6 +129,48 @@ const MyCvPresentationLayer = ({ breadcrumbs, mainInformationInputs, state, setS
           <Icon icon = 'school' />
           <Separator width = '5px' />
           { language.userPanel.myCv.education.button }
+        </SubmitButton>
+      </Section>
+
+      {/* EXPERIENCE */}
+      <Section>
+        <Separator height = '20px' />
+        <TitleOfSection>{ language.userPanel.myCv.experience.title }</TitleOfSection>
+        <Separator height = '20px' />
+        {
+          state.workplaces && state.workplaces.map( ( workplace, i ) => (
+            <React.Fragment key = { i }>
+              <SectionInSection>
+                <Input
+                  label = { language.userPanel.myCv.experience.employerName }
+                  value = { workplace.employerName }
+                  onChange = { e => handleWorkplacesInput( e, i, 'employerName' ) }
+                />
+                <Input
+                  label = { language.userPanel.myCv.experience.yearOfOrigin }
+                  value = { workplace.startYear }
+                  onChange = { e => handleWorkplacesInput( e, i, 'yearOfOrigin' ) }
+                />
+                <Input
+                  label = { language.userPanel.myCv.experience.yearOfEnd }
+                  value = { workplace.endYear }
+                  onChange = { e => handleWorkplacesInput( e, i, 'yearOfEnd' ) }
+                />
+                <Input
+                  label = { language.userPanel.myCv.experience.position }
+                  value = { workplace.role }
+                  onChange = { e => handleWorkplacesInput( e, i, 'position' ) }
+                />
+              </SectionInSection>
+              <Separator height = '20px' />
+            </React.Fragment>
+          ) )
+        }
+        <Separator height = '20px' />
+        <SubmitButton onClickFunction = { handleWorkplacesButton } >
+          <Icon icon = 'work' />
+          <Separator width = '5px' />
+          { language.userPanel.myCv.experience.button }
         </SubmitButton>
       </Section>
 
@@ -134,7 +184,9 @@ MyCvPresentationLayer.propTypes = {
   state: PropTypes.object.isRequired,
   mainInformationInputs: PropTypes.array.isRequired,
   setState: PropTypes.object.isRequired,
-  handleEducationButton: PropTypes.func.isRequired
+  handleEducationButton: PropTypes.func.isRequired,
+  handleWorkplacesInput: PropTypes.func.isRequired,
+  handleWorkplacesButton: PropTypes.func.isRequired
 }
 
 export default MyCvPresentationLayer
