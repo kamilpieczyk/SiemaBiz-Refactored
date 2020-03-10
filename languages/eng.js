@@ -141,6 +141,9 @@ export default {
         hobby: 'hobby name',
         button: 'add hobby'
       }
+    },
+    changePassword: {
+      title: 'zmień hasło'
     }
   }
 }

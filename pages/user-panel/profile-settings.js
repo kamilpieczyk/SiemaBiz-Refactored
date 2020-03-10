@@ -8,6 +8,7 @@ import Separator from '../../components/UI/separator'
 import UserPanel from '../../components/User-panel'
 import ProfileSettingsComponent from '../../components/User-panel/profile-settings'
 import MyCv from '../../components/User-panel/my-cv'
+import ChangePassword from '../../components/User-panel/change-password'
 
 const ProfileSettings = () => {
 
@@ -25,6 +26,8 @@ const ProfileSettings = () => {
         <ProfileSettingsComponent />
         <Separator height = "30px" />
         <MyCv />
+        <Separator height = "30px" />
+        <ChangePassword />
         <Separator height = "30px" />
       </UserPanel>
 
