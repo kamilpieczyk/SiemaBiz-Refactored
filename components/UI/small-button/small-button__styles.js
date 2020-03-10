@@ -16,5 +16,5 @@ export const Button = styled.button`
   font-size: 0.8rem;
   cursor: pointer;
   font-family: 'Josefin Sans';
-  ${ ({ maxWidth }) => `width: 100%` }
+  ${ ({ maxWidth }) => maxWidth ? `width: 100%;` : null }
 `
