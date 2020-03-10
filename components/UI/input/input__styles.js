@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import colors, { main, black, white } from '../../../styles/colors'
+import colors, { main, black, ultraWhite, grey, white } from '../../../styles/colors'
 
 export const Container = styled.div`
   border: ${ ({ focus }) => focus ? '2px solid '+main : 'none' };
@@ -8,7 +8,13 @@ export const Container = styled.div`
   padding: 5px;
   position: relative;
   margin-top: 20px;
-  background-color: ${ white };
+  box-shadow: 0 0 5px 1px ${ grey };
+  background-color: ${ ultraWhite };
+
+  @supports( backdrop-filter: blur() ){
+    background-color: ${ white };
+    box-shadow: none;
+  }
 `
 
 export const Inp = styled.input`
