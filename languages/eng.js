@@ -80,6 +80,7 @@ export default {
   },
   userPanel: {
     title: 'user panel',
+    submitButton: 'approve changes',
     userSettings: {
       title: 'user profile settings',
       email: 'email address',
@@ -101,6 +102,14 @@ export default {
       email: 'email',
       phone: 'phone number',
       city: 'city',
+      popupOK: {
+        title: 'cv updated',
+        message: 'your cv has been succesfully updated'
+      },
+      popupFail: {
+        title: 'cv update error',
+        message: 'server has been unable to process you cv query - try again'
+      },
       education: {
         title: 'education history',
         schoolName: 'school name',
@@ -121,6 +130,16 @@ export default {
         title: 'certificates / courses / trainings',
         certName: 'title',
         button: 'add certificate'
+      },
+      skills: {
+        title: 'skills',
+        skill: 'skill title',
+        button: 'add new skill'
+      },
+      hobbies: {
+        title: 'my hobbies',
+        hobby: 'hobby name',
+        button: 'add hobby'
       }
     }
   }

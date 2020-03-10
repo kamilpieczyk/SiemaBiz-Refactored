@@ -20,9 +20,10 @@ const MyCvLogicLayer = ({ render }) => {
   const [ certificates, setCertificats ] = useState( []) 
   const [ skills, setSkills ] = useState( [] )
   const [ hobbies, setHobbies ] = useState( [] )
-  const [ sending, setSending ] = useState( false )
+  const [ isSending, setSending ] = useState( false )
 
   const language = useSelector( s => s.language.source );
+  const user = useSelector( s => s.user.username );
   const breadcrumbs =  [ language.userPanel.title, language.userPanel.userSettings.title ];
   const dispatch = useDispatch();
 
@@ -85,6 +86,39 @@ const MyCvLogicLayer = ({ render }) => {
 
   }
 
+  const handleSubmitCv = async () => {
+    setSending( true )
+    const response = await POST( 'change-cv', {
+      username: user,
+      name,
+      surname,
+      dateOfBirdth,
+      email,
+      phone,
+      city,
+      education,
+      workplaces,
+      certificates,
+      skills,
+      hobbies
+    } );
+
+    if( response.status === 'ok' ){
+      setSending( false );
+      dispatch( setPopupWindowActive({
+        title: language.userPanel.myCv.popupOK.title,
+        messenge: language.userPanel.myCv.popupOK.message
+      }) )
+    }
+    else{
+      setSending( false );
+      dispatch( setPopupWindowActive({
+        title: language.userPanel.myCv.popupFail.title,
+        messenge: language.userPanel.myCv.popupFail.message
+      }) )
+    }
+  }
+
   const handleWorkplacesButton = () => {
     // this function handle "add workplaces" button
     let newWorkplaces;
@@ -116,6 +150,32 @@ const MyCvLogicLayer = ({ render }) => {
     setCertificats( newCertificates );
   }
 
+  const handleSkillsButton = () => {
+    
+    let newSkills
+    if( skills === null ) newSkills = []
+    else newSkills = [ ...skills ]
+
+    
+    newSkills.push({
+        skill: "",
+    })
+    setSkills( newSkills )
+  }
+
+  const handleHobbiesButton = () => {
+    
+    let newHobbies;
+    if( hobbies === null ) newHobbies = [];
+    else newHobbies = [ ...hobbies ];
+
+    
+    newHobbies.push({
+        hobby: "",
+    });
+    setHobbies( newHobbies );
+  }
+
   const handleCertificatesInput = ( e, i ) => {
     const value = e.target.value;
     const newCertificates = [ ...certificates ];
@@ -124,6 +184,26 @@ const MyCvLogicLayer = ({ render }) => {
       certName: value
     };
     setCertificats( newCertificates );
+  }
+
+  const handleSkillsInput = ( e, i ) => {
+    const value = e.target.value;
+    const newSkills = [ ...skills ];
+    newSkills[ i ] = {
+      ...newSkills[ i ],
+      skill: value
+    };
+    setSkills( newSkills );
+  }
+
+  const handleHobbiesInput = ( e, i ) => {
+    const value = e.target.value;
+    const newHobbies = [ ...hobbies ];
+    newHobbies[i] = {
+      ...newHobbies[i],
+      hobby: value
+    };
+    setHobbies( newHobbies );
   }
 
   const handleWorkplacesInput = ( e, index, name ) => {
@@ -211,7 +291,7 @@ const MyCvLogicLayer = ({ render }) => {
       certificates,
       skills,
       hobbies,
-      sending
+      isSending
     },
     setState: {
       username: setUsername,
@@ -233,7 +313,12 @@ const MyCvLogicLayer = ({ render }) => {
     handleWorkplacesButton,
     handleWorkplacesInput,
     handleCertificatesInput,
-    handleCertificatesButton
+    handleCertificatesButton,
+    handleSkillsInput,
+    handleSkillsButton,
+    handleHobbiesInput,
+    handleHobbiesButton,
+    handleSubmitCv
   })
 }
 

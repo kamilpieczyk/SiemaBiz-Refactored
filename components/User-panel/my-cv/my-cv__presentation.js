@@ -23,7 +23,12 @@ const MyCvPresentationLayer = ({
   handleWorkplacesButton,
   handleCertificatesButton,
   handleWorkplacesInput,
-  handleCertificatesInput
+  handleCertificatesInput,
+  handleSkillsInput,
+  handleSkillsButton,
+  handleHobbiesInput,
+  handleHobbiesButton,
+  handleSubmitCv
 }) => {
 
   const language = useSelector( s => s.language.source );
@@ -40,7 +45,7 @@ const MyCvPresentationLayer = ({
         {
           mainInformationInputs.map(
             ( element, index ) => (
-              <>
+              <React.Fragment key = { index } >
                 <Input 
                   key = { index }
                   value = { element.value }
@@ -48,7 +53,7 @@ const MyCvPresentationLayer = ({
                   label = { element.label }
                 />
                 <Separator height = "20px" />
-              </>
+              </React.Fragment>
             )
           )
         }          
@@ -202,6 +207,77 @@ const MyCvPresentationLayer = ({
         </SubmitButton>
       </Section>
 
+      {/* SKILLS */}
+      <Section>
+        <Separator height = '20px' />
+        <TitleOfSection>{ language.userPanel.myCv.skills.title }</TitleOfSection>
+        {
+          state.skills && state.skills.map(
+            ( skill, i ) => (
+              <React.Fragment key = { i }>
+                <SectionInSection>
+                  <Input 
+                    label = { language.userPanel.myCv.skills.skill }
+                    value = { skill.skill }
+                    onChange = { e => handleSkillsInput( e, i ) }
+                  />
+                </SectionInSection>
+                <Separator height = '20px' />
+              </React.Fragment>
+            )
+          )
+        }
+        <SubmitButton onClickFunction = { handleSkillsButton }>
+          <Icon icon = 'how_to_reg' />
+          <Separator width = '5px' />
+          { language.userPanel.myCv.skills.button }
+        </SubmitButton>
+      </Section>
+
+      {/* HOBBIES */}
+      <Section>
+        <Separator height = '20px' />
+        <TitleOfSection>
+          { language.userPanel.myCv.hobbies.title }
+        </TitleOfSection>
+        {
+          state.hobbies && state.hobbies.map(
+            ( hobby, index ) => (
+              <React.Fragment key = { index }>
+                <SectionInSection>
+                  <Input 
+                    label = { language.userPanel.myCv.hobbies.hobby }
+                    value = { hobby.hobby }
+                    onChange = { e => handleHobbiesInput( e, index ) }
+                  />
+                </SectionInSection>
+                <Separator height = '20px' />
+              </React.Fragment>
+            )
+          )
+        }
+        <SubmitButton onClickFunction = { handleHobbiesButton }>
+          <Icon icon = 'camera_roll' />
+          <Separator width = '5px' />
+          { language.userPanel.myCv.hobbies.button }
+        </SubmitButton>
+      </Section>
+
+      <Separator height = '30px' />
+
+      {
+        state.isSending
+          ? <Button maxWidth >
+            <Loading />
+          </Button>
+          : (
+            <SubmitButton maxWidth onClickFunction = { handleSubmitCv }>
+              <Icon icon = 'check' />
+              <Separator width = '5px' />
+              { language.userPanel.myCv.submitButton }
+            </SubmitButton>
+          )
+      }
 
     </Container>
   )
@@ -216,7 +292,12 @@ MyCvPresentationLayer.propTypes = {
   handleWorkplacesInput: PropTypes.func.isRequired,
   handleWorkplacesButton: PropTypes.func.isRequired,
   handleCertificatesInput: PropTypes.func.isRequired,
-  handleCertificatesButton: PropTypes.func.isRequired
+  handleCertificatesButton: PropTypes.func.isRequired,
+  handleSkillsInput: PropTypes.func.isRequired,
+  handleSkillsButton: PropTypes.func.isRequired,
+  handleHobbiesInput: PropTypes.func.isRequired,
+  handleHobbiesButton: PropTypes.func.isRequired,
+  handleSubmitCv: PropTypes.func.isRequired,
 }
 
 export default MyCvPresentationLayer

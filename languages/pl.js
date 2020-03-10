@@ -95,12 +95,21 @@ export default {
     },
     myCv:{
       title: 'moje cv',
+      submitButton: 'potwierdź zmiany',
       name: 'imię',
       surname: 'nazwisko',
       dateOfBirdth: 'data urodzenia',
       email: 'adres email',
       phone: 'numer telefonu',
       city: 'miasto zamieszkania',
+      popupOK: {
+        title: 'zaktualizowano',
+        message: 'twoje cv zostało pomyślnie zaktualizowane'
+      },
+      popupFail: {
+        title: 'wystąpił problem',
+        message: 'podczas aktualizacji twojego cv wystąpił błąd - spróbuj poniwnie'
+      },
       education: {
         title: 'przebieg edukacji',
         schoolName: 'nazwa szkoły',
@@ -121,6 +130,16 @@ export default {
         title: 'certyfikaty / kursy / szkolenia',
         certName: 'nazwa',
         button: 'dodaj certyfikat'
+      },
+      skills: {
+        title: 'umiejętności',
+        skill: 'nazwa umiejętności',
+        button: 'dodaj nową umiejętność'
+      },
+      hobbies: {
+        title: 'moje zainteresowania',
+        hobby: 'nazawa zainteresowania',
+        button: 'dodaj zainteresowanie'
       }
     }
   }
