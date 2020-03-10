@@ -102,6 +102,30 @@ const MyCvLogicLayer = ({ render }) => {
 
   }
 
+  const handleCertificatesButton = () => {
+    let newCertificates;
+    if( certificates === null ) newCertificates = [];
+    else newCertificates = [ ...certificates ];
+
+    newCertificates.push({
+      certName: "",
+      issueDate: "",
+      issuingAuthority: ""
+    })
+
+    setCertificats( newCertificates );
+  }
+
+  const handleCertificatesInput = ( e, i ) => {
+    const value = e.target.value;
+    const newCertificates = [ ...certificates ];
+    newCertificates[ i ] = {
+      ...newCertificates[ i ],
+      certName: value
+    };
+    setCertificats( newCertificates );
+  }
+
   const handleWorkplacesInput = ( e, index, name ) => {
     const value = e.target.value;
     const newWorkplaces = [ ...workplaces ];
@@ -207,7 +231,9 @@ const MyCvLogicLayer = ({ render }) => {
     mainInformationInputs,
     handleEducationButton,
     handleWorkplacesButton,
-    handleWorkplacesInput
+    handleWorkplacesInput,
+    handleCertificatesInput,
+    handleCertificatesButton
   })
 }
 

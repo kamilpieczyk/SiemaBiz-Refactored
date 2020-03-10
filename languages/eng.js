@@ -116,6 +116,11 @@ export default {
         yearOfEnd: 'the year of job end',
         position: 'position',
         button: 'add workplace'
+      },
+      certificates: {
+        title: 'certificates / courses / trainings',
+        certName: 'title',
+        button: 'add certificate'
       }
     }
   }

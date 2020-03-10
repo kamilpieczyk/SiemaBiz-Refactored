@@ -21,7 +21,9 @@ const MyCvPresentationLayer = ({
   setState,
   handleEducationButton,
   handleWorkplacesButton,
-  handleWorkplacesInput
+  handleCertificatesButton,
+  handleWorkplacesInput,
+  handleCertificatesInput
 }) => {
 
   const language = useSelector( s => s.language.source );
@@ -174,6 +176,32 @@ const MyCvPresentationLayer = ({
         </SubmitButton>
       </Section>
 
+      {/* CERTIFICATES */}
+      <Section>
+        <Separator height = '20px' />
+        <TitleOfSection>{ language.userPanel.myCv.certificates.title }</TitleOfSection>
+        <Separator height = '20px' />
+        {
+          state.certificates && state.certificates.map( (cert, i ) => (
+            <React.Fragment key = { i }>
+              <SectionInSection>
+                <Input 
+                  label = { language.userPanel.myCv.certificates.certName }
+                  value = { cert.certName }
+                  onChange = { e => handleCertificatesInput( e, i ) }
+                />
+              </SectionInSection>
+              <Separator height = '20px' />
+            </React.Fragment>
+          ))
+        }
+        <SubmitButton onClickFunction = { handleCertificatesButton }>
+          <Icon icon = 'class' />
+          <Separator width = '5px' />
+          { language.userPanel.myCv.certificates.button }
+        </SubmitButton>
+      </Section>
+
 
     </Container>
   )
@@ -186,7 +214,9 @@ MyCvPresentationLayer.propTypes = {
   setState: PropTypes.object.isRequired,
   handleEducationButton: PropTypes.func.isRequired,
   handleWorkplacesInput: PropTypes.func.isRequired,
-  handleWorkplacesButton: PropTypes.func.isRequired
+  handleWorkplacesButton: PropTypes.func.isRequired,
+  handleCertificatesInput: PropTypes.func.isRequired,
+  handleCertificatesButton: PropTypes.func.isRequired
 }
 
 export default MyCvPresentationLayer

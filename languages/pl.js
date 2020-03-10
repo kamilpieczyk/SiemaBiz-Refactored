@@ -116,6 +116,11 @@ export default {
         yearOfEnd: 'rok zakończenia pracy',
         position: 'zajmowane stanowisko',
         button: 'dodaj miejse pracy'
+      },
+      certificates: {
+        title: 'certyfikaty / kursy / szkolenia',
+        certName: 'nazwa',
+        button: 'dodaj certyfikat'
       }
     }
   }
