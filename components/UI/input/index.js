@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Container, Inp, Label } from './input__styles'
 
-const Input = ({ label, value, onChange }) => {
+const Input = ({ label, value, onChange, type }) => {
 
   const [ isFocused, setFocused ] = useState( false );
 
@@ -21,6 +21,7 @@ const Input = ({ label, value, onChange }) => {
         onBlur = { () => setFocused( false ) }
         onFocus = { () => setFocused( true ) }
         focus = { isFocused }
+        type = { type || 'text' }
       />
     </Container>
   )

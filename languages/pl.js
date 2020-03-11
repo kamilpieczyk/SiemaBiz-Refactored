@@ -143,7 +143,24 @@ export default {
       }
     },
     changePassword: {
-      title: 'zmień hasło'
-    }
+      title: 'zmień hasło',
+      stepOneHeader: 'aby zmienić hasło na nowe podaj najpierw stare',
+      stepOneErr: 'błąd autoryzacji użytkownika lub niepoprawne hasło',
+      oldPassword: 'stare hasło',
+      stepTwoHeader: 'wpisz swoje nowe hasło',
+      newPassword: 'nowe hasło',
+      stepTwoErrTitle: 'twoje nowe hasło powinno',
+      stepTwoErr: [
+        'składać się z minimum 8 znaków',
+        'zawierać przynajmniej jedną małą literę',
+        'zawierać przynajmniej jedną dużą literę',
+        'zawierać przynajmniej jedną liczbę',
+        'może zawierać znaki: !@#$%^&*?',
+      ],
+      stepThreeHeader: 'wpisz swoje nowe hasło jeszcze raz',
+      reNewPassword: 'powtórz nowe hasło',
+      stepThreeErr: 'podane hasło nie jest identyczne',
+      stepFourTitle: 'twoje hasło zostało poprawnie zmienione'
+    },
   }
 }

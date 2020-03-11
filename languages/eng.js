@@ -96,6 +96,7 @@ export default {
     },
     myCv:{
       title: 'my cv',
+      submitButton: 'accept changes',
       name: 'name',
       surname: 'surname',
       dateOfBirdth: 'date of bitdth',
@@ -143,7 +144,24 @@ export default {
       }
     },
     changePassword: {
-      title: 'zmień hasło'
+      title: 'zmień hasło',
+      stepOneHeader: 'to change password please enter your old one first',
+      stepOneErr: 'authorisation fail or wrong password',
+      oldPassword: 'old password',
+      stepTwoHeader: 'enter your new password',
+      newPassword: 'new password',
+      stepTwoErrTitle: 'your new password supposed to',
+      stepTwoErr: [
+        'contain a minimum of 8 characters',
+        'include one small letter',
+        'include one capital letter',
+        'include one number',
+        'can contain symbols: !@#$%^&*?',
+      ],
+      stepThreeHeader: 'enter your new password again',
+      reNewPassword: 'retype new password',
+      stepThreeErr: 'password doesn\'t match',
+      stepFourTitle: 'your password has been correctly changed'
     }
   }
 }

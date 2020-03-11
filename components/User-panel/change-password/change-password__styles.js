@@ -13,3 +13,28 @@ export const Container = styled.div`
 
   ${ backdropFilter() }
 `
+
+export const Header = styled.h2`
+  text-align: center;
+  font-weight: 100;
+  color: ${ main };
+`
+
+export const StageContainer = styled.div`
+  padding: 0 10%;
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button{
+      position: relative;
+      top: 10px;
+    }
+  }
+`
+
+export const ErrMsg = styled.div`
+  color: red;
+  font-weight: 500;
+  
+`
