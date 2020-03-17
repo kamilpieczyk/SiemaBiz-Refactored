@@ -80,6 +80,28 @@ export default {
   },
   userPanel: {
     title: 'panel użytkownika',
+    usermenu: [
+      {
+        title: 'ustawienia profilu',
+        icon: 'person_pin',
+        href: '/user-panel/profile-settings'
+      },
+      {
+        title: 'moje cv',
+        icon: 'assignment_ind',
+        href: '/user-panel/profile-settings/#my-cv'
+      },
+      {
+        title: 'zmień hasło',
+        icon: 'build',
+        href: '/user-panel/profile-settings/#change-password'
+      },
+      {
+        title: 'usuń konto',
+        icon: 'delete_sweep',
+        href: '/user-panel/profile-settings/#delete-account'
+      },
+    ],
     userSettings: {
       title: 'ustawienia profilu',
       email: 'adres email',
@@ -162,5 +184,15 @@ export default {
       stepThreeErr: 'podane hasło nie jest identyczne',
       stepFourTitle: 'twoje hasło zostało poprawnie zmienione'
     },
+    deleteAccount: {
+      title: 'usuń konto',
+      stepOneTitle: 'Aby usunąć swój profil, podaj swoje aktualne hasło',
+      stepTwoTitle: 'Jesteś pewny że chcesz usunąć swój profil w siemaBiz?',
+      stepThreeTitle: 'Twoje konto zostało nieodwracalnie usunięte - nastąpi wylogowanie',
+      password: 'hasło',
+      button: 'potwierdź',
+      error: 'podane hasło jest niepoprawne',
+      loading: 'sprawdzanie hasła'
+    }
   }
 }

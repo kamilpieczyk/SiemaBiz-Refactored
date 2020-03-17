@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import colors from '../../styles/colors'
 import { mobile } from '../../styles/devices'
+import { backdropFilter } from '../../styles/mixins'
 
 export const Container = styled.div`
   display: flex;
@@ -45,4 +46,15 @@ export const SideMenu = styled.nav`
     width: 100%;
     margin-bottom: 30px;
   }
+`
+
+export const SectionContainer = styled.div`
+  background: ${ colors.white };
+  border: 1px solid ${ colors.ultraTransparentBlack };
+  border-radius: 5px;
+  width: 100%;
+  z-index: 0;
+  padding: 20px;
+
+  ${ backdropFilter() }
 `

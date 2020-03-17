@@ -81,6 +81,28 @@ export default {
   userPanel: {
     title: 'user panel',
     submitButton: 'approve changes',
+    usermenu: [
+      {
+        title: 'profile settings',
+        icon: 'person_pin',
+        href: '/user-panel/profile-settings'
+      },
+      {
+        title: 'my cv',
+        icon: 'assignment_ind',
+        href: '/user-panel/profile-settings/#my-cv'
+      },
+      {
+        title: 'change my password',
+        icon: 'build',
+        href: '/user-panel/profile-settings/#change-password'
+      },
+      {
+        title: 'delete my account',
+        icon: 'delete_sweep',
+        href: '/user-panel/profile-settings/#delete-account'
+      },
+    ],
     userSettings: {
       title: 'user profile settings',
       email: 'email address',
@@ -162,6 +184,16 @@ export default {
       reNewPassword: 'retype new password',
       stepThreeErr: 'password doesn\'t match',
       stepFourTitle: 'your password has been correctly changed'
+    },
+    deleteAccount: {
+      title: 'delete account',
+      stepOneTitle: 'To delete your account please enter your current password',
+      stepTwoTitle: 'Are you sure you want to delete your siemaBiz profile?',
+      stepThreeTitle: 'You account has been deleted succesfully - you will be logged out',
+      password: 'password',
+      button: 'next',
+      error: 'entered password is incorrect',
+      loading: 'checking your password'
     }
   }
 }

@@ -9,6 +9,7 @@ import UserPanel from '../../components/User-panel'
 import ProfileSettingsComponent from '../../components/User-panel/profile-settings'
 import MyCv from '../../components/User-panel/my-cv'
 import ChangePassword from '../../components/User-panel/change-password'
+import DeleteAccount from '../../components/User-panel/delete_account'
 
 const ProfileSettings = () => {
 
@@ -28,6 +29,8 @@ const ProfileSettings = () => {
         <MyCv />
         <Separator height = "30px" />
         <ChangePassword />
+        <Separator height = "30px" />
+        <DeleteAccount />
         <Separator height = "30px" />
       </UserPanel>
 
