@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 const UserPanelLogicLayer = ({ render, menu }) => {
 
   const device = useSelector( s => s.deviceScreen );
+  const isScrolled = useSelector( s => s.isPageScrolled );
 
   const redirectToHomepageIfUserIsNotLogged = () => {
     const isUserLogged = window.localStorage.getItem( 'passport' );
@@ -25,6 +26,7 @@ const UserPanelLogicLayer = ({ render, menu }) => {
   return render({
     device,
     menu,
+    isScrolled
   })
 }
 

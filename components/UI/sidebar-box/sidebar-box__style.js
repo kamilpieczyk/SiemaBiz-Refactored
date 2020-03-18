@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { main, white } from '../../../styles/colors'
+import { mobile } from '../../../styles/devices'
 
 export const Container = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ export const Container = styled.div`
   background: ${ main };
   color: ${ white };
   border-radius: 5px;
-  padding: 20px  0;
+  padding: 20px 0;
 `
 
 export const Content = styled.div`

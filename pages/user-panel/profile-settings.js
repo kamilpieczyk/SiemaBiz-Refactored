@@ -23,7 +23,7 @@ const ProfileSettings = () => {
         </title>
       </Head>
 
-      <UserPanel menu = { languageSource.navbar.usermenu } >
+      <UserPanel menu = { languageSource.userPanel.usermenu } >
         <ProfileSettingsComponent />
         <Separator height = "30px" />
         <MyCv />

@@ -38,6 +38,10 @@ export const Content = styled.div`
   }
 `
 
+export const SideMenuExtender = styled.div`
+  flex: 2;
+`
+
 export const SideMenu = styled.nav`
   flex: 2;
 
@@ -45,6 +49,19 @@ export const SideMenu = styled.nav`
     flex: initial;
     width: 100%;
     margin-bottom: 30px;
+  }
+
+  @media( min-width: ${ mobile }px ){
+    ${
+      ({ isScrolled }) => {
+        if( isScrolled ) return `
+          position: fixed;
+          width: 240px;
+          right: 4%;
+          top: 80px;
+        `
+      }
+    }
   }
 `
 

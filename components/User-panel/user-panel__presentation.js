@@ -1,16 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Container, Content, SideMenu } from './user-panel__styles'
+import { Container, Content, SideMenu, SideMenuExtender } from './user-panel__styles'
 import SidebarBox from '../UI/sidebar-box'
 
-const UserPanelPresentationLayer = ({ device, menu, children }) => (
+const UserPanelPresentationLayer = ({ device, menu, children, isScrolled }) => (
   <Container device = { device } >
 
     <Content>
       { children }
     </Content>
-    <SideMenu>
+    { isScrolled && <SideMenuExtender /> }
+    <SideMenu isScrolled = { isScrolled }>
       <SidebarBox menu = { menu } />
     </SideMenu>
 
@@ -21,6 +22,7 @@ UserPanelPresentationLayer.propTypes = {
   children: PropTypes.element,
   device: PropTypes.string,
   menu: PropTypes.array.isRequired,
+  isScrolled: PropTypes.bool
 }
 
 export default UserPanelPresentationLayer
