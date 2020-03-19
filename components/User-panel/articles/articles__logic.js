@@ -12,6 +12,7 @@ import post from "../../../API/post"
 const ArticlesLogicLayer = ({ render, ...props }) => {
 
   const [ articles, setArticles ] = useState( [] );
+  const [ isEditorActive, setEditorActive ] = useState( false );
 
   const language = useSelector( s => s.language.source );
 
@@ -39,6 +40,10 @@ const ArticlesLogicLayer = ({ render, ...props }) => {
     )
   }
 
+  const handleAddNewArticleButton = () => {
+    setEditorActive( !isEditorActive );
+  }
+
   useEffect(
     () => {
       getArticles();
@@ -49,6 +54,8 @@ const ArticlesLogicLayer = ({ render, ...props }) => {
   return render({
     articles,
     deleteArticle,
+    handleAddNewArticleButton,
+    isEditorActive,
   })
 }
 

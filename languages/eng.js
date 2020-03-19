@@ -67,9 +67,9 @@ export default {
         priv: '225801'
       },
       {
-        title: 'administration panel',
+        title: 'articles',
         icon: 'vertical_split',
-        href: '/user-panel/administration-panel',
+        href: '/user-panel/administration-panel?page=articles',
         priv: '225803'
       },
     ]
@@ -200,15 +200,11 @@ export default {
         icon: 'list',
         href: '/user-panel/articles'
       },
-      {
-        title: 'add new article',
-        icon: 'add_circle',
-        href: '/user-panel/articles/add-new-article'
-      },
     ],
   },
   articlesPanel: {
     title: 'articles panel',
+    addButton: 'add new article',
     articlesList: {
       title: 'articles list',
       deleteQuestion: 'Are you really sure you want to get rid of this article?'

@@ -67,9 +67,9 @@ export default {
         priv: '225801'
       },
       {
-        title: 'panel administracyjny',
+        title: 'artykuły',
         icon: 'vertical_split',
-        href: '/user-panel/administration-panel',
+        href: '/user-panel/administration-panel?page=articles',
         priv: '225803'
       },
     ]
@@ -199,18 +199,17 @@ export default {
         icon: 'list',
         href: '/user-panel/articles'
       },
-      {
-        title: 'dodaj nowy artykuł',
-        icon: 'add_circle',
-        href: '/user-panel/articles/add-new-article'
-      },
     ],
   },
   articlesPanel: {
     title: 'panel artykułów',
+    addButton: 'dodaj nowy artykuł',
     articlesList: {
       title: 'lista artykułów',
       deleteQuestion: 'jesteś absolutnie pewien że chcesz usunąć ten artykuł?'
+    },
+    articleEditor: {
+      newArticleTitle: '*nowy pusty artykuł'
     }
   },
 }
