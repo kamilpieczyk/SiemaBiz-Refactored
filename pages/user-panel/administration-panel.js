@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import { useSelector } from 'react-redux'
 
@@ -12,6 +13,7 @@ import get from '../../API/get'
 const ArticlesPanel = ({ articles }) => {
 
   const languageSource = useSelector( s => s.language.source );
+  const router = useRouter();
 
   return (
     <Layout>
@@ -22,7 +24,8 @@ const ArticlesPanel = ({ articles }) => {
       </Head>
 
       <UserPanel menu = { languageSource.administrationPanel.menu } >
-        <Articles />
+        { router.query.page === 'articles' && <Articles /> }
+        
       </UserPanel>
 
     </Layout>
