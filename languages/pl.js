@@ -1,5 +1,9 @@
 export default {
   general: {
+    delete: 'usuń',
+    edit: 'edytuj',
+    yes: 'tak',
+    no: 'nie',
     popups: {
       wrong: {
         title: 'uuups',
@@ -63,15 +67,16 @@ export default {
         priv: '225801'
       },
       {
-        title: 'artykuły',
+        title: 'panel administracyjny',
         icon: 'vertical_split',
-        href: '/user-panel/articles',
+        href: '/user-panel/administration-panel',
         priv: '225803'
       },
     ]
   },
   userPanel: {
     title: 'panel użytkownika',
+    adminPanelTitle: 'panel administracyjny',
     usermenu: [
       {
         title: 'ustawienia profilu',
@@ -186,5 +191,26 @@ export default {
       error: 'podane hasło jest niepoprawne',
       loading: 'sprawdzanie hasła'
     }
-  }
+  },
+  administrationPanel: {
+    menu: [
+      {
+        title: 'lista artykułów',
+        icon: 'list',
+        href: '/user-panel/articles'
+      },
+      {
+        title: 'dodaj nowy artykuł',
+        icon: 'add_circle',
+        href: '/user-panel/articles/add-new-article'
+      },
+    ],
+  },
+  articlesPanel: {
+    title: 'panel artykułów',
+    articlesList: {
+      title: 'lista artykułów',
+      deleteQuestion: 'jesteś absolutnie pewien że chcesz usunąć ten artykuł?'
+    }
+  },
 }
