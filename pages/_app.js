@@ -7,15 +7,14 @@ import { loginUser } from '../Redux/actions'
 import authorisation from '../API/authorisation'
 
 class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
-    let pageProps = {}
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
-
-    return { pageProps }
-  }
+  // static getInitialProps = async ({Component, ctx}) => {
+  //   let pageProps = {}
+  //   if(Component.getInitialProps){
+  //     pageProps = await Component.getInitialProps(ctx)
+  //   }
+  //   return { pageProps }
+  // }
 
   checkIfUserIsLogged = async () => {
     

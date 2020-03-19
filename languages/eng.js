@@ -1,5 +1,9 @@
 export default {
   general: {
+    delete: 'delete',
+    edit: 'edit',
+    yes: 'yes',
+    no: 'no',
     popups: {
       wrong: {
         title: 'oooooops',
@@ -63,15 +67,16 @@ export default {
         priv: '225801'
       },
       {
-        title: 'articles',
+        title: 'administration panel',
         icon: 'vertical_split',
-        href: '/user-panel/articles',
+        href: '/user-panel/administration-panel',
         priv: '225803'
       },
     ]
   },
   userPanel: {
     title: 'user panel',
+    adminPanelTitle: 'admin panel',
     submitButton: 'approve changes',
     usermenu: [
       {
@@ -187,5 +192,26 @@ export default {
       error: 'entered password is incorrect',
       loading: 'checking your password'
     }
-  }
+  },
+  administrationPanel: {
+    menu: [
+      {
+        title: 'articles list',
+        icon: 'list',
+        href: '/user-panel/articles'
+      },
+      {
+        title: 'add new article',
+        icon: 'add_circle',
+        href: '/user-panel/articles/add-new-article'
+      },
+    ],
+  },
+  articlesPanel: {
+    title: 'articles panel',
+    articlesList: {
+      title: 'articles list',
+      deleteQuestion: 'Are you really sure you want to get rid of this article?'
+    }
+  },
 }

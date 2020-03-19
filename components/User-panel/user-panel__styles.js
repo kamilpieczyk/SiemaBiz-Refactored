@@ -14,6 +14,7 @@ export const Container = styled.div`
   background-position: center;
   background-attachment: fixed;
   width: 100vw;
+  min-height: 100vh;
   padding: 150px 5% 0 5%;
 
   p{

@@ -87,3 +87,14 @@ export const setPopupWindowActive = ({ title, messenge }) => ({
 export const setPopupWindowInactive = () => ({
   type: 'SET_POPUP_WINDOW_INACTIVE'
 })
+
+// CHOICE WINDOW ACTIONS
+
+export const setChoiceWindowActive = ({ question, yesFunction }) => ({
+  type: 'SET_CHOICE_WINDOW_ACTIVE',
+  payload: { question, yesFunction }
+})
+        
+export const setChoiceWindowInactive = () => ({
+  type: 'SET_CHOICE_WINDOW_INACTIVE'
+})
