@@ -59,22 +59,14 @@ export default {
       {
         title: 'ustawienia profilu',
         icon: 'person_pin',
-        href: '/user-panel/profile-settings'
+        href: '/user-panel/profile-settings',
+        priv: '225801'
       },
       {
-        title: 'moje cv',
-        icon: 'assignment_ind',
-        href: '/user-panel/profile-settings/#my-cv'
-      },
-      {
-        title: 'zmień hasło',
-        icon: 'build',
-        href: '/user-panel/profile-settings/#change-password'
-      },
-      {
-        title: 'usuń konto',
-        icon: 'delete_sweep',
-        href: '/user-panel/profile-settings/#delete-account'
+        title: 'artykuły',
+        icon: 'vertical_split',
+        href: '/user-panel/articles',
+        priv: '225803'
       },
     ]
   },

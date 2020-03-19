@@ -10,7 +10,7 @@ const UserMenuLogicLayer = ({ render }) => {
 
   useEffect(
     () => {
-      getTheButtonPosition()
+      getTheButtonPosition();
     },
     []
   )

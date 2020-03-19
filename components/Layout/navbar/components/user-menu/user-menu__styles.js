@@ -26,6 +26,20 @@ export const Container = styled.nav`
 
 export const Option = styled.div`
   margin: 10px 0;
+
+  ${
+    ({ display }) => {
+      if( !display ) return `
+        display: none;
+      `
+    }
+  }
+
+  i{
+    position: relative;
+    top: 7px;
+    margin-right: 3px;
+  }
   a{
     color: ${ colors.white };
     text-decoration: none;
