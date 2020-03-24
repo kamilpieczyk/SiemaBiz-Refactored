@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 import { Container, Topbar } from './article-editor__styles'
 import CloseButton from '../../../../UI/close-button'
-import separator from '../../../../UI/separator'
 import Separator from '../../../../UI/separator'
 
 import withClick from '../../../../HOC/withClick'

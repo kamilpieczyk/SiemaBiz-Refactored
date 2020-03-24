@@ -9,19 +9,19 @@ import getAuthorisation from "../../../API/authorisation"
 import get from "../../../API/get"
 import post from "../../../API/post"
 
-const ArticlesLogicLayer = ({ render, ...props }) => {
+const ArticlesLogicLayer = ({ render, articles, ...props }) => {
 
-  const [ articles, setArticles ] = useState( [] );
+  // const [ articles, setArticles ] = useState( [] );
   const [ isEditorActive, setEditorActive ] = useState( false );
 
   const language = useSelector( s => s.language.source );
 
   const dispatch = useDispatch();
 
-  const getArticles = async () => {
-    const articles = await get( 'articles/shorts' );
-    setArticles( articles.reverse() )
-  }
+  // const getArticles = async () => {
+  //   const articles = await get( 'articles/shorts' );
+  //   setArticles( articles.reverse() )
+  // }
 
   const acceptDeleteArtice = async id => {
     const deleteArticle = await post( 'delete-article', { id } );
@@ -44,12 +44,12 @@ const ArticlesLogicLayer = ({ render, ...props }) => {
     setEditorActive( !isEditorActive );
   }
 
-  useEffect(
-    () => {
-      getArticles();
-    },
-    []
-  );
+  // useEffect(
+  //   () => {
+  //     getArticles();
+  //   },
+  //   []
+  // );
 
   return render({
     articles,

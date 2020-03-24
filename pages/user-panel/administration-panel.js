@@ -10,7 +10,7 @@ import Articles from '../../components/User-panel/articles'
 import get from '../../API/get'
 
 
-const ArticlesPanel = ({ articles }) => {
+const AdminPanel = ({ articles }) => {
 
   const languageSource = useSelector( s => s.language.source );
   const router = useRouter();
@@ -24,7 +24,7 @@ const ArticlesPanel = ({ articles }) => {
       </Head>
 
       <UserPanel menu = { languageSource.administrationPanel.menu } >
-        { router.query.page === 'articles' && <Articles /> }
+        { router.query.page === 'articles' && <Articles articles = { articles } /> }
         
       </UserPanel>
 
@@ -32,12 +32,12 @@ const ArticlesPanel = ({ articles }) => {
   )
 }
 
-// Articles.getInitialProps = async ctx => {
-//   const articles = await get( 'articles/shorts' );
+AdminPanel.getInitialProps = async ctx => {
+  const articles = await get( 'articles/shorts' );
 
-//   return {
-//     articles
-//   }
-// }
+  return {
+    articles
+  }
+}
 
-export default ArticlesPanel
+export default AdminPanel
