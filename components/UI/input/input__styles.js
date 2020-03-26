@@ -8,12 +8,13 @@ export const Container = styled.div`
   padding: 5px;
   position: relative;
   margin-top: 20px;
-  box-shadow: 0 0 5px 1px ${ grey };
   background-color: ${ ultraWhite };
+  box-shadow: ${ ({ focus }) => focus ? 'none' : `0 0 5px 1px ${ colors.lightGrey }` };
+  width: 100%;
 
   @supports( backdrop-filter: blur() ){
     background-color: ${ white };
-    box-shadow: none;
+    /* box-shadow: none; */
   }
 `
 
@@ -27,6 +28,21 @@ export const Inp = styled.input`
   margin: 5px 0;
   color: ${ main };
   font-weight: ${ ({ focus }) => focus ? 500 : 100 };
+`
+
+export const Textarea = styled.textarea`
+  border: none;
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  height: 250px;
+  font-size: 1rem;
+  font-weight: 100;
+  text-align: center;
+  margin: 5px 0;
+  color: ${ main };
+  font-weight: ${ ({ focus }) => focus ? 500 : 100 };
+
 `
 
 export const Label = styled.label`

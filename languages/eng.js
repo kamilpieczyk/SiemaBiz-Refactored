@@ -9,6 +9,11 @@ export default {
         title: 'oooooops',
         messenge: 'something went wrong - try again later'
       }
+    },
+    uploadForm: {
+      dropInformation: 'Drop file/s here ...',
+      information: 'Drag & drop some files here, or click to select files',
+      button: 'add files'
     }
   },
   menu: [

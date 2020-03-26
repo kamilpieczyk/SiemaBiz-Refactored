@@ -9,6 +9,11 @@ export default {
         title: 'uuups',
         messenge: 'coś poszło nie tak - spróbuj ponownie później'
       }
+    },
+    uploadForm: {
+      dropInformation: 'upuść plik/i tutaj ...',
+      information: 'przeciągnij pliki tutaj, lub kliknij by wybrać',
+      button: 'wybierz pliki'
     }
   },
   menu: [
@@ -209,7 +214,41 @@ export default {
       deleteQuestion: 'jesteś absolutnie pewien że chcesz usunąć ten artykuł?'
     },
     articleEditor: {
-      newArticleTitle: '*nowy pusty artykuł'
+      newArticleTitle: '*nowy pusty artykuł',
+      articleTitleTop: '*artykuł',
+      mainImageHeader: 'Dodaj główny obraz dla tego artykułu',
+      articleTitle: 'tytuł artykułu',
+      articleIntroduction: 'wstęp do artykułu',
+      uploadForm: {
+        drop: 'upuść obraz tutaj ...',
+        information: 'przeciągnij plik z obrazem tutaj, lub kliknij by wybrać',
+        dropedOk: 'umieszczono plik obrazu',
+        warn: 'umieszczony plik jest zbyt duży lub format nie jest zgodny z .jpg',
+      },
+      sections:{
+        acapit:{
+          title: 'tytuł nowego akapitu',
+          content: 'treść akapitu'
+        },
+        image: {
+          title: 'opis pod obrazem',
+          content: 'podaj url obrazu'
+        },
+        link: {
+          title: 'tytuł odnośnika',
+          content: 'adres odnośnika'
+        },
+        video: {
+          title: 'tytuł filmu',
+          content: 'link do filmu w serwisie youtube'
+        }
+      },
+      sectionTypes: {
+        acapit: 'dodaj akapit',
+        image: 'dodaj obraz',
+        link: 'dodaj odnośnik',
+        video: 'dodaj video'
+      }
     }
   },
 }
