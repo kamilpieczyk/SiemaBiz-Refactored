@@ -3,16 +3,29 @@ import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import MaterialIcon from '@material/react-material-icon'
 
-import { Container, Topbar, ContentContainer, Header, NewSection, SectionButtonsContainer, InvisibleDiv } from './article-editor__styles'
+import {
+  Container,
+  Topbar,
+  ContentContainer,
+  Header,
+  NewSection,
+  SectionButtonsContainer,
+  InvisibleDiv,
+  ActionButtonsContainer
+} from './article-editor__styles'
 import CloseButton from '../../../../UI/close-button'
 import Separator from '../../../../UI/separator'
 import FileUploader from '../../../../UI/file-uploader'
 import Input from '../../../../UI/input'
 import SectionButton from './components/section-button'
+import Button from '../../../../UI/small-button'
+import Loading from '../../../../UI/loading-circle'
+import ErrorInfo from '../../../../UI/error-info'
 
 import withClick from '../../../../HOC/withClick'
 
 const Close = withClick( CloseButton );
+const AcceptButton = withClick( Button );
 
 const ArticleEditorPresentationLayer = ({ 
   closeFunction,
@@ -20,7 +33,10 @@ const ArticleEditorPresentationLayer = ({
   handleDropFiles,
   handleInputs,
   sectionTypes,
-  handleAddNewSection
+  handleAddNewSection,
+  handleAddArticleButton,
+  handleSaveToLocalStorageButton,
+  restoreSavedCopyFromLocalStorage
 }) => {
 
   const language = useSelector( s => s.language.source );
@@ -182,6 +198,58 @@ const ArticleEditorPresentationLayer = ({
             )
           }
         </SectionButtonsContainer>
+        <InvisibleDiv />
+        {/* ERROR INFORMATIONS */}
+        {
+          state.isPictrueErr && (
+            <>
+              <ErrorInfo>{ language.articlesPanel.articleEditor.imageError }</ErrorInfo>
+              <InvisibleDiv />
+            </>
+          )
+        }
+        {
+          state.isArticleTitleErr && (
+            <>
+              <ErrorInfo>{ language.articlesPanel.articleEditor.articleTitleError }</ErrorInfo>
+              <InvisibleDiv />
+            </>
+          )
+        }
+        {
+          state.isArticleIntroErr && (
+            <>
+              <ErrorInfo>{ language.articlesPanel.articleEditor.articleIntroError }</ErrorInfo>
+              <InvisibleDiv />
+            </>
+          )
+        }
+        {/* ADD / PREVIEW ARTICLE / SAVE COPY BUTTONS */}
+        <ActionButtonsContainer>
+          {/* save button*/}
+          <AcceptButton thin onClickFunction = { handleSaveToLocalStorageButton } >
+            <MaterialIcon icon = 'save' />
+            <Separator width = '5px' />
+            { language.articlesPanel.articleEditor.saveButton }
+          </AcceptButton>
+          {/* load button*/}
+          <AcceptButton thin onClickFunction = { restoreSavedCopyFromLocalStorage } >
+            <MaterialIcon icon = 'get_app' />
+            <Separator width = '5px' />
+            { language.articlesPanel.articleEditor.loadButton }
+          </AcceptButton>
+          {
+            state.isLoading
+              ? <Button><Loading text = { language.articlesPanel.articleEditor.loading } /></Button>
+              : (
+                  <AcceptButton onClickFunction = { handleAddArticleButton }>
+                    <MaterialIcon icon = 'playlist_add_check' />
+                    <Separator width = '5px' />
+                    { language.articlesPanel.articleEditor.acceptButton }
+                  </AcceptButton>
+              )
+          }
+        </ActionButtonsContainer>
       </ContentContainer>
       
     </Container>
@@ -192,7 +260,10 @@ ArticleEditorPresentationLayer.propTypes = {
   closeFunction: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
   handleDropFiles: PropTypes.func.isRequired,
-  handleInputs: PropTypes.func.isRequired
+  handleInputs: PropTypes.func.isRequired,
+  handleAddArticleButton: PropTypes.func.isRequired,
+  handleSaveToLocalStorageButton: PropTypes.func.isRequired,
+  restoreSavedCopyFromLocalStorage: PropTypes.func.isRequired
 }
 
 export default ArticleEditorPresentationLayer

@@ -1,8 +1,11 @@
 import { useState, useCallback, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
-const ArticleEditioLogicLayer = ({ render }) => {
+import apiKey from '../../../../../API/key'
+import { setPopupWindowActive } from '../../../../../Redux/actions'
+
+const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
 
   const [ pictrue, setPictrue ] = useState( null );
   const [ extErr, setExtErr ] = useState( false );
@@ -13,7 +16,15 @@ const ArticleEditioLogicLayer = ({ render }) => {
 
   const [ sections, setSections ] = useState( [] );
 
+  const [ isLoading, setLoading ] = useState( false );
+  const [ isPictrueErr, setPictrueErr ] = useState( false );
+  const [ isArticleTitleErr, setArticleTitleErr ] = useState( false );
+  const [ isArticleIntroErr, setArticleIntroErr ] = useState( false );
+
   const language = useSelector( s => s.language.source );
+  const username = useSelector( s => s.user.username );
+
+  const dispatch = useDispatch();
 
   const handleDropFiles = useCallback(
     files => {
@@ -94,6 +105,95 @@ const ArticleEditioLogicLayer = ({ render }) => {
     setSections( sectionsArray )
   }
 
+  const saveArticleCopyToLocalStorage = () => {
+    window.localStorage.setItem( 'saved-article', JSON.stringify({
+      articleTitle,
+      articleIntroduction,
+      sections
+    }));
+  }
+
+  const removeSavedArticleCopyFromLocalStorage = () => window.localStorage.removeItem( 'saved-article' );
+
+  const restoreSavedCopyFromLocalStorage = () => {
+    const savedCopy = window.localStorage.getItem( 'saved-article' );
+    if( savedCopy ){
+      const copy = JSON.parse( savedCopy );
+      setArticleTitle( copy.articleTitle );
+      setArticleIntroduction( copy.articleIntroduction );
+      setSections( copy.sections );
+    }
+  }
+
+  const handleSaveToLocalStorageButton = () => {
+    saveArticleCopyToLocalStorage();
+    dispatch( setPopupWindowActive({
+      title: language.articlesPanel.articleEditor.savePopup.title,
+      messenge: language.articlesPanel.articleEditor.savePopup.message
+    }) )
+  }
+
+  const handleAddArticleButton = async () => {
+    let pictrueExt = pictrue ? pictrue.name.slice( pictrue.name.length - 3, pictrue.name.length ) : null;
+
+    setLoading( true );
+    if( isPictrueErr ) setPictrueErr( false );
+    if( isArticleTitleErr ) setArticleTitleErr( false );
+    if( isArticleIntroErr ) setArticleIntroErr( false );
+
+    if( !pictrue || pictrueExt !== 'jpg' || pictrue.size > 1511111 ){
+      setPictrueErr( true );
+      setLoading( false );
+      if( !articleTitle ) setArticleTitleErr( true );
+      if ( !articleIntroduction ) setArticleIntroErr( true );
+    }
+    else if( !articleTitle ){
+      setArticleTitleErr( true );
+      setLoading( false );
+      if ( !articleIntroduction ) setArticleIntroErr( true );
+    }
+    else if( !articleIntroduction ){
+      setArticleIntroErr( true );
+      setLoading( false );
+    }
+    else{
+      saveArticleCopyToLocalStorage();
+      const bodyToPost = new FormData();
+      bodyToPost.append( 'image', pictrue );
+      bodyToPost.append( 'title', articleTitle );
+      bodyToPost.append( 'introduction', articleIntroduction );
+      bodyToPost.append( 'author', username );
+      bodyToPost.append( 'sections', JSON.stringify( sections ) );
+
+      try{
+        const data = await fetch( `${ apiKey }add-new-article`, {
+          method: 'post',
+          body: bodyToPost
+        } );
+        const res = await data.json();
+        const status = res.status;
+        if( status === 'ok' ){
+          closeFunction();
+          removeSavedArticleCopyFromLocalStorage();
+        }
+      }
+      catch( err ){
+        setLoading( false );
+        console.error( err );
+        dispatch( setPopupWindowActive({ 
+          title: language.general.popups.wrong.title,
+          messenge: language.general.popups.wrong.messenge
+        }) );
+      }
+    }
+  }
+
+  useEffect(
+    () => {
+
+    }, []
+  );
+
   return render({
     state: {
       pictrue,
@@ -101,17 +201,26 @@ const ArticleEditioLogicLayer = ({ render }) => {
       sizeErr,
       articleTitle,
       articleIntroduction,
-      sections
+      sections,
+      isLoading,
+      isPictrueErr,
+      isArticleTitleErr,
+      isArticleIntroErr
     },
     handleDropFiles,
     handleInputs,
     sectionTypes,
-    handleAddNewSection
+    handleAddNewSection,
+    handleAddArticleButton,
+    handleSaveToLocalStorageButton,
+    restoreSavedCopyFromLocalStorage
   })
 }
 
 ArticleEditioLogicLayer.propTypes = {
-  render: PropTypes.func.isRequired
+  render: PropTypes.func.isRequired,
+  closeFunction: PropTypes.func.isRequired,
+  editMode: PropTypes.bool
 }
 
 export default ArticleEditioLogicLayer

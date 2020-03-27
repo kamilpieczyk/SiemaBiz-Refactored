@@ -66,3 +66,10 @@ export const InvisibleDiv = styled.div`
   width: 10px;
   height: 20px;
 `;
+
+export const ActionButtonsContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+`  

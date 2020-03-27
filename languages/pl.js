@@ -219,6 +219,17 @@ export default {
       mainImageHeader: 'Dodaj główny obraz dla tego artykułu',
       articleTitle: 'tytuł artykułu',
       articleIntroduction: 'wstęp do artykułu',
+      acceptButton: 'dodaj artykuł',
+      loading: 'wysyłanie artykułu',
+      imageError: 'obraz główny jest wymagany',
+      articleTitleError: 'tytuł artykułu jest wymagany',
+      articleIntroError: 'wstęp do artykułu jest wymagany',
+      saveButton: 'zapisz kopię',
+      loadButton: 'wczytaj kopię',
+      savePopup: {
+        title: 'zapisano',
+        message: 'twoja kopia została zapisana na twoim komputerze i pozostanie tam do czasu opublikowania artykułu'
+      },
       uploadForm: {
         drop: 'upuść obraz tutaj ...',
         information: 'przeciągnij plik z obrazem tutaj, lub kliknij by wybrać',

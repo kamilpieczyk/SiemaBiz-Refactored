@@ -42,7 +42,8 @@ export const Textarea = styled.textarea`
   margin: 5px 0;
   color: ${ main };
   font-weight: ${ ({ focus }) => focus ? 500 : 100 };
-
+  overflow-x: hidden;
+  resize: none;
 `
 
 export const Label = styled.label`
