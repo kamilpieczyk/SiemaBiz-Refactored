@@ -19,6 +19,7 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
   const [ sections, setSections ] = useState( [] );
 
   const [ isLoading, setLoading ] = useState( false );
+  const [ isSavedCopyInLocalStorage, setSavedCopyInLocalStorage ] = useState( false );
   const [ isPictrueErr, setPictrueErr ] = useState( false );
   const [ isArticleTitleErr, setArticleTitleErr ] = useState( false );
   const [ isArticleIntroErr, setArticleIntroErr ] = useState( false );
@@ -133,7 +134,13 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
     dispatch( setPopupWindowActive({
       title: language.articlesPanel.articleEditor.savePopup.title,
       messenge: language.articlesPanel.articleEditor.savePopup.message
-    }) )
+    }) );
+    setSavedCopyInLocalStorage( true );
+  }
+
+  const checkIfIsSavedCopyInLocalStorage = () => {
+    const savedCopy = window.localStorage.getItem( 'saved-article' );
+    if( savedCopy ) setSavedCopyInLocalStorage( true );
   }
 
   const handdleUpdateArticleButton = async () => {
@@ -219,7 +226,6 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
       const data = await post( 'get-article', { id } );
       if( data.status === 'ok' ){
         const article = data.article;
-        // console.log( article );
         setArticleTitle( article.title );
         setArticleIntroduction( article.introduction );
         setSections( article.sections );
@@ -231,14 +237,9 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
   useEffect(
     () => {
       getArticleToEditInEditMode();
+      checkIfIsSavedCopyInLocalStorage();
     }, []
   );
-
-  // useEffect(
-  //   () => {
-  //     console.log( pictrue )
-  //   }, [ pictrue ]
-  // );
 
   return render({
     state: {
@@ -251,7 +252,8 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
       isLoading,
       isPictrueErr,
       isArticleTitleErr,
-      isArticleIntroErr
+      isArticleIntroErr,
+      isSavedCopyInLocalStorage
     },
     handleDropFiles,
     handleInputs,

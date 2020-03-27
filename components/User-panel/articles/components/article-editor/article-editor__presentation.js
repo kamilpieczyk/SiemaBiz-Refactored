@@ -237,11 +237,15 @@ const ArticleEditorPresentationLayer = ({
             { language.articlesPanel.articleEditor.saveButton }
           </AcceptButton>
           {/* load button*/}
-          <AcceptButton thin onClickFunction = { restoreSavedCopyFromLocalStorage } >
-            <MaterialIcon icon = 'get_app' />
-            <Separator width = '5px' />
-            { language.articlesPanel.articleEditor.loadButton }
-          </AcceptButton>
+          {
+            state.isSavedCopyInLocalStorage && (
+              <AcceptButton thin onClickFunction = { restoreSavedCopyFromLocalStorage } >
+                <MaterialIcon icon = 'get_app' />
+                <Separator width = '5px' />
+                { language.articlesPanel.articleEditor.loadButton }
+              </AcceptButton>
+            )
+          }
           {
             state.isLoading
               ? <Button><Loading text = { language.articlesPanel.articleEditor.loading } /></Button>
