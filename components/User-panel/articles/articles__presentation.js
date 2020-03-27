@@ -20,6 +20,8 @@ const ArticlesPresentationLayer =  ( {
   deleteArticle,
   handleAddNewArticleButton,
   isEditorActive,
+  isEditorActiveInEditMode,
+  handleEditArticleButton
  } ) => {
   const language = useSelector( s => s.language.source );
   const device = useSelector( s => s.deviceScreen );
@@ -56,12 +58,14 @@ const ArticlesPresentationLayer =  ( {
               date = { article.date }
               lp = { index + 1 }
               deleteFunction = { () => deleteArticle( article._id ) }
+              editFunction = { () => handleEditArticleButton( article._id ) }
             />
           ) )
         }
 
       </SectionContainer>
       { isEditorActive && <ArticleEditor closeFunction = { handleAddNewArticleButton }/> }
+      { isEditorActiveInEditMode && <ArticleEditor editMode closeFunction = { handleAddNewArticleButton }/> }
     </React.Fragment>
   )
 }
@@ -70,7 +74,9 @@ ArticlesPresentationLayer.propTypes = {
   articles: PropTypes.array,
   deleteArticle: PropTypes.func.isRequired,
   handleAddNewArticleButton: PropTypes.func.isRequired,
-  isEditorActive: bool
+  isEditorActive: bool,
+  handleEditArticleButton: PropTypes.func.isRequired,
+  isEditorActiveInEditMode: PropTypes.bool
 }
 
 export default ArticlesPresentationLayer

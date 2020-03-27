@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import PropTypes from 'prop-types'
 import router from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,6 +13,7 @@ const ArticlesLogicLayer = ({ render, articles, ...props }) => {
 
   const [ articlesState, setArticlesState ] = useState( [ ...articles ] );
   const [ isEditorActive, setEditorActive ] = useState( false );
+  const [ isEditorActiveInEditMode, setEditorActiveInEditMode ] = useState( false );
 
   const language = useSelector( s => s.language.source );
 
@@ -41,15 +42,32 @@ const ArticlesLogicLayer = ({ render, articles, ...props }) => {
   }
 
   const handleAddNewArticleButton = () => {
-    setEditorActive( !isEditorActive );
+    if( isEditorActiveInEditMode ){
+      router.push( `/user-panel/administration-panel?page=articles` );
+      setEditorActiveInEditMode( false );
+    }
+    else setEditorActive( !isEditorActive );
     getArticles();
   }
+
+  const handleEditArticleButton = async id => {
+    const routingOperation = await router.push( `/user-panel/administration-panel?page=articles&edit=${ id }` );
+    if( routingOperation ) setEditorActiveInEditMode( true );
+  }
+
+  useEffect(() => {
+    const isEdit = router.query.edit;
+    if( isEdit ) setEditorActiveInEditMode( true );
+    
+  }, [])
 
   return render({
     articles: articlesState,
     deleteArticle,
     handleAddNewArticleButton,
     isEditorActive,
+    isEditorActiveInEditMode,
+    handleEditArticleButton
   })
 }
 

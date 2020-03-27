@@ -11,8 +11,9 @@ import EditButton from '../../../../UI/edit-button'
 import withClick from '../../../../HOC/withClick'
 
 const Delete = withClick( DeleteButton );
+const Edit = withClick( EditButton );
 
-const AnArticleOnList = ({ lp, title, author, date, deleteFunction }) => {
+const AnArticleOnList = ({ lp, title, author, date, deleteFunction, editFunction }) => {
 
   const language = useSelector( s => s.language.source );
 
@@ -33,7 +34,7 @@ const AnArticleOnList = ({ lp, title, author, date, deleteFunction }) => {
           { author }
         </Element>
         <ButtonContainer>
-          <EditButton />
+          <Edit onClickFunction = { editFunction } />
           <Separator width = '20px' />
           <Delete onClickFunction = { deleteFunction } />
         </ButtonContainer>
@@ -44,7 +45,12 @@ const AnArticleOnList = ({ lp, title, author, date, deleteFunction }) => {
 }
 
 AnArticleOnList.propTypes = {
-
+  lp: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  deleteFunction: PropTypes.func.isRequired,
+  editFunction: PropTypes.func.isRequired
 }
 
 export default AnArticleOnList

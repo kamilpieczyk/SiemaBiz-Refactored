@@ -11,7 +11,8 @@ import {
   NewSection,
   SectionButtonsContainer,
   InvisibleDiv,
-  ActionButtonsContainer
+  ActionButtonsContainer,
+  EditInformation
 } from './article-editor__styles'
 import CloseButton from '../../../../UI/close-button'
 import Separator from '../../../../UI/separator'
@@ -30,13 +31,15 @@ const AcceptButton = withClick( Button );
 const ArticleEditorPresentationLayer = ({ 
   closeFunction,
   state,
+  editMode,
   handleDropFiles,
   handleInputs,
   sectionTypes,
   handleAddNewSection,
   handleAddArticleButton,
   handleSaveToLocalStorageButton,
-  restoreSavedCopyFromLocalStorage
+  restoreSavedCopyFromLocalStorage,
+  handdleUpdateArticleButton
 }) => {
 
   const language = useSelector( s => s.language.source );
@@ -179,6 +182,7 @@ const ArticleEditorPresentationLayer = ({
               )
             }
 
+            else if( section.type === "edit")return <EditInformation key = { index }>{ section.value }</EditInformation>
           })
         }
 
@@ -241,13 +245,21 @@ const ArticleEditorPresentationLayer = ({
           {
             state.isLoading
               ? <Button><Loading text = { language.articlesPanel.articleEditor.loading } /></Button>
-              : (
-                  <AcceptButton onClickFunction = { handleAddArticleButton }>
-                    <MaterialIcon icon = 'playlist_add_check' />
+              : editMode
+                ? (
+                  <AcceptButton onClickFunction = { handdleUpdateArticleButton } > 
+                    <MaterialIcon icon = 'update' />
                     <Separator width = '5px' />
-                    { language.articlesPanel.articleEditor.acceptButton }
+                    { language.articlesPanel.articleEditor.updateButton }
                   </AcceptButton>
-              )
+                )
+                : (
+                    <AcceptButton onClickFunction = { handleAddArticleButton }>
+                      <MaterialIcon icon = 'playlist_add_check' />
+                      <Separator width = '5px' />
+                      { language.articlesPanel.articleEditor.acceptButton }
+                    </AcceptButton>
+                )
           }
         </ActionButtonsContainer>
       </ContentContainer>
@@ -259,11 +271,13 @@ const ArticleEditorPresentationLayer = ({
 ArticleEditorPresentationLayer.propTypes = {
   closeFunction: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
+  editMode: PropTypes.bool,
   handleDropFiles: PropTypes.func.isRequired,
   handleInputs: PropTypes.func.isRequired,
   handleAddArticleButton: PropTypes.func.isRequired,
   handleSaveToLocalStorageButton: PropTypes.func.isRequired,
-  restoreSavedCopyFromLocalStorage: PropTypes.func.isRequired
+  restoreSavedCopyFromLocalStorage: PropTypes.func.isRequired,
+  handdleUpdateArticleButton: PropTypes.func.isRequired
 }
 
 export default ArticleEditorPresentationLayer

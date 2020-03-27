@@ -1,8 +1,10 @@
 import { useState, useCallback, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
 
 import apiKey from '../../../../../API/key'
+import post from '../../../../../API/post'
 import { setPopupWindowActive } from '../../../../../Redux/actions'
 
 const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
@@ -23,6 +25,7 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
 
   const language = useSelector( s => s.language.source );
   const username = useSelector( s => s.user.username );
+  const router = useRouter();
 
   const dispatch = useDispatch();
 
@@ -102,7 +105,7 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
 
     const newSection = new Section({ type, title, value });
     sectionsArray.push( newSection );
-    setSections( sectionsArray )
+    setSections( sectionsArray );
   }
 
   const saveArticleCopyToLocalStorage = () => {
@@ -131,6 +134,28 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
       title: language.articlesPanel.articleEditor.savePopup.title,
       messenge: language.articlesPanel.articleEditor.savePopup.message
     }) )
+  }
+
+  const handdleUpdateArticleButton = async () => {
+    setLoading( true );
+    const date = new Date();
+    const id = router.query.edit;
+    const newSections = [ ...sections ];
+    newSections.push({
+      type: 'edit',
+      value: `edited by ${ username } ${ date.getUTCDate() }/${ date.getMonth() +1 }/${ date.getFullYear() } at ${ date.getHours() }:${ date.getMinutes() }`,
+      title: ''
+    });
+    const data = await post( 'update-article', {
+      id,
+      title: articleTitle,
+      introduction: articleIntroduction,
+      sections: newSections
+    } );
+    if( data.status === 'ok' ){
+      setLoading( false );
+      closeFunction();
+    }
   }
 
   const handleAddArticleButton = async () => {
@@ -188,11 +213,32 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
     }
   }
 
+  const getArticleToEditInEditMode = async() => {
+    if( editMode ){
+      const id = router.query.edit;
+      const data = await post( 'get-article', { id } );
+      if( data.status === 'ok' ){
+        const article = data.article;
+        // console.log( article );
+        setArticleTitle( article.title );
+        setArticleIntroduction( article.introduction );
+        setSections( article.sections );
+        setPictrue( { name: article.mainImage } );
+      }
+    }
+  }
+
   useEffect(
     () => {
-
+      getArticleToEditInEditMode();
     }, []
   );
+
+  // useEffect(
+  //   () => {
+  //     console.log( pictrue )
+  //   }, [ pictrue ]
+  // );
 
   return render({
     state: {
@@ -212,6 +258,7 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
     sectionTypes,
     handleAddNewSection,
     handleAddArticleButton,
+    handdleUpdateArticleButton,
     handleSaveToLocalStorageButton,
     restoreSavedCopyFromLocalStorage
   })

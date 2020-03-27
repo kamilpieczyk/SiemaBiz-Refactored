@@ -72,4 +72,9 @@ export const ActionButtonsContainer = styled.div`
   width: 100%;
   justify-content: flex-end;
   align-items: center;
-`  
+`
+
+export const EditInformation = styled.div`
+  color: ${ colors.error };
+  margin: 20px 0;
+`

@@ -220,6 +220,7 @@ export default {
       articleTitle: 'tytuł artykułu',
       articleIntroduction: 'wstęp do artykułu',
       acceptButton: 'dodaj artykuł',
+      updateButton: 'aktualizuj',
       loading: 'wysyłanie artykułu',
       imageError: 'obraz główny jest wymagany',
       articleTitleError: 'tytuł artykułu jest wymagany',
@@ -238,7 +239,7 @@ export default {
       },
       sections:{
         acapit:{
-          title: 'tytuł nowego akapitu',
+          title: 'tytuł nowego akapitu (nieobowiązkowe)',
           content: 'treść akapitu'
         },
         image: {

@@ -5,7 +5,11 @@ import PresentationLayer from "./article-editor__presentation"
  const ArticleEditor = oldProps => (
   <LogicLayer
     { ...oldProps }
-    render = { props => <PresentationLayer { ...props } closeFunction = { oldProps.closeFunction } /> }
+    render = { props => <PresentationLayer
+      { ...props }
+      closeFunction = { oldProps.closeFunction }
+      editMode = { oldProps.editMode }
+    /> }
   />
 )
 
