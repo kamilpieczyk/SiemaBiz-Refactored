@@ -22,6 +22,12 @@ export const Topbar = styled.div`
   align-items: center;
   color: ${ colors.white };
   padding: 0 5px;
+  position: relative;
+  p{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+  }
 `
 
 export const ContentContainer = styled.div`
@@ -58,6 +64,12 @@ export const SectionButtonsContainer = styled.div`
   border-radius: 5px;
   box-shadow: 0px 0px 10px 0px ${ colors.lightGrey };
   padding: 30px;
+
+  @media ( max-width: ${ mobile }px ) {
+    padding: 0;
+    box-shadow: none;
+    margin: 0;
+  }
 `
 
 export const InvisibleDiv = styled.div`

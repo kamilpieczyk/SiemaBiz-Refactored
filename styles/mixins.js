@@ -6,3 +6,9 @@ export const backdropFilter = () => `
     background: ${ colors.transparentWhite };
   }
 `
+
+export const flexCenter = () => `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

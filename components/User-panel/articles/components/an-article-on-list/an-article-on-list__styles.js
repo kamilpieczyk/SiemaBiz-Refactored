@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import colors, { main, white } from '../../../../../styles/colors'
 import { mobile } from '../../../../../styles/devices'
+import { flexCenter } from '../../../../../styles/mixins'
 
 export const Container = styled.div`
   background: ${ main };
@@ -30,6 +31,7 @@ export const Lp = styled.div`
 
 export const Element = styled.div`
   overflow: hidden;
+  ${ flexCenter() }
 
   @media ( max-width: ${ mobile }px ) {
     max-height: 14px;
@@ -37,7 +39,7 @@ export const Element = styled.div`
 
   i{
     position: relative;
-    top: 4px;
+    top: -3px;
     margin-right: 3px;
 
     @media ( max-width: ${ mobile }px ) {
@@ -59,4 +61,5 @@ export const Element = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `

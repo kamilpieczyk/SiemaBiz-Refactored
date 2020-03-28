@@ -46,15 +46,18 @@ const ArticleEditorPresentationLayer = ({
 
   return(
     <Container>
+
       <Topbar>
-        {
-          state.articleTitle
-            ? `${ language.articlesPanel.articleEditor.articleTitleTop } - ${ state.articleTitle }`
-            : language.articlesPanel.articleEditor.newArticleTitle
-        }
-        <Separator width = '45%' />
+        <p>
+          {
+            state.articleTitle
+              ? `${ language.articlesPanel.articleEditor.articleTitleTop } - ${ state.articleTitle }`
+              : language.articlesPanel.articleEditor.newArticleTitle
+          }
+        </p>
         <Close onClickFunction = { closeFunction }/>
       </Topbar>
+
       <ContentContainer>
         {/* ARTICLE PICTRUE */}
         <Header>{ language.articlesPanel.articleEditor.mainImageHeader }</Header>
