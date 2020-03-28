@@ -212,7 +212,56 @@ export default {
     addButton: 'add new article',
     articlesList: {
       title: 'articles list',
-      deleteQuestion: 'Are you really sure you want to get rid of this article?'
+      deleteQuestion: 'are you sure you would like to delete this article?'
+    },
+    articleEditor: {
+      newArticleTitle: '*new empty article',
+      articleTitleTop: '*article',
+      mainImageHeader: 'add main image to this article',
+      articleTitle: 'article title',
+      articleIntroduction: 'introduction to article',
+      acceptButton: 'add article',
+      updateButton: 'update',
+      loading: 'sending article',
+      imageError: 'main image is required',
+      articleTitleError: 'article title is required',
+      articleIntroError: 'introduction is required',
+      saveButton: 'save copy',
+      loadButton: 'load copy',
+      savePopup: {
+        title: 'saved',
+        message: 'your copy has been saved on your local memory. It will stay there until you publish article'
+      },
+      uploadForm: {
+        drop: 'drop image here ...',
+        information: 'drag & drop image here, or click to choose',
+        dropedOk: 'image added',
+        warn: 'file is too big or extension is not .jpg',
+      },
+      sections:{
+        acapit:{
+          title: 'new paragraph title ( not required )',
+          content: 'paragraph content'
+        },
+        image: {
+          title: 'image title',
+          content: 'paste image url'
+        },
+        link: {
+          title: 'hyperlink',
+          content: 'link url'
+        },
+        video: {
+          title: 'video title',
+          content: 'link to youtube clip'
+        }
+      },
+      sectionTypes: {
+        acapit: 'add paragraph',
+        image: 'add image',
+        link: 'add link',
+        video: 'add video'
+      }
     }
   },
 }
