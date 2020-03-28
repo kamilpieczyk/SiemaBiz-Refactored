@@ -14,6 +14,7 @@ import {
   ActionButtonsContainer,
   EditInformation
 } from './article-editor__styles'
+import { grey } from '../../../../../styles/colors'
 import CloseButton from '../../../../UI/close-button'
 import Separator from '../../../../UI/separator'
 import FileUploader from '../../../../UI/file-uploader'
@@ -22,6 +23,7 @@ import SectionButton from './components/section-button'
 import Button from '../../../../UI/small-button'
 import Loading from '../../../../UI/loading-circle'
 import ErrorInfo from '../../../../UI/error-info'
+import DeleteButton from '../../../../UI/delete-button'
 
 import withClick from '../../../../HOC/withClick'
 
@@ -39,7 +41,8 @@ const ArticleEditorPresentationLayer = ({
   handleAddArticleButton,
   handleSaveToLocalStorageButton,
   restoreSavedCopyFromLocalStorage,
-  handdleUpdateArticleButton
+  handdleUpdateArticleButton,
+  handleDeleteSectionButton
 }) => {
 
   const language = useSelector( s => s.language.source );
@@ -48,6 +51,7 @@ const ArticleEditorPresentationLayer = ({
     <Container>
 
       <Topbar>
+        <Close onClickFunction = { closeFunction }/>
         <p>
           {
             state.articleTitle
@@ -55,7 +59,6 @@ const ArticleEditorPresentationLayer = ({
               : language.articlesPanel.articleEditor.newArticleTitle
           }
         </p>
-        <Close onClickFunction = { closeFunction }/>
       </Topbar>
 
       <ContentContainer>
@@ -107,6 +110,13 @@ const ArticleEditorPresentationLayer = ({
             if( section.type === "acapit" ){
               return(
                 <NewSection key = { index }>
+                  <ActionButtonsContainer>
+                    <DeleteButton
+                      color = { grey }
+                      onClick = { () => handleDeleteSectionButton( index ) }
+                    />
+                  </ActionButtonsContainer>
+
                   <Input
                     label = { language.articlesPanel.articleEditor.sections.acapit.title }
                     value = { section.title }
@@ -128,6 +138,12 @@ const ArticleEditorPresentationLayer = ({
             else if( section.type === "image" ){
               return(
                 <NewSection key = { index }>
+                  <ActionButtonsContainer>
+                    <DeleteButton
+                      color = { grey }
+                      onClick = { () => handleDeleteSectionButton( index ) }
+                    />
+                  </ActionButtonsContainer>
                   <Input
                     name = 'section-title'
                     label = { language.articlesPanel.articleEditor.sections.image.title }
@@ -148,6 +164,12 @@ const ArticleEditorPresentationLayer = ({
             else if( section.type === "link"){
               return(
                 <NewSection key = { index }>
+                  <ActionButtonsContainer>
+                    <DeleteButton
+                      color = { grey }
+                      onClick = { () => handleDeleteSectionButton( index ) }
+                    />
+                  </ActionButtonsContainer>
                   <Input
                     name = 'section-title'
                     label = { language.articlesPanel.articleEditor.sections.link.title }
@@ -168,6 +190,12 @@ const ArticleEditorPresentationLayer = ({
             else if( section.type === "video"){
               return(
                 <NewSection key = { index }>
+                  <ActionButtonsContainer>
+                    <DeleteButton
+                      color = { grey }
+                      onClick = { () => handleDeleteSectionButton( index ) }
+                    />
+                  </ActionButtonsContainer>
                   <Input
                     name = 'section-title'
                     label = { language.articlesPanel.articleEditor.sections.video.title }
@@ -284,7 +312,8 @@ ArticleEditorPresentationLayer.propTypes = {
   handleAddArticleButton: PropTypes.func.isRequired,
   handleSaveToLocalStorageButton: PropTypes.func.isRequired,
   restoreSavedCopyFromLocalStorage: PropTypes.func.isRequired,
-  handdleUpdateArticleButton: PropTypes.func.isRequired
+  handdleUpdateArticleButton: PropTypes.func.isRequired,
+  handleDeleteSectionButton: PropTypes.func.isRequired
 }
 
 export default ArticleEditorPresentationLayer

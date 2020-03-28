@@ -23,9 +23,12 @@ export const Topbar = styled.div`
   color: ${ colors.white };
   padding: 0 5px;
   position: relative;
+
   p{
     position: absolute;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
     text-align: center;
   }
 `

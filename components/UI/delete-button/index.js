@@ -5,12 +5,12 @@ import MaterialIcon from '@material/react-material-icon'
 
 import { Button } from './delete-button__styles'
 
-const DeleteButton = ({ color }) => {
+const DeleteButton = ({ color, onClick }) => {
 
   const language = useSelector( s => s.language.source );
 
   return (
-    <Button color = { color }>
+    <Button color = { color } onClick = { onClick }>
       <MaterialIcon icon = 'delete_forever' />
       <div>{ language.general.delete }</div>
     </Button>
@@ -18,7 +18,8 @@ const DeleteButton = ({ color }) => {
 }
 
 DeleteButton.propTypes = {
-  color: PropTypes.string
+  color: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 export default DeleteButton

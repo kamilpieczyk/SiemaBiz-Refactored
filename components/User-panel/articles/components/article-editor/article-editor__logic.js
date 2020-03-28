@@ -234,6 +234,12 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
     }
   }
 
+  const handleDeleteSectionButton = index => {
+    const newSections = [ ...sections ];
+    newSections.splice( index, 1 );
+    setSections( newSections );
+  }
+
   useEffect(
     () => {
       getArticleToEditInEditMode();
@@ -262,7 +268,8 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
     handleAddArticleButton,
     handdleUpdateArticleButton,
     handleSaveToLocalStorageButton,
-    restoreSavedCopyFromLocalStorage
+    restoreSavedCopyFromLocalStorage,
+    handleDeleteSectionButton
   })
 }
 
