@@ -263,4 +263,7 @@ export default {
       }
     }
   },
+  articlePage: {
+    
+  }
 }

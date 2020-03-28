@@ -1,9 +1,10 @@
 import colors from './colors'
 
-export const backdropFilter = () => `
+export const backdropFilter = ( rest ) => `
   @supports( backdrop-filter: blur() ){
     backdrop-filter: blur( 5px );
     background: ${ colors.transparentWhite };
+    ${ rest }
   }
 `
 
