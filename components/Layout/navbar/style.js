@@ -1,5 +1,7 @@
 import styled from 'styled-components'
+
 import colors from '../../../styles/colors'
+import { backdropFilter } from '../../../styles/mixins'
 
 export const Container = styled.nav`
   position: fixed;
@@ -14,12 +16,7 @@ export const Container = styled.nav`
   ${
     ({ scroll }) => scroll && `box-shadow:  0px 1px 30px ${ colors.grey };`
   }
-  
-  
-  @supports( backdrop-filter: blur() ){
-    background: ${ colors.transparentWhite };
-    backdrop-filter: blur( 5px );
-  }
+  ${ backdropFilter() }
 `
 
 export const LogoContainer = styled.div`
@@ -35,5 +32,4 @@ export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
 `

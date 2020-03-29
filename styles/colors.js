@@ -10,6 +10,7 @@ export const grey = "rgb(122, 122, 122)";
 export const lightGrey = "rgb(153, 139, 141)";
 export const darkGrey = "rgb(80, 80, 80)";
 export const transparentWhite =  "rgba(240, 240, 240, 0.527)";
+export const transparentWhiteMozilla =  "rgba(240, 240, 240, 0.8)";
 export const transparentBlack =  "rgba(0, 0, 0, 0.527)";
 export const ultraTransparentBlack =  "rgba(0, 0, 0, 0.06)";
 export const transparentMain = "rgba(151, 17, 12, 0.527)";
@@ -32,6 +33,7 @@ export default {
   lightGrey,
   darkGrey,
   transparentWhite,
+  transparentWhiteMozilla,
   transparentBlack,
   transparentMain,
   ultraTransparentBlack,

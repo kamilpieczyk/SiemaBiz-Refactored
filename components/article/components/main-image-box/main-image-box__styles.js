@@ -19,12 +19,11 @@ export const Title = styled.h1`
   left: 50%;
   transform: translateX( -50% ) translateY( -50% );
   text-align: center;
+  border-radius: 10px;
+  padding: 30px;
+  color: ${ colors.black };
   
-  ${ backdropFilter( `
-    border-radius: 10px;
-    padding: 30px;
-    color: ${ colors.black };
-  ` ) }
+  ${ backdropFilter() }
 
   @media ( max-width: ${ mobile }px ) {
     width: 90%;
@@ -33,7 +32,7 @@ export const Title = styled.h1`
 
 export const InfoBox = styled.div`
   position: absolute;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 5px;
   ${ flexCenter() }
   bottom: 20px;
@@ -47,5 +46,5 @@ export const InfoBox = styled.div`
       margin-right: 5px;
     }
   }
-  ${ backdropFilter() }
+  ${ backdropFilter() }   
 `

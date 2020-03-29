@@ -1,4 +1,5 @@
 import key from "./key"
+import fetch from 'isomorphic-unfetch'
 
 export default async ( uri, body ) => {
 
