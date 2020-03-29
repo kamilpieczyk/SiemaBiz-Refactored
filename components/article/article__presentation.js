@@ -14,6 +14,7 @@ import {
 import MainImageBox from './components/main-image-box'
 import Image from '../UI/image'
 import Url from '../UI/url'
+import YtVideo from '../UI/yt-video'
 
 
 const ArticlePresentationLayer = ({ article }) => {
@@ -47,6 +48,11 @@ const ArticlePresentationLayer = ({ article }) => {
               else if( section.type === 'link' ) return (
                 <ImageSection key = { index }>
                   <Url url = { section.value } title = { section.title } />
+                </ImageSection>
+              )
+              else if( section.type === 'video' ) return (
+                <ImageSection key = { index }>
+                  <YtVideo title = { section.title } id = { section.value } />
                 </ImageSection>
               )
             } )
