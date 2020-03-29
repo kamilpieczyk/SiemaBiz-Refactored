@@ -253,7 +253,7 @@ export default {
         },
         video: {
           title: 'video title',
-          content: 'link to youtube clip'
+          content: 'youtube clip id'
         }
       },
       sectionTypes: {

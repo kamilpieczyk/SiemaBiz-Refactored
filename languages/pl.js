@@ -252,7 +252,7 @@ export default {
         },
         video: {
           title: 'tytuł filmu',
-          content: 'link do filmu w serwisie youtube'
+          content: 'podaj id filmu z serwisu youtube.com'
         }
       },
       sectionTypes: {

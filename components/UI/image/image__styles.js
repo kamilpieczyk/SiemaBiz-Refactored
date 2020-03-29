@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import colors from '../../../styles/colors'
+import { mobile } from '../../../styles/devices'
 
 export const Container = styled.div`
   background: linear-gradient(180deg, rgba(246,246,246,1) 0%, rgba(217,217,217,1) 100%);
@@ -13,5 +14,11 @@ export const Container = styled.div`
     text-align: center;
     margin: 20px 0 0 0;
     color: ${ colors.grey };
+  }
+
+  img{
+    @media ( max-width: ${ mobile }px ) {
+      width: 100%;
+    }
   }
 `

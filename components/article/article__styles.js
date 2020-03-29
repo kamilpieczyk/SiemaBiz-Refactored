@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import colors from '../../styles/colors'
+import { mobile } from '../../styles/devices'
 import { flexCenter } from '../../styles/mixins'
 
 export const Container = styled.div`
@@ -11,6 +12,10 @@ export const ContentContainer = styled.article`
   display: grid;
   grid-template-columns: 70% 30%;
   margin: 30px 5%;
+
+  @media ( max-width: ${ mobile }px ) {
+    grid-template-columns: 100%;
+  }
 `
 
 export const Content = styled.article`
