@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import apiKey from '../../../../../API/key'
 import post from '../../../../../API/post'
 import { setPopupWindowActive } from '../../../../../Redux/actions'
+import getCategories from '../../../../../data/article-categories'
 
 const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
 
@@ -15,6 +16,7 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
 
   const [ articleTitle, setArticleTitle ] = useState( '' );
   const [ articleIntroduction, setArticleIntroduction ] = useState( '' );
+  const [ articleCategory, setArticleCategory ] = useState({ name: 'general', index: 10 });
 
   const [ sections, setSections ] = useState( [] );
 
@@ -46,6 +48,43 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
       else setExtErr( true );
     }, [],
   )
+
+  const getArrayOfCategoriesNames = () => {
+    const categories = getCategories();
+    const names = categories.map( category => category.title );
+    return names;
+  }
+
+  const handleSelectArticleCategory = ( choosenCategory ) => {
+    const categories = getCategories();
+
+    for (const category of categories) {
+      if( choosenCategory === category.title ){
+        const name = category.name;
+        const index = categories.indexOf( category );
+        const newCategory = {
+          ...category,
+          name,
+          index
+        }
+
+        setArticleCategory( newCategory );
+      }
+    }
+  }
+
+  const handleBackendSetCategory = categoryName => {
+    const categories = getCategories();
+
+    for( const category of categories ){
+      if( category.name === categoryName ){
+        setArticleCategory({
+          name: category.title,
+          index: categories.indexOf( category )
+        });
+      }
+    }
+  }
 
   const handleInputs = ( name, value, index ) => {
     if( name === 'title' ) setArticleTitle( value );
@@ -113,7 +152,8 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
     window.localStorage.setItem( 'saved-article', JSON.stringify({
       articleTitle,
       articleIntroduction,
-      sections
+      sections,
+      articleCategory
     }));
   }
 
@@ -126,6 +166,7 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
       setArticleTitle( copy.articleTitle );
       setArticleIntroduction( copy.articleIntroduction );
       setSections( copy.sections );
+      setArticleCategory( copy.articleCategory );
     }
   }
 
@@ -157,7 +198,8 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
       id,
       title: articleTitle,
       introduction: articleIntroduction,
-      sections: newSections
+      sections: newSections,
+      category: articleCategory.name
     } );
     if( data.status === 'ok' ){
       setLoading( false );
@@ -194,6 +236,7 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
       bodyToPost.append( 'image', pictrue );
       bodyToPost.append( 'title', articleTitle );
       bodyToPost.append( 'introduction', articleIntroduction );
+      bodyToPost.append( 'category', articleCategory.name );
       bodyToPost.append( 'author', username );
       bodyToPost.append( 'sections', JSON.stringify( sections ) );
 
@@ -211,11 +254,11 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
       }
       catch( err ){
         setLoading( false );
-        console.error( err );
         dispatch( setPopupWindowActive({ 
           title: language.general.popups.wrong.title,
           messenge: language.general.popups.wrong.messenge
         }) );
+        throw( err );
       }
     }
   }
@@ -229,6 +272,7 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
         setArticleTitle( article.title );
         setArticleIntroduction( article.introduction );
         setSections( article.sections );
+        handleBackendSetCategory( article.category );
         setPictrue( { name: article.mainImage } );
       }
     }
@@ -259,7 +303,8 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
       isPictrueErr,
       isArticleTitleErr,
       isArticleIntroErr,
-      isSavedCopyInLocalStorage
+      isSavedCopyInLocalStorage,
+      articleCategory
     },
     handleDropFiles,
     handleInputs,
@@ -269,7 +314,9 @@ const ArticleEditioLogicLayer = ({ render, closeFunction, editMode }) => {
     handdleUpdateArticleButton,
     handleSaveToLocalStorageButton,
     restoreSavedCopyFromLocalStorage,
-    handleDeleteSectionButton
+    handleDeleteSectionButton,
+    handleSelectArticleCategory,
+    categories: getArrayOfCategoriesNames(),
   })
 }
 

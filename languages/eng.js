@@ -14,6 +14,19 @@ export default {
       dropInformation: 'Drop file/s here ...',
       information: 'Drag & drop some files here, or click to select files',
       button: 'add files'
+    },
+    categories: {
+      topTenTips: 'top ten tips',
+      videos: 'videos',
+      news: 'news',
+      socialMedia: 'social media',
+      business: 'business',
+      law: 'law',
+      technology: 'technology',
+      tips: 'tips',
+      unitedKingdom: 'united kingdom',
+      poland: 'poland',
+      general: 'general news'
     }
   },
   menu: [
@@ -218,6 +231,7 @@ export default {
       newArticleTitle: '*new empty article',
       articleTitleTop: '*article',
       mainImageHeader: 'add main image to this article',
+      articleCategory: 'select category',
       articleTitle: 'article title',
       articleIntroduction: 'introduction to article',
       acceptButton: 'add article',

@@ -12,7 +12,8 @@ import {
   SectionButtonsContainer,
   InvisibleDiv,
   ActionButtonsContainer,
-  EditInformation
+  EditInformation,
+  CategoryBox
 } from './article-editor__styles'
 import { grey } from '../../../../../styles/colors'
 import CloseButton from '../../../../UI/close-button'
@@ -24,6 +25,7 @@ import Button from '../../../../UI/small-button'
 import Loading from '../../../../UI/loading-circle'
 import ErrorInfo from '../../../../UI/error-info'
 import DeleteButton from '../../../../UI/delete-button'
+import ChooseInput from '../../../../UI/choose-input'
 
 import withClick from '../../../../HOC/withClick'
 
@@ -42,7 +44,9 @@ const ArticleEditorPresentationLayer = ({
   handleSaveToLocalStorageButton,
   restoreSavedCopyFromLocalStorage,
   handdleUpdateArticleButton,
-  handleDeleteSectionButton
+  handleDeleteSectionButton,
+  handleSelectArticleCategory,
+  categories
 }) => {
 
   const language = useSelector( s => s.language.source );
@@ -87,6 +91,17 @@ const ArticleEditorPresentationLayer = ({
               )
         }
         <InvisibleDiv />
+
+        {/* ARTICLE CATEGORY */}
+        <CategoryBox>
+          <label>{ language.articlesPanel.articleEditor.articleCategory }</label>
+          <ChooseInput
+            choosenFieldIndex = { state.articleCategory.index }
+            fields = { categories }
+            onChange = { handleSelectArticleCategory }
+          />
+        </CategoryBox>
+
         {/* ARTICLE TITLE */}
         <Input
           label = { language.articlesPanel.articleEditor.articleTitle }
@@ -95,6 +110,7 @@ const ArticleEditorPresentationLayer = ({
           name = 'title'
         />
         <InvisibleDiv />
+
         {/* ARTICLE INTRODUCTION */}
         <Input
           label = { language.articlesPanel.articleEditor.articleIntroduction}
@@ -313,7 +329,9 @@ ArticleEditorPresentationLayer.propTypes = {
   handleSaveToLocalStorageButton: PropTypes.func.isRequired,
   restoreSavedCopyFromLocalStorage: PropTypes.func.isRequired,
   handdleUpdateArticleButton: PropTypes.func.isRequired,
-  handleDeleteSectionButton: PropTypes.func.isRequired
+  handleDeleteSectionButton: PropTypes.func.isRequired,
+  handleSelectArticleCategory: PropTypes.func.isRequired,
+  categories: PropTypes.array.isRequired
 }
 
 export default ArticleEditorPresentationLayer

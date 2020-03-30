@@ -93,3 +93,7 @@ export const EditInformation = styled.div`
   color: ${ colors.error };
   margin: 20px 0;
 `
+
+export const CategoryBox = styled.div`
+
+`

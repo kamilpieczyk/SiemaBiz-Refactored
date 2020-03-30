@@ -14,6 +14,19 @@ export default {
       dropInformation: 'upuść plik/i tutaj ...',
       information: 'przeciągnij pliki tutaj, lub kliknij by wybrać',
       button: 'wybierz pliki'
+    },
+    categories: {
+      topTenTips: 'top 10 porad',
+      videos: 'filmy',
+      news: 'newsy',
+      socialMedia: 'social media',
+      business: 'biznes',
+      law: 'prawo',
+      technology: 'technologia',
+      tips: 'porady',
+      unitedKingdom: 'wileka brytania',
+      poland: 'polska',
+      general: 'tematyka ogólna'
     }
   },
   menu: [
@@ -216,6 +229,7 @@ export default {
     articleEditor: {
       newArticleTitle: '*nowy pusty artykuł',
       articleTitleTop: '*artykuł',
+      articleCategory: 'wybierz kategorię',
       mainImageHeader: 'Dodaj główny obraz dla tego artykułu',
       articleTitle: 'tytuł artykułu',
       articleIntroduction: 'wstęp do artykułu',
