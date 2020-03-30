@@ -15,10 +15,11 @@ import MainImageBox from './components/main-image-box'
 import Image from '../UI/image'
 import Url from '../UI/url'
 import YtVideo from '../UI/yt-video'
+import Breadcrumbs from '../UI/breadcrumbs'
+import Separator from '../UI/separator'
 
-
-const ArticlePresentationLayer = ({ article }) => {
-  console.log( article );
+const ArticlePresentationLayer = ({ article, breadcrumbs, category }) => {
+  
   return(
     <Container>
       <MainImageBox
@@ -29,6 +30,11 @@ const ArticlePresentationLayer = ({ article }) => {
       />
       <ContentContainer>
         <Content>
+          <Breadcrumbs
+            breadcrumbs = { breadcrumbs }
+            generalCrumb = { category }
+          />
+          <Separator height = '20px' />
           <Introduction>
             { article.introduction }
           </Introduction>
@@ -68,7 +74,8 @@ const ArticlePresentationLayer = ({ article }) => {
 
 ArticlePresentationLayer.propTypes = {
   article: PropTypes.object.isRequired,
-
+  breadcrumbs: PropTypes.array.isRequired,
+  category: PropTypes.string.isRequired
 }
 
 export default ArticlePresentationLayer;

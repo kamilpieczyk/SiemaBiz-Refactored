@@ -278,4 +278,7 @@ export default {
       }
     }
   },
+  articlesPage: {
+    title: 'articles'
+  }
 }

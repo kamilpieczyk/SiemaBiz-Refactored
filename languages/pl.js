@@ -277,7 +277,7 @@ export default {
       }
     }
   },
-  articlePage: {
-    
+  articlesPage: {
+    title: 'artykuły'
   }
 }

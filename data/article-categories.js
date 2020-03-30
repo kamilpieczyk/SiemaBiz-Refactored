@@ -66,4 +66,17 @@ const getCategories = () => {
   return categories;
 }
 
+export const translateCategory = ( categoryName ) => {
+  const categories = getCategories();
+  let categoryTranslatedName;
+
+    for( const category of categories ){
+      if( category.name === categoryName ){
+        categoryTranslatedName = category.title;
+      }
+    }
+    
+  return categoryTranslatedName;
+}
+
 export default getCategories;
