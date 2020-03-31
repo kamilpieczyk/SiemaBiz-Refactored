@@ -19,17 +19,17 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${ colors.white };
     overflow-x: hidden;
 
-    /* &::-webkit-scrollbar{
-        width: 5px;
-        background-color: $transparent-black;
-        backdrop-filter: blur(5px);
+    ::-webkit-scrollbar{
+      width:10px
     }
-
-    &::-webkit-scrollbar-thumb{
-        background-color: $main;
-        border-radius: 2px;
-    } */
-
+    ::-webkit-scrollbar-track{
+      background:#cccccc;
+      border-radius:0px
+    }
+    ::-webkit-scrollbar-thumb{
+      background:#880000;
+      border-radius:0px
+    }
   }
 
   button{
