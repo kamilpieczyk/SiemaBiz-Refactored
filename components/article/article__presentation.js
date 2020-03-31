@@ -17,8 +17,10 @@ import Url from '../UI/url'
 import YtVideo from '../UI/yt-video'
 import Breadcrumbs from '../UI/breadcrumbs'
 import Separator from '../UI/separator'
+import SidebarBox from '../UI/sidebar-box'
+import articleCategories from '../../data/article-categories'
 
-const ArticlePresentationLayer = ({ article, breadcrumbs, category }) => {
+const ArticlePresentationLayer = ({ article, breadcrumbs, category, sidebarRef, isScrolled, scrollPosition }) => {
   
   return(
     <Container>
@@ -64,8 +66,10 @@ const ArticlePresentationLayer = ({ article, breadcrumbs, category }) => {
             } )
           }
         </Content>
-        <Sidebar>
-
+        <Sidebar ref = { sidebarRef } isScrolled = { isScrolled } scrollPosition = { scrollPosition }>
+          <div className = 'sidebarBox'>
+            <SidebarBox menu = { articleCategories() } />
+          </div>
         </Sidebar>
       </ContentContainer>
     </Container>
@@ -75,7 +79,8 @@ const ArticlePresentationLayer = ({ article, breadcrumbs, category }) => {
 ArticlePresentationLayer.propTypes = {
   article: PropTypes.object.isRequired,
   breadcrumbs: PropTypes.array.isRequired,
-  category: PropTypes.string.isRequired
+  category: PropTypes.string.isRequired,
+  isScrolled: PropTypes.bool
 }
 
 export default ArticlePresentationLayer;

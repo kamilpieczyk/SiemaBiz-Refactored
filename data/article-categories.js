@@ -9,57 +9,68 @@ const getCategories = () => {
     {
       name: 'top-ten-tips',
       title: languageSource.topTenTips,
-      url: '',
+      href: 'articles?category=toptentips',
+      icon: 'format_list_numbered'
     },
     {
       name: 'videos',
       title: languageSource.videos,
-      url: '',
+      href: 'articles?category=videos',
+      icon: 'subscriptions'
     },
     {
       name: 'news',
       title: languageSource.news,
-      url: '',
+      href: 'articles?category=news',
+      icon: 'language'
     },
     {
       name: 'social-media',
       title: languageSource.socialMedia,
-      url: '',
+      href: 'articles?category=socialmedia',
+      icon: 'people'
     },
     {
       name: 'business',
       title: languageSource.business,
-      url: '',
+      href: 'articles?category=business',
+      icon: 'work'
     },
     {
       name: 'law',
       title: languageSource.law,
-      url: '',
+      href: 'articles?category=law',
+      icon: 'gavel'
     },
     {
       name: 'technology',
       title: languageSource.technology,
-      url: '',
+      href: 'articles?category=technology',
+      icon: 'usb'
     },
     {
       name: 'tips',
       title: languageSource.tips,
-      url: '',
+      href: 'articles?category=tips',
+      icon: 'wb_incandescent'
     },
     {
       name: 'united-kingdom',
       title: languageSource.unitedKingdom,
-      url: '',
+      href: 'articles?category=unitedkingdom',
+      icon: 'my_location'
     },
     {
       name: 'poland',
       title: languageSource.poland,
-      url: '',
+      href: 'articles?category=poland',
+      icon: 'flight'
     },
     {
       name: 'general',
       title: languageSource.general,
-      url: '',
+      href: 'articles?category=general',
+      icon: 'info'
     },
   ];
   

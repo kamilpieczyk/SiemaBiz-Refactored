@@ -23,7 +23,18 @@ export const Content = styled.article`
 `
 
 export const Sidebar = styled.nav`
-  
+  padding-left: 5vw;
+  .sidebarBox{
+    width: 100%;
+    ${
+      ({ isScrolled }) => isScrolled && `
+        position: fixed;
+        top: 90px;
+        right: 5%;
+        width: 22%;
+        `
+    }
+  }
 `
 
 export const Introduction = styled.section`

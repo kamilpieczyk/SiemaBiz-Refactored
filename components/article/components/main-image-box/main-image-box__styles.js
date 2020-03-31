@@ -36,7 +36,7 @@ export const InfoBox = styled.div`
   border-radius: 5px;
   ${ flexCenter() }
   bottom: 20px;
-  right: 20px;
+  right: 30px;
   div{
     ${ flexCenter() }
     i{
