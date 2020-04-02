@@ -1,12 +1,23 @@
-import {  } from 'react'
+import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+
+import get from '../../API/get'
 
 const ArticlesLogicLayer = ({ render, articles }) => {
 
-  articles = articles.reverse();
+  const [ fetchedArticles, setFetchedArticles ] = useState( null );
+
+  const newArticles = [ ...articles.reverse() ];
+
+  const getArticlesForFront = async () => {
+    const artics = await get( 'articles/shorts' );
+    setFetchedArticles( artics.reverse() );
+  }
+
+  useEffect( getArticlesForFront, [] );
 
   return render({
-    articles,
+    articles: fetchedArticles ? fetchedArticles : newArticles,
   })
 }
 

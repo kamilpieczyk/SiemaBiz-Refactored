@@ -279,6 +279,8 @@ export default {
     }
   },
   articlesPage: {
-    title: 'articles'
+    title: 'articles',
+    button: 'read',
+    buttonVideo: 'watch video',
   }
 }

@@ -9,67 +9,67 @@ const getCategories = () => {
     {
       name: 'top-ten-tips',
       title: languageSource.topTenTips,
-      href: 'articles?category=toptentips',
+      href: 'articles?site=1&category=toptentips',
       icon: 'format_list_numbered'
     },
     {
       name: 'videos',
       title: languageSource.videos,
-      href: 'articles?category=videos',
+      href: 'articles?site=1&category=videos',
       icon: 'subscriptions'
     },
     {
       name: 'news',
       title: languageSource.news,
-      href: 'articles?category=news',
+      href: 'articles?site=1&category=news',
       icon: 'language'
     },
     {
       name: 'social-media',
       title: languageSource.socialMedia,
-      href: 'articles?category=socialmedia',
+      href: 'articles?site=1&category=socialmedia',
       icon: 'people'
     },
     {
       name: 'business',
       title: languageSource.business,
-      href: 'articles?category=business',
+      href: 'articles?site=1&category=business',
       icon: 'work'
     },
     {
       name: 'law',
       title: languageSource.law,
-      href: 'articles?category=law',
+      href: 'articles?site=1&category=law',
       icon: 'gavel'
     },
     {
       name: 'technology',
       title: languageSource.technology,
-      href: 'articles?category=technology',
+      href: 'articles?site=1&category=technology',
       icon: 'usb'
     },
     {
       name: 'tips',
       title: languageSource.tips,
-      href: 'articles?category=tips',
+      href: 'articles?site=1&category=tips',
       icon: 'wb_incandescent'
     },
     {
       name: 'united-kingdom',
       title: languageSource.unitedKingdom,
-      href: 'articles?category=unitedkingdom',
+      href: 'articles?site=1&category=unitedkingdom',
       icon: 'my_location'
     },
     {
       name: 'poland',
       title: languageSource.poland,
-      href: 'articles?category=poland',
+      href: 'articles?site=1&category=poland',
       icon: 'flight'
     },
     {
       name: 'general',
       title: languageSource.general,
-      href: 'articles?category=general',
+      href: 'articles?site=1&category=general',
       icon: 'info'
     },
   ];

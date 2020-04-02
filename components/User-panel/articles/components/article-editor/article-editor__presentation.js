@@ -108,6 +108,7 @@ const ArticleEditorPresentationLayer = ({
           value = { state.articleTitle }
           onChange = { e => handleInputs( e.target.name, e.target.value ) }
           name = 'title'
+          maxlength = '50'
         />
         <InvisibleDiv />
 

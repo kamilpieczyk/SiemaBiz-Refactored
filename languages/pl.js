@@ -278,6 +278,8 @@ export default {
     }
   },
   articlesPage: {
-    title: 'artykuły'
+    title: 'artykuły',
+    button: 'czytaj',
+    buttonVideo: 'oglądaj video',
   }
 }

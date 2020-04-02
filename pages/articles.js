@@ -19,7 +19,7 @@ const Articles = ({ articles }) => {
 Articles.getInitialProps = async ctx =>{
   const id = ctx.query.id;
   const articles = await get( 'articles/shorts' );
-  return { articles }
+  return { articles: articles.reverse() }
 }
 
 export default Articles
