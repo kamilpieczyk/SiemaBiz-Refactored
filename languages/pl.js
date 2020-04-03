@@ -36,9 +36,9 @@ export default {
       href: "/"
     },
     {
-      title: "kim jesteśmy?",
-      icon: "not_listed_location",
-      href: "/about"
+      title: "artykuły",
+      icon: "vertical_split",
+      href: "/articles?site=1"
     },
     {
       title: "katalog firm",

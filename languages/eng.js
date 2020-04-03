@@ -36,9 +36,9 @@ export default {
       href: "/"
     },
     {
-      title: "who we are?",
-      icon: "not_listed_location",
-      href: "/about"
+      title: "articles",
+      icon: "vertical_split",
+      href: "/articles?site=1"
     },
     {
       title: "companies cathalog",
