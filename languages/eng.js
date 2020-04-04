@@ -26,7 +26,8 @@ export default {
       tips: 'tips',
       unitedKingdom: 'united kingdom',
       poland: 'poland',
-      general: 'general news'
+      general: 'general news',
+      all: 'all articles'
     }
   },
   menu: [

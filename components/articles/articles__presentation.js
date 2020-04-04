@@ -5,9 +5,9 @@ import { Container, ContentContainer, Sidebar } from './articles__styles'
 import MainArticle from './main-article'
 import ArticlesContentContainer from '../UI/article-content-container'
 import SidebarBox from '../UI/sidebar-box'
-import articleCats from '../../data/article-categories'
 
-const ArticlesPresentationLayer = ({ articles }) => {
+
+const ArticlesPresentationLayer = ({ articles, sidebar }) => {
   const mainArticles = [ ...articles.slice( 0, 3) ];
   return(
     <Container>
@@ -15,7 +15,7 @@ const ArticlesPresentationLayer = ({ articles }) => {
       <ContentContainer>
         <ArticlesContentContainer articles = { articles }/>
         <Sidebar>
-          <SidebarBox menu = { articleCats() }/>
+          <SidebarBox menu = { sidebar }/>
         </Sidebar>
       </ContentContainer>
     </Container>
@@ -24,6 +24,7 @@ const ArticlesPresentationLayer = ({ articles }) => {
 
 ArticlesPresentationLayer.propTypes = {
   articles: PropTypes.array.isRequired,
+  sidebar: PropTypes.array.isRequired
 }
 
 export default ArticlesPresentationLayer;

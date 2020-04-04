@@ -26,7 +26,8 @@ export default {
       tips: 'porady',
       unitedKingdom: 'wileka brytania',
       poland: 'polska',
-      general: 'tematyka ogólna'
+      general: 'tematyka ogólna',
+      all: 'wszystkie'
     }
   },
   menu: [

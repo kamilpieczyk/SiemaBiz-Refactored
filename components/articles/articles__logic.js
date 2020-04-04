@@ -1,25 +1,24 @@
-import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import get from '../../API/get'
+import articleCategories from '../../data/article-categories'
 
 const ArticlesLogicLayer = ({ render, articles }) => {
 
-  const [ fetchedArticles, setFetchedArticles ] = useState( null );
+  const language = useSelector( s => s.language.source );
 
-  const newArticles = [ ...articles.reverse() ];
-
-  const getArticlesForFront = async () => {
-    const artics = await get( 'articles/shorts' );
-    setFetchedArticles( artics.reverse() );
-  }
-
-  useEffect( () => {
-    getArticlesForFront();
-  }, [] );
+  const sidebar = articleCategories();
+  sidebar.unshift({
+    name: 'wszystkie',
+    title: language.general.categories.all,
+    href: 'articles?site=1',
+    icon: 'all_inclusive'
+  },)
 
   return render({
-    articles: fetchedArticles ? fetchedArticles : newArticles,
+    articles,
+    sidebar
   })
 }
 

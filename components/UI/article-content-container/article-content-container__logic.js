@@ -6,15 +6,35 @@ const ArticleContentContainerLogicLayer = ({ render, articles }) => {
 
   const router = useRouter();
   const site = router.query.site;
+  const category = router.query.category;
 
-  const getSlicedArticles = () => {
-    const reversedArticles = [ ...articles ];
-    const newArticles = reversedArticles.slice( site * 5 - 5, site * 5 );
+  const categorizeArticles = category => {
+    const newArticles = [];
+
+    for( let article of articles ){
+      if( article.category === category ) newArticles.push( article );
+    }
 
     return newArticles;
   }
 
+  const getSlicedArticles = articles => {
+    const newArticles = [ ...articles ].slice( site * 5 - 5, site * 5 );
+
+    return newArticles;
+  }
+
+  const generateArticles = () => {
+    let generatedArticles = [ ...articles ];
+
+    if( category ){
+      generatedArticles = categorizeArticles( category );
+    }
+    return generatedArticles;
+  }
+
   const generateSites = () => {
+    const articles = generateArticles();
     const numberOfSites = Math.ceil( articles.length / 5 );
     const array = [];
     
@@ -32,7 +52,7 @@ const ArticleContentContainerLogicLayer = ({ render, articles }) => {
   }
 
   return render({
-    articles: getSlicedArticles(),
+    articles: getSlicedArticles( generateArticles() ),
     sites: generateSites(),
     state: {
       currentSite: site
