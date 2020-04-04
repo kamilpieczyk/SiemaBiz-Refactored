@@ -8,6 +8,7 @@ import userMenu from './user-menu.reducer'
 import deviceScreen from './device.reducer'
 import popup from './popup.reducer'
 import choiceWindow from './choice-window.reducer'
+import articles from './articles.reducer'
 
 export default combineReducers( {
   language,
@@ -17,5 +18,6 @@ export default combineReducers( {
   isUserMenuActiv: userMenu,
   deviceScreen,
   popup,
-  choiceWindow
+  choiceWindow,
+  articles
 } )

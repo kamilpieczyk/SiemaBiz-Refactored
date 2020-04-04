@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
-import styled from 'styled-components'
+import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
 
 import ArticleComponent from '../components/article'
 
 import post from '../API/post'
 
-const Article = ({ article }) => {
-  
+const Article = ({ ssr_article }) => {
+    
   return(
     <Layout>
       <Head><title>SiemaBiz Forum</title></Head>
-      <ArticleComponent article = { article } />
+      <ArticleComponent ssr_article = { ssr_article } />
     </Layout>
   )
 }
@@ -21,7 +21,7 @@ Article.getInitialProps = async ctx =>{
   const id = ctx.query.id;
   const data = await post( 'get-article', { id } );
   const { article } = data;
-  return { article }
+  return { ssr_article: article }
 }
 
 export default Article

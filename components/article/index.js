@@ -4,15 +4,25 @@ import PropTypes from 'prop-types'
 import Logic from './article__logic'
 import PresentationLayer from './article__presentation'
 
-const Article = props => (
-  <Logic
-    { ...props }
-    render = { newProps => <PresentationLayer { ...newProps } article = { props.article } /> }
-  />
-)
+const Article = props => {
+  
+  return(
+    <Logic
+      { ...props }
+      article = { props.ssr_article }
+      render = { 
+        newProps => (
+          <PresentationLayer
+            { ...newProps }
+            article = { props.ssr_article } />
+        )
+      }
+    />
+  )
+}
 
 Article.propTypes = {
-  article: PropTypes.object.isRequired
+  ssr_article: PropTypes.object.isRequired
 }
 
 export default Article;

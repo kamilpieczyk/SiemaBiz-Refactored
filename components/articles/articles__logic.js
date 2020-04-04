@@ -14,7 +14,9 @@ const ArticlesLogicLayer = ({ render, articles }) => {
     setFetchedArticles( artics.reverse() );
   }
 
-  useEffect( getArticlesForFront, [] );
+  useEffect( () => {
+    getArticlesForFront();
+  }, [] );
 
   return render({
     articles: fetchedArticles ? fetchedArticles : newArticles,

@@ -43,7 +43,7 @@ const MainArticle = ({ articles }) => {
       <TextContent>
         <h1>{ article.title }</h1>
         <p>{ article.introduction.slice( 0, 350 ) }</p>
-        <Link href = { `article?id=${ article._id }` }>
+        <Link href = { { pathname: '/article', query: { id: article._id } } }>
           <a><Button>
             {
               article.category !== 'videos'

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import LogicLayer from './articles__logic'
 import PresentLayer from './articles__presentation'
 
-const Articles = ( props ) => (
+const Articles = ( higherProps ) => (
   <LogicLayer
-    { ...props }
+    { ...higherProps }
     render = { props => <PresentLayer { ...props } /> }
   />
 )

@@ -14,7 +14,7 @@ const ArticleLogicLayer = ({ render, article }) => {
     language.menu[0].title,
     language.articlesPage.title
   ];
-  const category = translateCategory( article.category );
+  const category = article.category;
   const sidebarRef = useRef();
 
   const getScrollPosition = () => {

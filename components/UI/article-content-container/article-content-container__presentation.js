@@ -23,7 +23,7 @@ const ArticleContentContainerPresentationLayer = ({ articles, sites, state, hand
       <Sites>
         {
           sites.map( ( site, index ) => (
-            <Link href = {{ query: { site } }}>
+            <Link key = { index } href = {{ query: { site } }}>
               <Site
                 key = { index }
                 current = { state.currentSite == site ? true : false }

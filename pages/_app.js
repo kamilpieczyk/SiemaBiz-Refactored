@@ -2,13 +2,13 @@ import React, { useEffect } from "react"
 import { Provider } from 'react-redux'
 
 import store from '../Redux/store'
-import { loginUser } from '../Redux/actions'
+import { loginUser, getArticles } from '../Redux/actions'
 import authorisation from '../API/authorisation'
+import GET from '../API/get'
 
 function MyApp({ Component, pageProps }) {
 
   const checkIfUserIsLogged = async () => {
-    
     const passport = window.localStorage.getItem( 'passport' );
 
     if( passport ){
@@ -27,9 +27,15 @@ function MyApp({ Component, pageProps }) {
     }
   }
 
+  const fetchArticles = async () => {
+    const articles = await GET( 'articles' );
+    store.dispatch( getArticles( articles ) );
+  }
+
   useEffect(
     () => {
-      checkIfUserIsLogged()
+      checkIfUserIsLogged();
+      fetchArticles();
     },
     []
   )

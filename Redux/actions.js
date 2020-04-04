@@ -98,3 +98,13 @@ export const setChoiceWindowActive = ({ question, yesFunction }) => ({
 export const setChoiceWindowInactive = () => ({
   type: 'SET_CHOICE_WINDOW_INACTIVE'
 })
+
+// ARTICLES ACTIONS
+
+export const getArticles = ( articles ) => {
+  
+  return {
+    type: 'GET_ARTICLES',
+    payload: { articles }
+  }
+}
