@@ -41,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
   input{
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 100;
+    outline-color: ${ colors.main };
     ::placeholder{
       color: ${ colors.grey };
     }

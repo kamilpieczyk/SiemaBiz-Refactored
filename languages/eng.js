@@ -93,6 +93,9 @@ export default {
       },
     ]
   },
+  indexPage:{
+    searchBoxTitle: 'search at companies cathalogue'
+  },
   userPanel: {
     title: 'user panel',
     adminPanelTitle: 'admin panel',

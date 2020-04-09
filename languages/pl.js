@@ -93,6 +93,9 @@ export default {
       },
     ]
   },
+  indexPage:{
+    searchBoxTitle: 'wyszukaj w katalogu firm'
+  },
   userPanel: {
     title: 'panel użytkownika',
     adminPanelTitle: 'panel administracyjny',

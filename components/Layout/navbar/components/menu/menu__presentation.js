@@ -11,13 +11,13 @@ const Presentation =  ({ source, isPageScrolled }) => (
 
       <Option key={ item.title }>
         <Link href={ item.href }>
-          <>
+          <a>
             <Icon
               icon = { item.icon }
               style = { { color: '#97100c', fontSize: '70px' } }
             />
             <p>{ item.title }</p>
-          </>
+          </a>
         </Link>
       </Option>
 

@@ -50,6 +50,14 @@ export const Option = styled.div`
     position: absolute;
     right: 0;
   }
+
+  a{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
         
   p{
     color: ${ colors.main };

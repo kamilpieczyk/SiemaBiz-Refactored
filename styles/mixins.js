@@ -17,3 +17,10 @@ export const flexCenter = () => `
   justify-content: center;
   align-items: center;
 `
+
+export const absoluteCenter = () => `
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+`

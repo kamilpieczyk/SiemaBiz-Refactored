@@ -1,21 +1,14 @@
 import React from 'react'
 import Head from 'next/head'
-import styled from 'styled-components'
+
 import Layout from '../components/Layout'
+import IndexPage from '../components/index-page'
 
 export default () => (
   <Layout>
-    <Container>
-      <Head>
-        <title>Siemabiz Forum</title>
-      </Head>
-      
-    </Container>
+    <Head>
+      <title>Siemabiz Forum</title>
+    </Head>
+    <IndexPage />
   </Layout>
 )
-
-const Container = styled.div`
-  width: 100vw;
-  height: 200vh;
-  background: url('/images/index-desktop.png');
-`
