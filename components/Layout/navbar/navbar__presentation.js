@@ -83,7 +83,7 @@ const Presentation = ({ scroll, isMenuActive, isUserMenuActive, isUserLogged, la
       </ButtonsContainer>
 
       { 
-        // THIS SECTION SHOWS MENU IF IS ACTIVE
+        // THIS SECTION SHOWS MENU IF IT'S ACTIVE
         isMenuActive && (
           deviceScreenResolution === 'mobile'
             ? <MobileMenu />

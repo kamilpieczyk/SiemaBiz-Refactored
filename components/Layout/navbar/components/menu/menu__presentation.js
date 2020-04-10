@@ -5,11 +5,11 @@ import Icon from '@material/react-material-icon'
 
 import { Container, Option } from './menu__styles'
 
-const Presentation =  ({ source, isPageScrolled }) => (
+const Presentation =  ({ source, isPageScrolled, handleOptionClick }) => (
   <Container isPageScrolled = { isPageScrolled } >
     { source.menu.map( item => (
 
-      <Option key={ item.title }>
+      <Option key={ item.title } onClick = { handleOptionClick }>
         <Link href={ item.href }>
           <a>
             <Icon
@@ -27,7 +27,8 @@ const Presentation =  ({ source, isPageScrolled }) => (
 
 Presentation.propTypes = {
   source: PropTypes.object.isRequired,
-  isPageScrolled: PropTypes.bool
+  isPageScrolled: PropTypes.bool,
+  handleOptionClick: PropTypes.func
 }
 
 export default Presentation
