@@ -28,6 +28,23 @@ export default {
       poland: 'poland',
       general: 'general news',
       all: 'all articles'
+    },
+    industries: {
+      softwareDevelopment: 'software development',
+      it: 'IT',
+      constructionIndustry: 'construction industry',
+      transport: 'transport',
+      automotive: 'automotive',
+      trade: 'trade',
+      manufacturing: 'manufacturing / assembly',
+      banking: 'economy & banking',
+      education: 'education',
+      eletricUtilities: 'eletric utilities',
+      farming: 'farming',
+      healthServices: 'health services',
+      beauty: 'beauty & aesthetic',
+      law: 'law',
+      foodIndustry: 'food industry'
     }
   },
   menu: [
@@ -286,5 +303,9 @@ export default {
     title: 'articles',
     button: 'read',
     buttonVideo: 'watch video',
+  },
+  cathalogueSite: {
+    button: 'see company',
+    industry: 'industry'
   }
 }

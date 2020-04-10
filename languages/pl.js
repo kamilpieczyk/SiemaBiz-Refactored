@@ -28,6 +28,23 @@ export default {
       poland: 'polska',
       general: 'tematyka ogólna',
       all: 'wszystkie'
+    },
+    industries: {
+      softwareDevelopment: 'produkcja oprogramowania',
+      it: 'IT',
+      constructionIndustry: 'branża budowlana',
+      transport: 'transport',
+      automotive: 'motoryzacja',
+      trade: 'handel',
+      manufacturing: 'branża produkcyjna',
+      banking: 'bankowość / ekonomia',
+      education: 'edukacja',
+      eletricUtilities: 'elektryka',
+      farming: 'agrokultura',
+      healthServices: 'medycyna',
+      beauty: 'uroda',
+      law: 'prawo',
+      foodIndustry: 'gastronomia'
     }
   },
   menu: [
@@ -285,5 +302,9 @@ export default {
     title: 'artykuły',
     button: 'czytaj',
     buttonVideo: 'oglądaj video',
+  },
+  cathalogueSite: {
+    button: 'zobacz firmę',
+    industry: 'branża'
   }
 }

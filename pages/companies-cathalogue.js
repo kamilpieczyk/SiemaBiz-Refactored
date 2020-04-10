@@ -1,21 +1,26 @@
 import React from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import Layout from '../components/Layout'
 import SearchBox from '../components/index-page/components/search-box'
+import CathalogueSite from '../components/cathalogue-site'
 
 import get from '../API/get'
 
 const Articles = ({ searchResults }) => {
-  
+
+  const router = useRouter();
+
   return(
     <Layout>
       <Head><title>SiemaBiz Forum</title></Head>
       {
-        searchResults.companies.length === 0
-          ? <SearchBox />
-          : <SearchBox small />
+        router.query.search
+          ? <SearchBox small />
+          : <SearchBox />
       }
+      <CathalogueSite searchResults = { searchResults.companies }/>
     </Layout>
   )
 }
