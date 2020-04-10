@@ -44,7 +44,7 @@ export default {
     {
       title: "companies cathalog",
       icon: "import_contacts",
-      href: "/cathalog"
+      href: "/companies-cathalogue"
     },
     {
       title: "cooperation offers",

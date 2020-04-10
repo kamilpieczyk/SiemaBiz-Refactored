@@ -6,25 +6,25 @@ import { backdropFilter, absoluteCenter, flexCenter } from '../../../../styles/m
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
-  background-size: 100% 100%;
+  height: ${ ({ small }) => small ? '40vh' : '100vh' };
+  background-size: ${ ({ small }) => small ? '100% 100vh' : '100% 100%' };
   background-repeat: no-repeat;
   background-position: center;
   background-image: url( images/index-desktop.png );
   position: relative;
 
   @media ( max-width: ${ mobile }px ) {
-    background-size: 400% 100%;
+    background-size: ${ ({ small }) => small ? '400% 100vh' : '400% 100%' };
     background-position-x: 80%;
-    height: 70vh;
+    height: ${ ({ small }) => small ? '30vh' : '70vh' };
   }
 `
 
 export const Box = styled.div`
-  /* ${ backdropFilter() } */
   ${ absoluteCenter() }
   padding: 40px 30px;
   border-radius: 5px;
+  ${ ({ small }) => small && 'top: 70%;' }
 
   h1{
     color: ${ colors.white };
