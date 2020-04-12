@@ -96,6 +96,12 @@ const getIndustries = () => {
       href: 'companies-cathalogue?site=1&industry=food-industry',
       icon: 'restaurant_menu'
     },
+    {
+      name: 'other',
+      title: languageSource.other,
+      href: 'companies-cathalogue?site=1&industry=other',
+      icon: 'help'
+    },
   ];
   
   return industries;

@@ -44,7 +44,8 @@ export default {
       healthServices: 'medycyna',
       beauty: 'uroda',
       law: 'prawo',
-      foodIndustry: 'gastronomia'
+      foodIndustry: 'gastronomia',
+      other: 'inna'
     }
   },
   menu: [
@@ -305,6 +306,8 @@ export default {
   },
   cathalogueSite: {
     button: 'zobacz firmę',
-    industry: 'branża'
+    industry: 'branża',
+    noSearchResults: 'brak wyników wyszukiwania',
+    nothingToshow: 'brak firm w tej branży'
   }
 }

@@ -1,59 +1,55 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
+import MaterialIcon from '@material/react-material-icon'
 
 import {
   Container,
   Sidebar,
   Content,
-  SearchResult
+  SearchLineSeparator,
+  NoSearchResults
 } from './cathalogue-site__styles'
-import ApiKey from '../../API/key'
+
 import getIndustries from '../../data/industries'
 import Button from '../UI/small-button'
 import SidebarBox from '../UI/sidebar-box'
+import CompanyBox from '../UI/company-box'
+import CompaniesContent from '../UI/companies-content-container'
 
 import withClick from '../HOC/withClick'
+import Separator from '../UI/separator'
 
 const ClickableButton = withClick( Button );
 
-const CathalogueSite = ({ searchResults }) => {
+const CathalogueSite = ({ searchResults, companies }) => {
   const language = useSelector( s => s.language.source );
   const router = useRouter();
-
-  console.log( searchResults );
-
-  const handleButton = ( id ) => {
-    router.push({
-      pathname: '/company',
-      query: { id }
-    })
-  }
+  const searchQuery = router.query.search;
 
   return(
     <Container>
       <Content>
         {
+          searchQuery && searchResults.length === 0 && (
+            <NoSearchResults>
+              <MaterialIcon icon = 'sentiment_very_dissatisfied' />
+              <Separator height = '10px' />
+              { language.cathalogueSite.noSearchResults }
+            </NoSearchResults>
+          )
+        }
+        {
           searchResults && searchResults.map( ( result, index ) => (
-            <SearchResult key = { result.name + index }>
-              <div className = 'image-container'>
-                <img src = { `${ ApiKey }uploads/logos/${ result.logo }` } />
-              </div>
-              
-              <div>
-                <h3>{ result.name }</h3>
-                <span>{ result.industry }</span>
-                <p>{ result.description.slice( 0, 400 ) } ...</p>
-                <div className = 'button-container'>
-                  <ClickableButton onClickFunction = { () => handleButton( result._id ) }>
-                    { language.cathalogueSite.button }
-                  </ClickableButton>
-                </div>
-              </div>
-            </SearchResult>
+            <Fragment key = { result.name + index }>
+              <CompanyBox company = { result } />
+              <Separator height = '10px' />
+            </Fragment>
           ) )
         }
+        { searchResults.length > 0 && <SearchLineSeparator /> }
+        <CompaniesContent companies = { companies } />
       </Content>
 
       <Sidebar>
@@ -64,7 +60,8 @@ const CathalogueSite = ({ searchResults }) => {
 }
 
 CathalogueSite.propTypes = {
-  searchResults: PropTypes.array.isRequired,
+  searchResults: PropTypes.array,
+  companies: PropTypes.array.isRequired,
 }
 
 export default CathalogueSite;

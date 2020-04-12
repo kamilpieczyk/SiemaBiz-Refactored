@@ -17,36 +17,19 @@ export const Content = styled.div`
 
 `
 
-export const SearchResult = styled.article`
-  display: grid;
-  grid-template-columns: 30% 70%;
-  grid-column-gap: 10px;
+export const SearchLineSeparator = styled.div`
   width: 100%;
-  box-shadow: 0 0 10px ${ colors.grey };
-  border-radius: 5px;
-  padding: 20px;
-  background: ${ colors.ultraWhite };
+  border-bottom: 1px dashed ${ colors.lightGrey };
+  margin: 20px 0;
+`
 
-  .image-container{
-    border-right: 1px dashed ${ colors.main };
-    ${ flexCenter() }
-    img{
-      width: 80%;
-    }
-  }
-
-  .button-container{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  h3{
-    color: ${ colors.main };
-    margin-bottom: 0;
-  }
-
-  span{
-    color: ${ colors.darkGrey };
+export const NoSearchResults = styled.div`
+  width: 100%;
+  height: 400px;
+  ${ flexCenter() }
+  flex-direction: column;
+  i{
+    font-size: 4rem;
+    color: ${ colors.grey };
   }
 `

@@ -18,7 +18,7 @@ class SearchBoxLogicLayer extends PureComponent {
     const value = this.inputRef.current.value;
     Router.push({
       pathname: '/companies-cathalogue',
-      query: { search: value }
+      query: { search: value, site: 1 }
     })
   }
 

@@ -44,7 +44,8 @@ export default {
       healthServices: 'health services',
       beauty: 'beauty & aesthetic',
       law: 'law',
-      foodIndustry: 'food industry'
+      foodIndustry: 'food industry',
+      other: 'other'
     }
   },
   menu: [
@@ -306,6 +307,8 @@ export default {
   },
   cathalogueSite: {
     button: 'see company',
-    industry: 'industry'
+    industry: 'industry',
+    noSearchResults: 'no search results',
+    nothingToshow: 'there is no companies in this industry'
   }
 }
