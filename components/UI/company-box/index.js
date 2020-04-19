@@ -19,7 +19,8 @@ const CompanyBox = ({ company }) => {
     router.push({
       pathname: '/company',
       query: { id }
-    })
+    });
+    window.scrollTo( 0, 0 );
   }
 
   return(
