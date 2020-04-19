@@ -12,7 +12,9 @@ import {
   Content,
   Sidebar,
   CompanyContent,
-  ButtonContainer
+  ButtonContainer,
+  UserBox,
+  UsersContainer
 } from './company-site__styles'
 import key from '../../API/key'
 import Loading from '../UI/loading-circle'
@@ -24,7 +26,7 @@ import witchClick from '../HOC/withClick'
 
 const ClickableButton = witchClick( Button );
 
-const CompanySitePresentation = ({ company, state, handleButtonClick }) => {
+const CompanySitePresentation = ({ company, state, handleButtonClick, handleUserBoxClick }) => {
 
   const language = useSelector( s => s.language.source.companySite );
   const device = useSelector( s => s.deviceScreen );
@@ -77,6 +79,22 @@ const CompanySitePresentation = ({ company, state, handleButtonClick }) => {
         <CompanyContent>
           <h1>{ company.name }</h1>
           <p>{ company.description }</p>
+          <h2>{ language.owners }: </h2>
+          <UsersContainer>
+            {
+              company.owners.map( ( owner, index ) => (
+                <UserBox key = { owner+index } onClick = {() => handleUserBoxClick( owner )} >{ owner }</UserBox>
+              ) )
+            }
+          </UsersContainer>
+          <h2>{ language.employees }: </h2>
+          <UsersContainer>
+            {
+              company.employees.map( ( employee, index ) => (
+                <UserBox employee key = { employee+index } onClick = {() => handleUserBoxClick( employee )} >{ employee }</UserBox>
+              ) )
+            }
+          </UsersContainer>
         </CompanyContent>
         <Sidebar>
           <SidebarBox  menu = { getIndustries() } />
@@ -109,7 +127,8 @@ CompanySitePresentation.propTypes = {
     }),
     isLoading: PropTypes.bool
   }).isRequired,
-  handleButtonClick: PropTypes.func.isRequired
+  handleButtonClick: PropTypes.func.isRequired,
+  handleUserBoxClick: PropTypes.func.isRequired
 }
 
 export default CompanySitePresentation;
