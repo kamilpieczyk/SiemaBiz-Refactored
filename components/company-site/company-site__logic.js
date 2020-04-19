@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 
 import sleep from '../../API/sleep'
 
@@ -15,6 +16,8 @@ const CompanySiteLogic = ({ company, render }) => {
     mapStyle: 'mapbox://styles/destroyerpl/ck95q5olh1ptj1imwxpdc6cgo',
   });
   const [ isLoading, setLoading ] = useState( true );
+
+  const router = useRouter();
 
   const getLocation = async () => {
     const adressArray = company.adress.split( ' ' );
@@ -42,6 +45,13 @@ const CompanySiteLogic = ({ company, render }) => {
     window.scrollTo( 0, window.innerHeight );
   }
 
+  const handleUserBoxClick = ( username ) => {
+    router.push({
+      pathname: '/user',
+      query: { username }
+    })
+  }
+
   useEffect(
     () => {
       getLocation();
@@ -53,7 +63,8 @@ const CompanySiteLogic = ({ company, render }) => {
       geo,
       isLoading
     },
-    handleButtonClick
+    handleButtonClick,
+    handleUserBoxClick
   })
 }
 

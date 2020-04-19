@@ -317,6 +317,8 @@ export default {
     city: 'miasto',
     phone: 'telefon kontaktowy',
     website: 'strona internetowa',
+    owners: 'zarząd firmy',
+    employees: 'zatrudnieni pracownicy',
     loading: 'wczytywanie mapy...',
     button: 'zobacz opis'
   }

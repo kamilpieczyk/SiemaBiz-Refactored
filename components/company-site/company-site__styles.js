@@ -89,6 +89,12 @@ export const CompanyContent = styled.div`
   h1{
     color: ${ colors.main };
   }
+
+  h2{
+    color: ${ colors.darkGrey };
+    font-size: 1.2rem;
+  }
+
   p{
     text-align: justify;
   }
@@ -111,4 +117,18 @@ export const ButtonContainer = styled.div`
   transform: translateX( -50% );
   z-index: 100;
 
+`
+
+export const UserBox = styled.div`
+  border-radius: 5px;
+  padding: 8px 15px;
+  background: ${ ({ employee }) => employee ? colors.lightGrey : colors.main  };
+  color: ${ colors.white };
+  margin: 0 3px;
+  cursor: pointer;
+`
+
+export const UsersContainer = styled.div`
+  display: flex;
+  width: 100%;
 `

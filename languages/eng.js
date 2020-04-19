@@ -318,6 +318,8 @@ export default {
     city: 'city',
     phone: 'contact number',
     website: 'website',
+    owners: 'owners',
+    employees: 'company employees',
     loading: 'map is being load...',
     button: 'see description'
   }
