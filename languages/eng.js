@@ -62,7 +62,7 @@ export default {
     {
       title: "companies cathalog",
       icon: "import_contacts",
-      href: "/companies-cathalogue"
+      href: "/companies-cathalogue?site=1"
     },
     {
       title: "cooperation offers",
@@ -310,5 +310,15 @@ export default {
     industry: 'industry',
     noSearchResults: 'no search results',
     nothingToshow: 'there is no companies in this industry'
+  },
+  companySite: {
+    company: 'company',
+    industry: 'industry',
+    adress: 'adress',
+    city: 'city',
+    phone: 'contact number',
+    website: 'website',
+    loading: 'map is being load...',
+    button: 'see description'
   }
 }

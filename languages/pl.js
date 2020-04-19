@@ -62,7 +62,7 @@ export default {
     {
       title: "katalog firm",
       icon: "import_contacts",
-      href: "/companies-cathalogue"
+      href: "/companies-cathalogue?site=1"
     },
     {
       title: "oferty współpracy",
@@ -309,5 +309,15 @@ export default {
     industry: 'branża',
     noSearchResults: 'brak wyników wyszukiwania',
     nothingToshow: 'brak firm w tej branży'
+  },
+  companySite: {
+    company: 'firma',
+    industry: 'branża',
+    adress: 'adres',
+    city: 'miasto',
+    phone: 'telefon kontaktowy',
+    website: 'strona internetowa',
+    loading: 'wczytywanie mapy...',
+    button: 'zobacz opis'
   }
 }

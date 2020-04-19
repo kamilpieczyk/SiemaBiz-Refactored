@@ -12,6 +12,7 @@ export const Container = styled.div`
   color: ${ white };
   border-radius: 5px;
   padding: 20px 0;
+  width: 100%;
 `
 
 export const Content = styled.div`

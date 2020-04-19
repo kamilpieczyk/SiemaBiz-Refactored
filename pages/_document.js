@@ -32,6 +32,7 @@ export default class MyDocument extends Document {
           <link rel='icon' href='/favicon.ico' />
           <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+          <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
           {this.props.styleTags}
         </Head>
         <body>

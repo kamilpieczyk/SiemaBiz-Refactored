@@ -1,6 +1,6 @@
 import store from '../Redux/store'
 
-const getIndustries = () => {
+export const getIndustries = () => {
 
   const state = store.getState();
   const languageSource = state.language.source.general.industries;

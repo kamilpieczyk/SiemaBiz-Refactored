@@ -18,6 +18,7 @@ export const error = "rgb(248, 50, 50)";
 export const succes = "rgb(76, 179, 95)";
 export const warning = "rgb(244, 172, 58)";
 export const info = "rgb(18, 116, 207)";
+export const map = "rgb(222, 208, 181)";
 
 export default {
   main,
@@ -40,5 +41,6 @@ export default {
   error,
   succes,
   warning,
-  info
+  info,
+  map
 }
