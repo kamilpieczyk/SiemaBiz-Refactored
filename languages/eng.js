@@ -234,13 +234,8 @@ export default {
     }
   },
   administrationPanel: {
-    menu: [
-      {
-        title: 'articles list',
-        icon: 'list',
-        href: '/user-panel/articles'
-      },
-    ],
+    articleList: 'article list',
+    companyManagement: 'manage companies of main'
   },
   articlesPanel: {
     title: 'articles panel',

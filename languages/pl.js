@@ -233,13 +233,15 @@ export default {
     }
   },
   administrationPanel: {
-    menu: [
-      {
-        title: 'lista artykułów',
-        icon: 'list',
-        href: '/user-panel/articles'
-      },
-    ],
+    articleList: 'lista artykułów',
+    companyManagement: 'zarządaj moimi firmami',
+  },
+  companyPanel: {
+    addCompanyButton: 'dodaj firmę',
+    searchForCompanyButton: 'wyszukaj firmę',
+    manageEmployeeButton: 'zarządzaj pracownikami',
+    employeeList: 'lista pracowników',
+    owners: 'zarząd firmy'
   },
   articlesPanel: {
     title: 'panel artykułów',

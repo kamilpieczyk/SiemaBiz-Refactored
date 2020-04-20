@@ -7,7 +7,9 @@ import { useSelector } from 'react-redux'
 import Layout from '../../components/Layout'
 import UserPanel from '../../components/User-panel'
 import Articles from '../../components/User-panel/articles'
+import Company from '../../components/User-panel/company-managment'
 import get from '../../API/get'
+import adminMenu from '../../data/admin-panel-menu'
 
 
 const AdminPanel = ({ articles }) => {
@@ -23,8 +25,9 @@ const AdminPanel = ({ articles }) => {
         </title>
       </Head>
 
-      <UserPanel menu = { languageSource.administrationPanel.menu } >
+      <UserPanel menu = { adminMenu } >
         { router.query.page === 'articles' && <Articles articles = { articles } /> }
+        { router.query.page === 'company' && <Company /> }
         
       </UserPanel>
 

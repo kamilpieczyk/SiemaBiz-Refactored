@@ -29,6 +29,7 @@ export default ( state = model, action ) =>{
 
     case 'LOGOUT':
       window.localStorage.removeItem( 'passport' );
+      window.location.replace( '/' );
       state = model;
       return state
       
