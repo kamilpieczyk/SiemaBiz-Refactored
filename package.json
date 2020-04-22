@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "serv": "cd server && yarn dev"
   },
   "dependencies": {
     "@material/react-material-icon": "^0.15.0",

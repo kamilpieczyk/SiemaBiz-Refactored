@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import AUTH from '../../../API/authorisation'
 import GET from '../../../API/get'
+import POST from '../../../API/post'
 import { setPopupWindowActive, logoutUser } from '../../../Redux/actions'
 
 const CompanyManagementLogic = ({ render }) => {
@@ -13,8 +14,9 @@ const CompanyManagementLogic = ({ render }) => {
   const [ employeesWindow, setEmployeesWindow ] = useState({
     isActive: false,
     owners: [],
-    employees: []
-  })
+    employees: [],
+    company: ''
+  });
 
   const dispatch = useDispatch();
   const language = useSelector( s => s.language.source );
@@ -51,13 +53,15 @@ const CompanyManagementLogic = ({ render }) => {
     }
   }
 
-  const handleEmployeeListButton = ( owners, employees ) => {
+  const handleEmployeeListButton = ( owners, employees, company ) => {
+    
     if( employeesWindow.isActive ){
       const window = {
         ...employeesWindow,
         isActive: false,
         owners: [],
-        employees: []
+        employees: [],
+        company: ''
       }
       setEmployeesWindow( window );
     }
@@ -66,8 +70,73 @@ const CompanyManagementLogic = ({ render }) => {
         ...employeesWindow,
         isActive: true,
         owners,
-        employees
+        employees,
+        company
       }
+      setEmployeesWindow( window );
+    }
+  }
+
+  const handleAddOwnerButton = async ( nick, company ) => {
+    
+    const data = await POST( 'add-shareholder', {
+      username: nick,
+      company
+    } );
+
+    if( data.status === 'ok' ){
+      const index = employeesWindow.employees.indexOf( nick );
+      const newEmployees = [ ...employeesWindow.employees ];
+      newEmployees.splice( index, 1 );
+
+      const window = {
+        ...employeesWindow,
+        owners: [ ...employeesWindow.owners, nick ],
+        employees: newEmployees
+      }
+
+      setEmployeesWindow( window );
+    }
+    
+  }
+
+  const handleRemoveOwnerButton = async ( nick, company ) => {
+    const data = await POST( 'remove-shareholder', {
+      username: nick,
+      company
+    } );
+
+    if( data.status === 'removed' ){
+      const index = employeesWindow.owners.indexOf( nick );
+      const newOwners = [ ...employeesWindow.owners ];
+      newOwners.splice( index, 1 );
+
+      const window = {
+        ...employeesWindow,
+        owners: newOwners,
+        employees: [ ...employeesWindow.employees, nick ]
+      }
+
+      setEmployeesWindow( window );
+    }
+  }
+  
+  const handleRemoveEmployeeButton = async ( nick, company ) => {
+    const data = await POST( 'remove-user-from-company', {
+      username: nick,
+      company
+    } );
+
+    if( data.status === 'deleted' ){
+      const index = employeesWindow.employees.indexOf( nick );
+      const newEmployees = [ ...employeesWindow.employees ];
+      newEmployees.splice( index, 1 );
+
+      const window = {
+        ...employeesWindow,
+        employees: newEmployees
+      }
+
       setEmployeesWindow( window );
     }
   }
@@ -87,7 +156,10 @@ const CompanyManagementLogic = ({ render }) => {
       employeesWindow
     },
     handlers: {
-      handleEmployeeListButton
+      handleEmployeeListButton,
+      handleAddOwnerButton,
+      handleRemoveOwnerButton,
+      handleRemoveEmployeeButton
     }
   })
 }

@@ -241,7 +241,10 @@ export default {
     searchForCompanyButton: 'wyszukaj firmę',
     manageEmployeeButton: 'zarządzaj pracownikami',
     employeeList: 'lista pracowników',
-    owners: 'zarząd firmy'
+    owners: 'zarząd firmy',
+    removeOwner: 'usuń z listy wspólników',
+    addOwner: 'dodaj do listy wspólników',
+    deleteFromCompany: 'usuń z firmy'
   },
   articlesPanel: {
     title: 'panel artykułów',

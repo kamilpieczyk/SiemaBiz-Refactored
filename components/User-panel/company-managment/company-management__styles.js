@@ -44,6 +44,7 @@ export const EmployeeBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
   a{
     color: ${ ({ white }) => white ? colors.white : colors.main };
     text-decoration: none;

@@ -29,7 +29,7 @@ const Company = ({
       <img src = { `${ apiKey }uploads/logos/${ logo }` } width = '100' max-height = '100%' />
       <div>{ name }</div>
       <div>{ city }</div>
-      <ClickButton thin onClickFunction = { () => handlers.handleEmployeeListButton( owners, employees ) }>
+      <ClickButton thin onClickFunction = { () => handlers.handleEmployeeListButton( owners, employees, name ) }>
         { language.companyPanel.manageEmployeeButton }
       </ClickButton>
     </Container>

@@ -26,14 +26,18 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
     <Container>
       {
         state.employeesWindow.isActive && (
-          <Window close = { handlers.handleEmployeeListButton } width = '60%'>
+          <Window close = { handlers.handleEmployeeListButton } width = '80%'>
             <EmployeesContainer>
               <h1>{ language.owners }</h1>
               <section>
                 {state.employeesWindow.owners.map( owner => (
                   <EmployeeBox key = { owner }>
                     <Link href = {{ pathname: '/user', query: { username: owner } }} ><a>{ owner }</a></Link>
-                    <MaterialIcon icon = 'vertical_align_bottom' />
+                    <MaterialIcon
+                      icon = 'remove_circle'
+                      title = { language.removeOwner }
+                      onClick = { () => handlers.handleRemoveOwnerButton( owner, state.employeesWindow.company ) }
+                    />
                   </EmployeeBox>
                 ))}
               </section>
@@ -45,8 +49,16 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                   <EmployeeBox white key = { employee }>
                     <Link href = {{ pathname: '/user', query: { username: employee } }} ><a>{ employee }</a></Link>
                     <div>
-                      <MaterialIcon icon = 'vertical_align_top' />
-                      <MaterialIcon icon = 'delete' />
+                      <MaterialIcon
+                        icon = 'vertical_align_top'
+                        title = { language.addOwner }
+                        onClick = { () => handlers.handleAddOwnerButton( employee, state.employeesWindow.company ) }
+                      />
+                      <MaterialIcon
+                        icon = 'delete'
+                        title = { language.deleteFromCompany }
+                        onClick = { () => handlers.handleRemoveEmployeeButton( employee, state.employeesWindow.company ) }
+                      />
                     </div>
                   </EmployeeBox>
                 ))}
@@ -117,11 +129,15 @@ CompanyManagementPresentation.propTypes = {
     employeesWindow: PropTypes.shape({
       isActive: PropTypes.bool,
       employees: PropTypes.array,
-      owners: PropTypes.array
+      owners: PropTypes.array,
+      company: PropTypes.string
     }),
   }),
   handlers: PropTypes.shape({
-    handleEmployeeListButton: PropTypes.func.isRequired
+    handleEmployeeListButton: PropTypes.func.isRequired,
+    handleAddOwnerButton: PropTypes.func.isRequired,
+    handleRemoveOwnerButton: PropTypes.func.isRequired,
+    handleRemoveEmployeeButton: PropTypes.func.isRequired
   })
 }
 
