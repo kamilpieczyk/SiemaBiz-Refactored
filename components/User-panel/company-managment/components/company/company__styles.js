@@ -12,4 +12,13 @@ export const Container = styled.div`
   align-items: center;
   margin: 0 0 10px 0;
   height: 100px;
+
+  i{
+    color: ${ colors.main };
+    cursor: pointer;
+  }
+
+  section{
+    display: flex;
+  }
 `

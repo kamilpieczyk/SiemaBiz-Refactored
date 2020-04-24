@@ -79,7 +79,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
       </ButtonsContainer>
       <CompaniesContainer>
         {
-          state.companies && state.companies.map(
+          state.companies?.map(
             ( company, index ) => (
               <Company key = { company._id }
                 name = { company.name }
@@ -89,6 +89,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                 owners = { company.owners }
                 employees = { company.employees }
                 handlers = { handlers }
+                isLoading = { state.isLoading }
               />
             )
           )
@@ -132,12 +133,16 @@ CompanyManagementPresentation.propTypes = {
       owners: PropTypes.array,
       company: PropTypes.string
     }),
+    isLoading: PropTypes.shape({
+      deleteCompany: PropTypes.bool
+    }),
   }),
   handlers: PropTypes.shape({
     handleEmployeeListButton: PropTypes.func.isRequired,
     handleAddOwnerButton: PropTypes.func.isRequired,
     handleRemoveOwnerButton: PropTypes.func.isRequired,
-    handleRemoveEmployeeButton: PropTypes.func.isRequired
+    handleRemoveEmployeeButton: PropTypes.func.isRequired,
+    handleDeleteCompanyButton: PropTypes.func.isRequired
   })
 }
 

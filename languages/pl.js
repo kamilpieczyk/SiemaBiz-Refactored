@@ -109,6 +109,12 @@ export default {
         href: '/user-panel/administration-panel?page=articles',
         priv: '225803'
       },
+      {
+        title: 'zarządzaj moimi firmami',
+        icon: 'business_center',
+        href: '/user-panel/administration-panel?page=company',
+        priv: '225801'
+      },
     ]
   },
   indexPage:{
@@ -244,7 +250,11 @@ export default {
     owners: 'zarząd firmy',
     removeOwner: 'usuń z listy wspólników',
     addOwner: 'dodaj do listy wspólników',
-    deleteFromCompany: 'usuń z firmy'
+    deleteFromCompany: 'usuń z firmy',
+    deleteCompanyQuestion: ( company ) => `jesteś pewny/a że chcesz usunąć firmę ${ company }?`,
+    deleteCompany: 'usuń firmę',
+    cancel: 'anuluj',
+    deletingCompany: 'czekaj, trwa usuwanie firmy...'
   },
   articlesPanel: {
     title: 'panel artykułów',

@@ -17,6 +17,9 @@ const CompanyManagementLogic = ({ render }) => {
     employees: [],
     company: ''
   });
+  const [ isLoading, setLoading ] = useState({
+    deleteCompany: false
+  })
 
   const dispatch = useDispatch();
   const language = useSelector( s => s.language.source );
@@ -141,6 +144,15 @@ const CompanyManagementLogic = ({ render }) => {
     }
   }
 
+  const handleDeleteCompanyButton = async ( id, logo ) => {
+    setLoading({ ...isLoading, deleteCompany: true });
+    const deleteData = await POST( 'delete-company', { id, logo } );
+    if( deleteData.status === 'deleted' ){
+      setLoading({ ...isLoading, deleteCompany: false });
+      getUserCompanies();
+    }
+  }
+
   useEffect(
     () => {
       getUserCompanies();
@@ -153,19 +165,21 @@ const CompanyManagementLogic = ({ render }) => {
     state: {
       companies,
       employers,
-      employeesWindow
+      employeesWindow,
+      isLoading
     },
     handlers: {
       handleEmployeeListButton,
       handleAddOwnerButton,
       handleRemoveOwnerButton,
-      handleRemoveEmployeeButton
+      handleRemoveEmployeeButton,
+      handleDeleteCompanyButton
     }
   })
 }
 
 CompanyManagementLogic.propTypes = {
-
+  render: PropTypes.func.isRequired
 }
 
 export default CompanyManagementLogic;

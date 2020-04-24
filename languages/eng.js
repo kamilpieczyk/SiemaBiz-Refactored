@@ -109,6 +109,12 @@ export default {
         href: '/user-panel/administration-panel?page=articles',
         priv: '225803'
       },
+      {
+        title: 'manage my companies',
+        icon: 'business_center',
+        href: '/user-panel/administration-panel?page=company',
+        priv: '225801'
+      },
     ]
   },
   indexPage:{
