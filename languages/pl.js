@@ -256,7 +256,9 @@ export default {
     cancel: 'anuluj',
     deletingCompany: 'czekaj, trwa usuwanie firmy...',
     manageJobAds: 'zarządzaj ogłoszeniami pracy',
-    manageCooperationAds: 'zarządzaj ofertami współpracy'
+    manageCooperationAds: 'zarządzaj ofertami współpracy',
+    fold: 'zwiń',
+    nothingToShow: 'brak treści do wyświetlenia'
   },
   articlesPanel: {
     title: 'panel artykułów',

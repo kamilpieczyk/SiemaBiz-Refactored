@@ -39,12 +39,12 @@ const Company = ({
     },
     {
       title: language.manageJobAds,
-      icon: 'work',
-      onClick: () => {}
+      icon: 'group_add',
+      onClick: () => handlers.handleManageJobAdsButton( id )
     },
     {
       title: language.manageCooperationAds,
-      icon: 'group_add',
+      icon: 'work',
       onClick: () => {}
     },
   ];
@@ -116,7 +116,8 @@ Company.propTypes = {
     deleteCompany: PropTypes.bool
   }),
   handlers: PropTypes.shape({
-    handleEmployeeListButton: PropTypes.func.isRequired
+    handleEmployeeListButton: PropTypes.func.isRequired,
+    handleManageJobAdsButton: PropTypes.func.isRequired
   }).isRequired
 }
 

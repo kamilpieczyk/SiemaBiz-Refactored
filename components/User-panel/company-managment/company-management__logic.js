@@ -17,6 +17,11 @@ const CompanyManagementLogic = ({ render }) => {
     employees: [],
     company: ''
   });
+  const [ jobAdsWindow, setJobAdsWindow ] = useState({
+    isActive: false,
+    companyID: '',
+    jobAds: []
+  });
   const [ isLoading, setLoading ] = useState({
     deleteCompany: false
   })
@@ -153,6 +158,20 @@ const CompanyManagementLogic = ({ render }) => {
     }
   }
 
+  const handleManageJobAdsButton = async ( companyID, close ) => {
+    if( close ) setJobAdsWindow({ ...jobAdsWindow, isActive: false });
+    else{
+      const ads = await GET( `get-job-ads/${ companyID }` );
+      console.log( ads.ads );
+      setJobAdsWindow({
+        ...jobAdsWindow,
+        isActive: true,
+        companyID,
+        jobAds: ads.ads
+      })
+    }
+  }
+
   useEffect(
     () => {
       getUserCompanies();
@@ -166,14 +185,16 @@ const CompanyManagementLogic = ({ render }) => {
       companies,
       employers,
       employeesWindow,
-      isLoading
+      isLoading,
+      jobAdsWindow
     },
     handlers: {
       handleEmployeeListButton,
       handleAddOwnerButton,
       handleRemoveOwnerButton,
       handleRemoveEmployeeButton,
-      handleDeleteCompanyButton
+      handleDeleteCompanyButton,
+      handleManageJobAdsButton
     }
   })
 }

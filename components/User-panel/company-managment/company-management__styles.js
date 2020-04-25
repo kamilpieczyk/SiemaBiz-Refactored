@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import colors from '../../../styles/colors'
-import {  } from '../../../styles/mixins'
+import { backdropFilter } from '../../../styles/mixins'
 import { mobile } from '../../../styles/devices'
 
 export const Container = styled.div`
@@ -44,7 +44,7 @@ export const EmployeeBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
   a{
     color: ${ ({ white }) => white ? colors.white : colors.main };
     text-decoration: none;
@@ -64,4 +64,33 @@ export const EmployeeBox = styled.div`
     display: flex;
     
   }
+`
+
+export const CompanieContentContainer = styled.section`
+  margin-left: 20%;
+  padding: 20px 0;
+`
+
+export const JobAdBox = styled.div`
+  background: ${ colors.white };
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  div{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`
+
+export const Warning = styled.div`
+  background: ${ colors.white };
+  color: ${ colors.warning };
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid ${ colors.warning };
+  text-align: center;
 `

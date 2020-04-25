@@ -8,13 +8,17 @@ import Button from '../../UI/small-button'
 import Company from './components/company'
 import witchClick from '../../HOC/withClick'
 import Window from '../../UI/window'
+import Separator from '../../UI/separator'
 
 import {
   Container,
   ButtonsContainer,
   CompaniesContainer,
   EmployeesContainer,
-  EmployeeBox
+  EmployeeBox,
+  CompanieContentContainer,
+  JobAdBox,
+  Warning
 } from './company-management__styles'
 
 const ClickButton = witchClick( Button );
@@ -30,7 +34,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
             <EmployeesContainer>
               <h1>{ language.owners }</h1>
               <section>
-                {state.employeesWindow.owners.map( owner => (
+                { state.employeesWindow.owners.map( owner => (
                   <EmployeeBox key = { owner }>
                     <Link href = {{ pathname: '/user', query: { username: owner } }} ><a>{ owner }</a></Link>
                     <MaterialIcon
@@ -39,7 +43,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                       onClick = { () => handlers.handleRemoveOwnerButton( owner, state.employeesWindow.company ) }
                     />
                   </EmployeeBox>
-                ))}
+                )) }
               </section>
             </EmployeesContainer>
             <EmployeesContainer white>
@@ -67,6 +71,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
           </Window>
         )
       }
+
       <ButtonsContainer>
         <ClickButton onClickFunction = { () => {} }>
           <MaterialIcon icon = 'work' />
@@ -81,16 +86,56 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
         {
           state.companies?.map(
             ( company, index ) => (
-              <Company key = { company._id }
-                name = { company.name }
-                logo = { company.logo }
-                city = { company.city }
-                id = { company._id }
-                owners = { company.owners }
-                employees = { company.employees }
-                handlers = { handlers }
-                isLoading = { state.isLoading }
-              />
+              <React.Fragment>
+                <Company key = { company._id }
+                  name = { company.name }
+                  logo = { company.logo }
+                  city = { company.city }
+                  id = { company._id }
+                  owners = { company.owners }
+                  employees = { company.employees }
+                  handlers = { handlers }
+                  isLoading = { state.isLoading }
+                />
+
+                {
+                  state.jobAdsWindow.isActive && company._id === state.jobAdsWindow.companyID && (
+                    <CompanieContentContainer>
+                      {
+                        state.jobAdsWindow.jobAds?.map(
+                          jobAd => (
+                            <JobAdBox key = { jobAd._id }>
+                              <div>
+                                <p>{ jobAd.industry } - { jobAd.title }</p>
+                                <p>{ jobAd.city }</p>
+                              </div>
+                              <section>
+                                <MaterialIcon icon = 'assignment_ind' />
+                                <MaterialIcon icon = 'edit' />
+                                <MaterialIcon icon = 'archive' />
+                              </section>
+                            </JobAdBox>
+                          )
+                        )
+                      }
+                      {
+                        state.jobAdsWindow.jobAds.length === 0 && (
+                          <Warning>{ language.nothingToShow }</Warning>
+                        )
+                      }
+                      <Separator height = '20px' />
+                      <ClickButton
+                        onClickFunction = { () => handlers.handleManageJobAdsButton( null , true ) }
+                        maxWidth
+                      >
+                        <MaterialIcon icon = 'keyboard_arrow_up' />
+                        { language.fold }
+                      </ClickButton>
+                    </CompanieContentContainer>
+                  )
+                }
+
+              </React.Fragment>
             )
           )
         }
@@ -133,6 +178,10 @@ CompanyManagementPresentation.propTypes = {
       owners: PropTypes.array,
       company: PropTypes.string
     }),
+    jobAdsWindow: PropTypes.shape({
+      isActive: PropTypes.bool,
+      companyID: PropTypes.string
+    }),
     isLoading: PropTypes.shape({
       deleteCompany: PropTypes.bool
     }),
@@ -142,7 +191,8 @@ CompanyManagementPresentation.propTypes = {
     handleAddOwnerButton: PropTypes.func.isRequired,
     handleRemoveOwnerButton: PropTypes.func.isRequired,
     handleRemoveEmployeeButton: PropTypes.func.isRequired,
-    handleDeleteCompanyButton: PropTypes.func.isRequired
+    handleDeleteCompanyButton: PropTypes.func.isRequired,
+    handleManageJobAdsButton: PropTypes.func.isRequired
   })
 }
 
