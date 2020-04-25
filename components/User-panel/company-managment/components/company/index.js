@@ -10,6 +10,8 @@ import { main } from '../../../../../styles/colors'
 
 import { 
   Container,
+  ActionContainer,
+  Action
 } from './company__styles'
 import MaterialIcon from '@material/react-material-icon'
 
@@ -28,6 +30,24 @@ const Company = ({
 
   const [ isDeleting, setDeleting ] = useState( false );
   const language = useSelector( s => s.language.source.companyPanel );
+
+  const actions = [
+    {
+      title: language.manageEmployeeButton,
+      icon: 'people',
+      onClick: () => handlers.handleEmployeeListButton( owners, employees, name )
+    },
+    {
+      title: language.manageJobAds,
+      icon: 'work',
+      onClick: () => {}
+    },
+    {
+      title: language.manageCooperationAds,
+      icon: 'group_add',
+      onClick: () => {}
+    },
+  ];
 
   return(
     <Container>
@@ -52,13 +72,32 @@ const Company = ({
             )
           :(
             <React.Fragment>
-              <img src = { `${ apiKey }uploads/logos/${ logo }` } width = '100' max-height = '100%' />
+              <img
+                src = { `${ apiKey }uploads/logos/${ logo }` } 
+                width = '100'
+                max-height = '100%'
+                title = { name }
+              />
               <div>{ name }</div>
               <div>{ city }</div>
-              <ClickButton thin onClickFunction = { () => handlers.handleEmployeeListButton( owners, employees, name ) }>
-                { language.manageEmployeeButton }
-              </ClickButton>
-              <MaterialIcon icon = 'delete_forever' onClick = { () => setDeleting( true ) } />
+
+              <ActionContainer>
+                {
+                  actions.map( element => (
+                    <Action key = { element.title } onClick = { element.onClick } title = { element.title }>
+                      <MaterialIcon icon = { element.icon } />
+                      <p>{ element.title }</p>
+                    </Action>
+                  ) )
+                }
+
+              </ActionContainer>
+
+              <MaterialIcon
+                title = { language.deleteCompany }
+                icon = 'delete_forever'
+                onClick = { () => setDeleting( true ) }
+              />
             </React.Fragment>
           )
       }

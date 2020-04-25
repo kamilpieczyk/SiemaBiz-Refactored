@@ -22,3 +22,30 @@ export const Container = styled.div`
     display: flex;
   }
 `
+
+export const ActionContainer = styled.div`
+
+`
+
+export const Action = styled.div`
+  display: flex;
+  cursor: pointer;
+
+  p{
+    font-size: .9rem;
+    color: ${ colors.main };
+  }
+
+  i{
+    font-size: .9rem;
+    position: relative;
+    top: 1px;
+    margin-right: 3px;
+  }
+
+  :hover{
+    p{
+      text-decoration: underline;
+    }
+  }
+`

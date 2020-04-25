@@ -254,7 +254,9 @@ export default {
     deleteCompanyQuestion: ( company ) => `jesteś pewny/a że chcesz usunąć firmę ${ company }?`,
     deleteCompany: 'usuń firmę',
     cancel: 'anuluj',
-    deletingCompany: 'czekaj, trwa usuwanie firmy...'
+    deletingCompany: 'czekaj, trwa usuwanie firmy...',
+    manageJobAds: 'zarządzaj ogłoszeniami pracy',
+    manageCooperationAds: 'zarządzaj ofertami współpracy'
   },
   articlesPanel: {
     title: 'panel artykułów',
