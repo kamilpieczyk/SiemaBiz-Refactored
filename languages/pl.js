@@ -258,7 +258,12 @@ export default {
     manageJobAds: 'zarządzaj ogłoszeniami pracy',
     manageCooperationAds: 'zarządzaj ofertami współpracy',
     fold: 'zwiń',
-    nothingToShow: 'brak treści do wyświetlenia'
+    nothingToShow: 'brak treści do wyświetlenia',
+    cv: 'przeglądaj aplikacjie',
+    edit: 'edytuj ogłoszenie',
+    archivise: 'przenieś do archiwum',
+    archiviseQuestion: 'jesteś pewien, że chcesz archiwizować to ogłoszenie?',
+    isLoadingArchivise: '...trwa archiwizowanie'
   },
   articlesPanel: {
     title: 'panel artykułów',

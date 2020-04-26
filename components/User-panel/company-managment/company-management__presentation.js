@@ -9,6 +9,8 @@ import Company from './components/company'
 import witchClick from '../../HOC/withClick'
 import Window from '../../UI/window'
 import Separator from '../../UI/separator'
+import LoadingCircle from '../../UI/loading-circle'
+import { main } from '../../../styles/colors'
 
 import {
   Container,
@@ -28,7 +30,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
   
   return(
     <Container>
-      {
+      { //MANAGE EMPLOYEE WINDOW
         state.employeesWindow.isActive && (
           <Window close = { handlers.handleEmployeeListButton } width = '80%'>
             <EmployeesContainer>
@@ -71,7 +73,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
           </Window>
         )
       }
-
+      {/* ACTION BUTTONS AT THE TOP OF SITE */}
       <ButtonsContainer>
         <ClickButton onClickFunction = { () => {} }>
           <MaterialIcon icon = 'work' />
@@ -82,6 +84,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
           { language.searchForCompanyButton }
         </ClickButton>
       </ButtonsContainer>
+
       <CompaniesContainer>
         {
           state.companies?.map(
@@ -98,32 +101,68 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                   isLoading = { state.isLoading }
                 />
 
-                {
+                { // JOB ADs
                   state.jobAdsWindow.isActive && company._id === state.jobAdsWindow.companyID && (
                     <CompanieContentContainer>
                       {
                         state.jobAdsWindow.jobAds?.map(
                           jobAd => (
                             <JobAdBox key = { jobAd._id }>
-                              <div>
-                                <p>{ jobAd.industry } - { jobAd.title }</p>
-                                <p>{ jobAd.city }</p>
-                              </div>
-                              <section>
-                                <MaterialIcon icon = 'assignment_ind' />
-                                <MaterialIcon icon = 'edit' />
-                                <MaterialIcon icon = 'archive' />
-                              </section>
+                              
+                              {
+                                state.isArchiviseActive.bool && state.isArchiviseActive.id === jobAd._id
+                                  // show if archivise icon has been clicked
+                                  ? state.isLoading.archivise // show if 'yes' button has been clicked (loading)
+                                    ? <LoadingCircle text = { language.isLoadingArchivise } color = { main } />
+                                    :(
+                                      <React.Fragment>
+                                        <p>{ language.archiviseQuestion }</p>
+                                        <ClickButton onClickFunction = { () => handlers.handleArchiviseJobAd( jobAd._id )() }>
+                                          { language.archivise }
+                                        </ClickButton>
+                                        <ClickButton onClickFunction = { () => handlers.handleArchiviseJobAd( null, true ) }>
+                                          { language.cancel }
+                                        </ClickButton>
+                                      </React.Fragment>
+                                    )
+                                    // show ad
+                                  :(
+                                    <React.Fragment>
+                                      <div>
+                                        <p>{ jobAd.industry } - { jobAd.title }</p>
+                                        <p>{ jobAd.city }</p>
+                                      </div>
+                                      <section>
+                                        <MaterialIcon
+                                          icon = 'assignment_ind'
+                                          title = { language.cv }
+                                        />
+                                        <MaterialIcon
+                                          icon = 'edit'
+                                          title = { language.edit }
+                                        />
+                                        <MaterialIcon
+                                          icon = 'archive'
+                                          title = { language.archivise }
+                                          onClick = { () => handlers.handleArchiviseJobAd( jobAd._id ) }
+                                        />
+                                      </section>
+                                    </React.Fragment>
+                                  )
+                              }
                             </JobAdBox>
                           )
                         )
                       }
-                      {
+
+                      { // SHOW THIS INFO IF THERE IS NO JOB ADs TO SHOW
                         state.jobAdsWindow.jobAds.length === 0 && (
                           <Warning>{ language.nothingToShow }</Warning>
                         )
                       }
+
                       <Separator height = '20px' />
+                      {/* FOLD JOB ADs BUTTON */}
                       <ClickButton
                         onClickFunction = { () => handlers.handleManageJobAdsButton( null , true ) }
                         maxWidth
@@ -131,6 +170,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                         <MaterialIcon icon = 'keyboard_arrow_up' />
                         { language.fold }
                       </ClickButton>
+
                     </CompanieContentContainer>
                   )
                 }
@@ -183,8 +223,13 @@ CompanyManagementPresentation.propTypes = {
       companyID: PropTypes.string
     }),
     isLoading: PropTypes.shape({
-      deleteCompany: PropTypes.bool
+      deleteCompany: PropTypes.bool,
+      archivise: PropTypes.bool
     }),
+    isArchiviseActive: PropTypes.shape({
+      bool: PropTypes.bool,
+      id: PropTypes.string
+    })
   }),
   handlers: PropTypes.shape({
     handleEmployeeListButton: PropTypes.func.isRequired,
@@ -192,7 +237,8 @@ CompanyManagementPresentation.propTypes = {
     handleRemoveOwnerButton: PropTypes.func.isRequired,
     handleRemoveEmployeeButton: PropTypes.func.isRequired,
     handleDeleteCompanyButton: PropTypes.func.isRequired,
-    handleManageJobAdsButton: PropTypes.func.isRequired
+    handleManageJobAdsButton: PropTypes.func.isRequired,
+    handleArchiviseJobAd: PropTypes.func.isActive
   })
 }
 

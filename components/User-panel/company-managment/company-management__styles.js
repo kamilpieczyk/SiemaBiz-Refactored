@@ -77,6 +77,7 @@ export const JobAdBox = styled.div`
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 
   div{
     display:flex;
@@ -84,13 +85,19 @@ export const JobAdBox = styled.div`
     justify-content: center;
     align-items: center;
   }
+
+  section{
+    i{
+      color: ${ colors.main };
+      cursor: pointer;
+    }
+  }
 `
 
 export const Warning = styled.div`
   background: ${ colors.white };
-  color: ${ colors.warning };
+  color: ${ colors.main };
   padding: 15px;
   border-radius: 5px;
-  border: 2px solid ${ colors.warning };
   text-align: center;
 `

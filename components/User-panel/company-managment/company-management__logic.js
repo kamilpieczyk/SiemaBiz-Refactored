@@ -23,8 +23,13 @@ const CompanyManagementLogic = ({ render }) => {
     jobAds: []
   });
   const [ isLoading, setLoading ] = useState({
-    deleteCompany: false
-  })
+    deleteCompany: false,
+    archivise: false
+  });
+  const [ isArchiviseActive, setArchiviseActive ] = useState({
+    bool: false,
+    id: ''
+  });
 
   const dispatch = useDispatch();
   const language = useSelector( s => s.language.source );
@@ -162,13 +167,46 @@ const CompanyManagementLogic = ({ render }) => {
     if( close ) setJobAdsWindow({ ...jobAdsWindow, isActive: false });
     else{
       const ads = await GET( `get-job-ads/${ companyID }` );
+
       console.log( ads.ads );
+
       setJobAdsWindow({
         ...jobAdsWindow,
         isActive: true,
         companyID,
         jobAds: ads.ads
-      })
+      });
+    }
+  }
+
+  const handleArchiviseJobAd = ( adID, cancel ) => {
+    
+    if( cancel ) setArchiviseActive({ bool: false, id: '' }); // use if button 'cancel' has been clicked
+    else{
+      if( isArchiviseActive.bool && adID !== isArchiviseActive.id ){
+        // if other option is under archivisation
+        setArchiviseActive({ ...isArchiviseActive, id: adID });
+      }
+      else if( isArchiviseActive.bool ){
+        // use if button 'yes' has been clicked
+        return async () => {
+          setLoading({ ...isLoading, archivise: true });
+          const archivise = await POST( 'archive-job-ad', { id: adID } );
+          if( archivise.status === 'ok' ){
+            const ads = await GET( `get-job-ads/${ jobAdsWindow.companyID }` );
+            setJobAdsWindow({
+              ...jobAdsWindow,
+              isActive: true,
+              jobAds: ads.ads
+            });
+            setArchiviseActive({ bool: false, id: '' });
+            setLoading({ ...isLoading, archivise: false });
+          }
+        }
+      }
+      else{ // use if icon 'archivise' has been clicked
+        setArchiviseActive({ bool: true, id: adID });
+      }
     }
   }
 
@@ -186,7 +224,8 @@ const CompanyManagementLogic = ({ render }) => {
       employers,
       employeesWindow,
       isLoading,
-      jobAdsWindow
+      jobAdsWindow,
+      isArchiviseActive
     },
     handlers: {
       handleEmployeeListButton,
@@ -194,7 +233,8 @@ const CompanyManagementLogic = ({ render }) => {
       handleRemoveOwnerButton,
       handleRemoveEmployeeButton,
       handleDeleteCompanyButton,
-      handleManageJobAdsButton
+      handleManageJobAdsButton,
+      handleArchiviseJobAd
     }
   })
 }
