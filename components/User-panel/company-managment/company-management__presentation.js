@@ -10,6 +10,7 @@ import witchClick from '../../HOC/withClick'
 import Window from '../../UI/window'
 import Separator from '../../UI/separator'
 import LoadingCircle from '../../UI/loading-circle'
+import Input from '../../UI/input'
 import { main } from '../../../styles/colors'
 
 import {
@@ -27,6 +28,33 @@ const ClickButton = witchClick( Button );
 
 const CompanyManagementPresentation = ({ state, handlers }) => {
   const language = useSelector( s => s.language.source.companyPanel );
+  const jobAdInputs = [
+    {
+      title: language.newJobAd.title,
+      name: 'title',
+      value: state.addJobAd.inputs.title 
+    },
+    {
+      title: language.newJobAd.city,
+      name: 'city',
+      value: state.addJobAd.inputs.city
+    },
+    {
+      title: language.newJobAd.hours,
+      name: 'hoursRange',
+      value: state.addJobAd.inputs.hoursRange
+    },
+    {
+      title: language.newJobAd.salary,
+      name: 'wages',
+      value: state.addJobAd.inputs.wages
+    },
+    {
+      title: language.newJobAd.requirements,
+      name: 'requirements',
+      value: state.addJobAd.inputs.requirements
+    },
+  ];
   
   return(
     <Container>
@@ -73,12 +101,36 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
           </Window>
         )
       }
+
+      {
+        // ADDING NEW / EDITING JOB AD WINDOW
+        state.addJobAd.isActive && (
+          <Window width = '80%' close = { () => handlers.handleJobAdWindow( false, true, {} ) }>
+            <h1>{ state.addJobAd.companyName } - { language.addNewJobAd }</h1>
+            {
+              jobAdInputs.map(
+                ( input, index ) => (
+                  <Input
+                    key = { index }
+                    name = { input.name }
+                    label = { input.title }
+                    value = { input.value}
+                    onChange = { e => handlers.handleJobAdWindowInputs( e.target.name, e.target.value ) }
+                  />
+                )
+              )
+            }
+          </Window>
+        )
+      }
+
       {/* ACTION BUTTONS AT THE TOP OF SITE */}
       <ButtonsContainer>
         <ClickButton onClickFunction = { () => {} }>
           <MaterialIcon icon = 'work' />
           { language.addCompanyButton }
         </ClickButton>
+        <Separator width = '20px' />
         <ClickButton onClickFunction = { () => {} }>
           <MaterialIcon icon = 'pageview' />
           { language.searchForCompanyButton }
@@ -104,6 +156,16 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                 { // JOB ADs
                   state.jobAdsWindow.isActive && company._id === state.jobAdsWindow.companyID && (
                     <CompanieContentContainer>
+                      {/* add new job ad button */}
+                      <ClickButton maxWidth onClickFunction = { () => handlers.handleJobAdWindow( false, false, {
+                        companyID: company._id,
+                        companyName: company.name
+                      }) } >
+                        <MaterialIcon icon = 'add' />
+                        { language.addNewJobAd }
+                      </ClickButton>
+                      <Separator height = '10px' />
+
                       {
                         state.jobAdsWindow.jobAds?.map(
                           jobAd => (
@@ -125,13 +187,14 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                                         </ClickButton>
                                       </React.Fragment>
                                     )
-                                    // show ad
+                                    // SHOW JOB AD CONTENT
                                   :(
                                     <React.Fragment>
                                       <div>
-                                        <p>{ jobAd.industry } - { jobAd.title }</p>
+                                        <p>{ jobAd.title }</p>
                                         <p>{ jobAd.city }</p>
                                       </div>
+                                      <div>{ jobAd.industry }</div>
                                       <section>
                                         <MaterialIcon
                                           icon = 'assignment_ind'
@@ -140,6 +203,10 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                                         <MaterialIcon
                                           icon = 'edit'
                                           title = { language.edit }
+                                          onClick = { () => handlers.handleJobAdWindow( jobAd._id, false, {
+                                            companyID: company._id,
+                                            companyName: company.name
+                                          } ) }
                                         />
                                         <MaterialIcon
                                           icon = 'archive'
@@ -161,11 +228,12 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                         )
                       }
 
-                      <Separator height = '20px' />
                       {/* FOLD JOB ADs BUTTON */}
+                      <Separator height = '15px' />
                       <ClickButton
                         onClickFunction = { () => handlers.handleManageJobAdsButton( null , true ) }
                         maxWidth
+                        smallHeight
                       >
                         <MaterialIcon icon = 'keyboard_arrow_up' />
                         { language.fold }
@@ -229,7 +297,23 @@ CompanyManagementPresentation.propTypes = {
     isArchiviseActive: PropTypes.shape({
       bool: PropTypes.bool,
       id: PropTypes.string
-    })
+    }),
+    addJobAd: PropTypes.shape({
+      isActive: PropTypes.bool,
+      isEditMode: PropTypes.bool,
+      company: PropTypes.string,
+      companyID: PropTypes.string,
+      inputs: PropTypes.shape({
+        title: PropTypes.string,
+        city: PropTypes.string,
+        hoursRange: PropTypes.string,
+        wages: PropTypes.string,
+        industry: PropTypes.string,
+        duties: PropTypes.string,
+        requirements: PropTypes.string,
+        description: PropTypes.string,
+      })
+    }),
   }),
   handlers: PropTypes.shape({
     handleEmployeeListButton: PropTypes.func.isRequired,
@@ -238,7 +322,9 @@ CompanyManagementPresentation.propTypes = {
     handleRemoveEmployeeButton: PropTypes.func.isRequired,
     handleDeleteCompanyButton: PropTypes.func.isRequired,
     handleManageJobAdsButton: PropTypes.func.isRequired,
-    handleArchiviseJobAd: PropTypes.func.isActive
+    handleArchiviseJobAd: PropTypes.func.isActive,
+    handleJobAdWindow: PropTypes.func.isActive,
+    handleJobAdWindowInputs: PropTypes.func.isActive,
   })
 }
 

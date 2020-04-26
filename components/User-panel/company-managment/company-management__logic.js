@@ -22,6 +22,22 @@ const CompanyManagementLogic = ({ render }) => {
     companyID: '',
     jobAds: []
   });
+  const [ addJobAd, setAddJobAd ] = useState({
+    isActive: false,
+    isEditMode: false,
+    companyName: '',
+    companyID: '',
+    inputs: {
+      title: '',
+      city: '',
+      hoursRange: '',
+      wages: '',
+      industry: '',
+      duties: '',
+      requirements: '',
+      description: '',
+    }
+  });
   const [ isLoading, setLoading ] = useState({
     deleteCompany: false,
     archivise: false
@@ -168,8 +184,6 @@ const CompanyManagementLogic = ({ render }) => {
     else{
       const ads = await GET( `get-job-ads/${ companyID }` );
 
-      console.log( ads.ads );
-
       setJobAdsWindow({
         ...jobAdsWindow,
         isActive: true,
@@ -210,6 +224,72 @@ const CompanyManagementLogic = ({ render }) => {
     }
   }
 
+  const handleJobAdWindow = async ( edit, close, { companyID = '', companyName = '' } ) => {
+    
+    if( close ){
+      setAddJobAd({
+        isActive: false,
+        isEditMode: false,
+        companyName: '',
+        companyID: '',
+        inputs: {
+          title: '',
+          city: '',
+          hoursRange: '',
+          wages: '',
+          industry: '',
+          duties: '',
+          requirements: '',
+          description: '',
+        }
+      })
+    }
+    else if( edit ){
+      const ad = await GET( `get-job-ad/${ edit }` );
+      console.log( ad );
+      setAddJobAd({
+        ...addJobAd,
+        isActive: true,
+        isEditMode: true,
+        companyID,
+        companyName,
+        inputs:{
+          ...addJobAd.inputs,
+          title: ad.title,
+          city: ad.city,
+          hoursRange: ad.hours,
+          wages: ad.wages,
+          industry: ad.industry,
+          duties: ad.duties,
+          requirements: ad.requirements,
+          description: ad.description
+        }
+      })
+    }
+    else{
+      setAddJobAd({
+        ...addJobAd,
+        isActive: true,
+        companyID,
+        companyName
+      })
+    }
+  }
+
+  const handleJobAdWindowInputs = ( name, value ) => {
+    const array = Object.keys( addJobAd.inputs );
+    for( let key of array){
+      if( key === name ){
+        const newInputs = { ...addJobAd.inputs };
+        newInputs[ name ] = value;
+        setAddJobAd({
+          ...addJobAd,
+          inputs: newInputs
+        })
+      }
+    }
+  }
+
   useEffect(
     () => {
       getUserCompanies();
@@ -225,7 +305,8 @@ const CompanyManagementLogic = ({ render }) => {
       employeesWindow,
       isLoading,
       jobAdsWindow,
-      isArchiviseActive
+      isArchiviseActive,
+      addJobAd
     },
     handlers: {
       handleEmployeeListButton,
@@ -234,7 +315,9 @@ const CompanyManagementLogic = ({ render }) => {
       handleRemoveEmployeeButton,
       handleDeleteCompanyButton,
       handleManageJobAdsButton,
-      handleArchiviseJobAd
+      handleArchiviseJobAd,
+      handleJobAdWindow,
+      handleJobAdWindowInputs
     }
   })
 }

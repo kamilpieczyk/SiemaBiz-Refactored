@@ -67,13 +67,17 @@ export const EmployeeBox = styled.div`
 `
 
 export const CompanieContentContainer = styled.section`
-  margin-left: 20%;
-  padding: 20px 0;
+  margin: 10px 0;
+  padding: 30px;
+  background: ${ colors.white };
+  border-radius: 5px;
+
 `
 
 export const JobAdBox = styled.div`
-  background: ${ colors.white };
+  background: ${ colors.ultraWhite };
   border-radius: 5px;
+  box-shadow: 0 0 5px ${ colors.grey };
   padding: 10px;
   display: flex;
   justify-content: space-between;

@@ -263,7 +263,17 @@ export default {
     edit: 'edytuj ogłoszenie',
     archivise: 'przenieś do archiwum',
     archiviseQuestion: 'jesteś pewien, że chcesz archiwizować to ogłoszenie?',
-    isLoadingArchivise: '...trwa archiwizowanie'
+    isLoadingArchivise: '...trwa archiwizowanie',
+    addNewJobAd: 'dodaj nowe ogłoszenie',
+    newJobAd:{
+      title: 'tytuł ogłoszenia pracy',
+      city: 'miejsce pracy',
+      hours: 'zakres godzinowy',
+      salary: 'wynagrodzenie',
+      industry: 'branża',
+      duties: 'obowiązki (oddzielone przecinkiem)',
+      requirements: 'wymagania (oddzielone przecinkiem)'
+    }
   },
   articlesPanel: {
     title: 'panel artykułów',
