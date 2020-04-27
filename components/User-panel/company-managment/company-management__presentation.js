@@ -11,7 +11,9 @@ import Window from '../../UI/window'
 import Separator from '../../UI/separator'
 import LoadingCircle from '../../UI/loading-circle'
 import Input from '../../UI/input'
+import ChoiceInput from '../../UI/choose-input'
 import { main } from '../../../styles/colors'
+import { getIndustries } from '../../../data/industries'
 
 import {
   Container,
@@ -21,13 +23,16 @@ import {
   EmployeeBox,
   CompanieContentContainer,
   JobAdBox,
-  Warning
+  Warning,
+  AddJobAdWindow
 } from './company-management__styles'
 
 const ClickButton = witchClick( Button );
 
 const CompanyManagementPresentation = ({ state, handlers }) => {
+
   const language = useSelector( s => s.language.source.companyPanel );
+  const industries = getIndustries();
   const jobAdInputs = [
     {
       title: language.newJobAd.title,
@@ -53,6 +58,11 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
       title: language.newJobAd.requirements,
       name: 'requirements',
       value: state.addJobAd.inputs.requirements
+    },
+    {
+      title: language.newJobAd.duties,
+      name: 'duties',
+      value: state.addJobAd.inputs.duties
     },
   ];
   
@@ -106,20 +116,55 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
         // ADDING NEW / EDITING JOB AD WINDOW
         state.addJobAd.isActive && (
           <Window width = '80%' close = { () => handlers.handleJobAdWindow( false, true, {} ) }>
-            <h1>{ state.addJobAd.companyName } - { language.addNewJobAd }</h1>
-            {
-              jobAdInputs.map(
-                ( input, index ) => (
-                  <Input
-                    key = { index }
-                    name = { input.name }
-                    label = { input.title }
-                    value = { input.value}
-                    onChange = { e => handlers.handleJobAdWindowInputs( e.target.name, e.target.value ) }
-                  />
+            <AddJobAdWindow>
+              <h1>{ state.addJobAd.companyName } - { language.addNewJobAd }</h1>
+              <section>
+                <h2>{ language.newJobAd.industry }</h2>
+                <Separator width = '20px' />
+                <ChoiceInput
+                  fields = { industries }
+                  choosenFieldIndex = { state.addJobAd.inputs.industry.index }
+                  onChange = { handlers.handleJobAdWindowChooseField }
+                />
+              </section>
+              
+              {
+                jobAdInputs.map(
+                  ( input, index ) => (
+                    <Input
+                      key = { index }
+                      name = { input.name }
+                      label = { input.title }
+                      value = { input.value}
+                      onChange = { e => handlers.handleJobAdWindowInputs( e.target.name, e.target.value ) }
+                    />
+                  )
                 )
-              )
-            }
+              }
+
+              <Input 
+                name = 'description'
+                label = { language.newJobAd.description }
+                value = { state.addJobAd.inputs.description }
+                type = 'textarea'
+                onChange = { e => handlers.handleJobAdWindowInputs( e.target.name, e.target.value ) }
+              />
+
+              <Separator height = '20px' />
+              
+              <ClickButton  maxWidth onClickFunction = { () => handlers.handleJobAdWindowSubmit({
+                mode: state.addJobAd.isEditMode ? 'edit' : 'add'
+              }) }>
+                {
+                  state.isLoading.jobAd
+                    ? <LoadingCircle text = { language.newJobAd.loading } />
+                    : state.addJobAd.isEditMode
+                      ? language.newJobAd.submitEditButton
+                      : language.newJobAd.addButton
+                }  
+              </ClickButton>
+
+            </AddJobAdWindow>
           </Window>
         )
       }
@@ -141,8 +186,8 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
         {
           state.companies?.map(
             ( company, index ) => (
-              <React.Fragment>
-                <Company key = { company._id }
+              <React.Fragment key = { company._id }>
+                <Company
                   name = { company.name }
                   logo = { company.logo }
                   city = { company.city }
@@ -292,7 +337,8 @@ CompanyManagementPresentation.propTypes = {
     }),
     isLoading: PropTypes.shape({
       deleteCompany: PropTypes.bool,
-      archivise: PropTypes.bool
+      archivise: PropTypes.bool,
+      jobAd: PropTypes.bool,
     }),
     isArchiviseActive: PropTypes.shape({
       bool: PropTypes.bool,
@@ -308,7 +354,10 @@ CompanyManagementPresentation.propTypes = {
         city: PropTypes.string,
         hoursRange: PropTypes.string,
         wages: PropTypes.string,
-        industry: PropTypes.string,
+        industry: PropTypes.shape({
+          index: PropTypes.number,
+          value: PropTypes.string
+        }),
         duties: PropTypes.string,
         requirements: PropTypes.string,
         description: PropTypes.string,
@@ -322,9 +371,11 @@ CompanyManagementPresentation.propTypes = {
     handleRemoveEmployeeButton: PropTypes.func.isRequired,
     handleDeleteCompanyButton: PropTypes.func.isRequired,
     handleManageJobAdsButton: PropTypes.func.isRequired,
-    handleArchiviseJobAd: PropTypes.func.isActive,
-    handleJobAdWindow: PropTypes.func.isActive,
-    handleJobAdWindowInputs: PropTypes.func.isActive,
+    handleArchiviseJobAd: PropTypes.func.isRequired,
+    handleJobAdWindow: PropTypes.func.isRequired,
+    handleJobAdWindowInputs: PropTypes.func.isRequired,
+    handleJobAdWindowChooseField: PropTypes.func.isRequired,
+    handleJobAdWindowSubmit: PropTypes.func.isRequired,
   })
 }
 

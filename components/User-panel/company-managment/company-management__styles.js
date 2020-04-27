@@ -84,6 +84,7 @@ export const JobAdBox = styled.div`
   margin-bottom: 10px;
 
   div{
+    flex: 2;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -91,6 +92,9 @@ export const JobAdBox = styled.div`
   }
 
   section{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
     i{
       color: ${ colors.main };
       cursor: pointer;
@@ -104,4 +108,23 @@ export const Warning = styled.div`
   padding: 15px;
   border-radius: 5px;
   text-align: center;
+`
+export const AddJobAdWindow = styled.div`
+
+  section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  h2, h1{
+    color: ${ colors.main };
+    font-weight: 100;
+  }
+  h2{
+    font-size: 1.9rem;
+  }
+  h1{
+    font-size: 2rem;
+    text-align: center;
+  }
 `

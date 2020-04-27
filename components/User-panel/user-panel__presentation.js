@@ -19,7 +19,7 @@ const UserPanelPresentationLayer = ({ device, menu, children, isScrolled }) => (
 )
 
 UserPanelPresentationLayer.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   device: PropTypes.string,
   menu: PropTypes.array.isRequired,
   isScrolled: PropTypes.bool

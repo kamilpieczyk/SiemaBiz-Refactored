@@ -25,6 +25,7 @@ const CompanyManagementLogic = ({ render }) => {
   const [ addJobAd, setAddJobAd ] = useState({
     isActive: false,
     isEditMode: false,
+    editID: null,
     companyName: '',
     companyID: '',
     inputs: {
@@ -32,7 +33,10 @@ const CompanyManagementLogic = ({ render }) => {
       city: '',
       hoursRange: '',
       wages: '',
-      industry: '',
+      industry: {
+        index: 0,
+        value: 'software-development'
+      },
       duties: '',
       requirements: '',
       description: '',
@@ -40,7 +44,8 @@ const CompanyManagementLogic = ({ render }) => {
   });
   const [ isLoading, setLoading ] = useState({
     deleteCompany: false,
-    archivise: false
+    archivise: false,
+    jobAd: false
   });
   const [ isArchiviseActive, setArchiviseActive ] = useState({
     bool: false,
@@ -237,7 +242,10 @@ const CompanyManagementLogic = ({ render }) => {
           city: '',
           hoursRange: '',
           wages: '',
-          industry: '',
+          industry: {
+            index: 0,
+            value: 'software-development'
+          },
           duties: '',
           requirements: '',
           description: '',
@@ -246,22 +254,29 @@ const CompanyManagementLogic = ({ render }) => {
     }
     else if( edit ){
       const ad = await GET( `get-job-ad/${ edit }` );
+      const industries = require( '../../../data/industries' ).getIndustries();
+      const industryIndex = industries.findIndex( industry => industry.name === ad.industry );
       console.log( ad );
+      
       setAddJobAd({
         ...addJobAd,
         isActive: true,
         isEditMode: true,
         companyID,
         companyName,
+        editID: ad._id,
         inputs:{
           ...addJobAd.inputs,
           title: ad.title,
           city: ad.city,
           hoursRange: ad.hours,
           wages: ad.wages,
-          industry: ad.industry,
-          duties: ad.duties,
-          requirements: ad.requirements,
+          industry: {
+            index: industryIndex,
+            value: ad.industry
+          },
+          duties: ad.duties.join(','),
+          requirements: ad.requirements.join(','),
           description: ad.description
         }
       })
@@ -290,6 +305,110 @@ const CompanyManagementLogic = ({ render }) => {
     }
   }
 
+  const handleJobAdWindowChooseField = ( field ) => {
+    const industries = require( '../../../data/industries' ).getIndustries();
+    const index = industries.findIndex( industry => industry.name === field.name );
+    setAddJobAd({
+      ...addJobAd,
+      inputs: {
+        ...addJobAd.inputs,
+        industry: {
+          index,
+          value: field.name
+        }
+      }
+    })
+  }
+
+  const handleJobAdWindowSubmit = async ({ mode = 'add' }) => {
+
+    setLoading({
+      ...isLoading,
+      jobAd: true
+    })
+
+    if( mode === 'add' ){
+      const data = await POST( 'add-job-ad', {
+        title: addJobAd.inputs.title,
+        city: addJobAd.inputs.city,
+        wages: addJobAd.inputs.wages,
+        hours: addJobAd.inputs.hoursRange,
+        industry: addJobAd.inputs.industry.value,
+        duties: addJobAd.inputs.duties,
+        requirements: addJobAd.inputs.requirements,
+        description: addJobAd.inputs.description,
+        companyID: addJobAd.companyID,
+      } )
+
+      if( data.status === 'ok' ){
+        setLoading({
+          ...isLoading,
+          jobAd: false
+        })
+        setAddJobAd({
+          isActive: false,
+          isEditMode: false,
+          companyName: '',
+          companyID: '',
+          inputs: {
+            title: '',
+            city: '',
+            hoursRange: '',
+            wages: '',
+            industry: {
+              index: 0,
+              value: 'software-development'
+            },
+            duties: '',
+            requirements: '',
+            description: '',
+          }
+        });
+        handleManageJobAdsButton( addJobAd.companyID );
+      }
+    }
+    else if( mode === 'edit' ){
+      const data = await POST( 'edit-job-ad', {
+        title: addJobAd.inputs.title,
+        city: addJobAd.inputs.city,
+        hours: addJobAd.inputs.hoursRange,
+        wages: addJobAd.inputs.wages,
+        industry: addJobAd.inputs.industry.value,
+        duties: addJobAd.inputs.duties,
+        requirements: addJobAd.inputs.requirements,
+        description: addJobAd.inputs.description,
+        jobAdID: addJobAd.editID
+      } )
+
+      if( data.status === 'ok' ){
+        setLoading({
+          ...isLoading,
+          jobAd: false
+        })
+        setAddJobAd({
+          isActive: false,
+          isEditMode: false,
+          companyName: '',
+          companyID: '',
+          inputs: {
+            title: '',
+            city: '',
+            hoursRange: '',
+            wages: '',
+            industry: {
+              index: 0,
+              value: 'software-development'
+            },
+            duties: '',
+            requirements: '',
+            description: '',
+          }
+        });
+        handleManageJobAdsButton( addJobAd.companyID );
+      }
+    }
+  }
+
   useEffect(
     () => {
       getUserCompanies();
@@ -306,7 +425,7 @@ const CompanyManagementLogic = ({ render }) => {
       isLoading,
       jobAdsWindow,
       isArchiviseActive,
-      addJobAd
+      addJobAd,
     },
     handlers: {
       handleEmployeeListButton,
@@ -317,7 +436,9 @@ const CompanyManagementLogic = ({ render }) => {
       handleManageJobAdsButton,
       handleArchiviseJobAd,
       handleJobAdWindow,
-      handleJobAdWindowInputs
+      handleJobAdWindowInputs,
+      handleJobAdWindowChooseField,
+      handleJobAdWindowSubmit
     }
   })
 }

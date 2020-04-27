@@ -110,8 +110,8 @@ Company.propTypes = {
   logo: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  owners: PropTypes.string.isRequired,
-  employees: PropTypes.string.isRequired,
+  owners: PropTypes.array.isRequired,
+  employees: PropTypes.array.isRequired,
   isLoading: PropTypes.shape({
     deleteCompany: PropTypes.bool
   }),

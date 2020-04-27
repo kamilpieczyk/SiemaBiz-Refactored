@@ -272,7 +272,11 @@ export default {
       salary: 'wynagrodzenie',
       industry: 'branża',
       duties: 'obowiązki (oddzielone przecinkiem)',
-      requirements: 'wymagania (oddzielone przecinkiem)'
+      requirements: 'wymagania (oddzielone przecinkiem)',
+      description: 'treść ogłoszenia',
+      addButton: 'dodaj ogłoszenie',
+      submitEditButton: 'potwierdź zmiany',
+      loading: 'wysyłanie...'
     }
   },
   articlesPanel: {

@@ -28,7 +28,6 @@ const AdminPanel = ({ articles }) => {
       <UserPanel menu = { adminMenu } >
         { router.query.page === 'articles' && <Articles articles = { articles } /> }
         { router.query.page === 'company' && <Company /> }
-        
       </UserPanel>
 
     </Layout>
