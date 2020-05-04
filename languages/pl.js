@@ -109,6 +109,12 @@ export default {
         href: '/user-panel/administration-panel?page=articles',
         priv: '225803'
       },
+      {
+        title: 'zarządzaj moimi firmami',
+        icon: 'business_center',
+        href: '/user-panel/administration-panel?page=company',
+        priv: '225801'
+      },
     ]
   },
   indexPage:{
@@ -233,13 +239,66 @@ export default {
     }
   },
   administrationPanel: {
-    menu: [
-      {
-        title: 'lista artykułów',
-        icon: 'list',
-        href: '/user-panel/articles'
-      },
-    ],
+    articleList: 'lista artykułów',
+    companyManagement: 'zarządaj moimi firmami',
+  },
+  companyPanel: {
+    addCompanyButton: 'dodaj firmę',
+    searchForCompanyButton: 'wyszukaj firmę',
+    manageEmployeeButton: 'zarządzaj pracownikami',
+    employeeList: 'lista pracowników',
+    owners: 'zarząd firmy',
+    removeOwner: 'usuń z listy wspólników',
+    addOwner: 'dodaj do listy wspólników',
+    deleteFromCompany: 'usuń z firmy',
+    deleteCompanyQuestion: ( company ) => `jesteś pewny/a że chcesz usunąć firmę ${ company }?`,
+    deleteCompany: 'usuń firmę',
+    cancel: 'anuluj',
+    deletingCompany: 'czekaj, trwa usuwanie firmy...',
+    manageJobAds: 'zarządzaj ogłoszeniami pracy',
+    manageCooperationAds: 'zarządzaj ofertami współpracy',
+    fold: 'zwiń',
+    nothingToShow: 'brak treści do wyświetlenia',
+    cv: 'przeglądaj aplikacjie',
+    edit: 'edytuj ogłoszenie',
+    archivise: 'przenieś do archiwum',
+    archiviseQuestion: 'jesteś pewien, że chcesz archiwizować to ogłoszenie?',
+    isLoadingArchivise: '...trwa archiwizowanie',
+    addNewJobAd: 'dodaj nowe ogłoszenie',
+    newJobAd:{
+      title: 'tytuł ogłoszenia pracy',
+      city: 'miejsce pracy',
+      hours: 'zakres godzinowy',
+      salary: 'wynagrodzenie',
+      industry: 'branża',
+      duties: 'obowiązki (oddzielone przecinkiem)',
+      requirements: 'wymagania (oddzielone przecinkiem)',
+      description: 'treść ogłoszenia',
+      addButton: 'dodaj ogłoszenie',
+      submitEditButton: 'potwierdź zmiany',
+      loading: 'wysyłanie...'
+    },
+    cvWindow: {
+      loading: 'wczytywanie przesłanych aplikacji...',
+      noApplications: 'brak aplikacji do wyświetlenia',
+      experience: 'doświadczenie zawodowe',
+      education: 'przebieg edukacji',
+      schoolName: 'nazwa szkoły',
+      graduation: 'zdobyte wykształcenie',
+      company: 'nazwa firmy',
+      years: 'lata',
+      role: 'powierzone stanowisko',
+      dateOfBirdth: 'data urodzenia',
+      city: 'miasto',
+      adress: 'adres',
+      phone: 'numer telefonu',
+      email: 'adres email',
+      certificates: 'certyfikaty',
+      skills: 'umiejętności',
+      hobbies: 'hobby',
+      back: 'poprzednia aplikacja',
+      forward: 'następna aplikacja'
+    }
   },
   articlesPanel: {
     title: 'panel artykułów',

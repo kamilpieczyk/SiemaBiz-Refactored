@@ -16,7 +16,7 @@ const UserPanel = ({ menu, children }) => (
 )
 
 UserPanel.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
   menu: PropTypes.array.isRequired
 }
 

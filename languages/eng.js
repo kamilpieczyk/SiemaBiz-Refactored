@@ -109,6 +109,12 @@ export default {
         href: '/user-panel/administration-panel?page=articles',
         priv: '225803'
       },
+      {
+        title: 'manage my companies',
+        icon: 'business_center',
+        href: '/user-panel/administration-panel?page=company',
+        priv: '225801'
+      },
     ]
   },
   indexPage:{
@@ -234,13 +240,8 @@ export default {
     }
   },
   administrationPanel: {
-    menu: [
-      {
-        title: 'articles list',
-        icon: 'list',
-        href: '/user-panel/articles'
-      },
-    ],
+    articleList: 'article list',
+    companyManagement: 'manage companies of main'
   },
   articlesPanel: {
     title: 'articles panel',

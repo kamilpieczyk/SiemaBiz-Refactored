@@ -16,7 +16,13 @@ const ChooseInput = ({ fields, choosenFieldIndex, onChange }) => {
 
   return(
     <Container>
-      <MainField>{ fields[ choosenFieldIndex ] }</MainField>
+      <MainField>
+        {
+          typeof fields[ choosenFieldIndex ] === 'string'
+            ? fields[ choosenFieldIndex ]
+            : fields[ choosenFieldIndex ].title
+        }
+      </MainField>
       <Button onClick = { () => setActive( !isActive ) } >
         <MaterialIcon icon = { isActive ? 'keyboard_arrow_up' : 'keyboard_arrow_down' } />
       </Button>
@@ -31,7 +37,11 @@ const ChooseInput = ({ fields, choosenFieldIndex, onChange }) => {
                   setActive( false );
                 } }
               >
-                { field }
+                {
+                  typeof field === 'string'
+                    ? field
+                    : field.title
+                }
               </Field>
             )
           )
@@ -42,7 +52,12 @@ const ChooseInput = ({ fields, choosenFieldIndex, onChange }) => {
 }
 
 ChooseInput.propTypes = {
-  fields: PropTypes.array.isRequired,
+  fields: PropTypes.arrayOf( PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired
+  }) ).isRequired || PropTypes.string.isRequired,
   choosenFieldIndex: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired
 }
