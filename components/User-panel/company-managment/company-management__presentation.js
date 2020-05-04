@@ -14,6 +14,7 @@ import Input from '../../UI/input'
 import ChoiceInput from '../../UI/choose-input'
 import { main } from '../../../styles/colors'
 import { getIndustries } from '../../../data/industries'
+import CvWindow from './components/cv-window'
 
 import {
   Container,
@@ -169,6 +170,16 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
         )
       }
 
+      {
+        // CV VIEW WINDOW
+        state.cvWindow.isActive && (
+          <CvWindow
+            close = { handlers.handleCvWindow }
+            applications = { state.cvWindow.applications }
+          />
+        )
+      }
+
       {/* ACTION BUTTONS AT THE TOP OF SITE */}
       <ButtonsContainer>
         <ClickButton onClickFunction = { () => {} }>
@@ -244,6 +255,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                                         <MaterialIcon
                                           icon = 'assignment_ind'
                                           title = { language.cv }
+                                          onClick = { () => handlers.handleCvWindow( jobAd.applications ) }
                                         />
                                         <MaterialIcon
                                           icon = 'edit'
@@ -363,6 +375,10 @@ CompanyManagementPresentation.propTypes = {
         description: PropTypes.string,
       })
     }),
+    cvWindow: PropTypes.shape({
+      isActive: PropTypes.bool,
+      applications: PropTypes.arrayOf( PropTypes.string )
+    })
   }),
   handlers: PropTypes.shape({
     handleEmployeeListButton: PropTypes.func.isRequired,
@@ -376,6 +392,7 @@ CompanyManagementPresentation.propTypes = {
     handleJobAdWindowInputs: PropTypes.func.isRequired,
     handleJobAdWindowChooseField: PropTypes.func.isRequired,
     handleJobAdWindowSubmit: PropTypes.func.isRequired,
+    handleCvWindow: PropTypes.func.isRequired,
   })
 }
 
