@@ -51,6 +51,10 @@ const CompanyManagementLogic = ({ render }) => {
     bool: false,
     id: ''
   });
+  const [ cvWindow, setCvWindow ] = useState({
+    isActive: false,
+    applications: []
+  })
 
   const dispatch = useDispatch();
   const language = useSelector( s => s.language.source );
@@ -409,6 +413,21 @@ const CompanyManagementLogic = ({ render }) => {
     }
   }
 
+  const handleCvWindow = applications => {
+    if( applications ){
+      setCvWindow({
+        isActive: true,
+        applications
+      })
+    }
+    else{
+      setCvWindow({
+        isActive: false,
+        applications: []
+      })
+    }
+  }
+
   useEffect(
     () => {
       getUserCompanies();
@@ -426,6 +445,7 @@ const CompanyManagementLogic = ({ render }) => {
       jobAdsWindow,
       isArchiviseActive,
       addJobAd,
+      cvWindow
     },
     handlers: {
       handleEmployeeListButton,
@@ -438,7 +458,8 @@ const CompanyManagementLogic = ({ render }) => {
       handleJobAdWindow,
       handleJobAdWindowInputs,
       handleJobAdWindowChooseField,
-      handleJobAdWindowSubmit
+      handleJobAdWindowSubmit,
+      handleCvWindow
     }
   })
 }

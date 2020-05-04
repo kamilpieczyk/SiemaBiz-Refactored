@@ -277,6 +277,28 @@ export default {
       addButton: 'dodaj ogłoszenie',
       submitEditButton: 'potwierdź zmiany',
       loading: 'wysyłanie...'
+    },
+    cvWindow: {
+      loading: 'wczytywanie przesłanych aplikacji...',
+      noApplications: 'brak aplikacji do wyświetlenia',
+      experience: 'doświadczenie zawodowe',
+      education: 'przebieg edukacji',
+      schoolName: 'nazwa szkoły',
+      graduation: 'zdobyte wykształcenie',
+      company: 'nazwa firmy',
+      years: 'lata',
+      role: 'powierzone stanowisko',
+      dateOfBirdth: 'data urodzenia',
+      city: 'miasto',
+      adress: 'adres',
+      phone: 'numer telefonu',
+      email: 'adres email',
+      certificates: 'certyfikaty',
+      skills: 'umiejętności',
+      hobbies: 'hobby',
+      back: 'poprzednia aplikacja',
+      forward: 'następna aplikacja',
+      print: 'drukuj cv'
     }
   },
   articlesPanel: {

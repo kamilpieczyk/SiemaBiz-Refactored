@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "siemabiz",
+      "script": "npm",
+      "args": "run dev"
+    }
+  ]
+}
