@@ -7,6 +7,8 @@ import MaterialIcon from '@material/react-material-icon';
 import Window from '../../../../UI/window'
 import Loading from '../../../../UI/loading-circle'
 import { main } from '../../../../../styles/colors'
+import ButtonUI from '../../../../UI/small-button'
+import witchClick from '../../../../HOC/withClick'
 
 import {
   Container,
@@ -20,7 +22,9 @@ import {
   NavButtonsContainer
 } from './cv-window__styles'
 
-const CvWindow = ({ close, state, handleCvNavButtons }) => {
+const Button = witchClick( ButtonUI );
+
+const CvWindow = ({ close, state, handleCvNavButtons, handlePrintCvButton }) => {
 
   const language = useSelector( s => s.language.source.companyPanel.cvWindow );
   const cv = state.cvs[ state.shownCvNo ];
@@ -38,6 +42,13 @@ const CvWindow = ({ close, state, handleCvNavButtons }) => {
           onClick = { () => handleCvNavButtons( 'next' ) }
           title = { language.forward }
         />
+        <Button
+          onClickFunction = { () => handlePrintCvButton( cv.username ) }
+          thin
+        >
+          <MaterialIcon icon = 'print' />
+          { language.print }
+        </Button>
       </NavButtonsContainer>
       <Container>
         {
@@ -47,7 +58,6 @@ const CvWindow = ({ close, state, handleCvNavButtons }) => {
               {
                 state.cvs.length === 0 ? <LoadingBox>{ language.noApplications }</LoadingBox>
                 :<CVBox>
-                  { console.log( cv ) }
                   <MainInformation>
                     <div>
                       <MaterialIcon icon = 'assignment_ind' />
@@ -133,7 +143,8 @@ CvWindow.propTypes = {
     cvs: arrayOf( PropTypes.object ),
     shownCvNo: PropTypes.number
   }).isRequired,
-  handleCvNavButtons: PropTypes.func.isRequired
+  handleCvNavButtons: PropTypes.func.isRequired,
+  handlePrintCvButton: PropTypes.func.isRequired
 }
 
 export default CvWindow;

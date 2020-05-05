@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import {} from 'react-redux'
 import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
+import crypto from 'crypto-js'
 
 import POST from '../../../../../API/post'
 
@@ -11,6 +13,8 @@ const CvWindow = ({ render, applications }) => {
     cvs: [],
     shownCvNo: 0
   });
+
+  const router = useRouter();
 
   const getUsersCvs = async () => {
     const getCVs = await POST( 'get-cv', { users: applications } );
@@ -54,20 +58,27 @@ const CvWindow = ({ render, applications }) => {
     }
   }
 
+  const handlePrintCvButton = ( username ) => {
+    const hashUser = () => crypto.AES.encrypt( username, 'siemaBizHash247' ).toString();
+    window.scrollTo( 0, 0 );
+    router.push({
+      pathname: '/print-cv',
+      query: {
+        cv: hashUser()
+      }
+    })
+  }
+
   useEffect(
     () => {
       getUsersCvs();
     }, []
   )
-  useEffect(
-    () => {
-      console.log( state.shownCvNo );
-    }, [ state ]
-  )
 
   return render({
     state,
-    handleCvNavButtons
+    handleCvNavButtons,
+    handlePrintCvButton
   })
 }
 

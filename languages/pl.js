@@ -297,7 +297,8 @@ export default {
       skills: 'umiejętności',
       hobbies: 'hobby',
       back: 'poprzednia aplikacja',
-      forward: 'następna aplikacja'
+      forward: 'następna aplikacja',
+      print: 'drukuj cv'
     }
   },
   articlesPanel: {

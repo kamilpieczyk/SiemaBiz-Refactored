@@ -115,9 +115,13 @@ export const CvSectionItemSmall = styled.div`
 
 export const NavButtonsContainer = styled.div`
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   i{
     color: ${ colors.main };
     cursor: pointer;
+    font-size: 2rem;
   }
 `
