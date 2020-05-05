@@ -24,7 +24,7 @@ import {
 
 const Button = witchClick( ButtonUI );
 
-const CvWindow = ({ close, state, handleCvNavButtons }) => {
+const CvWindow = ({ close, state, handleCvNavButtons, handlePrintCvButton }) => {
 
   const language = useSelector( s => s.language.source.companyPanel.cvWindow );
   const cv = state.cvs[ state.shownCvNo ];
@@ -43,7 +43,7 @@ const CvWindow = ({ close, state, handleCvNavButtons }) => {
           title = { language.forward }
         />
         <Button
-          onClickFunction = { () => console.log( 'print' ) }
+          onClickFunction = { () => handlePrintCvButton( cv.username ) }
           thin
         >
           <MaterialIcon icon = 'print' />
@@ -143,7 +143,8 @@ CvWindow.propTypes = {
     cvs: arrayOf( PropTypes.object ),
     shownCvNo: PropTypes.number
   }).isRequired,
-  handleCvNavButtons: PropTypes.func.isRequired
+  handleCvNavButtons: PropTypes.func.isRequired,
+  handlePrintCvButton: PropTypes.func.isRequired
 }
 
 export default CvWindow;
