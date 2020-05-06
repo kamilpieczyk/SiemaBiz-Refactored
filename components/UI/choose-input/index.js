@@ -33,7 +33,7 @@ const ChooseInput = ({ fields, choosenFieldIndex, onChange }) => {
               <Field
                 key = { index }
                 onClick = { () => {
-                  onChange( field );
+                  onChange( field, index );
                   setActive( false );
                 } }
               >
