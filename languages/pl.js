@@ -299,6 +299,50 @@ export default {
       back: 'poprzednia aplikacja',
       forward: 'następna aplikacja',
       print: 'drukuj cv'
+    },
+    addNewCompanyWindow: {
+      dropHere: 'upuść plik tutaj',
+      drag: 'przeciągnij plik z obrazem tutaj lub kliknij by dodać',
+      isFile: 'logo dodane prawidłowo',
+      fileToBig: {
+        title: 'zbyt duży rozmiar',
+        message: 'rozmiar twojego pliku nie może być większy niż 2.5MB'
+      },
+      wrongType: {
+        title: 'niepoprawny typ pliku',
+        message: 'plik loga musi byc zgodny z formatem jpg'
+      },
+      companyName: 'nazwa firmy',
+      adress: 'adres firmy',
+      city: 'miasto',
+      industry: 'branża firmy',
+      description: 'opis działalności firmy',
+      loading: 'dodaję firmę',
+      sendButton: 'dodaj firmę',
+      mustHaveName:{
+        title: 'firma musi mieć nazwę!',
+        msg: 'nie podałeś nazwy twojej nowej firmy'
+      },
+      mustHaveAdress:{
+        title: 'firma musi mieć siedzibę',
+        msg: 'nie podałeś adresu twojej nowej firmy - każda firma musi mieć siedzibę'
+      },
+      mustHaveCity:{
+        title: 'musisz podać miasto',
+        msg: 'nie podałeś miasta w którym znajduję się siedziba firmy'
+      },
+      mustHaveDescription:{
+        title: 'musisz podać opis firmy',
+        msg: 'pomóż zainteresowanym dowiedzieć się czym zajmuje się twoja firma'
+      },
+      mustHaveLogo:{
+        title: 'musisz przesłać plik z logo',
+        msg: 'każda firma musi posiadać znak handlowy'
+      },
+      addingErr:{
+        title: 'wystąpił nieoczekiwany błąd',
+        msg: 'spróbuj ponownie później'
+      },
     }
   },
   articlesPanel: {

@@ -15,6 +15,7 @@ import ChoiceInput from '../../UI/choose-input'
 import { main } from '../../../styles/colors'
 import { getIndustries } from '../../../data/industries'
 import CvWindow from './components/cv-window'
+import AddCompanyWindow from './components/add-company-window'
 
 import {
   Container,
@@ -69,6 +70,11 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
   
   return(
     <Container>
+      { // ADD NEW COMPANY WINDOW
+        state.addNewCompanyWindow.isActive && (
+          <AddCompanyWindow close = { () => handlers.handleAddNewCompanyButton( true ) }/>
+        )
+      }
       { //MANAGE EMPLOYEE WINDOW
         state.employeesWindow.isActive && (
           <Window close = { handlers.handleEmployeeListButton } width = '80%'>
@@ -182,7 +188,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
 
       {/* ACTION BUTTONS AT THE TOP OF SITE */}
       <ButtonsContainer>
-        <ClickButton onClickFunction = { () => {} }>
+        <ClickButton onClickFunction = { () => handlers.handleAddNewCompanyButton() }>
           <MaterialIcon icon = 'work' />
           { language.addCompanyButton }
         </ClickButton>
@@ -378,6 +384,10 @@ CompanyManagementPresentation.propTypes = {
     cvWindow: PropTypes.shape({
       isActive: PropTypes.bool,
       applications: PropTypes.arrayOf( PropTypes.string )
+    }),
+    addNewCompanyWindow: PropTypes.shape({
+      isActive: PropTypes.bool,
+
     })
   }),
   handlers: PropTypes.shape({
@@ -393,6 +403,7 @@ CompanyManagementPresentation.propTypes = {
     handleJobAdWindowChooseField: PropTypes.func.isRequired,
     handleJobAdWindowSubmit: PropTypes.func.isRequired,
     handleCvWindow: PropTypes.func.isRequired,
+    handleAddNewCompanyButton: PropTypes.func.isRequired,
   })
 }
 
