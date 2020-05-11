@@ -11,7 +11,8 @@ import { main } from '../../../../../styles/colors'
 import { 
   Container,
   ActionContainer,
-  Action
+  Action,
+  IconsContainer
 } from './company__styles'
 import MaterialIcon from '@material/react-material-icon'
 
@@ -30,7 +31,6 @@ const Company = ({
 
   const [ isDeleting, setDeleting ] = useState( false );
   const language = useSelector( s => s.language.source.companyPanel );
-
   const actions = [
     {
       title: language.manageEmployeeButton,
@@ -92,12 +92,19 @@ const Company = ({
                 }
 
               </ActionContainer>
-
-              <MaterialIcon
-                title = { language.deleteCompany }
-                icon = 'delete_forever'
-                onClick = { () => setDeleting( true ) }
-              />
+              
+              <IconsContainer>
+                <MaterialIcon
+                  title = { language.editCompany }
+                  icon = 'edit'
+                  onClick = { () => handlers.handleAddNewCompanyButton( false, true, id ) }
+                />
+                <MaterialIcon
+                  title = { language.deleteCompany }
+                  icon = 'delete_forever'
+                  onClick = { () => setDeleting( true ) }
+                />
+              </IconsContainer>
             </React.Fragment>
           )
       }
@@ -117,7 +124,8 @@ Company.propTypes = {
   }),
   handlers: PropTypes.shape({
     handleEmployeeListButton: PropTypes.func.isRequired,
-    handleManageJobAdsButton: PropTypes.func.isRequired
+    handleManageJobAdsButton: PropTypes.func.isRequired,
+    handleAddNewCompanyButton: PropTypes.func.isRequired
   }).isRequired
 }
 

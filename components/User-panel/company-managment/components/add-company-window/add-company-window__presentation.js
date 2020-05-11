@@ -20,7 +20,7 @@ import Loading from '../../../../UI/loading-circle'
 
 const Button = withClick( SmallButton );
 
-const AddCompanyWindowPresentationLayer = ({ close, handlers, inputs, state }) => {
+const AddCompanyWindowPresentationLayer = ({ close, handlers, inputs, state, file, edit }) => {
 
   const {getRootProps, getInputProps, isDragActive} = useDropzone({ onDrop: handlers.handleOnDrop });
   const language = useSelector( s => s.language.source.companyPanel.addNewCompanyWindow );
@@ -31,8 +31,8 @@ const AddCompanyWindowPresentationLayer = ({ close, handlers, inputs, state }) =
 
         <DropZone { ...getRootProps() } isActive = { isDragActive } >
           <input { ...getInputProps() } />
-          { state.file?.isFile
-            ?<><MaterialIcon icon = 'done' /><p>{ language.isFile }</p></>
+          { file.isFile
+            ?<><MaterialIcon icon = 'done' /><p>{ file.name }</p></>
             :isDragActive
               ? <><MaterialIcon icon = 'play_for_work' /><p>{ language.dropHere }</p></>
               : <><MaterialIcon icon = 'photo_size_select_large' /><p>{ language.drag }</p></>
@@ -65,12 +65,17 @@ const AddCompanyWindowPresentationLayer = ({ close, handlers, inputs, state }) =
           </>
         ) ) }
       </Container>
-      <Button onClickFunction = { handlers.handleAddCompanyButton } maxWidth >
+
+      <Button onClickFunction = { () => {
+        if( edit ) handlers.handleAddCompanyButton({ editMode: true });
+        else handlers.handleAddCompanyButton({ editMode: false });
+      } } maxWidth >
         { state.isLoading
             ? <Loading text = { language.loading }/>
-            : language.sendButton
+            : edit ? language.updateButton : language.sendButton
         }
       </Button>
+      
     </Window>
   )
 }
@@ -84,11 +89,6 @@ AddCompanyWindowPresentationLayer.propTypes = {
     handleAddCompanyButton: PropTypes.func.isRequired,
   }),
   state: PropTypes.shape({
-    file: PropTypes.shape({
-      isFile: PropTypes.bool,
-      name: PropTypes.string,
-      content: PropTypes.any
-    }),
     inputs: PropTypes.shape({
       companyName: PropTypes.string,
       adress: PropTypes.string,
@@ -102,7 +102,13 @@ AddCompanyWindowPresentationLayer.propTypes = {
     }),
     isLoading: PropTypes.bool
   }).isRequired,
-  inputs: PropTypes.object.isRequired
+  file: PropTypes.shape({
+    isFile: PropTypes.bool,
+    name: PropTypes.string,
+    content: PropTypes.any
+  }),
+  inputs: PropTypes.object.isRequired,
+  edit: PropTypes.string
 }
 
 export default AddCompanyWindowPresentationLayer;

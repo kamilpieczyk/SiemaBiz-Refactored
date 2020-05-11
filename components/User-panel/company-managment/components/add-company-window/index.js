@@ -7,12 +7,13 @@ import PresentationLayer from './add-company-window__presentation'
 const AddCompanyWindow = props => (
   <Logic
     { ...props }
-    render = { newProps => <PresentationLayer { ...newProps } close = { props.close }/> }
+    render = { newProps => <PresentationLayer { ...newProps }/> }
   />
 )
 
 AddCompanyWindow.propTypes = {
-  close: PropTypes.func.isRequired
+  close: PropTypes.func.isRequired,
+  editID: PropTypes.string
 }
 
 export default AddCompanyWindow;
