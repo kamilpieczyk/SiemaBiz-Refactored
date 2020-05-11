@@ -59,6 +59,7 @@ const CompanyManagementLogic = ({ render }) => {
     isActive: false,
     editID: ''
   });
+  const [ isSearchCompanyWindowActive, setSearchCompanyWindowActive ] = useState( false );
 
   const dispatch = useDispatch();
   const language = useSelector( s => s.language.source );
@@ -455,6 +456,8 @@ const CompanyManagementLogic = ({ render }) => {
     }
   }
 
+  const handleSearchWindow = () => setSearchCompanyWindowActive( !isSearchCompanyWindowActive );
+
   useEffect(
     () => {
       getUserCompanies();
@@ -473,7 +476,8 @@ const CompanyManagementLogic = ({ render }) => {
       isArchiviseActive,
       addJobAd,
       cvWindow,
-      addNewCompanyWindow
+      addNewCompanyWindow,
+      isSearchCompanyWindowActive
     },
     handlers: {
       handleEmployeeListButton,
@@ -488,7 +492,8 @@ const CompanyManagementLogic = ({ render }) => {
       handleJobAdWindowChooseField,
       handleJobAdWindowSubmit,
       handleCvWindow,
-      handleAddNewCompanyButton
+      handleAddNewCompanyButton,
+      handleSearchWindow
     }
   })
 }
