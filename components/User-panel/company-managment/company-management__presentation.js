@@ -72,7 +72,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
     <Container>
       { // ADD NEW COMPANY WINDOW
         state.addNewCompanyWindow.isActive && (
-          <AddCompanyWindow close = { () => handlers.handleAddNewCompanyButton( true ) }/>
+          <AddCompanyWindow close = { () => handlers.handleAddNewCompanyButton( true ) } edit = { state.addNewCompanyWindow.editID }/>
         )
       }
       { //MANAGE EMPLOYEE WINDOW
@@ -387,7 +387,7 @@ CompanyManagementPresentation.propTypes = {
     }),
     addNewCompanyWindow: PropTypes.shape({
       isActive: PropTypes.bool,
-
+      editID: PropTypes.string
     })
   }),
   handlers: PropTypes.shape({

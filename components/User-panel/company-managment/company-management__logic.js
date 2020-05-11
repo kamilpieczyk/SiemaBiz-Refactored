@@ -57,7 +57,7 @@ const CompanyManagementLogic = ({ render }) => {
   });
   const [ addNewCompanyWindow, setNewCompanyWindow ] = useState({
     isActive: false,
-
+    editID: ''
   });
 
   const dispatch = useDispatch();
@@ -264,7 +264,6 @@ const CompanyManagementLogic = ({ render }) => {
       const ad = await GET( `get-job-ad/${ edit }` );
       const industries = require( '../../../data/industries' ).getIndustries();
       const industryIndex = industries.findIndex( industry => industry.name === ad.industry );
-      console.log( ad );
       
       setAddJobAd({
         ...addJobAd,
@@ -432,13 +431,21 @@ const CompanyManagementLogic = ({ render }) => {
     }
   }
 
-  const handleAddNewCompanyButton = ( close ) => {
+  const handleAddNewCompanyButton = ( close, edit, id ) => {
     if( close ){
       setNewCompanyWindow({
         ...addNewCompanyWindow,
         isActive: false,
+        editID: ''
       });
       getUserCompanies();
+    }
+    else if( edit ){
+      setNewCompanyWindow({
+        ...addNewCompanyWindow,
+        isActive: true,
+        editID: id
+      })
     }
     else{
       setNewCompanyWindow({

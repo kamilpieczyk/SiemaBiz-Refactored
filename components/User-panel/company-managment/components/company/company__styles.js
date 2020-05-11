@@ -49,3 +49,7 @@ export const Action = styled.div`
     }
   }
 `
+
+export const IconsContainer = styled.div`
+
+`

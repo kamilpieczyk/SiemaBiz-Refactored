@@ -1,18 +1,15 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { setPopupWindowActive } from '../../../../../Redux/actions'
 import apiKey from '../../../../../API/key'
+import GET from '../../../../../API/get'
+import { getIndustries } from '../../../../../data/industries'
 
-const AddCompanyWindowLogicLayer = ({ render, close }) => {
+const AddCompanyWindowLogicLayer = ({ render, close, edit }) => {
 
   const [ state, setState ] = useState({
-    file: {
-      isFile: false,
-      name: '',
-      content: null
-    },
     inputs: {
       companyName: '',
       adress: '',
@@ -23,7 +20,14 @@ const AddCompanyWindowLogicLayer = ({ render, close }) => {
       index: 0,
       name: 'software-development'
     },
-    isLoading: false
+    isLoading: false,
+    editID: ''
+  });
+
+  const [ file, setFile ] = useState({
+    isFile: false,
+    name: '',
+    content: null
   });
 
   const language = useSelector( s => s.language.source.companyPanel.addNewCompanyWindow );
@@ -58,6 +62,29 @@ const AddCompanyWindowLogicLayer = ({ render, close }) => {
     },
   ];
 
+  const closeFunction = () => {
+    setState({
+      ...state,
+      file: {
+        isFile: false,
+        name: '',
+        content: null
+      },
+      inputs: {
+        companyName: '',
+        adress: '',
+        city: '',
+        description: ''
+      },
+      industry: {
+        index: 0,
+        name: 'software-development'
+      },
+      isLoading: false
+    });
+    close();
+  }
+  
   const handleOnDrop = useCallback( files => {
     const file = files[0];
 
@@ -74,15 +101,13 @@ const AddCompanyWindowLogicLayer = ({ render, close }) => {
       }) )
     }
     else{
-      setState({
-        ...state,
-        file:{
-          ...state.file,
-          isFile: true,
-          name: file.name,
-          content: file
-        }
-      })
+      const newfile = {
+        ...file,
+        isFile: true,
+        name: file.name,
+        content: file
+      };
+      setFile( newfile );
     }
   }, [])
 
@@ -113,11 +138,12 @@ const AddCompanyWindowLogicLayer = ({ render, close }) => {
     })
   }
 
-  const handleAddCompanyButton = async () => {
+  const handleAddCompanyButton = async ({ editMode }) => {
     setState({
       ...state,
       isLoading: true,
     })
+    
     if( state.inputs.companyName.length < 1 ){
       setState({ ...state, isLoading: false });
       dispatch( setPopupWindowActive({
@@ -125,7 +151,7 @@ const AddCompanyWindowLogicLayer = ({ render, close }) => {
         messenge: language.mustHaveName.msg
       }) )
     }
-    else if( !state.file.isFile ){
+    else if( !file.isFile ){
       setState({ ...state, isLoading: false });
       dispatch( setPopupWindowActive({
         title: language.mustHaveLogo.title,
@@ -157,11 +183,17 @@ const AddCompanyWindowLogicLayer = ({ render, close }) => {
       const form = new FormData();
       form.append( 'name', state.inputs.companyName );
       form.append( 'industry', state.industry.name );
-      form.append( 'logo', state.file.content );
+      if( !editMode ) form.append( 'logo', file.content );
       form.append( 'adress', state.inputs.adress );
       form.append( 'city', state.inputs.city );
       form.append( 'description', state.inputs.description );
       form.append( 'owners', [ username ] );
+
+      if( editMode ){
+        form.append( 'editMode', true );
+        form.append( 'editId', state.editID );
+        if( file.content ) form.append( 'logo', file.content );
+      }
 
       try{
         const sent = await fetch( `${ apiKey }add-new-company`, {
@@ -192,18 +224,58 @@ const AddCompanyWindowLogicLayer = ({ render, close }) => {
         throw err
       }
     }
-
   }
+
+  const getCompanyToEdit = async () => {
+    const data = await GET( `get-company/${ edit }` );
+    const { company } = data;
+    const industries = getIndustries();
+    let indexOfElement;
+
+    for( let [ index, industry ] of industries.entries() ){
+      if( company.industry === industry.name ) indexOfElement = index;
+    }
+
+    setState({
+      ...state,
+      inputs: {
+        ...state.inputs,
+        companyName: company.name,
+        adress: company.adress,
+        city: company.city,
+        description: company.description
+      },
+      industry: {
+        index: indexOfElement,
+        name: company.industry
+      },
+      editID: company._id
+    });
+    setFile({
+      isFile: true,
+      name: company.logo,
+      content: null
+    })
+  }
+
+  useEffect( () => {
+    if( edit ){
+      getCompanyToEdit();
+    }
+  } , [] )
 
   return render({
     state,
+    file,
+    close: closeFunction,
     inputs,
     handlers: {
       handleOnDrop,
       handleInputs,
       handleChooseField,
       handleAddCompanyButton
-    }
+    },
+    edit
   })
 }
 

@@ -253,6 +253,7 @@ export default {
     deleteFromCompany: 'usuń z firmy',
     deleteCompanyQuestion: ( company ) => `jesteś pewny/a że chcesz usunąć firmę ${ company }?`,
     deleteCompany: 'usuń firmę',
+    editCompany: 'edytuj informacje',
     cancel: 'anuluj',
     deletingCompany: 'czekaj, trwa usuwanie firmy...',
     manageJobAds: 'zarządzaj ogłoszeniami pracy',
@@ -319,6 +320,7 @@ export default {
       description: 'opis działalności firmy',
       loading: 'dodaję firmę',
       sendButton: 'dodaj firmę',
+      updateButton: 'aktualizuj informacje',
       mustHaveName:{
         title: 'firma musi mieć nazwę!',
         msg: 'nie podałeś nazwy twojej nowej firmy'
