@@ -90,7 +90,7 @@ const CompanySitePresentation = ({ company, state, handleButtonClick, handleUser
           <h2>{ language.employees }: </h2>
           <UsersContainer>
             {
-              company.employees.map( ( employee, index ) => (
+              company.employees?.map( ( employee, index ) => (
                 <UserBox employee key = { employee+index } onClick = {() => handleUserBoxClick( employee )} >{ employee }</UserBox>
               ) )
             }
