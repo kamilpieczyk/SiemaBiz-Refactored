@@ -426,6 +426,8 @@ export default {
     owners: 'zarząd firmy',
     employees: 'zatrudnieni pracownicy',
     loading: 'wczytywanie mapy...',
-    button: 'zobacz opis'
+    button: 'zobacz opis',
+    workForThisCompanyButton: 'pracuję w tej firmie',
+    deleteFromMyEmployers: 'usuń z listy moich pracodawców'
   }
 }

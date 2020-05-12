@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 
 import sleep from '../../API/sleep'
+import POST from '../../API/post'
+import { setPopupWindowActive } from '../../Redux/actions'
 
 const CompanySiteLogic = ({ company, render }) => {
 
@@ -18,6 +20,8 @@ const CompanySiteLogic = ({ company, render }) => {
   const [ isLoading, setLoading ] = useState( true );
 
   const router = useRouter();
+  const dispatch = useDispatch();
+  const popup = useSelector( s => s.language.source.general.popups.wrong );
 
   const getLocation = async () => {
     const adressArray = company.adress.split( ' ' );
@@ -52,6 +56,34 @@ const CompanySiteLogic = ({ company, render }) => {
     })
   }
 
+  const checkIfUserWorksForThisCompany = ( user ) => {
+    const employeesList = [ ...company.employees, ...company.owners ];
+    for( let employee of employeesList ) if( employee === user ) return true;
+  }
+
+  const handleWorkForThisCompanyButton = async ( companyID, username ) => {
+    const addToMyemployersList = await POST( 'add-company-to-employers-list', {
+      username,
+      company: companyID
+    } );
+    const { status } = addToMyemployersList;
+
+    if( status === 'ok' ) router.reload();
+    else dispatch( setPopupWindowActive({
+      title: popup.title,
+      messenge: popup.messenge
+    }) );
+  }
+
+  const removeFromMyEmployersList = async ( username, id ) => {
+    const remove = await POST( 'remove-company-from-employees', { username, company: id } );
+    if( remove.status === 'ok' ) router.reload();
+    else dispatch( setPopupWindowActive({
+      title: popup.title,
+      messenge: popup.messenge
+    }) );
+  }
+
   useEffect(
     () => {
       getLocation();
@@ -64,7 +96,10 @@ const CompanySiteLogic = ({ company, render }) => {
       isLoading
     },
     handleButtonClick,
-    handleUserBoxClick
+    handleUserBoxClick,
+    handleWorkForThisCompanyButton,
+    checkIfUserWorksForThisCompany,
+    removeFromMyEmployersList
   })
 }
 

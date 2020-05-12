@@ -126,6 +126,13 @@ export const UserBox = styled.div`
   color: ${ colors.white };
   margin: 0 3px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i{
+    color: ${ colors.error };
+  }
 `
 
 export const UsersContainer = styled.div`
