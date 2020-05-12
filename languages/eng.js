@@ -243,6 +243,111 @@ export default {
     articleList: 'article list',
     companyManagement: 'manage companies of main'
   },
+  companyPanel: {
+    addCompanyButton: 'add company',
+    searchForCompanyButton: 'search for company',
+    manageEmployeeButton: 'manage employee',
+    employeeList: 'employee list',
+    owners: 'owners',
+    removeOwner: 'remove owner',
+    addOwner: 'add to owner list',
+    deleteFromCompany: 'get rid from company',
+    deleteCompanyQuestion: ( company ) => `are you sure you want to delete ${ company }?`,
+    deleteCompany: 'delete company',
+    editCompany: 'edit content',
+    cancel: 'cancel',
+    deletingCompany: 'please wait, deleting in progress...',
+    manageJobAds: 'manage job ads',
+    manageCooperationAds: 'manage cooperation offers',
+    fold: 'fold',
+    nothingToShow: 'there is nothing to show',
+    cv: 'see CVs',
+    edit: 'edit ad',
+    archivise: 'archivise',
+    archiviseQuestion: 'are you sure you want to archivise this ad?',
+    isLoadingArchivise: '...archivisation in progress',
+    addNewJobAd: 'add new job ad',
+    newJobAd:{
+      title: 'title',
+      city: 'city',
+      hours: 'hours',
+      salary: 'salary',
+      industry: 'industry',
+      duties: 'duties (use coma to separate)',
+      requirements: 'requirements (use coma to separate)',
+      description: 'ad content',
+      addButton: 'add ad',
+      submitEditButton: 'submit changes',
+      loading: 'sending...'
+    },
+    cvWindow: {
+      loading: 'loading CVs...',
+      noApplications: 'no CVs to show',
+      experience: 'experience',
+      education: 'education',
+      schoolName: 'school name',
+      graduation: 'graduation',
+      company: 'company name',
+      years: 'years',
+      role: 'role',
+      dateOfBirdth: 'date of birdth',
+      city: 'city',
+      adress: 'adress',
+      phone: 'phone',
+      email: 'email',
+      certificates: 'certificates',
+      skills: 'skills',
+      hobbies: 'hobbies',
+      back: 'back',
+      forward: 'forward',
+      print: 'print cv'
+    },
+    addNewCompanyWindow: {
+      dropHere: 'drop your file here',
+      drag: 'drag your image or click here',
+      isFile: 'logo added correct',
+      fileToBig: {
+        title: 'your file is too big',
+        message: 'size of your image file cannot be higher than 2.5MB'
+      },
+      wrongType: {
+        title: 'wrong file type',
+        message: 'your file must be a *.jpg'
+      },
+      companyName: 'company name',
+      adress: 'company adress',
+      city: 'city',
+      industry: 'industry',
+      description: 'description',
+      loading: 'adding your new company',
+      sendButton: 'add company',
+      updateButton: 'update information',
+      mustHaveName:{
+        title: 'company must have a name!',
+        msg: 'you must to add company name'
+      },
+      mustHaveAdress:{
+        title: 'company must have an adress',
+        msg: 'you have forgotten to put adress of your company'
+      },
+      mustHaveCity:{
+        title: 'you have to insert city',
+        msg: 'you did not insert city'
+      },
+      mustHaveDescription:{
+        title: 'each company must have description',
+        msg: 'otherwise customers may not know what your business do'
+      },
+      mustHaveLogo:{
+        title: 'each company must have a logo',
+        msg: 'otherwise customers may not recognise your business'
+      },
+      addingErr:{
+        title: 'unknown error',
+        msg: 'please try again later'
+      },
+    }
+  },
   articlesPanel: {
     title: 'articles panel',
     addButton: 'add new article',

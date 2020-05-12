@@ -16,6 +16,7 @@ import { main } from '../../../styles/colors'
 import { getIndustries } from '../../../data/industries'
 import CvWindow from './components/cv-window'
 import AddCompanyWindow from './components/add-company-window'
+import SearchCompanyWindow from './components/search-company-window'
 
 import {
   Container,
@@ -74,6 +75,9 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
         state.addNewCompanyWindow.isActive && (
           <AddCompanyWindow close = { () => handlers.handleAddNewCompanyButton( true ) } edit = { state.addNewCompanyWindow.editID }/>
         )
+      }
+      { // SEARCH FOR COMPANY WINDOW
+        state.isSearchCompanyWindowActive && <SearchCompanyWindow close = { handlers.handleSearchWindow }/>
       }
       { //MANAGE EMPLOYEE WINDOW
         state.employeesWindow.isActive && (
@@ -388,7 +392,8 @@ CompanyManagementPresentation.propTypes = {
     addNewCompanyWindow: PropTypes.shape({
       isActive: PropTypes.bool,
       editID: PropTypes.string
-    })
+    }),
+    isSearchCompanyWindowActive: PropTypes.bool
   }),
   handlers: PropTypes.shape({
     handleEmployeeListButton: PropTypes.func.isRequired,
@@ -404,6 +409,7 @@ CompanyManagementPresentation.propTypes = {
     handleJobAdWindowSubmit: PropTypes.func.isRequired,
     handleCvWindow: PropTypes.func.isRequired,
     handleAddNewCompanyButton: PropTypes.func.isRequired,
+    handleSearchWindow: PropTypes.func.isRequired
   })
 }
 
