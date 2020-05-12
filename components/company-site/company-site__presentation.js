@@ -23,13 +23,23 @@ import SidebarBox from '../UI/sidebar-box'
 import { getIndustries } from '../../data/industries'
 import Button from '../UI/small-button'
 import witchClick from '../HOC/withClick'
+import Separator from '../UI/separator'
 
 const ClickableButton = witchClick( Button );
 
-const CompanySitePresentation = ({ company, state, handleButtonClick, handleUserBoxClick }) => {
+const CompanySitePresentation = ({
+  company,
+  state,
+  handleButtonClick,
+  handleUserBoxClick,
+  handleWorkForThisCompanyButton,
+  checkIfUserWorksForThisCompany,
+  removeFromMyEmployersList
+  }) => {
 
   const language = useSelector( s => s.language.source.companySite );
   const device = useSelector( s => s.deviceScreen );
+  const user = useSelector( s => s.user.username );
 
   return(
     <React.Fragment>
@@ -91,8 +101,32 @@ const CompanySitePresentation = ({ company, state, handleButtonClick, handleUser
           <UsersContainer>
             {
               company.employees?.map( ( employee, index ) => (
-                <UserBox employee key = { employee+index } onClick = {() => handleUserBoxClick( employee )} >{ employee }</UserBox>
+                <UserBox employee key = { employee+index } onClick = {() => handleUserBoxClick( employee )} >
+                  { employee }
+                  {
+                    employee === user && (
+                      <>
+                        <Separator width = '15px' />
+                        <MaterialIcon 
+                          icon = 'remove_circle'
+                          title = { language.deleteFromMyEmployers }
+                          onClick = { () => removeFromMyEmployersList( user, company._id ) }
+                        />
+                      </>
+                    )
+                  }
+                </UserBox>
               ) )
+            }
+            {/* I WORK FOR THIS COMPANY BUTTON */}
+            {
+              user && !checkIfUserWorksForThisCompany( user ) && (
+                <ClickableButton thin onClickFunction = { () => handleWorkForThisCompanyButton( company._id, user ) }>
+                  <MaterialIcon icon = 'next_week' />
+                  <Separator width = '5px' />
+                  { language.workForThisCompanyButton }
+                </ClickableButton>
+              )
             }
           </UsersContainer>
         </CompanyContent>
@@ -128,7 +162,10 @@ CompanySitePresentation.propTypes = {
     isLoading: PropTypes.bool
   }).isRequired,
   handleButtonClick: PropTypes.func.isRequired,
-  handleUserBoxClick: PropTypes.func.isRequired
+  handleUserBoxClick: PropTypes.func.isRequired,
+  handleWorkForThisCompanyButton: PropTypes.func.isRequired,
+  removeFromMyEmployersList: PropTypes.func.isRequired,
+  checkIfUserWorksForThisCompany: PropTypes.func.isRequired
 }
 
 export default CompanySitePresentation;

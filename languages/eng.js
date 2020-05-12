@@ -427,6 +427,8 @@ export default {
     owners: 'owners',
     employees: 'company employees',
     loading: 'map is being load...',
-    button: 'see description'
+    button: 'see description',
+    workForThisCompanyButton: 'I work for this company',
+    deleteFromMyEmployers: 'remove from my employers list'
   }
 }
