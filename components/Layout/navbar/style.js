@@ -11,6 +11,7 @@ export const Container = styled.nav`
   display: flex;
   align-items: center;
   padding: 0 10% 0 10%;
+  box-shadow: 0 0 8px ${ colors.lightGrey };
   transition-duration: .5s;
   z-index: 1000;
   ${

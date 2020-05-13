@@ -10,6 +10,7 @@ export const Container = styled.div`
   background-color: ${colors.white};
   margin: 0 0 0 10px;
   position: relative;
+  box-shadow: 0 0 8px ${ colors.lightGrey };
 `
 
 export const Dot = styled.div`

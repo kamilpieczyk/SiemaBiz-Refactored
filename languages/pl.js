@@ -72,7 +72,7 @@ export default {
     {
       title: "oferty pracy",
       icon: "next_week",
-      href: "/job"
+      href: "/job-offers"
     },
     {
       title: "umów się",
@@ -429,5 +429,13 @@ export default {
     button: 'zobacz opis',
     workForThisCompanyButton: 'pracuję w tej firmie',
     deleteFromMyEmployers: 'usuń z listy moich pracodawców'
+  },
+  jobOffersSite: {
+    title: 'oferty pracy',
+    searchInputTitle: 'czego szukasz',
+    searchInputSubtitle: 'nazwa poszukiwanego stanowiska',
+    localisationInputTitle: 'gdzie szukasz',
+    localisationInputSubtitle: 'miejscowość w której szukasz',
+    seeOfferButton: 'przeglądaj ofertę'
   }
 }
