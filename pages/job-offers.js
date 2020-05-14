@@ -21,7 +21,7 @@ const Articles = ({ jobOffers }) => {
 Articles.getInitialProps = async ctx =>{
 
   const jobOffers = await get( 'get-all-job-offers' );
-  return { jobOffers }
+  return { jobOffers: jobOffers.reverse() }
 }
 
 export default Articles

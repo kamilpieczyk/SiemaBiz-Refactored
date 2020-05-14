@@ -7,14 +7,16 @@ import {
   SearchBox,
   InputTitle,
   Content,
-  JobOffersContainer
- } from './job-offers-site__styles'
+  JobOffersContainer,
+  SortButtonsContainer,
+  SortButton } from './job-offers-site__styles'
  import JobInput from './components/job-input'
  import Sidebar from '../UI/sidebar-box'
  import { getIndustries } from '../../data/industries'
  import JobOffer from './components/job-offer'
+ import Pagination from '../UI/pagination'
 
-const Presentation = ({ handlers, jobOffers }) => {
+const Presentation = ({ handlers, jobOffers, state }) => {
 
   const language = useSelector( s => s.language.source.jobOffersSite );
 
@@ -39,6 +41,22 @@ const Presentation = ({ handlers, jobOffers }) => {
         </div>
       </SearchBox>
 
+      <SortButtonsContainer>
+        <div>{ language.sortBy }:</div>
+        <SortButton 
+          onClick = { () => handlers.setSortMode( 'date' ) }
+          isActive = { state.sortMode === 'date' }
+          >
+            { language.date }
+        </SortButton>
+        <SortButton 
+          onClick = { () => handlers.setSortMode( 'name' ) }
+          isActive = { state.sortMode === 'name' }
+          >
+            { language.title }
+        </SortButton>
+      </SortButtonsContainer>
+
       <Content>
         <JobOffersContainer>
           {
@@ -49,7 +67,9 @@ const Presentation = ({ handlers, jobOffers }) => {
                 companyID = { offer.companyID }
                 city = { offer.city }
                 wages = { offer.wages }
+                industry = { offer.industry }
                 description = { offer.description }
+                date = { offer.date }
               />
             ) )
           }
@@ -59,6 +79,7 @@ const Presentation = ({ handlers, jobOffers }) => {
             menu = { getIndustries() }
           />
         </div>
+        <Pagination numberOfSites = { state.numberOfSites }/>
       </Content>
     </Container>
   )
@@ -66,9 +87,14 @@ const Presentation = ({ handlers, jobOffers }) => {
 
 Presentation.propTypes = {
   jobOffers: PropTypes.array.isRequired,
+  state: PropTypes.shape({
+    sortMode: PropTypes.string.isRequired,
+    numberOfSites: PropTypes.number.isRequired
+  }).isRequired,
   handlers: PropTypes.shape({
     handleSearchInput: PropTypes.func.isRequired,
-    handleLocationInput: PropTypes.func.isRequired
+    handleLocationInput: PropTypes.func.isRequired,
+    setSortMode: PropTypes.func.isRequired
   }),
 
 }

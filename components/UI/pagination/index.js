@@ -19,7 +19,6 @@ const Pagination = ({ numberOfSites }) => {
         window.scrollTo( 0, 0 );
       } )
   }
-  console.log( path, queries );
   return(
     <Container>
       {

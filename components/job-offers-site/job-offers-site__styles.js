@@ -8,13 +8,35 @@ export const Container = styled.div`
 
 export const SearchBox = styled.div`
   width: 100vw;
-  height: 300px;
+  height: 250px;
   display: flex;
   padding: 130px 10vw 0 10vw;
 
   div{
     margin-right: 20px;
   }
+`
+
+export const SortButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 10vw 30px 10vw;
+
+  div{
+    color: ${ colors.grey };
+    margin-right: 20px;
+  }
+`
+
+export const SortButton = styled.button`
+  border: 1px solid ${ colors.grey };
+  background: ${ ({ isActive }) => isActive ? colors.grey : 'none' };
+  border-radius: 20px;
+  padding: 5px 10px;
+  color: ${ ({ isActive }) => isActive ? colors.white : colors.grey };
+  cursor: pointer;
+  outline: none;
+  margin-right: 10px;
 `
 
 export const InputTitle = styled.div`

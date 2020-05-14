@@ -28,7 +28,23 @@ export const City = styled.h4`
   font-weight: 100;
   color: ${ colors.black };
 `
+export const Wages = styled.h4`
+  margin: 10px 0;
+  font-weight: 400;
+  color: ${ colors.black };
+`
 export const Description = styled.p`
+  color: ${ ({ isHover }) => isHover ? colors.main : colors.grey };
+`
+export const Footer = styled.div`
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+`
+export const Industry = styled.div`
+  color: ${ colors.lightGrey };
+`
+export const DateContainer = styled.div`
   color: ${ colors.lightGrey };
 `
 export const ButtonContainer = styled.div`
@@ -36,4 +52,15 @@ export const ButtonContainer = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
+`
+export const NewTag = styled.div`
+  color: ${ colors.succes };
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+  i{
+    font-size: 1rem;
+    margin-right: 3px;
+  }
 `

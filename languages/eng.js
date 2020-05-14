@@ -437,6 +437,10 @@ export default {
     searchInputSubtitle: 'enter wanted job title',
     localisationInputTitle: 'Where',
     localisationInputSubtitle: 'city where you want to work',
-    seeOfferButton: 'see this offer'
+    seeOfferButton: 'see this offer',
+    new: 'new added',
+    sortBy: 'sort by',
+    date: 'date',
+    title: 'offer title'
   }
 }

@@ -14,6 +14,7 @@ import withClick from '../../HOC/withClick'
 import LoggedUserButton from './components/logged-user-button'
 import UserMenu from './components/user-menu'
 import MobileMenu from './components/mobile-menu'
+import Separator from '../../UI/separator'
 
 
 const LanguageSwitcher = withLanguageSwitch( Switcher )
@@ -42,17 +43,23 @@ const Presentation = ({ scroll, isMenuActive, isUserMenuActive, isUserLogged, la
           !isUserLogged && (
             <React.Fragment>
               {
-                deviceScreenResolution === 'desktop' && ( 
-                  <Button thin>{ languageSource.navbar.signUp }</Button>
+                deviceScreenResolution === 'desktop' && (
+                  <>
+                    <Separator width = '10px' />
+                    <Button thin>{ languageSource.navbar.signUp }</Button>
+                  </>
                 )
               }
               {
                 deviceScreenResolution === 'desktop' &&(
-                  <ClickableButton 
-                    onClickFunction = { () => loginPopup.setLoginPopup( !loginPopup.isLoginPopup ) }
-                  >
-                    { languageSource.navbar.signIn }
-                  </ClickableButton>
+                  <>
+                    <Separator width = '20px' />
+                    <ClickableButton 
+                      onClickFunction = { () => loginPopup.setLoginPopup( !loginPopup.isLoginPopup ) }
+                      >
+                      { languageSource.navbar.signIn }
+                    </ClickableButton>
+                  </>
                 )
               }
             </React.Fragment>
@@ -77,7 +84,7 @@ const Presentation = ({ scroll, isMenuActive, isUserMenuActive, isUserLogged, la
             </React.Fragment>
           )
         }
-
+        <Separator width = '10px' />
         <LanguageSwitcher text = "PL" />
 
       </ButtonsContainer>

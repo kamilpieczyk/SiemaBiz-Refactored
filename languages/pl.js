@@ -436,6 +436,10 @@ export default {
     searchInputSubtitle: 'nazwa poszukiwanego stanowiska',
     localisationInputTitle: 'gdzie szukasz',
     localisationInputSubtitle: 'miejscowość w której szukasz',
-    seeOfferButton: 'przeglądaj ofertę'
+    seeOfferButton: 'przeglądaj ofertę',
+    new: 'nowe ogłoszenie',
+    sortBy: 'sortuj według',
+    date: 'daty',
+    title: 'tytułu ogłoszenia'
   }
 }
