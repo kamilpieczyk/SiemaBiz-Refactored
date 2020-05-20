@@ -72,7 +72,7 @@ export default {
     {
       title: "job offers",
       icon: "next_week",
-      href: "/job-offers"
+      href: "/job-offers?site=1"
     },
     {
       title: "book an apoitment",
@@ -432,7 +432,7 @@ export default {
     deleteFromMyEmployers: 'remove from my employers list'
   },
   jobOffersSite: {
-    title: 'job offers',
+    siteTitle: 'job offers',
     searchInputTitle: 'What are you after',
     searchInputSubtitle: 'enter wanted job title',
     localisationInputTitle: 'Where',

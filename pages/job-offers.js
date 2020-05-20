@@ -12,7 +12,7 @@ const Articles = ({ jobOffers }) => {
 
   return(
     <Layout>
-      <Head><title>{ language.title } SiemaBiz Forum</title></Head>
+      <Head><title>{ language.siteTitle } SiemaBiz Forum</title></Head>
       <JobOffersSite jobOffers = { jobOffers } />
     </Layout>
   )

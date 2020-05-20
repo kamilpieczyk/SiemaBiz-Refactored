@@ -72,7 +72,7 @@ export default {
     {
       title: "oferty pracy",
       icon: "next_week",
-      href: "/job-offers"
+      href: "/job-offers?site=1"
     },
     {
       title: "umów się",
@@ -431,7 +431,7 @@ export default {
     deleteFromMyEmployers: 'usuń z listy moich pracodawców'
   },
   jobOffersSite: {
-    title: 'oferty pracy',
+    siteTitle: 'oferty pracy',
     searchInputTitle: 'czego szukasz',
     searchInputSubtitle: 'nazwa poszukiwanego stanowiska',
     localisationInputTitle: 'gdzie szukasz',

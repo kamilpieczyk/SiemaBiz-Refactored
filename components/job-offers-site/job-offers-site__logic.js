@@ -2,26 +2,64 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 
-import GET from '../../API/get'
+// import GET from '../../API/get'
 
 const Logic = ({ render, jobOffers }) => {
 
   const [ sortMode, setSortMode ] = useState( 'date' );
   const [ numberOfSites, setNumberOfSites ] = useState( 1 );
+  const [ searchOffers, setSearchOffers ] = useState([ ...jobOffers ]);
   const [ stateOffers, setStateOffers ] = useState([ ...jobOffers ]);
 
   const router = useRouter();
 
   const handleSearchInput = value => {
+    
+    if( value.length > 0 ){
+      router.push({ pathname: '/job-offers' , query: { ...router.query, search: value, site: 1 } });
+      const filtereddOffers = searchOffers.filter( offer => offer.title.toUpperCase().includes( value.toUpperCase() ) );
+      setSearchOffers( filtereddOffers );
+      sortOffers( filtereddOffers );
+    }
+    else{
+      const location = router.query.location;
+      if( location.length > 0 ){
+        const filtereddOffers = searchOffers.filter( offer => offer.city.toUpperCase().includes( location.toUpperCase() ) );
+        setSearchOffers( filtereddOffers );
+        sortOffers( filtereddOffers );
+      }
+      else{
+        setSearchOffers([ ...jobOffers ]);
+        sortOffers();
+      }
+    }
 
   }
 
   const handleLocationInput = value => {
 
+    if( value.length > 0 ){
+      router.push({ pathname: '/job-offers' , query: { ...router.query, location: value, site: 1 } });
+      const filtereddOffers = searchOffers.filter( offer => offer.city.toUpperCase().includes( value.toUpperCase() ) );
+      setSearchOffers( filtereddOffers );
+      sortOffers( filtereddOffers );
+    }
+    else{
+      const title = router.query.search;
+      if( title.length > 0 ){
+        const filtereddOffers = searchOffers.filter( offer => offer.title.toUpperCase().includes( title.toUpperCase() ) );
+        setSearchOffers( filtereddOffers );
+        sortOffers( filtereddOffers );
+      }
+      else{
+        setSearchOffers([ ...jobOffers ]);
+        sortOffers();
+      }
+    }
+
   }
 
-  const sortOffers = () => {
-    const offers = [ ...jobOffers ];
+  const sortOffers = ( offers = [ ...jobOffers ] ) => {
 
     if( sortMode === 'date' ){
       let newOffers = [];
@@ -44,6 +82,7 @@ const Logic = ({ render, jobOffers }) => {
         offersToSet.push( newOfferObj );
       }
       jobOffers = offersToSet;
+      if( process.browser ) setStateOffers( offersToSet );
     }
     else if( sortMode === 'name' ){
       const newOffers = [ ...offers ];
@@ -56,22 +95,28 @@ const Logic = ({ render, jobOffers }) => {
         return comp
       } );
       jobOffers = newOffers;
+      if( process.browser ) setStateOffers( newOffers );
+    }
+
+    // HANDLE PAGINATION
+    if( process.browser ){
+      let site = router.query.site;
+      if( !site ) site = 1;
+      const noSites = Math.ceil( jobOffers.length / 5 );
+      setNumberOfSites( noSites );
+      const second = site * 5;
+      const first = second - 5;
+      const offers = [ ...jobOffers ];
+      setStateOffers( offers.slice( first, second ) );
     }
   }
-  sortOffers();
 
-  const handlePagination = () => {
-    let site = router.query.site;
-    if( !site ) site = 1;
-    const noSites = Math.ceil( jobOffers.length / 5 );
-    setNumberOfSites( noSites );
-    const second = site * 5;
-    const first = second - 5;
-    sortOffers();
-    setStateOffers( jobOffers.slice( first, second ) );
-  }
-
-  useEffect( () => { handlePagination() }, [ router.query.site ] );
+  if( !process.browser ) sortOffers();
+  useEffect( () => { sortOffers( searchOffers ) }, [ sortMode, router.query.site ] );
+  useEffect( () => {
+    if( router.query.location ) handleLocationInput( router.query.location );
+    if( router.query.search ) handleSearchInput( router.query.search );
+  }, [] );
 
   return render({
     jobOffers: stateOffers ? stateOffers : jobOffers,

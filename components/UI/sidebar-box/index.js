@@ -4,15 +4,15 @@ import PropTypes from 'prop-types'
 import { Container, Content } from './sidebar-box__style'
 import Item from './menu-item'
 
-const SidebarBox = ({ menu }) => {
+const SidebarBox = ({ menu, light }) => {
 
   return(
   
-    <Container>
+    <Container light = { light }>
       <Content>
         {
           menu.map( ( item, index ) => (
-            <Item key = { index } icon = { item.icon } href = { item.href } >
+            <Item light = { light } key = { index } icon = { item.icon } href = { item.href } >
               { item.title }
             </Item>
           ) )
@@ -24,7 +24,8 @@ const SidebarBox = ({ menu }) => {
 }
 
 SidebarBox.propTypes = {
-  menu: PropTypes.array.isRequired
+  menu: PropTypes.array.isRequired,
+  light: PropTypes.bool
 }
 
 export default SidebarBox

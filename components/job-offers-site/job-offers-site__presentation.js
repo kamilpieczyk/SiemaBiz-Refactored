@@ -77,6 +77,7 @@ const Presentation = ({ handlers, jobOffers, state }) => {
         <div>
           <Sidebar
             menu = { getIndustries() }
+            light
           />
         </div>
         <Pagination numberOfSites = { state.numberOfSites }/>

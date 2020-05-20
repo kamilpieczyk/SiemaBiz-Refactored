@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import colors from '../../../../styles/colors'
 
 export const Container = styled.div`
-  color: ${ colors.white };
+
+  color: ${ ({ light }) => light ? colors.main : colors.white };
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,10 +16,12 @@ export const Container = styled.div`
     margin-left: 5px;
     :hover{
       text-decoration: underline;
+      font-weight: 400;
     }
   }
 
   i{
     font-size: 1.5rem;
+    margin-right: 10px;
   }
 `
