@@ -70,6 +70,7 @@ const Presentation = ({ handlers, jobOffers, state }) => {
                 industry = { offer.industry }
                 description = { offer.description }
                 date = { offer.date }
+                buttonHandler = { handlers.handleViewOfferButton }
               />
             ) )
           }
@@ -95,7 +96,8 @@ Presentation.propTypes = {
   handlers: PropTypes.shape({
     handleSearchInput: PropTypes.func.isRequired,
     handleLocationInput: PropTypes.func.isRequired,
-    setSortMode: PropTypes.func.isRequired
+    setSortMode: PropTypes.func.isRequired,
+    handleViewOfferButton: PropTypes.func.isRequired
   }),
 
 }

@@ -13,6 +13,13 @@ const Logic = ({ render, jobOffers }) => {
 
   const router = useRouter();
 
+  const handleViewOfferButton = ( id ) => {
+    router.push({
+      pathname: '/job-offer',
+      query: { id }
+    })
+  }
+
   const handleSearchInput = value => {
     
     if( value.length > 0 ){
@@ -127,7 +134,8 @@ const Logic = ({ render, jobOffers }) => {
     handlers: {
       handleSearchInput,
       handleLocationInput,
-      setSortMode
+      setSortMode,
+      handleViewOfferButton
     }
   })
 }

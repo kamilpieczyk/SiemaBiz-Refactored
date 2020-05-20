@@ -22,7 +22,7 @@ import Separator from '../../../UI/separator'
 
 const Button = withClick( SmallButton );
 
-const JobOffer = ({ title, companyID, city, wages, industry, description, date }) => {
+const JobOffer = ({ title, companyID, city, wages, industry, description, date, buttonHandler }) => {
   const [ companyName, setCompanyName ] = useState('');
   const [ isHover, setHover ] = useState( false );
 
@@ -74,7 +74,7 @@ const JobOffer = ({ title, companyID, city, wages, industry, description, date }
         <DateContainer>{ date }</DateContainer>
       </Footer>
       <ButtonContainer isHover = { isHover }>
-        <Button thin onClickFunction = { () => {} } >
+        <Button thin onClickFunction = { () => buttonHandler( companyID ) } >
           <MaterialIcon icon = 'visibility' />
           <Separator width = '5px' />
           { language.seeOfferButton }
@@ -90,6 +90,7 @@ JobOffer.propTypes = {
   city: PropTypes.string.isRequired,
   wages: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  buttonHandler: PropTypes.func.isRequired
 }
 
 export default JobOffer;
