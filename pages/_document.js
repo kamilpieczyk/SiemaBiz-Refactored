@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <link rel='icon' href='/favicon.ico' />
+          <link rel="icon" type="image/png" sizes="32x32" href='/favicon.png' />
           <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
           <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
