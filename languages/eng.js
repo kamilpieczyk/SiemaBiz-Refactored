@@ -72,7 +72,7 @@ export default {
     {
       title: "job offers",
       icon: "next_week",
-      href: "/job"
+      href: "/job-offers?site=1"
     },
     {
       title: "book an apoitment",
@@ -430,5 +430,17 @@ export default {
     button: 'see description',
     workForThisCompanyButton: 'I work for this company',
     deleteFromMyEmployers: 'remove from my employers list'
+  },
+  jobOffersSite: {
+    siteTitle: 'job offers',
+    searchInputTitle: 'What are you after',
+    searchInputSubtitle: 'enter wanted job title',
+    localisationInputTitle: 'Where',
+    localisationInputSubtitle: 'city where you want to work',
+    seeOfferButton: 'see this offer',
+    new: 'new added',
+    sortBy: 'sort by',
+    date: 'date',
+    title: 'offer title'
   }
 }

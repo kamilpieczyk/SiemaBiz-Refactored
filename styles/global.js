@@ -20,15 +20,15 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
 
     ::-webkit-scrollbar{
-      width:10px
+      width: 8px;
     }
     ::-webkit-scrollbar-track{
-      background:#cccccc;
-      border-radius:0px
+      background: #cccccc;
+      border-radius: 0px;
     }
     ::-webkit-scrollbar-thumb{
-      background:#880000;
-      border-radius:0px
+      background: ${ colors.main };
+      border-radius: 50px;
     }
   }
 

@@ -5,9 +5,9 @@ import Icon from '@material/react-material-icon'
 
 import { Container } from './menu-item__styles'
 
-const MenuItem = ({ icon, href, children }) => (
+const MenuItem = ({ icon, href, children, light }) => (
   <Link href = { href }>
-    <Container>
+    <Container light = { light }>
       <Icon icon = { icon } />
       <a>{ children }</a>
     </Container>
