@@ -5,12 +5,12 @@ import { mobile } from '../../../../../styles/devices'
 import { flexCenter } from '../../../../../styles/mixins'
 
 export const Container = styled.div`
-  background: ${ main };
+  background: ${ white };
   border-radius: 5px;
   width: 100%;
   display: grid;
   grid-template-columns: 5% 30% 20% 20% 25%;
-  color: ${ white };
+  color: ${ main };
   padding: 20px 10px;
 
   @media ( max-width: ${ mobile }px ) {

@@ -77,7 +77,7 @@ const Presentation = ({ handlers, jobOffers, state }) => {
         </JobOffersContainer>
         <div>
           <Sidebar
-            menu = { getIndustries() }
+            menu = { getIndustries( true ) }
             light
           />
         </div>

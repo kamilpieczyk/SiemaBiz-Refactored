@@ -7,6 +7,7 @@ import { Container, Element, Lp, ButtonContainer } from './an-article-on-list__s
 import Separator from '../../../../UI/separator'
 import DeleteButton from '../../../../UI/delete-button'
 import EditButton from '../../../../UI/edit-button'
+import { main } from '../../../../../styles/colors'
 
 import withClick from '../../../../HOC/withClick'
 
@@ -34,9 +35,9 @@ const AnArticleOnList = ({ lp, title, author, date, deleteFunction, editFunction
           { author }
         </Element>
         <ButtonContainer>
-          <Edit onClickFunction = { editFunction } />
+          <Edit color = { main } onClickFunction = { editFunction } />
           <Separator width = '20px' />
-          <Delete onClickFunction = { deleteFunction } />
+          <Delete color = { main } onClickFunction = { deleteFunction } />
         </ButtonContainer>
       </Container>
       <Separator height = '20px' />

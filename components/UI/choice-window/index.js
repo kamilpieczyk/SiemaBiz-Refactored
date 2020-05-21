@@ -30,6 +30,7 @@ export default () => {
           <ClickableButton onClickFunction = { () => yesFunction() }>
             { language.general.yes }
           </ClickableButton>
+          <Separator width = '10px'/>
           <ClickableButton onClickFunction = { () => dispatch( setChoiceWindowInactive() ) }>
             { language.general.no }
           </ClickableButton>

@@ -15,6 +15,7 @@ import {
   IconsContainer
 } from './company__styles'
 import MaterialIcon from '@material/react-material-icon'
+import Separator from '../../../../UI/separator'
 
 const ClickButton = withClick( Button );
 
@@ -64,6 +65,7 @@ const Company = ({
                   <ClickButton onClickFunction = { () => handlers.handleDeleteCompanyButton( id, logo ) }>
                     { language.deleteCompany }
                   </ClickButton>
+                  <Separator width = '10px' />
                   <ClickButton onClickFunction = { () => setDeleting( false ) }>
                     { language.cancel }
                   </ClickButton>

@@ -57,7 +57,7 @@ export default {
     {
       title: "articles",
       icon: "vertical_split",
-      href: "/articles?site=1"
+      href: "/articles-page?site=1"
     },
     {
       title: "companies cathalog",

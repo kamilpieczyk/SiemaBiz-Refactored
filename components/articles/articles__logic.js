@@ -12,7 +12,7 @@ const ArticlesLogicLayer = ({ render, articles }) => {
   sidebar.unshift({
     name: 'wszystkie',
     title: language.general.categories.all,
-    href: 'articles?site=1',
+    href: 'articles-page?site=1',
     icon: 'all_inclusive'
   },)
 

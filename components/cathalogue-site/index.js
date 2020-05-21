@@ -53,7 +53,7 @@ const CathalogueSite = ({ searchResults, companies }) => {
       </Content>
 
       <Sidebar>
-        <SidebarBox menu = { getIndustries() } />
+        <SidebarBox light menu = { getIndustries() } />
       </Sidebar>
     </Container>
   )

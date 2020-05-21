@@ -1,21 +1,41 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
+import MaterialIcon from '@material/react-material-icon'
 
-import { Container, Image, Content, ReadArticle } from './article-box__styles'
+import { Container, Image, Content, ReadArticle, AuthorAndDate } from './article-box__styles'
 import apiKey from '../../../API/key'
 
 const ArticleBox = ({ article }) => {
   
+  const [ imageWidth, setImageWidth ] = useState( 170 );
   const language = useSelector( s => s.language.source );
+  const introduction = article.introduction.split(' ');
+
+  useEffect(
+    () => {
+      const imageWidth = document.getElementById('article_image').offsetWidth;
+      setImageWidth( imageWidth );
+    }, []
+  )
 
   return(
     <Container>
-      <Image src = { `${ apiKey }uploads/images/${ article.image }` } />
+      <Image id = 'article_image' imageWidth = { imageWidth } src = { `${ apiKey }uploads/images/${ article.image }` } />
       <Content>
-        <h2>{ article.title.slice( 0, 50 ) }</h2>
-        <p>{ article.introduction.slice( 0, 460 ) }( ... )</p>
+        <h2>{ article.title }</h2>
+        <AuthorAndDate>
+          <h4>{ article.category }</h4>
+          <p>{ article.date }</p>
+          <h3><MaterialIcon icon = 'account_circle'/>{ article.author }</h3>
+        </AuthorAndDate>
+        <p>
+          { introduction.slice( 0, 60 ).join(' ') + ' ' }
+          <Link href = { { pathname: 'article', query: { id: article._id } } }>
+            <a>...{ language.articlesPage.button }</a>
+          </Link>
+        </p>
         <ReadArticle>
           <Link href = { { pathname: 'article', query: { id: article._id } } }>
             <a>{ language.articlesPage.button }</a>
