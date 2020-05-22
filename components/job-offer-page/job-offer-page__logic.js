@@ -13,6 +13,7 @@ const JobOfferPageLogic = ({ render, offer }) => {
   const [ companyLocation, setCompanyLocation ] = useState( null );
   const [ companyAdress, setCompanyAdress] = useState( null );
   const [ isLoading, setLoading ] = useState( false );
+  const [ isApplied, setApplied ] = useState( false );
 
   const user = useSelector( s => s.user );
   const language = useSelector( s => s.language.source.jobOfferPage );
@@ -32,6 +33,7 @@ const JobOfferPageLogic = ({ render, offer }) => {
       const data = await POST('apply-job', { username: user.username, jobAdID: offer._id });
       if( data.status === 'ok' ){
         setLoading( false );
+        setApplied( true );
       }
     }
     else{
@@ -43,10 +45,23 @@ const JobOfferPageLogic = ({ render, offer }) => {
     }
   }
 
-  useEffect(() => { fetchCompany() }, []);
+  const checkIfUserAppliedBefore = () => {
+    const applications = offer.applications;
+    const checkIfIncludes = applications.includes( user.username );
+    if( checkIfIncludes ) setApplied( true );
+  }
+
+  useEffect(() => { 
+    fetchCompany();
+  }, []);
+  
+  useEffect(() => { 
+    checkIfUserAppliedBefore();
+  }, [user]);
 
   return render({
     isLoading,
+    isApplied,
     handleApplyButton,
     offer: {
       logo,

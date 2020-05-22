@@ -140,3 +140,18 @@ export const LoadingButton = styled.button`
     margin-right: 5px;
   }
 `
+
+export const Applied = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border-radius: 5px;
+  border: 1px solid ${ colors.grey };
+  color: ${ colors.grey };
+  padding: 10px 15px;
+  right: 5vw;
+  top: 0;
+  cursor: pointer;
+`

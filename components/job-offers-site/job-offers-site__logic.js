@@ -18,7 +18,8 @@ const Logic = ({ render, jobOffers }) => {
     router.push({
       pathname: '/job-offer-page',
       query: { id }
-    })
+    });
+    window.scrollTo( 0, 0 );
   }
 
   const handleIndustry = () => {

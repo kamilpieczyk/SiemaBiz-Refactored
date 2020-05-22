@@ -12,20 +12,23 @@ import {
   Description,
   DutiesReqirements,
   LoadingButton,
+  Applied,
   ApplyButton } from './job-offer-page__styles'
 import Sidebar from '../UI/sidebar-box'
 import { getIndustries } from '../../data/industries'
 
-const JobOfferPagePresentation = ({ offer, isLoading, handleApplyButton }) => {
+const JobOfferPagePresentation = ({ offer, isLoading, isApplied, handleApplyButton }) => {
   
   const language = useSelector( s => s.language.source.jobOfferPage );
 
   return(
     <Container>
       <Content>
-        { isLoading
-            ? <LoadingButton><img src = '/images/loading.gif' />{ language.loading }</LoadingButton>
-            : <ApplyButton onClick = { handleApplyButton }><MaterialIcon icon = 'done' />{ language.apply }</ApplyButton>
+        { isApplied
+          ? <Applied>{ language.applied }</Applied>
+          : isLoading
+              ? <LoadingButton><img src = '/images/loading.gif' />{ language.loading }</LoadingButton>
+              : <ApplyButton onClick = { handleApplyButton }><MaterialIcon icon = 'done' />{ language.apply }</ApplyButton>
         }
         <Head>
           { offer.logo && <img src = {`uploads/logos/${offer.logo}`} /> }
@@ -63,6 +66,7 @@ const JobOfferPagePresentation = ({ offer, isLoading, handleApplyButton }) => {
 
 JobOfferPagePresentation.propTypes = {
   isLoading: PropTypes.bool,
+  isApplied: PropTypes.bool,
   handleApplyButton: PropTypes.func.isRequired,
   offer: PropTypes.shape({
     logo: PropTypes.string,

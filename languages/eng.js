@@ -442,5 +442,17 @@ export default {
     sortBy: 'sort by',
     date: 'date',
     title: 'offer title'
+  },
+  jobOfferPage: {
+    pageTitle: ( offerTitle ) => `job offer ${ offerTitle }`,
+    requirements: 'requirements',
+    duties: 'duties',
+    apply: 'apply now',
+    loading: 'applying',
+    applied: 'applied',
+    userNotLogged: {
+      title: 'you are no logged in',
+      msg: 'You have to loggin to applay',
+    }
   }
 }
