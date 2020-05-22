@@ -63,6 +63,7 @@ const Presentation = ({ handlers, jobOffers, state }) => {
             jobOffers.map( offer => (
               <JobOffer
                 key = { offer._id }
+                id = { offer._id }
                 title = { offer.title }
                 companyID = { offer.companyID }
                 city = { offer.city }

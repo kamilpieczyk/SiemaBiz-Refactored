@@ -16,7 +16,7 @@ const Logic = ({ render, jobOffers }) => {
 
   const handleViewOfferButton = ( id ) => {
     router.push({
-      pathname: '/job-offer',
+      pathname: '/job-offer-page',
       query: { id }
     })
   }

@@ -441,5 +441,17 @@ export default {
     sortBy: 'sortuj według',
     date: 'daty',
     title: 'tytułu ogłoszenia'
+  },
+  jobOfferPage: {
+    pageTitle: ( offerTitle ) => `oferta pracy ${ offerTitle }`,
+    requirements: 'wymagania',
+    duties: 'zakres obowiązków',
+    apply: 'aplikuj teraz',
+    loading: 'trwa aplikowanie',
+    applied: 'zaaplikowano',
+    userNotLogged: {
+      title: 'jesteś niezalogowany',
+      msg: 'musisz się zalogować aby móc aplikować',
+    }
   }
 }

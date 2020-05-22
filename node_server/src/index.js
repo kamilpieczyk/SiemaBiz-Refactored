@@ -74,6 +74,7 @@ class App {
     app.post( "/remove-user-from-company", require( "./routes/removeUserFromCompany" ) );
     app.post( "/add-job-ad", require( "./routes/addJobad" ) );
     app.post( "/edit-job-ad", require( "./routes/editJobAd" ) );
+    app.post( "/apply-job", require( "./routes/applyJob" ) );
     app.post( "/archive-job-ad", require( "./routes/archiviseJobAd" ) );
     app.post( "/add-new-coop-ad", require( "./routes/addNewCoopAd" ) );
     app.post( "/edit-coop-ad", require( "./routes/editCoopAd" ) );

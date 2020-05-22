@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { Provider } from 'react-redux'
+import withRedux from 'next-redux-wrapper'
 
 import store from '../Redux/store'
 import { loginUser, getArticles } from '../Redux/actions'
@@ -47,4 +48,6 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+const makeStore = () => store;
+
+export default withRedux( makeStore )( MyApp );
