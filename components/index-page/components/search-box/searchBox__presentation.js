@@ -22,7 +22,7 @@ const SearchBoxPresentationLayer = ({ state, handlers, inputRef, small }) => {
     <Container small = { small }>
       <Box small = { small }>
         { !small && <h1>{ language.indexPage.searchBoxTitle }</h1> }
-        <Input>
+        <Input small = { small }>
           <div className = 'icon'>
             <MaterialIcon icon = 'search' />
           </div>

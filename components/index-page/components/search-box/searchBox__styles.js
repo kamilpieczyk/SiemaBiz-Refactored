@@ -6,11 +6,11 @@ import { backdropFilter, absoluteCenter, flexCenter } from '../../../../styles/m
 
 export const Container = styled.div`
   width: 100vw;
-  height: ${ ({ small }) => small ? '40vh' : '100vh' };
+  height: ${ ({ small }) => small ? '200px' : '100vh' };
   background-size: ${ ({ small }) => small ? '100% 100vh' : '100% 100%' };
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url( images/index-desktop.png );
+  background-image: ${ ({ small }) => small ? 'none' : 'url( images/index-desktop.png )' };
   position: relative;
 
   @media ( max-width: ${ mobile }px ) {
@@ -27,7 +27,7 @@ export const Box = styled.div`
   ${ ({ small }) => small && 'top: 70%;' }
 
   h1{
-    color: ${ colors.white };
+    color: ${ ({ small }) =>  small ? colors.main : colors.white };
     text-shadow: 0px 0px 3px ${ colors.black };
     font-weight: 100;
     font-size: 2rem;
@@ -49,15 +49,17 @@ export const Input = styled.div`
     border-radius: 5px 0 0 5px;
     flex: 1;
     ${ flexCenter() };
+    ${ ({ small }) => small && `box-shadow: 1px 1px 5px ${ colors.lightGrey };` }
   }
 
   input{
     border: none;
     text-align: center;
-    background: ${ colors.white };
+    background: ${ ({ small }) => small ? colors.ultraWhite : colors.white };
     height: 100%;
     flex: 14;
     border-radius: 0 5px 5px 0;
     caret-color: ${ colors.main };
+    ${ ({ small }) => small && `box-shadow: 1px 1px 5px ${ colors.lightGrey };` }
   }
 `

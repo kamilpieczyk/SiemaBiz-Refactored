@@ -15,11 +15,7 @@ const Articles = ({ searchResults, allCompanies, companiesByIndustry, industryQu
   return(
     <Layout>
       <Head><title>SiemaBiz Forum</title></Head>
-      {
-        router.query.search
-          ? <SearchBox small />
-          : <SearchBox />
-      }
+      <SearchBox small />
       <CathalogueSite
         searchResults = { searchResults.companies }
         companies = {
