@@ -46,7 +46,7 @@ const Company = ({
     {
       title: language.manageCooperationAds,
       icon: 'work',
-      onClick: () => {}
+      onClick: () => handlers.handleManageCoopOffersButton({ companyID: id })
     },
   ];
 
@@ -127,7 +127,8 @@ Company.propTypes = {
   handlers: PropTypes.shape({
     handleEmployeeListButton: PropTypes.func.isRequired,
     handleManageJobAdsButton: PropTypes.func.isRequired,
-    handleAddNewCompanyButton: PropTypes.func.isRequired
+    handleAddNewCompanyButton: PropTypes.func.isRequired,
+    handleManageCoopOffersButton: PropTypes.func.isRequired
   }).isRequired
 }
 

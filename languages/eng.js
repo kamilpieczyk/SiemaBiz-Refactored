@@ -346,6 +346,14 @@ export default {
         title: 'unknown error',
         msg: 'please try again later'
       },
+    },
+    addNewCooperationOfferWindow: {
+      title: 'cooperation offer title',
+      city: 'city',
+      content: 'offer content',
+      industry: 'industry',
+      submit: 'add offer',
+      loading: 'submiting the offer'
     }
   },
   articlesPanel: {

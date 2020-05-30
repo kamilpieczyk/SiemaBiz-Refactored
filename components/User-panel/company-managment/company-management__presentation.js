@@ -17,6 +17,7 @@ import { getIndustries } from '../../../data/industries'
 import CvWindow from './components/cv-window'
 import AddCompanyWindow from './components/add-company-window'
 import SearchCompanyWindow from './components/search-company-window'
+import AddCoopOfferWindow from './components/add-coop-offer-window'
 
 import {
   Container,
@@ -181,6 +182,17 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
       }
 
       {
+        // COOPERATION OFER WINDOW, ADD / EDIT
+        state.addCooperationOffer.isActive && (
+          <AddCoopOfferWindow
+            close = { handlers.handleCooperationOffersWindow }
+            handleInputs = { handlers.handleCooperationOffersInputs }
+            inputs = { state.addCooperationOffer }
+            submit = { handlers.submitCooperationOfferButton }
+          />)
+      }
+
+      {
         // CV VIEW WINDOW
         state.cvWindow.isActive && (
           <CvWindow
@@ -310,6 +322,54 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                   )
                 }
 
+                { // COOPERATION OFFERS
+                  state.cooperationOffers.isActive && state.cooperationOffers.companyID === company._id &&(
+                    <CompanieContentContainer>
+                      {/* add new offer button */}
+                      <ClickButton maxWidth onClickFunction = { () => handlers.handleCooperationOffersWindow() } >
+                        <MaterialIcon icon = 'add' />
+                        { language.addNewJobAd }
+                      </ClickButton>
+
+                      <Separator height = '10px' />
+                      {/* cooperation offers content */}
+                      { state.cooperationOffers.cooperationOffers?.map( offer => (
+                        <JobAdBox key = { offer._id }>
+                          <div>
+                            <p>{ offer.title }</p>
+                            <p>{ offer.city }</p>
+                          </div>
+                          <div>{ offer.date }</div>
+                          <section>
+                            <MaterialIcon
+                              icon = 'edit'
+                              title = { language.edit }
+                              onClick = { () => {} }
+                            />
+                            <MaterialIcon
+                              icon = 'archive'
+                              title = { language.archivise }
+                              onClick = { () => {} }
+                            />
+                          </section>
+                        </JobAdBox>
+                      ) ) }
+
+                      {/* FOLD COOPERATION OFFER BUTTON */}
+                      <Separator height = '15px' />
+                      <ClickButton
+                        onClickFunction = { () => handlers.handleManageCoopOffersButton({ close: true }) }
+                        maxWidth
+                        smallHeight
+                      >
+                        <MaterialIcon icon = 'keyboard_arrow_up' />
+                        { language.fold }
+                      </ClickButton>
+
+                    </CompanieContentContainer>
+                  )
+                }
+
               </React.Fragment>
             )
           )
@@ -393,7 +453,17 @@ CompanyManagementPresentation.propTypes = {
       isActive: PropTypes.bool,
       editID: PropTypes.string
     }),
-    isSearchCompanyWindowActive: PropTypes.bool
+    isSearchCompanyWindowActive: PropTypes.bool,
+    cooperationOffers: PropTypes.shape({
+      isActive: PropTypes.bool,
+      companyID: PropTypes.string,
+      cooperationOffers: PropTypes.array
+    }).isRequired,
+    addCooperationOffer: PropTypes.shape({
+      isActive: PropTypes.bool,
+      isEditMode: PropTypes.bool,
+      editID: PropTypes.string,
+    })
   }),
   handlers: PropTypes.shape({
     handleEmployeeListButton: PropTypes.func.isRequired,
@@ -409,7 +479,11 @@ CompanyManagementPresentation.propTypes = {
     handleJobAdWindowSubmit: PropTypes.func.isRequired,
     handleCvWindow: PropTypes.func.isRequired,
     handleAddNewCompanyButton: PropTypes.func.isRequired,
-    handleSearchWindow: PropTypes.func.isRequired
+    handleSearchWindow: PropTypes.func.isRequired,
+    handleManageCoopOffersButton: PropTypes.func.isRequired,
+    handleCooperationOffersWindow: PropTypes.func.isRequired,
+    handleCooperationOffersInputs: PropTypes.func.isRequired,
+    submitCooperationOfferButton: PropTypes.func.isRequired,
   })
 }
 

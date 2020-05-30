@@ -22,6 +22,24 @@ const CompanyManagementLogic = ({ render }) => {
     companyID: '',
     jobAds: []
   });
+  const [ cooperationOffers, setCooperationOffers ] = useState({
+    isActive: false,
+    companyID: '',
+    cooperationOffers: []
+  });
+  const [ addCooperationOffer, setAddCooperationOffer ] = useState({
+    isActive: false,
+    isLoading: false,
+    isEditMode: false,
+    editID: null,
+    title: '',
+    content: '',
+    city: '',
+    industry: {
+      title: 'software-development',
+      index: 0
+    }
+  });
   const [ addJobAd, setAddJobAd ] = useState({
     isActive: false,
     isEditMode: false,
@@ -63,6 +81,7 @@ const CompanyManagementLogic = ({ render }) => {
 
   const dispatch = useDispatch();
   const language = useSelector( s => s.language.source );
+  const popupWrong = useSelector( s => s.language.source.general.popups.wrong );
 
   const getUserCompanies = async() => {
     const authorisation = await AUTH();
@@ -204,6 +223,32 @@ const CompanyManagementLogic = ({ render }) => {
         companyID,
         jobAds: ads.ads
       });
+      setCooperationOffers({
+        ...cooperationOffers,
+        isActive: false,
+        companyID: '',
+        cooperationOffers: []
+      });
+    }
+  }
+
+  const handleManageCoopOffersButton = async ({ companyID, close = false }) => {
+
+    if (close) setCooperationOffers({
+      ...cooperationOffers,
+      isActive: false,
+      companyID: '',
+      cooperationOffers: []
+    });
+    else {
+      const offers = await GET( `get-coop-offers/${ companyID }` );
+      setCooperationOffers({
+        ...cooperationOffers,
+        isActive: true,
+        companyID,
+        cooperationOffers: offers
+      });
+      setJobAdsWindow({ ...jobAdsWindow, isActive: false });
     }
   }
 
@@ -235,6 +280,76 @@ const CompanyManagementLogic = ({ render }) => {
       else{ // use if icon 'archivise' has been clicked
         setArchiviseActive({ bool: true, id: adID });
       }
+    }
+  }
+
+  const handleCooperationOffersWindow = async ( close = false, edit = false ) => {
+    if ( close ){
+      setAddCooperationOffer({
+        ...addCooperationOffer,
+        isActive: false,
+      })
+    }
+    else if ( edit ){
+
+    }
+    else{
+      setAddCooperationOffer({
+        ...addCooperationOffer,
+        isActive: true,
+      })
+    }
+  }
+
+  const handleCooperationOffersInputs = ({ value, inputName }) => {
+    const names = [ 'title', 'city', 'content' ];
+    const currentState = { ...addCooperationOffer };
+    if (inputName === 'industry') {
+      setAddCooperationOffer({
+        ...addCooperationOffer,
+        industry: {
+          index: value.index,
+          title: value.field.name
+        }
+      })
+    } else {
+      for ( let name of names ) if( name === inputName ) currentState[ name ] = value;
+      setAddCooperationOffer( currentState );
+    }
+  }
+
+  const submitCooperationOfferButton = async () => {
+    setAddCooperationOffer({ ...addCooperationOffer, isLoading: true });
+    const add = await POST('add-new-coop-offer', {
+      title: addCooperationOffer.title,
+      content: addCooperationOffer.content,
+      company: cooperationOffers.companyID,
+      industry: addCooperationOffer.industry.title,
+    });
+    if (add.status === 'ok') {
+      setAddCooperationOffer({
+        ...addCooperationOffer,
+        isLoading: false,
+        isActive: false,
+        title: '',
+        content: '',
+        city: '',
+        industry: {
+          title: 'software-development',
+          index: 0
+        },
+      });
+      handleManageCoopOffersButton({ companyID: cooperationOffers.companyID, close: false });
+    } else {
+      setAddCooperationOffer({
+        ...addCooperationOffer,
+        isLoading: false,
+        isActive: false
+      });
+      setPopupWindowActive({
+        title: popupWrong.title,
+        messenge: popupWrong.messenge
+      });
     }
   }
 
@@ -477,7 +592,9 @@ const CompanyManagementLogic = ({ render }) => {
       addJobAd,
       cvWindow,
       addNewCompanyWindow,
-      isSearchCompanyWindowActive
+      isSearchCompanyWindowActive,
+      cooperationOffers,
+      addCooperationOffer
     },
     handlers: {
       handleEmployeeListButton,
@@ -493,7 +610,11 @@ const CompanyManagementLogic = ({ render }) => {
       handleJobAdWindowSubmit,
       handleCvWindow,
       handleAddNewCompanyButton,
-      handleSearchWindow
+      handleSearchWindow,
+      handleManageCoopOffersButton,
+      handleCooperationOffersWindow,
+      handleCooperationOffersInputs,
+      submitCooperationOfferButton
     }
   })
 }

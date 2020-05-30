@@ -345,6 +345,14 @@ export default {
         title: 'wystąpił nieoczekiwany błąd',
         msg: 'spróbuj ponownie później'
       },
+    },
+    addNewCooperationOfferWindow: {
+      title: 'tytuł ogłoszenia',
+      city: 'miejscowość',
+      content: 'treść ogłoszenia',
+      industry: 'branża',
+      submit: 'dodaj ogłoszenie',
+      loading: 'dodawanie ogłoszenia',
     }
   },
   articlesPanel: {

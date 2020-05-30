@@ -3,25 +3,25 @@ const date = require( "../components/getDate" )
 
 module.exports = async( req, res ) => {
 
-  const { title, content, company } = req.body
+  const { title, content, company, industry } = req.body
 
-  const ad = new CoopModel( {
+  const ad = new CoopModel({
     title,
     content,
     company,
+    industry,
     date: date()
-  } )
+  })
 
   const doc = await ad.save()
-  if( doc ){
-    res.status( 200 )
-    res.json( {
+  if(doc){
+    res.status(200).json({
       status: "ok"
-    } )
+    })
   }
   else{
-    res.json( {
-      status: "fail"
-    } )
+    res.status(500).json({
+      status: "error"
+    })
   }
 }
