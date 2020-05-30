@@ -248,7 +248,6 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                         state.jobAdsWindow.jobAds?.map(
                           jobAd => (
                             <JobAdBox key = { jobAd._id }>
-                              
                               {
                                 state.isArchiviseActive.bool && state.isArchiviseActive.id === jobAd._id
                                   // show if archivise icon has been clicked
@@ -344,7 +343,7 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                             <MaterialIcon
                               icon = 'edit'
                               title = { language.edit }
-                              onClick = { () => {} }
+                              onClick = { () => handlers.handleCooperationOffersWindow(false, true, offer._id) }
                             />
                             <MaterialIcon
                               icon = 'archive'

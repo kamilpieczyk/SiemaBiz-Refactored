@@ -6,7 +6,8 @@ const schema = new Schema( {
     content: String,
     company: String,
     date: String,
-    archiveDate: String
+    archiveDate: String,
+    industry: String,
 } )
 schema.index( { title: "text" } )
 

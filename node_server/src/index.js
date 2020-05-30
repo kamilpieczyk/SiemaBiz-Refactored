@@ -39,7 +39,6 @@ class App {
       console.log(`server run at ${process.env.PORT}`);
     });
   }
-
   getRoutes() {
     app.get("/test", require("./routes/test"));
     app.get("/get-user-companies/:user", require("./routes/getUserCompaniesList"));
@@ -66,7 +65,6 @@ class App {
 
     app.get("*", this.handle);
   }
-
   postRoutes() {
     app.post("/authorisation", require("./routes/auth"));
     app.post("/register", require("./routes/register"));
@@ -88,7 +86,7 @@ class App {
     app.post("/archive-job-ad", require("./routes/archiviseJobAd"));
     app.post("/add-new-coop-offer", require("./routes/addNewCoopAd"));
     app.post("/edit-coop-offer", require("./routes/editCoopAd"));
-    app.post("/archive-coop-ad", require("./routes/archiviseCoopAd"));
+    app.post('/archivise-cooperation-offer', require('./routes/archiviseCooperationOffer'));
     app.post("/delete-user", require("./routes/deleteUser"));
     app.post("/edit-user", require("./routes/editUser"));
     app.post("/check-password", require("./routes/checkPassword"));
