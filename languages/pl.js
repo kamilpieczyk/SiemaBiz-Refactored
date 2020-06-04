@@ -7,13 +7,13 @@ export default {
     popups: {
       wrong: {
         title: 'uuups',
-        messenge: 'coś poszło nie tak - spróbuj ponownie później'
-      }
+        messenge: 'coś poszło nie tak - spróbuj ponownie później',
+      },
     },
     uploadForm: {
       dropInformation: 'upuść plik/i tutaj ...',
       information: 'przeciągnij pliki tutaj, lub kliknij by wybrać',
-      button: 'wybierz pliki'
+      button: 'wybierz pliki',
     },
     categories: {
       topTenTips: 'top 10 porad',
@@ -27,7 +27,7 @@ export default {
       unitedKingdom: 'wileka brytania',
       poland: 'polska',
       general: 'tematyka ogólna',
-      all: 'wszystkie'
+      all: 'wszystkie',
     },
     industries: {
       softwareDevelopment: 'produkcja oprogramowania',
@@ -45,45 +45,45 @@ export default {
       beauty: 'uroda',
       law: 'prawo',
       foodIndustry: 'gastronomia',
-      other: 'inna'
-    }
+      other: 'inna',
+    },
   },
   menu: [
     {
-      title: "strona główna",
-      icon: "home",
-      href: "/"
+      title: 'strona główna',
+      icon: 'home',
+      href: '/',
     },
     {
-      title: "artykuły",
-      icon: "vertical_split",
-      href: "/articles-page?site=1"
+      title: 'artykuły',
+      icon: 'vertical_split',
+      href: '/articles-page?site=1',
     },
     {
-      title: "katalog firm",
-      icon: "import_contacts",
-      href: "/companies-cathalogue?site=1"
+      title: 'katalog firm',
+      icon: 'import_contacts',
+      href: '/companies-cathalogue?site=1',
     },
     {
-      title: "oferty współpracy",
-      icon: "business_center",
-      href: "/cooperation"
+      title: 'oferty współpracy',
+      icon: 'business_center',
+      href: '/cooperation',
     },
     {
-      title: "oferty pracy",
-      icon: "next_week",
-      href: "/job-offers?site=1"
+      title: 'oferty pracy',
+      icon: 'next_week',
+      href: '/job-offers?site=1',
     },
     {
-      title: "umów się",
-      icon: "insert_invitation",
-      href: "/makeapoitment"
+      title: 'umów się',
+      icon: 'insert_invitation',
+      href: '/makeapoitment',
     },
     {
-      title: "skontaktuj się z nami",
-      icon: "contact_mail",
-      href: "/contacts"
-    }
+      title: 'skontaktuj się z nami',
+      icon: 'contact_mail',
+      href: '/contacts',
+    },
   ],
   navbar: {
     signUp: 'zarejestruj się',
@@ -101,24 +101,24 @@ export default {
         title: 'ustawienia profilu',
         icon: 'person_pin',
         href: '/user-panel/profile-settings',
-        priv: '225801'
+        priv: '225801',
       },
       {
         title: 'artykuły',
         icon: 'vertical_split',
         href: '/user-panel/administration-panel?page=articles',
-        priv: '225803'
+        priv: '225803',
       },
       {
         title: 'zarządzaj moimi firmami',
         icon: 'business_center',
         href: '/user-panel/administration-panel?page=company',
-        priv: '225801'
+        priv: '225801',
       },
-    ]
+    ],
   },
-  indexPage:{
-    searchBoxTitle: 'wyszukaj w katalogu firm'
+  indexPage: {
+    searchBoxTitle: 'wyszukaj w katalogu firm',
   },
   userPanel: {
     title: 'panel użytkownika',
@@ -127,22 +127,22 @@ export default {
       {
         title: 'ustawienia profilu',
         icon: 'person_pin',
-        href: '/user-panel/profile-settings'
+        href: '/user-panel/profile-settings',
       },
       {
         title: 'moje cv',
         icon: 'assignment_ind',
-        href: '/user-panel/profile-settings/#my-cv'
+        href: '/user-panel/profile-settings/#my-cv',
       },
       {
         title: 'zmień hasło',
         icon: 'build',
-        href: '/user-panel/profile-settings/#change-password'
+        href: '/user-panel/profile-settings/#change-password',
       },
       {
         title: 'usuń konto',
         icon: 'delete_sweep',
-        href: '/user-panel/profile-settings/#delete-account'
+        href: '/user-panel/profile-settings/#delete-account',
       },
     ],
     userSettings: {
@@ -155,10 +155,10 @@ export default {
       loading: 'aktualizowanie danych',
       popup: {
         title: 'akutalizacja pomyślna',
-        messenge: 'twoje dane zostały poprawnie zaktualizowane'
-      }
+        messenge: 'twoje dane zostały poprawnie zaktualizowane',
+      },
     },
-    myCv:{
+    myCv: {
       title: 'moje cv',
       submitButton: 'potwierdź zmiany',
       name: 'imię',
@@ -169,19 +169,19 @@ export default {
       city: 'miasto zamieszkania',
       popupOK: {
         title: 'zaktualizowano',
-        message: 'twoje cv zostało pomyślnie zaktualizowane'
+        message: 'twoje cv zostało pomyślnie zaktualizowane',
       },
       popupFail: {
         title: 'wystąpił problem',
-        message: 'podczas aktualizacji twojego cv wystąpił błąd - spróbuj poniwnie'
+        message: 'podczas aktualizacji twojego cv wystąpił błąd - spróbuj poniwnie',
       },
       education: {
         title: 'przebieg edukacji',
         schoolName: 'nazwa szkoły',
-        yearOfOrigin :'rok rozpoczęcia',
+        yearOfOrigin: 'rok rozpoczęcia',
         yearOfEnd: 'rok zakończenia',
         graduation: 'zdobyty tytuł',
-        button: 'dodaj uczelnię'
+        button: 'dodaj uczelnię',
       },
       experience: {
         title: 'doświadczenie zawodowe',
@@ -189,23 +189,23 @@ export default {
         yearOfOrigin: 'rok rozpoczęcia pracy',
         yearOfEnd: 'rok zakończenia pracy',
         position: 'zajmowane stanowisko',
-        button: 'dodaj miejse pracy'
+        button: 'dodaj miejse pracy',
       },
       certificates: {
         title: 'certyfikaty / kursy / szkolenia',
         certName: 'nazwa',
-        button: 'dodaj certyfikat'
+        button: 'dodaj certyfikat',
       },
       skills: {
         title: 'umiejętności',
         skill: 'nazwa umiejętności',
-        button: 'dodaj nową umiejętność'
+        button: 'dodaj nową umiejętność',
       },
       hobbies: {
         title: 'moje zainteresowania',
         hobby: 'nazawa zainteresowania',
-        button: 'dodaj zainteresowanie'
-      }
+        button: 'dodaj zainteresowanie',
+      },
     },
     changePassword: {
       title: 'zmień hasło',
@@ -225,7 +225,7 @@ export default {
       stepThreeHeader: 'wpisz swoje nowe hasło jeszcze raz',
       reNewPassword: 'powtórz nowe hasło',
       stepThreeErr: 'podane hasło nie jest identyczne',
-      stepFourTitle: 'twoje hasło zostało poprawnie zmienione'
+      stepFourTitle: 'twoje hasło zostało poprawnie zmienione',
     },
     deleteAccount: {
       title: 'usuń konto',
@@ -235,8 +235,8 @@ export default {
       password: 'hasło',
       button: 'potwierdź',
       error: 'podane hasło jest niepoprawne',
-      loading: 'sprawdzanie hasła'
-    }
+      loading: 'sprawdzanie hasła',
+    },
   },
   administrationPanel: {
     articleList: 'lista artykułów',
@@ -251,7 +251,7 @@ export default {
     removeOwner: 'usuń z listy wspólników',
     addOwner: 'dodaj do listy wspólników',
     deleteFromCompany: 'usuń z firmy',
-    deleteCompanyQuestion: ( company ) => `jesteś pewny/a że chcesz usunąć firmę ${ company }?`,
+    deleteCompanyQuestion: company => `jesteś pewny/a że chcesz usunąć firmę ${company}?`,
     deleteCompany: 'usuń firmę',
     editCompany: 'edytuj informacje',
     cancel: 'anuluj',
@@ -262,11 +262,11 @@ export default {
     nothingToShow: 'brak treści do wyświetlenia',
     cv: 'przeglądaj aplikacjie',
     edit: 'edytuj ogłoszenie',
-    archivise: 'przenieś do archiwum',
+    archivise: 'archiwizuj',
     archiviseQuestion: 'jesteś pewien, że chcesz archiwizować to ogłoszenie?',
     isLoadingArchivise: '...trwa archiwizowanie',
     addNewJobAd: 'dodaj nowe ogłoszenie',
-    newJobAd:{
+    newJobAd: {
       title: 'tytuł ogłoszenia pracy',
       city: 'miejsce pracy',
       hours: 'zakres godzinowy',
@@ -277,7 +277,7 @@ export default {
       description: 'treść ogłoszenia',
       addButton: 'dodaj ogłoszenie',
       submitEditButton: 'potwierdź zmiany',
-      loading: 'wysyłanie...'
+      loading: 'wysyłanie...',
     },
     cvWindow: {
       loading: 'wczytywanie przesłanych aplikacji...',
@@ -299,7 +299,7 @@ export default {
       hobbies: 'hobby',
       back: 'poprzednia aplikacja',
       forward: 'następna aplikacja',
-      print: 'drukuj cv'
+      print: 'drukuj cv',
     },
     addNewCompanyWindow: {
       dropHere: 'upuść plik tutaj',
@@ -307,11 +307,11 @@ export default {
       isFile: 'logo dodane prawidłowo',
       fileToBig: {
         title: 'zbyt duży rozmiar',
-        message: 'rozmiar twojego pliku nie może być większy niż 2.5MB'
+        message: 'rozmiar twojego pliku nie może być większy niż 2.5MB',
       },
       wrongType: {
         title: 'niepoprawny typ pliku',
-        message: 'plik loga musi byc zgodny z formatem jpg'
+        message: 'plik loga musi byc zgodny z formatem jpg',
       },
       companyName: 'nazwa firmy',
       adress: 'adres firmy',
@@ -321,38 +321,47 @@ export default {
       loading: 'dodaję firmę',
       sendButton: 'dodaj firmę',
       updateButton: 'aktualizuj informacje',
-      mustHaveName:{
+      mustHaveName: {
         title: 'firma musi mieć nazwę!',
-        msg: 'nie podałeś nazwy twojej nowej firmy'
+        msg: 'nie podałeś nazwy twojej nowej firmy',
       },
-      mustHaveAdress:{
+      mustHaveAdress: {
         title: 'firma musi mieć siedzibę',
-        msg: 'nie podałeś adresu twojej nowej firmy - każda firma musi mieć siedzibę'
+        msg: 'nie podałeś adresu twojej nowej firmy - każda firma musi mieć siedzibę',
       },
-      mustHaveCity:{
+      mustHaveCity: {
         title: 'musisz podać miasto',
-        msg: 'nie podałeś miasta w którym znajduję się siedziba firmy'
+        msg: 'nie podałeś miasta w którym znajduję się siedziba firmy',
       },
-      mustHaveDescription:{
+      mustHaveDescription: {
         title: 'musisz podać opis firmy',
-        msg: 'pomóż zainteresowanym dowiedzieć się czym zajmuje się twoja firma'
+        msg: 'pomóż zainteresowanym dowiedzieć się czym zajmuje się twoja firma',
       },
-      mustHaveLogo:{
+      mustHaveLogo: {
         title: 'musisz przesłać plik z logo',
-        msg: 'każda firma musi posiadać znak handlowy'
+        msg: 'każda firma musi posiadać znak handlowy',
       },
-      addingErr:{
+      addingErr: {
         title: 'wystąpił nieoczekiwany błąd',
-        msg: 'spróbuj ponownie później'
+        msg: 'spróbuj ponownie później',
       },
-    }
+    },
+    addNewCooperationOfferWindow: {
+      title: 'tytuł ogłoszenia',
+      city: 'miejscowość',
+      content: 'treść ogłoszenia',
+      industry: 'branża',
+      submit: 'dodaj ogłoszenie',
+      edit: 'potwierdź zmiany',
+      loading: 'dodawanie ogłoszenia',
+    },
   },
   articlesPanel: {
     title: 'panel artykułów',
     addButton: 'dodaj nowy artykuł',
     articlesList: {
       title: 'lista artykułów',
-      deleteQuestion: 'jesteś absolutnie pewien że chcesz usunąć ten artykuł?'
+      deleteQuestion: 'jesteś absolutnie pewien że chcesz usunąć ten artykuł?',
     },
     articleEditor: {
       newArticleTitle: '*nowy pusty artykuł',
@@ -371,7 +380,7 @@ export default {
       loadButton: 'wczytaj kopię',
       savePopup: {
         title: 'zapisano',
-        message: 'twoja kopia została zapisana na twoim komputerze i pozostanie tam do czasu opublikowania artykułu'
+        message: 'twoja kopia została zapisana na twoim komputerze i pozostanie tam do czasu opublikowania artykułu',
       },
       uploadForm: {
         drop: 'upuść obraz tutaj ...',
@@ -379,31 +388,31 @@ export default {
         dropedOk: 'umieszczono plik obrazu',
         warn: 'umieszczony plik jest zbyt duży lub format nie jest zgodny z .jpg',
       },
-      sections:{
-        acapit:{
+      sections: {
+        acapit: {
           title: 'tytuł nowego akapitu (nieobowiązkowe)',
-          content: 'treść akapitu'
+          content: 'treść akapitu',
         },
         image: {
           title: 'opis pod obrazem',
-          content: 'podaj url obrazu'
+          content: 'podaj url obrazu',
         },
         link: {
           title: 'tytuł odnośnika',
-          content: 'adres odnośnika'
+          content: 'adres odnośnika',
         },
         video: {
           title: 'tytuł filmu',
-          content: 'podaj id filmu z serwisu youtube.com'
-        }
+          content: 'podaj id filmu z serwisu youtube.com',
+        },
       },
       sectionTypes: {
         acapit: 'dodaj akapit',
         image: 'dodaj obraz',
         link: 'dodaj odnośnik',
-        video: 'dodaj video'
-      }
-    }
+        video: 'dodaj video',
+      },
+    },
   },
   articlesPage: {
     title: 'artykuły',
@@ -414,7 +423,7 @@ export default {
     button: 'zobacz firmę',
     industry: 'branża',
     noSearchResults: 'brak wyników wyszukiwania',
-    nothingToshow: 'brak firm w tej branży'
+    nothingToshow: 'brak firm w tej branży',
   },
   companySite: {
     company: 'firma',
@@ -428,7 +437,7 @@ export default {
     loading: 'wczytywanie mapy...',
     button: 'zobacz opis',
     workForThisCompanyButton: 'pracuję w tej firmie',
-    deleteFromMyEmployers: 'usuń z listy moich pracodawców'
+    deleteFromMyEmployers: 'usuń z listy moich pracodawców',
   },
   jobOffersSite: {
     siteTitle: 'oferty pracy',
@@ -440,10 +449,10 @@ export default {
     new: 'nowe ogłoszenie',
     sortBy: 'sortuj według',
     date: 'daty',
-    title: 'tytułu ogłoszenia'
+    title: 'tytułu ogłoszenia',
   },
   jobOfferPage: {
-    pageTitle: ( offerTitle ) => `oferta pracy ${ offerTitle }`,
+    pageTitle: offerTitle => `oferta pracy ${offerTitle}`,
     requirements: 'wymagania',
     duties: 'zakres obowiązków',
     apply: 'aplikuj teraz',
@@ -452,6 +461,6 @@ export default {
     userNotLogged: {
       title: 'jesteś niezalogowany',
       msg: 'musisz się zalogować aby móc aplikować',
-    }
-  }
-}
+    },
+  },
+};
