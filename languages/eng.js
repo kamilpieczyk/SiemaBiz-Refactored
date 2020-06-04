@@ -7,13 +7,13 @@ export default {
     popups: {
       wrong: {
         title: 'oooooops',
-        messenge: 'something went wrong - try again later'
-      }
+        messenge: 'something went wrong - try again later',
+      },
     },
     uploadForm: {
       dropInformation: 'Drop file/s here ...',
       information: 'Drag & drop some files here, or click to select files',
-      button: 'add files'
+      button: 'add files',
     },
     categories: {
       topTenTips: 'top ten tips',
@@ -27,7 +27,7 @@ export default {
       unitedKingdom: 'united kingdom',
       poland: 'poland',
       general: 'general news',
-      all: 'all articles'
+      all: 'all articles',
     },
     industries: {
       softwareDevelopment: 'software development',
@@ -45,45 +45,45 @@ export default {
       beauty: 'beauty & aesthetic',
       law: 'law',
       foodIndustry: 'food industry',
-      other: 'other'
-    }
+      other: 'other',
+    },
   },
   menu: [
     {
-      title: "home",
-      icon: "home",
-      href: "/"
+      title: 'home',
+      icon: 'home',
+      href: '/',
     },
     {
-      title: "articles",
-      icon: "vertical_split",
-      href: "/articles-page?site=1"
+      title: 'articles',
+      icon: 'vertical_split',
+      href: '/articles-page?site=1',
     },
     {
-      title: "companies cathalog",
-      icon: "import_contacts",
-      href: "/companies-cathalogue?site=1"
+      title: 'companies cathalog',
+      icon: 'import_contacts',
+      href: '/companies-cathalogue?site=1',
     },
     {
-      title: "cooperation offers",
-      icon: "business_center",
-      href: "/cooperation"
+      title: 'cooperation offers',
+      icon: 'business_center',
+      href: '/cooperation',
     },
     {
-      title: "job offers",
-      icon: "next_week",
-      href: "/job-offers?site=1"
+      title: 'job offers',
+      icon: 'next_week',
+      href: '/job-offers?site=1',
     },
     {
-      title: "book an apoitment",
-      icon: "insert_invitation",
-      href: "/makeapoitment"
+      title: 'book an apoitment',
+      icon: 'insert_invitation',
+      href: '/makeapoitment',
     },
     {
-      title: "contact us",
-      icon: "contact_mail",
-      href: "/contacts"
-    }
+      title: 'contact us',
+      icon: 'contact_mail',
+      href: '/contacts',
+    },
   ],
   navbar: {
     signUp: 'sign-up',
@@ -93,7 +93,7 @@ export default {
     password: 'password',
     submit: 'sign in',
     loading: 'logging in progress',
-    userNotExist: 'this user doesn\'t exist',
+    userNotExist: "this user doesn't exist",
     wrongPassword: 'this password is incorrect',
     somethingWentWrong: 'something went wrong :-(',
     usermenu: [
@@ -101,24 +101,24 @@ export default {
         title: 'profile settings',
         icon: 'person_pin',
         href: '/user-panel/profile-settings',
-        priv: '225801'
+        priv: '225801',
       },
       {
         title: 'articles',
         icon: 'vertical_split',
         href: '/user-panel/administration-panel?page=articles',
-        priv: '225803'
+        priv: '225803',
       },
       {
         title: 'manage my companies',
         icon: 'business_center',
         href: '/user-panel/administration-panel?page=company',
-        priv: '225801'
+        priv: '225801',
       },
-    ]
+    ],
   },
-  indexPage:{
-    searchBoxTitle: 'search at companies cathalogue'
+  indexPage: {
+    searchBoxTitle: 'search at companies cathalogue',
   },
   userPanel: {
     title: 'user panel',
@@ -128,22 +128,22 @@ export default {
       {
         title: 'profile settings',
         icon: 'person_pin',
-        href: '/user-panel/profile-settings'
+        href: '/user-panel/profile-settings',
       },
       {
         title: 'my cv',
         icon: 'assignment_ind',
-        href: '/user-panel/profile-settings/#my-cv'
+        href: '/user-panel/profile-settings/#my-cv',
       },
       {
         title: 'change my password',
         icon: 'build',
-        href: '/user-panel/profile-settings/#change-password'
+        href: '/user-panel/profile-settings/#change-password',
       },
       {
         title: 'delete my account',
         icon: 'delete_sweep',
-        href: '/user-panel/profile-settings/#delete-account'
+        href: '/user-panel/profile-settings/#delete-account',
       },
     ],
     userSettings: {
@@ -156,10 +156,10 @@ export default {
       loading: 'updating data',
       popup: {
         title: 'actualization compled',
-        messenge: 'your data has been corectly updated'
-      }
+        messenge: 'your data has been corectly updated',
+      },
     },
-    myCv:{
+    myCv: {
       title: 'my cv',
       submitButton: 'accept changes',
       name: 'name',
@@ -170,11 +170,11 @@ export default {
       city: 'city',
       popupOK: {
         title: 'cv updated',
-        message: 'your cv has been succesfully updated'
+        message: 'your cv has been succesfully updated',
       },
       popupFail: {
         title: 'cv update error',
-        message: 'server has been unable to process you cv query - try again'
+        message: 'server has been unable to process you cv query - try again',
       },
       education: {
         title: 'education history',
@@ -182,7 +182,7 @@ export default {
         yearOfOrigin: 'year of origin',
         yearOfEnd: 'year of graduation',
         graduation: 'graduated title',
-        button: 'add school'
+        button: 'add school',
       },
       experience: {
         title: 'work experience',
@@ -190,23 +190,23 @@ export default {
         yearOfOrigin: 'the year of job origin',
         yearOfEnd: 'the year of job end',
         position: 'position',
-        button: 'add workplace'
+        button: 'add workplace',
       },
       certificates: {
         title: 'certificates / courses / trainings',
         certName: 'title',
-        button: 'add certificate'
+        button: 'add certificate',
       },
       skills: {
         title: 'skills',
         skill: 'skill title',
-        button: 'add new skill'
+        button: 'add new skill',
       },
       hobbies: {
         title: 'my hobbies',
         hobby: 'hobby name',
-        button: 'add hobby'
-      }
+        button: 'add hobby',
+      },
     },
     changePassword: {
       title: 'zmień hasło',
@@ -225,8 +225,8 @@ export default {
       ],
       stepThreeHeader: 'enter your new password again',
       reNewPassword: 'retype new password',
-      stepThreeErr: 'password doesn\'t match',
-      stepFourTitle: 'your password has been correctly changed'
+      stepThreeErr: "password doesn't match",
+      stepFourTitle: 'your password has been correctly changed',
     },
     deleteAccount: {
       title: 'delete account',
@@ -236,12 +236,12 @@ export default {
       password: 'password',
       button: 'next',
       error: 'entered password is incorrect',
-      loading: 'checking your password'
-    }
+      loading: 'checking your password',
+    },
   },
   administrationPanel: {
     articleList: 'article list',
-    companyManagement: 'manage companies of main'
+    companyManagement: 'manage companies of main',
   },
   companyPanel: {
     addCompanyButton: 'add company',
@@ -252,7 +252,7 @@ export default {
     removeOwner: 'remove owner',
     addOwner: 'add to owner list',
     deleteFromCompany: 'get rid from company',
-    deleteCompanyQuestion: ( company ) => `are you sure you want to delete ${ company }?`,
+    deleteCompanyQuestion: company => `are you sure you want to delete ${company}?`,
     deleteCompany: 'delete company',
     editCompany: 'edit content',
     cancel: 'cancel',
@@ -267,7 +267,7 @@ export default {
     archiviseQuestion: 'are you sure you want to archivise this ad?',
     isLoadingArchivise: '...archivisation in progress',
     addNewJobAd: 'add new job ad',
-    newJobAd:{
+    newJobAd: {
       title: 'title',
       city: 'city',
       hours: 'hours',
@@ -278,7 +278,7 @@ export default {
       description: 'ad content',
       addButton: 'add ad',
       submitEditButton: 'submit changes',
-      loading: 'sending...'
+      loading: 'sending...',
     },
     cvWindow: {
       loading: 'loading CVs...',
@@ -300,7 +300,7 @@ export default {
       hobbies: 'hobbies',
       back: 'back',
       forward: 'forward',
-      print: 'print cv'
+      print: 'print cv',
     },
     addNewCompanyWindow: {
       dropHere: 'drop your file here',
@@ -308,11 +308,11 @@ export default {
       isFile: 'logo added correct',
       fileToBig: {
         title: 'your file is too big',
-        message: 'size of your image file cannot be higher than 2.5MB'
+        message: 'size of your image file cannot be higher than 2.5MB',
       },
       wrongType: {
         title: 'wrong file type',
-        message: 'your file must be a *.jpg'
+        message: 'your file must be a *.jpg',
       },
       companyName: 'company name',
       adress: 'company adress',
@@ -322,29 +322,29 @@ export default {
       loading: 'adding your new company',
       sendButton: 'add company',
       updateButton: 'update information',
-      mustHaveName:{
+      mustHaveName: {
         title: 'company must have a name!',
-        msg: 'you must to add company name'
+        msg: 'you must to add company name',
       },
-      mustHaveAdress:{
+      mustHaveAdress: {
         title: 'company must have an adress',
-        msg: 'you have forgotten to put adress of your company'
+        msg: 'you have forgotten to put adress of your company',
       },
-      mustHaveCity:{
+      mustHaveCity: {
         title: 'you have to insert city',
-        msg: 'you did not insert city'
+        msg: 'you did not insert city',
       },
-      mustHaveDescription:{
+      mustHaveDescription: {
         title: 'each company must have description',
-        msg: 'otherwise customers may not know what your business do'
+        msg: 'otherwise customers may not know what your business do',
       },
-      mustHaveLogo:{
+      mustHaveLogo: {
         title: 'each company must have a logo',
-        msg: 'otherwise customers may not recognise your business'
+        msg: 'otherwise customers may not recognise your business',
       },
-      addingErr:{
+      addingErr: {
         title: 'unknown error',
-        msg: 'please try again later'
+        msg: 'please try again later',
       },
     },
     addNewCooperationOfferWindow: {
@@ -353,15 +353,19 @@ export default {
       content: 'offer content',
       industry: 'industry',
       submit: 'add offer',
-      loading: 'submiting the offer'
-    }
+      edit: 'apply changes',
+      loading: 'submiting the offer',
+      archiviseQuestion: 'Are you sure that you want to archivise this offer?',
+      archivise: 'archivise',
+      cancel: 'cancel',
+    },
   },
   articlesPanel: {
     title: 'articles panel',
     addButton: 'add new article',
     articlesList: {
       title: 'articles list',
-      deleteQuestion: 'are you sure you would like to delete this article?'
+      deleteQuestion: 'are you sure you would like to delete this article?',
     },
     articleEditor: {
       newArticleTitle: '*new empty article',
@@ -380,7 +384,7 @@ export default {
       loadButton: 'load copy',
       savePopup: {
         title: 'saved',
-        message: 'your copy has been saved on your local memory. It will stay there until you publish article'
+        message: 'your copy has been saved on your local memory. It will stay there until you publish article',
       },
       uploadForm: {
         drop: 'drop image here ...',
@@ -388,31 +392,31 @@ export default {
         dropedOk: 'image added',
         warn: 'file is too big or extension is not .jpg',
       },
-      sections:{
-        acapit:{
+      sections: {
+        acapit: {
           title: 'new paragraph title ( not required )',
-          content: 'paragraph content'
+          content: 'paragraph content',
         },
         image: {
           title: 'image title',
-          content: 'paste image url'
+          content: 'paste image url',
         },
         link: {
           title: 'hyperlink',
-          content: 'link url'
+          content: 'link url',
         },
         video: {
           title: 'video title',
-          content: 'youtube clip id'
-        }
+          content: 'youtube clip id',
+        },
       },
       sectionTypes: {
         acapit: 'add paragraph',
         image: 'add image',
         link: 'add link',
-        video: 'add video'
-      }
-    }
+        video: 'add video',
+      },
+    },
   },
   articlesPage: {
     title: 'articles',
@@ -423,7 +427,7 @@ export default {
     button: 'see company',
     industry: 'industry',
     noSearchResults: 'no search results',
-    nothingToshow: 'there is no companies in this industry'
+    nothingToshow: 'there is no companies in this industry',
   },
   companySite: {
     company: 'company',
@@ -437,7 +441,7 @@ export default {
     loading: 'map is being load...',
     button: 'see description',
     workForThisCompanyButton: 'I work for this company',
-    deleteFromMyEmployers: 'remove from my employers list'
+    deleteFromMyEmployers: 'remove from my employers list',
   },
   jobOffersSite: {
     siteTitle: 'job offers',
@@ -449,10 +453,10 @@ export default {
     new: 'new added',
     sortBy: 'sort by',
     date: 'date',
-    title: 'offer title'
+    title: 'offer title',
   },
   jobOfferPage: {
-    pageTitle: ( offerTitle ) => `job offer ${ offerTitle }`,
+    pageTitle: offerTitle => `job offer ${offerTitle}`,
     requirements: 'requirements',
     duties: 'duties',
     apply: 'apply now',
@@ -461,6 +465,6 @@ export default {
     userNotLogged: {
       title: 'you are no logged in',
       msg: 'You have to loggin to applay',
-    }
-  }
-}
+    },
+  },
+};

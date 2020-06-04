@@ -3,7 +3,8 @@ const date = require( "../components/getDate" )
 
 module.exports = async( req, res ) => {
 
-  const { title, content, company, industry, city } = req.body
+  const { title, content, company, industry, city } = req.body;
+  console.log(title, content, company, industry, city)
 
   const ad = new CoopModel({
     title,

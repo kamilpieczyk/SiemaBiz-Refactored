@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 
-import AUTH from "../../../API/authorisation";
-import GET from "../../../API/get";
-import POST from "../../../API/post";
-import { setPopupWindowActive, logoutUser } from "../../../Redux/actions";
-import { getIndustries } from '../../../data/industries'
+import AUTH from '../../../API/authorisation';
+import GET from '../../../API/get';
+import POST from '../../../API/post';
+import { setPopupWindowActive, logoutUser } from '../../../Redux/actions';
+import { getIndustries } from '../../../data/industries';
 
 const CompanyManagementLogic = ({ render }) => {
   const [companies, setCompanies] = useState([]);
@@ -15,16 +15,16 @@ const CompanyManagementLogic = ({ render }) => {
     isActive: false,
     owners: [],
     employees: [],
-    company: "",
+    company: '',
   });
   const [jobAdsWindow, setJobAdsWindow] = useState({
     isActive: false,
-    companyID: "",
+    companyID: '',
     jobAds: [],
   });
   const [cooperationOffers, setCooperationOffers] = useState({
     isActive: false,
-    companyID: "",
+    companyID: '',
     cooperationOffers: [],
   });
   const [addCooperationOffer, setAddCooperationOffer] = useState({
@@ -32,11 +32,11 @@ const CompanyManagementLogic = ({ render }) => {
     isLoading: false,
     isEditMode: false,
     editID: null,
-    title: "",
-    content: "",
-    city: "",
+    title: '',
+    content: '',
+    city: '',
     industry: {
-      title: "software-development",
+      title: 'software-development',
       index: 0,
     },
   });
@@ -44,20 +44,20 @@ const CompanyManagementLogic = ({ render }) => {
     isActive: false,
     isEditMode: false,
     editID: null,
-    companyName: "",
-    companyID: "",
+    companyName: '',
+    companyID: '',
     inputs: {
-      title: "",
-      city: "",
-      hoursRange: "",
-      wages: "",
+      title: '',
+      city: '',
+      hoursRange: '',
+      wages: '',
       industry: {
         index: 0,
-        value: "software-development",
+        value: 'software-development',
       },
-      duties: "",
-      requirements: "",
-      description: "",
+      duties: '',
+      requirements: '',
+      description: '',
     },
   });
   const [isLoading, setLoading] = useState({
@@ -67,7 +67,7 @@ const CompanyManagementLogic = ({ render }) => {
   });
   const [isArchiviseActive, setArchiviseActive] = useState({
     bool: false,
-    id: "",
+    id: '',
   });
   const [cvWindow, setCvWindow] = useState({
     isActive: false,
@@ -75,23 +75,19 @@ const CompanyManagementLogic = ({ render }) => {
   });
   const [addNewCompanyWindow, setNewCompanyWindow] = useState({
     isActive: false,
-    editID: "",
+    editID: '',
   });
-  const [isSearchCompanyWindowActive, setSearchCompanyWindowActive] = useState(
-    false
-  );
+  const [isSearchCompanyWindowActive, setSearchCompanyWindowActive] = useState(false);
 
   const dispatch = useDispatch();
-  const language = useSelector((s) => s.language.source);
-  const popupWrong = useSelector((s) => s.language.source.general.popups.wrong);
+  const language = useSelector(s => s.language.source);
+  const popupWrong = useSelector(s => s.language.source.general.popups.wrong);
 
   const getUserCompanies = async () => {
     const authorisation = await AUTH();
 
-    if (authorisation.status === "authorised") {
-      const userCompanies = await GET(
-        `get-user-companies/${authorisation.username}`
-      );
+    if (authorisation.status === 'authorised') {
+      const userCompanies = await GET(`get-user-companies/${authorisation.username}`);
       setCompanies(userCompanies.companies);
     } else {
       dispatch(
@@ -107,10 +103,8 @@ const CompanyManagementLogic = ({ render }) => {
   const getUserEmployers = async () => {
     const authorisation = await AUTH();
 
-    if (authorisation.status === "authorised") {
-      const userCompanies = await GET(
-        `get-user-employers/${authorisation.username}`
-      );
+    if (authorisation.status === 'authorised') {
+      const userCompanies = await GET(`get-user-employers/${authorisation.username}`);
       setEmployers(userCompanies.companies);
     } else {
       dispatch(
@@ -130,7 +124,7 @@ const CompanyManagementLogic = ({ render }) => {
         isActive: false,
         owners: [],
         employees: [],
-        company: "",
+        company: '',
       };
       setEmployeesWindow(window);
     } else {
@@ -146,12 +140,12 @@ const CompanyManagementLogic = ({ render }) => {
   };
 
   const handleAddOwnerButton = async (nick, company) => {
-    const data = await POST("add-shareholder", {
+    const data = await POST('add-shareholder', {
       username: nick,
       company,
     });
 
-    if (data.status === "ok") {
+    if (data.status === 'ok') {
       const index = employeesWindow.employees.indexOf(nick);
       const newEmployees = [...employeesWindow.employees];
       newEmployees.splice(index, 1);
@@ -167,12 +161,12 @@ const CompanyManagementLogic = ({ render }) => {
   };
 
   const handleRemoveOwnerButton = async (nick, company) => {
-    const data = await POST("remove-shareholder", {
+    const data = await POST('remove-shareholder', {
       username: nick,
       company,
     });
 
-    if (data.status === "removed") {
+    if (data.status === 'removed') {
       const index = employeesWindow.owners.indexOf(nick);
       const newOwners = [...employeesWindow.owners];
       newOwners.splice(index, 1);
@@ -188,12 +182,12 @@ const CompanyManagementLogic = ({ render }) => {
   };
 
   const handleRemoveEmployeeButton = async (nick, company) => {
-    const data = await POST("remove-user-from-company", {
+    const data = await POST('remove-user-from-company', {
       username: nick,
       company,
     });
 
-    if (data.status === "deleted") {
+    if (data.status === 'deleted') {
       const index = employeesWindow.employees.indexOf(nick);
       const newEmployees = [...employeesWindow.employees];
       newEmployees.splice(index, 1);
@@ -209,8 +203,8 @@ const CompanyManagementLogic = ({ render }) => {
 
   const handleDeleteCompanyButton = async (id, logo) => {
     setLoading({ ...isLoading, deleteCompany: true });
-    const deleteData = await POST("delete-company", { id, logo });
-    if (deleteData.status === "deleted") {
+    const deleteData = await POST('delete-company', { id, logo });
+    if (deleteData.status === 'deleted') {
       setLoading({ ...isLoading, deleteCompany: false });
       getUserCompanies();
     }
@@ -230,7 +224,7 @@ const CompanyManagementLogic = ({ render }) => {
       setCooperationOffers({
         ...cooperationOffers,
         isActive: false,
-        companyID: "",
+        companyID: '',
         cooperationOffers: [],
       });
     }
@@ -241,7 +235,7 @@ const CompanyManagementLogic = ({ render }) => {
       setCooperationOffers({
         ...cooperationOffers,
         isActive: false,
-        companyID: "",
+        companyID: '',
         cooperationOffers: [],
       });
     else {
@@ -257,7 +251,7 @@ const CompanyManagementLogic = ({ render }) => {
   };
 
   const handleArchiviseJobAd = (adID, cancel) => {
-    if (cancel) setArchiviseActive({ bool: false, id: "" });
+    if (cancel) setArchiviseActive({ bool: false, id: '' });
     // use if button 'cancel' has been clicked
     else {
       if (isArchiviseActive.bool && adID !== isArchiviseActive.id) {
@@ -267,15 +261,15 @@ const CompanyManagementLogic = ({ render }) => {
         // use if button 'yes' has been clicked
         return async () => {
           setLoading({ ...isLoading, archivise: true });
-          const archivise = await POST("archive-job-ad", { id: adID });
-          if (archivise.status === "ok") {
+          const archivise = await POST('archive-job-ad', { id: adID });
+          if (archivise.status === 'ok') {
             const ads = await GET(`get-job-ads/${jobAdsWindow.companyID}`);
             setJobAdsWindow({
               ...jobAdsWindow,
               isActive: true,
               jobAds: ads.ads,
             });
-            setArchiviseActive({ bool: false, id: "" });
+            setArchiviseActive({ bool: false, id: '' });
             setLoading({ ...isLoading, archivise: false });
           }
         };
@@ -286,15 +280,19 @@ const CompanyManagementLogic = ({ render }) => {
     }
   };
 
-  const handleCooperationOffersWindow = async (
-    close = false,
-    edit = false,
-    offerID
-  ) => {
+  const handleCooperationOffersWindow = async (close = false, edit = false, offerID) => {
     if (close) {
       setAddCooperationOffer({
         ...addCooperationOffer,
         isActive: false,
+        isEditMode: false,
+        editID: null,
+        title: '',
+        content: '',
+        industry: {
+          title: 'software-development',
+          index: 0,
+        },
       });
     } else if (edit) {
       const getOfferToEdit = await GET(`get-coop-offer/${offerID}`);
@@ -329,9 +327,9 @@ const CompanyManagementLogic = ({ render }) => {
   };
 
   const handleCooperationOffersInputs = ({ value, inputName }) => {
-    const names = ["title", "city", "content"];
+    const names = ['title', 'city', 'content'];
     const currentState = { ...addCooperationOffer };
-    if (inputName === "industry") {
+    if (inputName === 'industry') {
       setAddCooperationOffer({
         ...addCooperationOffer,
         industry: {
@@ -340,31 +338,62 @@ const CompanyManagementLogic = ({ render }) => {
         },
       });
     } else {
-      for (let name of names)
-        if (name === inputName) currentState[name] = value;
+      for (let name of names) if (name === inputName) currentState[name] = value;
       setAddCooperationOffer(currentState);
+    }
+  };
+
+  const handleArchiviseCooperationOffer = async (id, further, cancel) => {
+    setArchiviseActive({ bool: cancel ? false : true, id: cancel ? '' : id });
+    if (further) {
+      const archivise = await POST('archivise-cooperation-offer', {
+        id,
+      });
+      if (archivise.status === 'ok') {
+        setArchiviseActive({ bool: false, id: '' });
+        handleManageCoopOffersButton({
+          companyID: cooperationOffers.companyID,
+          close: false,
+        });
+      } else {
+        dispatch(
+          setPopupWindowActive({
+            title: language.general.popups.wrong.title,
+            messenge: language.general.popups.wrong.messenge,
+          })
+        );
+      }
     }
   };
 
   const submitCooperationOfferButton = async () => {
     setAddCooperationOffer({ ...addCooperationOffer, isLoading: true });
-    const add = await POST("add-new-coop-offer", {
-      title: addCooperationOffer.title,
-      content: addCooperationOffer.content,
-      company: cooperationOffers.companyID,
-      industry: addCooperationOffer.industry.title,
-      industry: addCooperationOffer.city,
-    });
-    if (add.status === "ok") {
+    let query = addCooperationOffer.isEditMode
+      ? await POST('edit-coop-offer', {
+          title: addCooperationOffer.title,
+          content: addCooperationOffer.content,
+          industry: addCooperationOffer.industry.title,
+          city: addCooperationOffer.city,
+          id: addCooperationOffer.editID,
+        })
+      : await POST('add-new-coop-offer', {
+          title: addCooperationOffer.title,
+          content: addCooperationOffer.content,
+          company: cooperationOffers.companyID,
+          industry: addCooperationOffer.industry.title,
+          city: addCooperationOffer.city,
+        });
+
+    if (query.status === 'ok') {
       setAddCooperationOffer({
         ...addCooperationOffer,
         isLoading: false,
         isActive: false,
-        title: "",
-        content: "",
-        city: "",
+        title: '',
+        content: '',
+        city: '',
         industry: {
-          title: "software-development",
+          title: 'software-development',
           index: 0,
         },
       });
@@ -385,37 +414,31 @@ const CompanyManagementLogic = ({ render }) => {
     }
   };
 
-  const handleJobAdWindow = async (
-    edit,
-    close,
-    { companyID = "", companyName = "" }
-  ) => {
+  const handleJobAdWindow = async (edit, close, { companyID = '', companyName = '' }) => {
     if (close) {
       setAddJobAd({
         isActive: false,
         isEditMode: false,
-        companyName: "",
-        companyID: "",
+        companyName: '',
+        companyID: '',
         inputs: {
-          title: "",
-          city: "",
-          hoursRange: "",
-          wages: "",
+          title: '',
+          city: '',
+          hoursRange: '',
+          wages: '',
           industry: {
             index: 0,
-            value: "software-development",
+            value: 'software-development',
           },
-          duties: "",
-          requirements: "",
-          description: "",
+          duties: '',
+          requirements: '',
+          description: '',
         },
       });
     } else if (edit) {
       const ad = await GET(`get-job-ad/${edit}`);
-      const industries = require("../../../data/industries").getIndustries();
-      const industryIndex = industries.findIndex(
-        (industry) => industry.name === ad.industry
-      );
+      const industries = require('../../../data/industries').getIndustries();
+      const industryIndex = industries.findIndex(industry => industry.name === ad.industry);
       setAddJobAd({
         ...addJobAd,
         isActive: true,
@@ -433,8 +456,8 @@ const CompanyManagementLogic = ({ render }) => {
             index: industryIndex,
             value: ad.industry,
           },
-          duties: ad.duties.join(","),
-          requirements: ad.requirements.join(","),
+          duties: ad.duties.join(','),
+          requirements: ad.requirements.join(','),
           description: ad.description,
         },
       });
@@ -462,11 +485,9 @@ const CompanyManagementLogic = ({ render }) => {
     }
   };
 
-  const handleJobAdWindowChooseField = (field) => {
-    const industries = require("../../../data/industries").getIndustries();
-    const index = industries.findIndex(
-      (industry) => industry.name === field.name
-    );
+  const handleJobAdWindowChooseField = field => {
+    const industries = require('../../../data/industries').getIndustries();
+    const index = industries.findIndex(industry => industry.name === field.name);
     setAddJobAd({
       ...addJobAd,
       inputs: {
@@ -479,14 +500,14 @@ const CompanyManagementLogic = ({ render }) => {
     });
   };
 
-  const handleJobAdWindowSubmit = async ({ mode = "add" }) => {
+  const handleJobAdWindowSubmit = async ({ mode = 'add' }) => {
     setLoading({
       ...isLoading,
       jobAd: true,
     });
 
-    if (mode === "add") {
-      const data = await POST("add-job-ad", {
+    if (mode === 'add') {
+      const data = await POST('add-job-ad', {
         title: addJobAd.inputs.title,
         city: addJobAd.inputs.city,
         wages: addJobAd.inputs.wages,
@@ -498,7 +519,7 @@ const CompanyManagementLogic = ({ render }) => {
         companyID: addJobAd.companyID,
       });
 
-      if (data.status === "ok") {
+      if (data.status === 'ok') {
         setLoading({
           ...isLoading,
           jobAd: false,
@@ -506,26 +527,26 @@ const CompanyManagementLogic = ({ render }) => {
         setAddJobAd({
           isActive: false,
           isEditMode: false,
-          companyName: "",
-          companyID: "",
+          companyName: '',
+          companyID: '',
           inputs: {
-            title: "",
-            city: "",
-            hoursRange: "",
-            wages: "",
+            title: '',
+            city: '',
+            hoursRange: '',
+            wages: '',
             industry: {
               index: 0,
-              value: "software-development",
+              value: 'software-development',
             },
-            duties: "",
-            requirements: "",
-            description: "",
+            duties: '',
+            requirements: '',
+            description: '',
           },
         });
         handleManageJobAdsButton(addJobAd.companyID);
       }
-    } else if (mode === "edit") {
-      const data = await POST("edit-job-ad", {
+    } else if (mode === 'edit') {
+      const data = await POST('edit-job-ad', {
         title: addJobAd.inputs.title,
         city: addJobAd.inputs.city,
         hours: addJobAd.inputs.hoursRange,
@@ -537,7 +558,7 @@ const CompanyManagementLogic = ({ render }) => {
         jobAdID: addJobAd.editID,
       });
 
-      if (data.status === "ok") {
+      if (data.status === 'ok') {
         setLoading({
           ...isLoading,
           jobAd: false,
@@ -545,20 +566,20 @@ const CompanyManagementLogic = ({ render }) => {
         setAddJobAd({
           isActive: false,
           isEditMode: false,
-          companyName: "",
-          companyID: "",
+          companyName: '',
+          companyID: '',
           inputs: {
-            title: "",
-            city: "",
-            hoursRange: "",
-            wages: "",
+            title: '',
+            city: '',
+            hoursRange: '',
+            wages: '',
             industry: {
               index: 0,
-              value: "software-development",
+              value: 'software-development',
             },
-            duties: "",
-            requirements: "",
-            description: "",
+            duties: '',
+            requirements: '',
+            description: '',
           },
         });
         handleManageJobAdsButton(addJobAd.companyID);
@@ -566,7 +587,7 @@ const CompanyManagementLogic = ({ render }) => {
     }
   };
 
-  const handleCvWindow = (applications) => {
+  const handleCvWindow = applications => {
     if (applications) {
       setCvWindow({
         isActive: true,
@@ -585,7 +606,7 @@ const CompanyManagementLogic = ({ render }) => {
       setNewCompanyWindow({
         ...addNewCompanyWindow,
         isActive: false,
-        editID: "",
+        editID: '',
       });
       getUserCompanies();
     } else if (edit) {
@@ -602,8 +623,7 @@ const CompanyManagementLogic = ({ render }) => {
     }
   };
 
-  const handleSearchWindow = () =>
-    setSearchCompanyWindowActive(!isSearchCompanyWindowActive);
+  const handleSearchWindow = () => setSearchCompanyWindowActive(!isSearchCompanyWindowActive);
 
   useEffect(() => {
     getUserCompanies();
@@ -644,6 +664,7 @@ const CompanyManagementLogic = ({ render }) => {
       handleCooperationOffersWindow,
       handleCooperationOffersInputs,
       submitCooperationOfferButton,
+      handleArchiviseCooperationOffer,
     },
   });
 };

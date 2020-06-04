@@ -1,13 +1,13 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import colors from '../../../../../styles/colors'
+import colors from '../../../../../styles/colors';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const ChoseFieldContainer = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ export const ChoseFieldContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  div{
-    color: ${ colors.main };
+  div {
+    color: ${colors.main};
   }
-`
+`;
