@@ -48,43 +48,15 @@ export default {
       other: 'other',
     },
   },
-  menu: [
-    {
-      title: 'home',
-      icon: 'home',
-      href: '/',
-    },
-    {
-      title: 'articles',
-      icon: 'vertical_split',
-      href: '/articles-page?site=1',
-    },
-    {
-      title: 'companies cathalog',
-      icon: 'import_contacts',
-      href: '/companies-cathalogue?site=1',
-    },
-    {
-      title: 'cooperation offers',
-      icon: 'business_center',
-      href: '/cooperation',
-    },
-    {
-      title: 'job offers',
-      icon: 'next_week',
-      href: '/job-offers?site=1',
-    },
-    {
-      title: 'book an apoitment',
-      icon: 'insert_invitation',
-      href: '/makeapoitment',
-    },
-    {
-      title: 'contact us',
-      icon: 'contact_mail',
-      href: '/contacts',
-    },
-  ],
+  menu: {
+    home: 'home',
+    articles: 'articles',
+    cathalog: 'companies cathalogue',
+    cooperationOffers: 'cooperation offers',
+    jobOffers: 'job offers',
+    makeApoitment: 'make an apoitment',
+    contact: 'contact us',
+  },
   navbar: {
     signUp: 'sign-up',
     signIn: 'sign-in',
