@@ -30,6 +30,7 @@ export default {
       all: 'all articles',
     },
     industries: {
+      all: 'all industries',
       softwareDevelopment: 'software development',
       it: 'IT',
       constructionIndustry: 'construction industry',
@@ -443,5 +444,6 @@ export default {
     pageTitle: 'cooperation offers',
     expand: 'expand',
     fold: 'fold',
+    nothingToShow: 'nothing to show',
   },
 };

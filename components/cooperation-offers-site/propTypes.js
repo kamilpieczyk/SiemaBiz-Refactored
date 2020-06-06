@@ -12,3 +12,5 @@ export const offer = PropTypes.shape({
 export const offers = PropTypes.arrayOf(offer);
 
 export const handlers = PropTypes.shape({});
+
+export const numberOfSites = PropTypes.number.isRequired;

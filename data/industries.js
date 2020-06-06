@@ -1,6 +1,6 @@
 import store from '../Redux/store';
 
-export const getIndustries = (job, cooperation) => {
+export const getIndustries = (job, cooperation, all) => {
   const state = store.getState();
   const languageSource = state.language.source.general.industries;
 
@@ -126,6 +126,14 @@ export const getIndustries = (job, cooperation) => {
       icon: 'help',
     },
   ];
+
+  if (all)
+    industries.unshift({
+      name: 'all',
+      title: languageSource.all,
+      href: `${job ? 'job-offers' : cooperation ? 'cooperation-offers' : 'companies-cathalogue'}?site=1`,
+      icon: 'all_inclusive',
+    });
 
   return industries;
 };

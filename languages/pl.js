@@ -30,6 +30,7 @@ export default {
       all: 'wszystkie',
     },
     industries: {
+      all: 'wszystkie',
       softwareDevelopment: 'produkcja oprogramowania',
       it: 'IT',
       constructionIndustry: 'branża budowlana',
@@ -439,5 +440,6 @@ export default {
     pageTitle: 'oferty współpracy',
     expand: 'rozwiń',
     fold: 'zwiń',
+    nothingToShow: 'brak wyników do wyświetlenia',
   },
 };
