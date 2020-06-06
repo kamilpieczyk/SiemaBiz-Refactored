@@ -53,6 +53,7 @@ class App {
     app.get('/get-job-ads/:id', require('./routes/getJobAds'));
     app.get('/get-job-ad/:id', require('./routes/getJobAd'));
     app.get('/get-coop-offers/:company', require('./routes/getCompaniesCoopAds'));
+    app.get('/get-coop-offers', require('./routes/getCooperationOffers'));
     app.get('/get-coop-offer/:id', require('./routes/getCooperationAd'));
     app.get('/get-users-list', require('./routes/getCompleteUserList'));
     app.get('/get-privileges/:privileges', require('./routes/getPrivileges'));

@@ -435,4 +435,9 @@ export default {
       msg: 'musisz się zalogować aby móc aplikować',
     },
   },
+  cooperationOffersPage: {
+    pageTitle: 'oferty współpracy',
+    expand: 'rozwiń',
+    fold: 'zwiń',
+  },
 };

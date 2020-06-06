@@ -439,4 +439,9 @@ export default {
       msg: 'You have to loggin to applay',
     },
   },
+  cooperationOffersPage: {
+    pageTitle: 'cooperation offers',
+    expand: 'expand',
+    fold: 'fold',
+  },
 };

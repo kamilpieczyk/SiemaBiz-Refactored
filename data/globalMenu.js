@@ -27,7 +27,7 @@ const getMenu = () => {
       title: language.cooperationOffers,
       icon: 'business_center',
       image: '/images/business.svg',
-      href: '/cooperation',
+      href: '/cooperation-offers',
     },
     {
       title: language.jobOffers,
