@@ -10,7 +10,9 @@ export const Container = styled.div`
   padding-top: 150px;
 `;
 
-export const Content = styled.article``;
+export const Content = styled.article`
+  margin-right: 5%;
+`;
 
 export const NothingToShow = styled.div`
   width: 100%;

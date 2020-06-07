@@ -13,6 +13,7 @@ const Logic = ({ render, offers }) => {
   const numberOfSites = sortedOffers ? Math.ceil(sortedOffers.length / 5) : Math.ceil(offers.length / 5);
   const site = router.query.site;
   const industry = router.query.industry;
+  const city = router.query.city;
 
   const sortOffers = () => {
     const newOffers = [...offers];
@@ -20,6 +21,11 @@ const Logic = ({ render, offers }) => {
     if (industry) {
       newOffers.forEach(offer => {
         if (offer.industry === industry) sortedOffers.push(offer);
+      });
+      setSortedOffers(sortedOffers);
+    } else if (city) {
+      newOffers.forEach(offer => {
+        if (offer.city === city) sortedOffers.push(offer);
       });
       setSortedOffers(sortedOffers);
     } else setSortedOffers(offers);
@@ -35,9 +41,12 @@ const Logic = ({ render, offers }) => {
     }
   };
 
+  const handleCitySearch = city =>
+    router.push({ pathname: '/cooperation-offers', query: { ...router.query, site: 1, city } });
+
   useEffect(() => {
     sortOffers();
-  }, [site, industry]);
+  }, [site, industry, city]);
 
   useEffect(() => {
     sortedOffers && sortSites();
@@ -50,7 +59,7 @@ const Logic = ({ render, offers }) => {
   return render({
     offers: sortedOffersBySite ? sortedOffersBySite : offers,
     numberOfSites,
-    handlers: {},
+    handlers: { handleCitySearch },
   });
 };
 
