@@ -30,6 +30,7 @@ export default {
       all: 'wszystkie',
     },
     industries: {
+      all: 'wszystkie',
       softwareDevelopment: 'produkcja oprogramowania',
       it: 'IT',
       constructionIndustry: 'branża budowlana',
@@ -48,43 +49,15 @@ export default {
       other: 'inna',
     },
   },
-  menu: [
-    {
-      title: 'strona główna',
-      icon: 'home',
-      href: '/',
-    },
-    {
-      title: 'artykuły',
-      icon: 'vertical_split',
-      href: '/articles-page?site=1',
-    },
-    {
-      title: 'katalog firm',
-      icon: 'import_contacts',
-      href: '/companies-cathalogue?site=1',
-    },
-    {
-      title: 'oferty współpracy',
-      icon: 'business_center',
-      href: '/cooperation',
-    },
-    {
-      title: 'oferty pracy',
-      icon: 'next_week',
-      href: '/job-offers?site=1',
-    },
-    {
-      title: 'umów się',
-      icon: 'insert_invitation',
-      href: '/makeapoitment',
-    },
-    {
-      title: 'skontaktuj się z nami',
-      icon: 'contact_mail',
-      href: '/contacts',
-    },
-  ],
+  menu: {
+    home: 'strona główna',
+    articles: 'artykuły',
+    cathalog: 'katalog firm',
+    cooperationOffers: 'oferty współpracy',
+    jobOffers: 'oferty pracy',
+    makeApoitment: 'umów się',
+    contact: 'skontaktuj się z nami',
+  },
   navbar: {
     signUp: 'zarejestruj się',
     signIn: 'zaloguj',
@@ -462,5 +435,11 @@ export default {
       title: 'jesteś niezalogowany',
       msg: 'musisz się zalogować aby móc aplikować',
     },
+  },
+  cooperationOffersPage: {
+    pageTitle: 'oferty współpracy',
+    expand: 'rozwiń',
+    fold: 'zwiń',
+    nothingToShow: 'brak wyników do wyświetlenia',
   },
 };

@@ -1,22 +1,17 @@
-require( "dotenv" ).config()
+require('dotenv').config();
 
 // Imports
-const CompanyModel = require( "../../models/companyModel" )
+const CompanyModel = require('../../models/companyModel');
 
 // Module
 
-module.exports = ( req, res ) => {
-    const id = req.params.company
-    
-    console.log( id )
+module.exports = (req, res) => {
+  const id = req.params.company;
 
-    CompanyModel.findById( id )
-    .then( doc => {
-        
-        res.status( 200 )
-        res.json( {
-            company: doc
-        } )
-        
-    } )
-}
+  CompanyModel.findById(id).then(doc => {
+    res.status(200);
+    res.json({
+      company: doc,
+    });
+  });
+};
