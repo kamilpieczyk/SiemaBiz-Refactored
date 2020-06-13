@@ -58,6 +58,14 @@ export default {
     makeApoitment: 'umów się',
     contact: 'skontaktuj się z nami',
   },
+  footer: {
+    sitemap: 'mapa strony',
+    latestArticles: 'ostatnie artykuły',
+    latestCompanies: 'ostatnio dodane firmy',
+    lateststJobOffers: 'ostatnio dodane oferty pracy',
+    funded: 'projekt finansowany przez rząd walii',
+    social: 'obserwuj nas na:',
+  },
   navbar: {
     signUp: 'zarejestruj się',
     signIn: 'zaloguj',

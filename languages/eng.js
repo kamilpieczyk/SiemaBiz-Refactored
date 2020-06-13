@@ -58,6 +58,14 @@ export default {
     makeApoitment: 'make an apoitment',
     contact: 'contact us',
   },
+  footer: {
+    sitemap: 'site map',
+    latestArticles: 'latest articles',
+    latestCompanies: 'recently added companies',
+    lateststJobOffers: 'recently added job offers',
+    funded: 'project funded by Welsh goverment',
+    social: 'follow us:',
+  },
   navbar: {
     signUp: 'sign-up',
     signIn: 'sign-in',
