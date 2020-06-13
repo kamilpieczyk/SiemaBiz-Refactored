@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import colors from '../../../../styles/colors';
+import { mobile } from '../../../../styles/devices';
 
 export const Container = styled.div`
   border: 1px solid ${colors.lightGrey};
@@ -12,6 +13,10 @@ export const Container = styled.div`
 
   :hover {
     border: 2px solid ${colors.main};
+  }
+
+  @media (max-width: ${mobile}px) {
+    margin-right: 0;
   }
 `;
 
@@ -47,6 +52,9 @@ export const Wages = styled.h4`
 `;
 export const Description = styled.p`
   color: ${({ isHover }) => (isHover ? colors.main : colors.grey)};
+  @media (max-width: ${mobile}px) {
+    margin-bottom: 80px;
+  }
 `;
 export const Footer = styled.div`
   display: flex;
@@ -64,6 +72,12 @@ export const ButtonContainer = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
+  @media (max-width: ${mobile}px) {
+    display: block;
+    position: absolute;
+    top: initial;
+    bottom: 50px;
+  }
 `;
 export const NewTag = styled.div`
   color: ${colors.succes};

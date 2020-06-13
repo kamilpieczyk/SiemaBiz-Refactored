@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import colors from '../../styles/colors';
+import { mobile } from '../../styles/devices';
 
 export const Container = styled.div`
   width: 100%;
@@ -8,6 +9,9 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
   padding-top: 150px;
+  @media (max-width: ${mobile}px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 export const Content = styled.article`
