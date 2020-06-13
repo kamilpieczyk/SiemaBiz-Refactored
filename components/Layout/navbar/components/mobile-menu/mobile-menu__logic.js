@@ -1,21 +1,22 @@
-import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+
+import getMenu from '../../../../../data/globalMenu';
 
 const MobileMenuLogicLayer = ({ render }) => {
-  
-  const isPageScrolled = useSelector( state => state.isPageScrolled );
-  const menuItems = useSelector( state => state.language.source.menu );
-  const isUserLogged = useSelector( state => state.user.username );
-  
+  const isPageScrolled = useSelector(state => state.isPageScrolled);
+  const menuItems = getMenu();
+  const isUserLogged = useSelector(state => state.user.username);
+
   return render({
     isPageScrolled,
     menuItems,
-    isUserLogged
-  })
-}
+    isUserLogged,
+  });
+};
 
 MobileMenuLogicLayer.propTypes = {
-  render: PropTypes.func.isRequired
-}
+  render: PropTypes.func.isRequired,
+};
 
-export default MobileMenuLogicLayer
+export default MobileMenuLogicLayer;
