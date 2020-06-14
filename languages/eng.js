@@ -223,6 +223,7 @@ export default {
   administrationPanel: {
     articleList: 'article list',
     companyManagement: 'manage companies of main',
+    apoitments: 'manage apoitments',
   },
   companyPanel: {
     addCompanyButton: 'add company',
@@ -398,6 +399,9 @@ export default {
         video: 'add video',
       },
     },
+  },
+  apoitmentsPanel: {
+    title: 'manage apointments',
   },
   articlesPage: {
     title: 'articles',

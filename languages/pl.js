@@ -222,6 +222,7 @@ export default {
   administrationPanel: {
     articleList: 'lista artykułów',
     companyManagement: 'zarządaj moimi firmami',
+    apoitments: 'zarządzaj spotkaniami',
   },
   companyPanel: {
     addCompanyButton: 'dodaj firmę',
@@ -394,6 +395,9 @@ export default {
         video: 'dodaj video',
       },
     },
+  },
+  apoitmentsPanel: {
+    title: 'zarządzaj spotkaniami',
   },
   articlesPage: {
     title: 'artykuły',
