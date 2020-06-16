@@ -77,26 +77,12 @@ export default {
     userNotExist: "this user doesn't exist",
     wrongPassword: 'this password is incorrect',
     somethingWentWrong: 'something went wrong :-(',
-    usermenu: [
-      {
-        title: 'profile settings',
-        icon: 'person_pin',
-        href: '/user-panel/profile-settings',
-        priv: '225801',
-      },
-      {
-        title: 'articles',
-        icon: 'vertical_split',
-        href: '/user-panel/administration-panel?page=articles',
-        priv: '225803',
-      },
-      {
-        title: 'manage my companies',
-        icon: 'business_center',
-        href: '/user-panel/administration-panel?page=company',
-        priv: '225801',
-      },
-    ],
+    usermenu: {
+      profilrSettings: 'profile settings',
+      articles: 'articles',
+      manageCompanies: 'manage my companies',
+      manageApoitments: 'manage apoitments',
+    },
   },
   indexPage: {
     searchBoxTitle: 'search at companies cathalogue',
@@ -405,7 +391,11 @@ export default {
     title: 'manage apointments',
     addButton: 'add new apoitment date',
     dateInputPlaceholder: 'click to select the date',
+    notBooked: 'not booked alredy',
     booked: 'booked',
+    bookedBy: 'by',
+    bookedAt: 'at day',
+    delete: 'delete forever',
   },
   articlesPage: {
     title: 'articles',

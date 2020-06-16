@@ -5,6 +5,7 @@ export const render = PropTypes.func.isRequired;
 export const state = PropTypes.shape({
   isAddNewApoitmentWindowActive: PropTypes.bool,
   isApoitmentWindowLoading: PropTypes.bool,
+  isApoitmentDeleting: PropTypes.bool,
   apoitments: PropTypes.arrayOf(
     PropTypes.shape({
       date: PropTypes.date,
@@ -19,6 +20,7 @@ export const state = PropTypes.shape({
 export const handlers = PropTypes.shape({
   handleNewApoitmentWindowButton: PropTypes.func,
   handleAddNewApoitment: PropTypes.func,
+  handleDeleteApoitment: PropTypes.func,
 }).isRequired;
 
 export const callback = PropTypes.func.isRequired;

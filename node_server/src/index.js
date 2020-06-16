@@ -35,6 +35,7 @@ class App {
     app.use(cors({ origin: '*' }));
     this.getRoutes();
     this.postRoutes();
+    this.deleteRoutes();
     server.listen(process.env.PORT, () => {
       console.log(`server run at ${process.env.PORT}`);
     });
@@ -96,6 +97,9 @@ class App {
     app.post('/add-company-to-employers-list', require('./routes/addCompanytoMyEmployersList'));
     app.post('/add-new-article', uploadImages.single('image'), require('./routes/addArticle'));
     app.post('/add-new-company', uploadCompanyLogos.single('logo'), require('./routes/addNewCompany'));
+  }
+  deleteRoutes() {
+    app.delete('/apoitment/:id', require('./routes/deleteApoitment'));
   }
 }
 

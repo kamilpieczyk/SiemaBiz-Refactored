@@ -14,6 +14,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   top: ${props => props.position + 60}px;
+  z-index: 1000;
   ${backdropFilter()}
   width: 335px;
 

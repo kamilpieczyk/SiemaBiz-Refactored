@@ -77,26 +77,12 @@ export default {
     userNotExist: 'podany użytkownik nie istnieje',
     wrongPassword: 'podane hasło jest błędne',
     somethingWentWrong: 'coś poszło nie tak :-(',
-    usermenu: [
-      {
-        title: 'ustawienia profilu',
-        icon: 'person_pin',
-        href: '/user-panel/profile-settings',
-        priv: '225801',
-      },
-      {
-        title: 'artykuły',
-        icon: 'vertical_split',
-        href: '/user-panel/administration-panel?page=articles',
-        priv: '225803',
-      },
-      {
-        title: 'zarządzaj moimi firmami',
-        icon: 'business_center',
-        href: '/user-panel/administration-panel?page=company',
-        priv: '225801',
-      },
-    ],
+    usermenu: {
+      profilrSettings: 'ustawienia profilu',
+      articles: 'artykuły',
+      manageCompanies: 'zarządzaj moimi firmami',
+      manageApoitments: 'zarządzaj spotkaniami',
+    },
   },
   indexPage: {
     searchBoxTitle: 'wyszukaj w katalogu firm',
@@ -401,7 +387,11 @@ export default {
     title: 'zarządzaj spotkaniami',
     addButton: 'dodaj nowy termin',
     dateInputPlaceholder: 'kliknij aby wybrać datę',
+    notBooked: 'jeszcze nie zarezerwowano',
     booked: 'zarezerwowano',
+    bookedBy: 'przez',
+    bookedAt: 'w dniu',
+    delete: 'bezwzględnie usuń',
   },
   articlesPage: {
     title: 'artykuły',

@@ -11,11 +11,30 @@ export const Apoitment = styled.div`
   background: ${colors.white};
   width: 100%;
   border-radius: 5px;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 15% 20% 10% 30% 15% 10%;
   padding: 10px;
   margin-bottom: 10px;
-  i {
-    color: ${({ available }) => (available ? colors.error : colors.succes)};
+  div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    i {
+      color: ${({ available }) => (available ? colors.error : colors.succes)};
+    }
+  }
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow-x: hidden;
+    svg {
+      color: ${colors.main};
+    }
+  }
+
+  @media (max-width: ${mobile}px) {
+    grid-template-columns: 20% 35% 10% 25% 0% 10%;
   }
 `;
