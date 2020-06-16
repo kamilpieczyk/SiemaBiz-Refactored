@@ -366,7 +366,8 @@ export default {
       loadButton: 'load copy',
       savePopup: {
         title: 'saved',
-        message: 'your copy has been saved on your local memory. It will stay there until you publish article',
+        message:
+          'your copy has been saved on your local memory. It will stay there until you publish article',
       },
       uploadForm: {
         drop: 'drop image here ...',
@@ -402,6 +403,9 @@ export default {
   },
   apoitmentsPanel: {
     title: 'manage apointments',
+    addButton: 'add new apoitment date',
+    dateInputPlaceholder: 'click to select the date',
+    booked: 'booked',
   },
   articlesPage: {
     title: 'articles',

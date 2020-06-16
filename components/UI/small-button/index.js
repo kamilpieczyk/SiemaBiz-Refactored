@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { Button } from './small-button__styles';
 
-const SmallButton = ({ thin, maxWidth, children, smallHeight, click }) => {
+const SmallButton = ({ thin, maxWidth, children, smallHeight, click, id }) => {
   if (!click) click = () => {};
   return (
-    <Button thin={thin} maxWidth={maxWidth} smallHeight={smallHeight} onClick={click}>
+    <Button id={id} thin={thin} maxWidth={maxWidth} smallHeight={smallHeight} onClick={click}>
       {children}
     </Button>
   );

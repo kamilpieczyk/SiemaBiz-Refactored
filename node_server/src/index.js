@@ -46,6 +46,7 @@ class App {
     app.get('/get-company/:company', require('./routes/getCompany'));
     app.get('/search-for-companies/:value', require('./routes/searchForCompanies'));
     app.get('/articles', require('./routes/getArticles'));
+    app.get('/get-apoitments', require('./routes/getApoitments'));
     app.get('/uploads/images/:id', require('./routes/getImage'));
     app.get('/uploads/logos/:id', require('./routes/getCompanyLogo'));
     app.get('/articles/shorts', require('./routes/getArticlesShorts'));
@@ -68,6 +69,7 @@ class App {
     app.post('/register', require('./routes/register'));
     app.post('/login', require('./routes/login'));
     app.post('/logout', require('./routes/logout'));
+    app.post('/add-new-apoitment', require('./routes/addNewApoitment'));
     app.post('/delete-article', require('./routes/deleteArticle'));
     app.post('/get-article', require('./routes/getOneArticle'));
     app.post('/update-article', require('./routes/updateArticle'));

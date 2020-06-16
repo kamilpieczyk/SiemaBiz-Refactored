@@ -362,7 +362,8 @@ export default {
       loadButton: 'wczytaj kopię',
       savePopup: {
         title: 'zapisano',
-        message: 'twoja kopia została zapisana na twoim komputerze i pozostanie tam do czasu opublikowania artykułu',
+        message:
+          'twoja kopia została zapisana na twoim komputerze i pozostanie tam do czasu opublikowania artykułu',
       },
       uploadForm: {
         drop: 'upuść obraz tutaj ...',
@@ -398,6 +399,9 @@ export default {
   },
   apoitmentsPanel: {
     title: 'zarządzaj spotkaniami',
+    addButton: 'dodaj nowy termin',
+    dateInputPlaceholder: 'kliknij aby wybrać datę',
+    booked: 'zarezerwowano',
   },
   articlesPage: {
     title: 'artykuły',
