@@ -39,7 +39,7 @@ const getMenu = () => {
       title: language.makeApoitment,
       icon: 'insert_invitation',
       image: '/images/apoitment.svg',
-      href: '/makeapoitment',
+      href: '/apoitments',
     },
     {
       title: language.contact,
