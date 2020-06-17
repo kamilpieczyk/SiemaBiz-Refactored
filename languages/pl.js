@@ -448,4 +448,10 @@ export default {
     fold: 'zwiń',
     nothingToShow: 'brak wyników do wyświetlenia',
   },
+  appointmentsPage: {
+    sidebar: {
+      articles: 'artykuły',
+      companiesCathalogue: 'katalog firm',
+    },
+  },
 };
