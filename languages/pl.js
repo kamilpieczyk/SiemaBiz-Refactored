@@ -453,5 +453,7 @@ export default {
       articles: 'artykuły',
       companiesCathalogue: 'katalog firm',
     },
+    bookingButton: 'zarezerwuj',
+    booked: 'zarezerwowano',
   },
 };

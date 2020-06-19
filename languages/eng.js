@@ -452,4 +452,12 @@ export default {
     fold: 'fold',
     nothingToShow: 'nothing to show',
   },
+  appointmentsPage: {
+    sidebar: {
+      articles: 'articles',
+      companiesCathalogue: 'company cathalogue',
+    },
+    bookingButton: 'booking',
+    booked: 'booked',
+  },
 };

@@ -1,7 +1,9 @@
 const ApoitmentModel = require('../../models/apoitmentModel');
 
 module.exports = async (req, res) => {
-  const apoitments = await ApoitmentModel.find();
-  if (apoitments) res.status(200).json(apoitments);
-  else res.status(500);
+  const appointments = await ApoitmentModel.find();
+  if (appointments) {
+    const sorted = appointments.sort((a, b) => a.date - b.date);
+    res.status(200).json(sorted);
+  } else res.status(500);
 };
