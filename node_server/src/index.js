@@ -39,6 +39,7 @@ class App {
     server.listen(process.env.PORT, () => {
       console.log(`server run at ${process.env.PORT}`);
     });
+    this.tasks();
   }
   getRoutes() {
     app.get('/test', require('./routes/test'));
@@ -95,11 +96,15 @@ class App {
     app.post('/edit-user-details', require('./routes/editUserDetails'));
     app.post('/remove-company-from-employees', require('./routes/deleteCompanyFromEmployeesList'));
     app.post('/add-company-to-employers-list', require('./routes/addCompanytoMyEmployersList'));
+    app.post('/book-an-appointment', require('./routes/bookAppointment'));
     app.post('/add-new-article', uploadImages.single('image'), require('./routes/addArticle'));
     app.post('/add-new-company', uploadCompanyLogos.single('logo'), require('./routes/addNewCompany'));
   }
   deleteRoutes() {
     app.delete('/apoitment/:id', require('./routes/deleteApoitment'));
+  }
+  tasks() {
+    require('./components/removeOutdatedAppointments.schedule');
   }
 }
 

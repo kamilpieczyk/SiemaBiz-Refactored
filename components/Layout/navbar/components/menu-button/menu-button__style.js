@@ -1,61 +1,62 @@
-import styled from 'styled-components'
-import colors from '../../../../../styles/colors'
+import styled from 'styled-components';
+import colors from '../../../../../styles/colors';
 
 export const Container = styled.div`
   position: relative;
   cursor: pointer;
   margin-right: 5px;
-`
+`;
 
 export const Text = styled.div`
   padding-top: 7px;
-`
+`;
 
 export const Burger = styled.div`
+  margin-right: 5px;
   z-index: 100;
-  transition: .2s;
+  transition: 0.2s;
   right: 55px;
   width: 35px;
-  height: 5px;
-  background-color: ${ colors.main };
+  height: 2px;
+  background-color: ${colors.main};
   position: absolute;
   cursor: pointer;
-  ${
-    ({ isClicked }) => ( isClicked && `
+  ${({ isClicked }) =>
+    isClicked &&
+    `
       transform: rotate(45deg);
       top: 10px;
-    ` )
-  }
+    `}
 
-  ::before{
-    content: "";
+  ::before {
+    content: '';
     width: 35px;
-    height: 5px;
-    background-color: ${ colors.main };
+    height: 2px;
+    background-color: ${colors.main};
     position: absolute;
     top: 10px;
-    transition: .2s;
-    ${
-    ({ isClicked }) => ( isClicked && `
+    transition: 0.2s;
+    ${({ isClicked }) =>
+      isClicked &&
+      `
       opacity: 0;
-    ` )
-    }
+    `}
   }
 
-  ::after{
-    content: "";
+  ::after {
+    content: '';
     width: 35px;
-    height: 5px;
-    background-color: ${ colors.main };
+    height: 2px;
+    background-color: ${colors.main};
     position: absolute;
     top: 20px;
-    transition-delay: .2s;
-    transition: .2s;
-    ${
-    ({ isClicked }) => ( isClicked && `
+    transition-delay: 0.2s;
+    transition: 0.2s;
+    ${({ isClicked }) =>
+      isClicked &&
+      `
       transform: rotate(-90deg);
       top: 0;
-    ` )
-    }
+    `}
   }
-`
+`;
