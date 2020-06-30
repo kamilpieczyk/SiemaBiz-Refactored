@@ -27,3 +27,12 @@ export const SidebarContainer = styled.nav`
     width: 80%;
   }
 `;
+
+export const NoResults = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+`;

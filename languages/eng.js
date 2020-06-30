@@ -459,5 +459,14 @@ export default {
     },
     bookingButton: 'booking',
     booked: 'booked',
+    nothingToShow: 'currently there is no available appointments',
+    notLoggedPopup: {
+      title: 'you are not logged in',
+      msg: 'if you would like to book this appointment you have to sign in',
+    },
+    faultPopup: {
+      title: 'error',
+      msg: 'while appoitment was booking error has been thrown - try again later',
+    },
   },
 };

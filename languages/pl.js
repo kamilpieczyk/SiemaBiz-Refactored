@@ -455,5 +455,14 @@ export default {
     },
     bookingButton: 'zarezerwuj',
     booked: 'zarezerwowano',
+    nothingToShow: 'obecnie nie ma dostępnych terminów',
+    notLoggedPopup: {
+      title: 'Nie jesteś zalogowany',
+      msg: 'musisz sie zalogować aby mieć możliwość zarezerwowania tego terminu',
+    },
+    faultPopup: {
+      title: 'Wystąpił błąd',
+      msg: 'podczas rezerwowania tego terminu wystąpił błąd - spróbuj ponownie za chwilę',
+    },
   },
 };

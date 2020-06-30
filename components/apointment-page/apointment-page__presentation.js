@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { state, handlers } from './apointment-page__types';
-import { Container, Content, SidebarContainer } from './apointment-page__styles';
+import { Container, Content, SidebarContainer, NoResults } from './apointment-page__styles';
 import Sidebar from '../UI/sidebar-box';
 import Separator from '../UI/separator';
 import industries from '../../data/industries';
@@ -14,13 +14,17 @@ const PresentationLayer = ({ state, handlers }) => {
   return (
     <Container>
       <Content>
-        {state.appointmentsList?.map(appointment => (
-          <Appointment
-            appointment={appointment}
-            key={appointment._id}
-            callback={handlers.handleBookAppointmentButton}
-          />
-        ))}
+        {state.appointmentsList.length === 0 ? (
+          <NoResults>{language.nothingToShow}</NoResults>
+        ) : (
+          state.appointmentsList.map(appointment => (
+            <Appointment
+              appointment={appointment}
+              key={appointment._id}
+              callback={handlers.handleBookAppointmentButton}
+            />
+          ))
+        )}
       </Content>
       <SidebarContainer>
         <h2>{language.sidebar.companiesCathalogue}</h2>
