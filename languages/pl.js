@@ -83,6 +83,18 @@ export default {
       manageCompanies: 'zarządzaj moimi firmami',
       manageApoitments: 'zarządzaj spotkaniami',
     },
+    registration: {
+      signUp: 'zarejestruj się',
+      information:
+        'rejestrując się jako nowy użytkownik naszego serwisu jednocześnie w pełni akceptujesz wszystkie warunki korzystania z naszego serwisu',
+      login: 'nazwa użytkownika',
+      password: 'hasło',
+      email: 'adres email',
+      phone: 'numer telefonu komórkowego',
+      loading: 'sprawdzanie danych',
+      button: 'zarejestruj się',
+      usernameLength: 'nazwa użytkownika musi zawierać minumum 8 znaków',
+    },
   },
   indexPage: {
     searchBoxTitle: 'wyszukaj w katalogu firm',

@@ -83,6 +83,18 @@ export default {
       manageCompanies: 'manage my companies',
       manageApoitments: 'manage apoitments',
     },
+    registration: {
+      signUp: 'sign up',
+      information:
+        'creating new account at our website is equal to agree with all terms and contitions of our regulations',
+      login: 'username',
+      password: 'password',
+      email: 'email adress',
+      phone: 'mobile number',
+      loading: 'checking your data',
+      button: 'sign up',
+      usernameLength: 'username must contains minimum of 8 characters',
+    },
   },
   indexPage: {
     searchBoxTitle: 'search at companies cathalogue',
