@@ -31,6 +31,8 @@ const Presentation = ({ state, handlers, inputs }) => {
         <Button maxWidth>
           <Loading text={language.loading} />
         </Button>
+      ) : state.error.isError ? (
+        <Button maxWidth>{language.issues}</Button>
       ) : (
         <Button maxWidth click={handlers.handleSendButton}>
           {language.button}

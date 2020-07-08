@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import colors from './colors'
+import { createGlobalStyle } from 'styled-components';
+import colors from './colors';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Josefin Sans', sans-serif;
     font-size: 16px;
     font-weight: 200;
-    background-color: ${ colors.white };
+    background-color: ${colors.white};
     overflow-x: hidden;
 
     ::-webkit-scrollbar{
@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
       border-radius: 0px;
     }
     ::-webkit-scrollbar-thumb{
-      background: ${ colors.main };
+      background: ${colors.main};
       border-radius: 50px;
     }
   }
@@ -35,18 +35,22 @@ const GlobalStyle = createGlobalStyle`
   button{
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
-    outline-color: ${ colors.main };
+    outline-color: ${colors.main};
   }
 
   input{
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 100;
-    outline-color: ${ colors.main };
+    outline-color: ${colors.main};
     ::placeholder{
-      color: ${ colors.grey };
+      color: ${colors.grey};
+    }
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill {
+      -webkit-text-fill-color: ${colors.main};
     }
   }
 
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

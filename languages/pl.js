@@ -94,6 +94,18 @@ export default {
       loading: 'sprawdzanie danych',
       button: 'zarejestruj się',
       usernameLength: 'nazwa użytkownika musi zawierać minumum 8 znaków',
+      userExist: 'taki użytkownik już istnieje',
+      passwordLength: 'hasło musi zawierać minumum 8 znaków',
+      passwordTips:
+        'musi zawierać przynajmniej jedną wielką literę, jedną małą literę , jedną cyfrę i jeden znak specjalny',
+      emailError: 'niepoprawny adres email',
+      emailExist: 'ten adres email jest już zajęty',
+      phoneError: 'numer telefonu musi być zgodny z numerami telefonów UK, np 0700 000 0000',
+      issues: 'rozwiąż problemy aby kontynuować',
+      popup: {
+        title: username => `Witaj ${username}!`,
+        message: 'twoje konto zostało poprawnie założone, a ty zostałeś automatycznie zalogowany',
+      },
     },
   },
   indexPage: {

@@ -1,4 +1,3 @@
-
 const model = {
   username: '',
   privileges: null,
@@ -6,14 +5,13 @@ const model = {
   name: '',
   surname: '',
   phone: '',
-  id: ''
-}
+  id: '',
+};
 
-export default ( state = model, action ) =>{
-
-  switch( action.type ){
+export default (state = model, action) => {
+  switch (action.type) {
     case 'LOGIN':
-      const { payload } = action
+      const { payload } = action;
 
       state = {
         ...state,
@@ -23,18 +21,17 @@ export default ( state = model, action ) =>{
         name: payload.name,
         surname: payload.surname,
         phone: payload.phone,
-        id: payload.id
-      }
-      return state
+        id: payload.id,
+      };
+      return state;
 
     case 'LOGOUT':
-      window.localStorage.removeItem( 'passport' );
-      window.location.replace( '/' );
+      window.localStorage.removeItem('passport');
+      window.location.replace('/');
       state = model;
-      return state
-      
-    default: 
-      return state
-  }
+      return state;
 
-}
+    default:
+      return state;
+  }
+};

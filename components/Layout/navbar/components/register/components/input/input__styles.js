@@ -24,6 +24,12 @@ export const Inpt = styled.input`
     border: none;
     color: ${colors.main};
   }
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill {
+    background: none;
+    border: none;
+    -webkit-text-fill-color: ${colors.main};
+  }
 `;
 
 export const Error = styled.div`

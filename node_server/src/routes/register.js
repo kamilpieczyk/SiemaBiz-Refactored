@@ -3,6 +3,8 @@ const hash = require('hash-generator');
 const User = require('../../models/userModel');
 const env = require('dotenv');
 const privileges = require('../components/privileges');
+const sendEmail = require('../components/sendMail');
+const welcomeMessange = require('../components/welcomeMessage');
 env.config();
 
 module.exports = async (req, res) => {
@@ -25,45 +27,17 @@ module.exports = async (req, res) => {
   const checkIfEmailExist = await User.findOne({ email: body.email });
 
   if (checkIfUserExist) res.status(200).json({ status: 'user_alredy_exist' });
+  else if (body.username.length < 3) res.status(200).json({ status: 'username_to_short' });
   else if (checkIfEmailExist) res.status(200).json({ status: 'email_alredy_exist' });
   else {
     try {
       const saveUser = await user.save();
-      if (saveUser) res.status(200).json({ status: 'ok' });
+      if (saveUser) {
+        sendEmail(body.email, 'Welcome to SiemaBiz Forum', welcomeMessange(body.username));
+        res.status(200).json({ status: 'ok', user: saveUser });
+      }
     } catch (err) {
-      if (err) res.status(500);
+      res.status(500).json(err);
     }
   }
-
-  //   User.findOne({ username: body.username }, (err, doc) => {
-  //     if (doc) {
-  //       res.status(200);
-  //       res.json({
-  //         status: 'exist',
-  //       });
-  //     } else {
-  //       User.findOne({ email: body.email }, (err, doc) => {
-  //         if (doc) {
-  //           res.status(200);
-  //           res.json({
-  //             status: 'email_exist',
-  //           });
-  //         } else {
-  //           user
-  //             .save()
-  //             .then(() => {
-  //               console.log('user saved in database');
-  //             })
-  //             .catch(err => {
-  //               console.log(err);
-  //             });
-
-  //           res.status(200);
-  //           res.json({
-  //             status: 'added',
-  //           });
-  //         }
-  //       });
-  //     }
-  //   });
 };
