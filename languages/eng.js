@@ -83,6 +83,30 @@ export default {
       manageCompanies: 'manage my companies',
       manageApoitments: 'manage apoitments',
     },
+    registration: {
+      signUp: 'sign up',
+      information:
+        'creating new account at our website is equal to agree with all terms and contitions of our regulations',
+      login: 'username',
+      password: 'password',
+      email: 'email adress',
+      phone: 'mobile number',
+      loading: 'checking your data',
+      button: 'sign up',
+      usernameLength: 'username must contains minimum of 8 characters',
+      userExist: 'user alredy exist',
+      passwordLength: 'password must contains minimum of 8 characters',
+      passwordTips:
+        'must contain at least one uppercase letter, one lowercase letter, one number and one special character',
+      emailError: 'invalid email adress',
+      emailExist: 'this email adress is alredy occupied',
+      phoneError: 'mobile no must match to UK phone numbers standard, example 0700 000 0000',
+      issues: 'solve all of the issues first',
+      popup: {
+        title: username => `Howdy ${username}!`,
+        message: "Your account was created succesfully and you've been logged in",
+      },
+    },
   },
   indexPage: {
     searchBoxTitle: 'search at companies cathalogue',

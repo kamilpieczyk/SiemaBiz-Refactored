@@ -1,16 +1,17 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-import language from './language.reducer'
-import globalMenu from './menu.reducer'
-import scroll from './scroll.reducer'
-import user from './user.reducer'
-import userMenu from './user-menu.reducer'
-import deviceScreen from './device.reducer'
-import popup from './popup.reducer'
-import choiceWindow from './choice-window.reducer'
-import articles from './articles.reducer'
+import language from './language.reducer';
+import globalMenu from './menu.reducer';
+import scroll from './scroll.reducer';
+import user from './user.reducer';
+import userMenu from './user-menu.reducer';
+import deviceScreen from './device.reducer';
+import popup from './popup.reducer';
+import choiceWindow from './choice-window.reducer';
+import articles from './articles.reducer';
+import registerWindow from './registration-window.reducer';
 
-export default combineReducers( {
+export default combineReducers({
   language,
   globalMenu,
   isPageScrolled: scroll,
@@ -19,5 +20,6 @@ export default combineReducers( {
   deviceScreen,
   popup,
   choiceWindow,
-  articles
-} )
+  articles,
+  registerWindowActive: registerWindow,
+});

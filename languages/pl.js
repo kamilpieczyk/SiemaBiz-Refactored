@@ -83,6 +83,30 @@ export default {
       manageCompanies: 'zarządzaj moimi firmami',
       manageApoitments: 'zarządzaj spotkaniami',
     },
+    registration: {
+      signUp: 'zarejestruj się',
+      information:
+        'rejestrując się jako nowy użytkownik naszego serwisu jednocześnie w pełni akceptujesz wszystkie warunki korzystania z naszego serwisu',
+      login: 'nazwa użytkownika',
+      password: 'hasło',
+      email: 'adres email',
+      phone: 'numer telefonu komórkowego',
+      loading: 'sprawdzanie danych',
+      button: 'zarejestruj się',
+      usernameLength: 'nazwa użytkownika musi zawierać minumum 8 znaków',
+      userExist: 'taki użytkownik już istnieje',
+      passwordLength: 'hasło musi zawierać minumum 8 znaków',
+      passwordTips:
+        'musi zawierać przynajmniej jedną wielką literę, jedną małą literę , jedną cyfrę i jeden znak specjalny',
+      emailError: 'niepoprawny adres email',
+      emailExist: 'ten adres email jest już zajęty',
+      phoneError: 'numer telefonu musi być zgodny z numerami telefonów UK, np 0700 000 0000',
+      issues: 'rozwiąż problemy aby kontynuować',
+      popup: {
+        title: username => `Witaj ${username}!`,
+        message: 'twoje konto zostało poprawnie założone, a ty zostałeś automatycznie zalogowany',
+      },
+    },
   },
   indexPage: {
     searchBoxTitle: 'wyszukaj w katalogu firm',
