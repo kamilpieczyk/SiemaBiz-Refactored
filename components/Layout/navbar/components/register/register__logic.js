@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { faUserTag, faKey, faAt, faMobile } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,9 +8,15 @@ import { setRegistrationWindow, loginUser, setPopupWindowActive } from '../../..
 
 const Logic = ({ render }) => {
   const [buttonPosition, setButtonPosition] = useState({
-    x: document.getElementById('registerWindowButton').offsetLeft,
-    y: document.getElementById('globalMenu').offsetHeight + 25,
+    x: document.getElementById('registerWindowButton')
+      ? document.getElementById('registerWindowButton').offsetLeft
+      : 0,
+    y: document.getElementById('globalMenu') ? document.getElementById('globalMenu').offsetHeight + 25 : 0,
   });
+  // const [buttonPosition, setButtonPosition] = useState({
+  //   x: document.getElementById('registerWindowButton').offsetLeft,
+  //   y: document.getElementById('globalMenu').offsetHeight + 25,
+  // });
   const [isLoading, setLoading] = useState(false);
   const [values, setValues] = useState({
     username: '',
@@ -25,14 +31,19 @@ const Logic = ({ render }) => {
   });
 
   const language = useSelector(s => s.language.source.navbar.registration);
+  const device = useSelector(s => s.deviceScreen);
   const dispatch = useDispatch();
 
   const getRegisterButtonPosition = () => {
-    const button = document.getElementById('registerWindowButton');
-    const menu = document.getElementById('globalMenu');
-    const x = button.offsetLeft;
-    const y = menu.offsetHeight + 25;
-    setButtonPosition({ x, y });
+    if (device === 'desktop') {
+      const button = document.getElementById('registerWindowButton');
+      const menu = document.getElementById('globalMenu');
+      const x = button.offsetLeft;
+      const y = menu.offsetHeight + 25;
+      setButtonPosition({ x, y });
+    } else {
+      setButtonPosition({ x: 0, y: 0 });
+    }
   };
 
   const inputsHandler = (value, name) => {
@@ -167,6 +178,10 @@ const Logic = ({ render }) => {
     }
   };
 
+  const handleMobileCloseButton = () => {
+    dispatch(setRegistrationWindow({ isActive: false }));
+  };
+
   const inputs = [
     {
       name: 'username',
@@ -207,7 +222,7 @@ const Logic = ({ render }) => {
 
   return render({
     state: { buttonPosition, isLoading, error },
-    handlers: { inputsHandler, handleSendButton },
+    handlers: { inputsHandler, handleSendButton, handleMobileCloseButton },
     inputs,
   });
 };

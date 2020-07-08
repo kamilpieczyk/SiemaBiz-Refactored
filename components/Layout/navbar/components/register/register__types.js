@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 export const render = PropTypes.func.isRequired;
 export const inputsHandler = PropTypes.func.isRequired;
+export const handleMobileCloseButton = PropTypes.func.isRequired;
 
 export const buttonPosition = PropTypes.shape({
   x: PropTypes.number,
@@ -28,6 +29,7 @@ export const state = PropTypes.shape({
 export const handlers = PropTypes.shape({
   inputsHandler,
   handleSendButton: PropTypes.func,
+  handleMobileCloseButton,
 });
 
 export const inputs = PropTypes.arrayOf(input);
