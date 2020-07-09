@@ -20,6 +20,11 @@ export const getAdminPanelMenu = () => {
       icon: 'people',
       href: '/user-panel/administration-panel?page=apoitments',
     },
+    {
+      title: language.adminPanel,
+      icon: 'admin_panel_settings',
+      href: '/user-panel/administration-panel?page=admin',
+    },
   ];
 
   return menu;

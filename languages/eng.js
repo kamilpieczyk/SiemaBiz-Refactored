@@ -82,6 +82,7 @@ export default {
       articles: 'articles',
       manageCompanies: 'manage my companies',
       manageApoitments: 'manage apoitments',
+      adminPanel: 'admin panel',
     },
     registration: {
       signUp: 'sign up',
@@ -234,6 +235,11 @@ export default {
     articleList: 'article list',
     companyManagement: 'manage companies of main',
     apoitments: 'manage apoitments',
+    adminPanel: 'admin panel',
+    manageUsers: 'manage users',
+    user: 'username',
+    manageUser: 'manage the user',
+    deleteUser: 'delete user',
   },
   companyPanel: {
     addCompanyButton: 'add company',
