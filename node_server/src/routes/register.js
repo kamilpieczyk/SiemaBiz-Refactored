@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const hash = require('hash-generator');
 const User = require('../../models/userModel');
 const env = require('dotenv');
 const privileges = require('../components/privileges');
@@ -18,7 +17,6 @@ module.exports = async (req, res) => {
     name: '',
     surname: '',
     phone: body.phone,
-    userID: hash(10),
     privilege: privileges.user,
     emailApproved: false,
   });

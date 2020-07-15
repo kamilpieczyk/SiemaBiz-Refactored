@@ -27,7 +27,13 @@ const getMenu = () => {
       title: language.manageApoitments,
       icon: 'people',
       href: '/user-panel/administration-panel?page=apoitments',
-      priv: '225806',
+      priv: '225805',
+    },
+    {
+      title: language.adminPanel,
+      icon: 'admin_panel_settings',
+      href: '/user-panel/administration-panel?page=admin',
+      priv: '225805',
     },
   ];
   return menu;

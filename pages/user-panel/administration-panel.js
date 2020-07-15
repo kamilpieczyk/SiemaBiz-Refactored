@@ -9,6 +9,7 @@ import UserPanel from '../../components/User-panel';
 import Articles from '../../components/User-panel/articles';
 import Company from '../../components/User-panel/company-managment';
 import Apoitments from '../../components/User-panel/apoitments';
+import ManageUsers from '../../components/User-panel/menage-users-panel';
 import get from '../../API/get';
 import adminMenu from '../../data/admin-panel-menu';
 
@@ -26,6 +27,7 @@ const AdminPanel = ({ articles }) => {
         {router.query.page === 'articles' && <Articles articles={articles} />}
         {router.query.page === 'company' && <Company />}
         {router.query.page === 'apoitments' && <Apoitments />}
+        {router.query.page === 'admin' && <ManageUsers />}
       </UserPanel>
     </Layout>
   );

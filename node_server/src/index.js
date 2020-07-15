@@ -58,7 +58,6 @@ class App {
     app.get('/get-coop-offers/:company', require('./routes/getCompaniesCoopAds'));
     app.get('/get-coop-offers', require('./routes/getCooperationOffers'));
     app.get('/get-coop-offer/:id', require('./routes/getCooperationAd'));
-    app.get('/get-users-list', require('./routes/getCompleteUserList'));
     app.get('/get-privileges/:privileges', require('./routes/getPrivileges'));
     app.get('/get-companies-by-industry/:industry', require('./routes/getCompaniesByIndustry'));
     app.get('/get-companies', require('./routes/getCompanies'));
@@ -71,6 +70,7 @@ class App {
     app.post('/register', require('./routes/register'));
     app.post('/login', require('./routes/login'));
     app.post('/logout', require('./routes/logout'));
+    app.post('/get-users-list', require('./routes/getCompleteUserList'));
     app.post('/add-new-apoitment', require('./routes/addNewApoitment'));
     app.post('/delete-article', require('./routes/deleteArticle'));
     app.post('/get-article', require('./routes/getOneArticle'));
