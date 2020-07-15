@@ -6,6 +6,7 @@ import { Container } from './menage-users-panel__styles';
 import { SectionContainer } from '../user-panel__styles';
 import Breadcrumbs from '../../UI/breadcrumbs';
 import Separator from '../../UI/separator';
+import Loading from '../../UI/loading-circle';
 import User from './components/user';
 
 const Presentation = ({ state, handlers }) => {
@@ -18,9 +19,19 @@ const Presentation = ({ state, handlers }) => {
       </SectionContainer>
       <Separator height='30px' />
 
-      {state.users?.map((user, index) => (
-        <User index={index} user={user} key={user._id} deleteFunc={handlers.handleDeleteUserButton} />
-      ))}
+      {state.loading ? (
+        <Loading />
+      ) : (
+        state.users?.map((user, index) => (
+          <User
+            index={index}
+            user={user}
+            key={user._id}
+            deleteFunc={handlers.handleDeleteUserButton}
+            getUsersList={handlers.getUserList}
+          />
+        ))
+      )}
     </Container>
   );
 };

@@ -7,6 +7,7 @@ import POST from '../../../API/post';
 
 const Logic = ({ render }) => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const currentUserID = useSelector(s => s.user.id);
   const router = useRouter();
@@ -16,8 +17,10 @@ const Logic = ({ render }) => {
       userID: currentUserID,
     });
     console.log(data);
-    if (data) setUsers(data);
-    else router.push('/');
+    if (data) {
+      setLoading(false);
+      setUsers(data);
+    } else router.push('/');
   };
 
   const handleDeleteUserButton = async (username, index, callback) => {
@@ -35,8 +38,8 @@ const Logic = ({ render }) => {
   }, [currentUserID]);
 
   return render({
-    state: { users },
-    handlers: { handleDeleteUserButton },
+    state: { users, loading },
+    handlers: { handleDeleteUserButton, getUserList },
   });
 };
 

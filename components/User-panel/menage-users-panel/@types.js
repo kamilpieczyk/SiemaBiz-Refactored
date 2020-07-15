@@ -17,6 +17,7 @@ export const user = PropTypes.shape({
 
 export const state = PropTypes.shape({
   users: PropTypes.arrayOf(user),
+  loading: PropTypes.bool,
 });
 
 export const handlers = PropTypes.shape({
