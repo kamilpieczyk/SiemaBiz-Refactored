@@ -103,3 +103,13 @@ export const getArticles = articles => {
     payload: { articles },
   };
 };
+
+// LINK ACTIONS
+
+export const setGlobalLoadingActive = () => ({
+  type: 'SET_GLOBAL_LOADING_ACTIVE',
+});
+
+export const setGlobalLoadingInactive = () => ({
+  type: 'SET_GLOBAL_LOADING_INACTIVE',
+});

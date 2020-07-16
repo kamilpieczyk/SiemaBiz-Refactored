@@ -10,6 +10,7 @@ import popup from './popup.reducer';
 import choiceWindow from './choice-window.reducer';
 import articles from './articles.reducer';
 import registerWindow from './registration-window.reducer';
+import globalLoading from './globalLoading.reducer';
 
 export default combineReducers({
   language,
@@ -22,4 +23,5 @@ export default combineReducers({
   choiceWindow,
   articles,
   registerWindowActive: registerWindow,
+  globalLoading,
 });
