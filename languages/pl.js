@@ -4,6 +4,7 @@ export default {
     edit: 'edytuj',
     yes: 'tak',
     no: 'nie',
+    siteLoading: 'Wczytywanie strony...',
     popups: {
       wrong: {
         title: 'uuups',
