@@ -15,12 +15,13 @@ import adminMenu from '../../data/admin-panel-menu';
 
 const AdminPanel = ({ articles }) => {
   const languageSource = useSelector(s => s.language.source);
+  const privileges = useSelector(s => s.user.privileges);
   const router = useRouter();
 
   return (
     <Layout>
       <Head>
-        <title>{languageSource.userPanel.adminPanelTitle} - SiemaBiz Forum</title>
+        <title>adimn panel - SiemaBiz Forum</title>
       </Head>
 
       <UserPanel menu={adminMenu}>
