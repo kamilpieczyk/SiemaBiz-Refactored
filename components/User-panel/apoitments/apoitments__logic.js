@@ -1,15 +1,20 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
 import { render } from './apoitments__types';
 import POST from '../../../API/post';
 import GET from '../../../API/get';
 import DELETE from '../../../API/delete';
+import { useLink } from '../../../API/link';
 
 const Logic = ({ render }) => {
   const [isAddNewApoitmentWindowActive, setAddNewApoitmentWindowActive] = useState(false);
   const [isApoitmentWindowLoading, setApoitmentWindowLoading] = useState(false);
   const [isApoitmentDeleting, setApoitmentDeleting] = useState(false);
   const [apoitments, setApoitments] = useState([]);
+
+  const currentUserPrivileges = useSelector(s => s.user.privileges);
+  const link = useLink();
 
   const handleNewApoitmentWindowButton = () => setAddNewApoitmentWindowActive(!isAddNewApoitmentWindowActive);
 
@@ -63,6 +68,10 @@ const Logic = ({ render }) => {
   useEffect(() => {
     getApoitmentsList();
   }, []);
+
+  useEffect(() => {
+    if (currentUserPrivileges && currentUserPrivileges < 225805) link('/');
+  }, [currentUserPrivileges]);
 
   return render({
     state: { isAddNewApoitmentWindowActive, isApoitmentWindowLoading, apoitments, isApoitmentDeleting },

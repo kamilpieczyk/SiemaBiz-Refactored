@@ -1,65 +1,69 @@
-import { useEffect, useState, useCallback } from "react"
-import PropTypes from 'prop-types'
-import router from 'next/router'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import router from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { setChoiceWindowActive, setChoiceWindowInactive } from '../../../Redux/actions'
+import { setChoiceWindowActive, setChoiceWindowInactive } from '../../../Redux/actions';
 
-import getAuthorisation from "../../../API/authorisation"
-import get from "../../../API/get"
-import post from "../../../API/post"
+import getAuthorisation from '../../../API/authorisation';
+import get from '../../../API/get';
+import post from '../../../API/post';
+import { useLink } from '../../../API/link';
 
 const ArticlesLogicLayer = ({ render, articles, ...props }) => {
+  const [articlesState, setArticlesState] = useState([...articles]);
+  const [isEditorActive, setEditorActive] = useState(false);
+  const [isEditorActiveInEditMode, setEditorActiveInEditMode] = useState(false);
 
-  const [ articlesState, setArticlesState ] = useState( [ ...articles ] );
-  const [ isEditorActive, setEditorActive ] = useState( false );
-  const [ isEditorActiveInEditMode, setEditorActiveInEditMode ] = useState( false );
-
-  const language = useSelector( s => s.language.source );
+  const language = useSelector(s => s.language.source);
+  const currentUserPrivileges = useSelector(s => s.user.privileges);
 
   const dispatch = useDispatch();
+  const link = useLink();
 
   const getArticles = async () => {
-    const articles = await get( 'articles/shorts' );
-    setArticlesState( articles.reverse() )
-  }
+    const articles = await get('articles/shorts');
+    setArticlesState(articles.reverse());
+  };
 
   const acceptDeleteArtice = async id => {
-    const deleteArticle = await post( 'delete-article', { id } );
-    if( deleteArticle.status === 'ok' ){
+    const deleteArticle = await post('delete-article', { id });
+    if (deleteArticle.status === 'ok') {
       getArticles();
-      dispatch( setChoiceWindowInactive() );
+      dispatch(setChoiceWindowInactive());
     }
-  }
+  };
 
-  const deleteArticle = ( id ) => {
-    dispatch( 
+  const deleteArticle = id => {
+    dispatch(
       setChoiceWindowActive({
         question: language.articlesPanel.articlesList.deleteQuestion,
-        yesFunction: () => acceptDeleteArtice( id )
-      }) 
-    )
-  }
+        yesFunction: () => acceptDeleteArtice(id),
+      })
+    );
+  };
 
   const handleAddNewArticleButton = () => {
-    if( isEditorActiveInEditMode ){
-      router.push( `/user-panel/administration-panel?page=articles` );
-      setEditorActiveInEditMode( false );
-    }
-    else setEditorActive( !isEditorActive );
+    if (isEditorActiveInEditMode) {
+      router.push(`/user-panel/administration-panel?page=articles`);
+      setEditorActiveInEditMode(false);
+    } else setEditorActive(!isEditorActive);
     getArticles();
-  }
+  };
 
   const handleEditArticleButton = async id => {
-    const routingOperation = await router.push( `/user-panel/administration-panel?page=articles&edit=${ id }` );
-    if( routingOperation ) setEditorActiveInEditMode( true );
-  }
+    const routingOperation = await router.push(`/user-panel/administration-panel?page=articles&edit=${id}`);
+    if (routingOperation) setEditorActiveInEditMode(true);
+  };
 
   useEffect(() => {
     const isEdit = router.query.edit;
-    if( isEdit ) setEditorActiveInEditMode( true );
-    
-  }, [])
+    if (isEdit) setEditorActiveInEditMode(true);
+  }, []);
+
+  useEffect(() => {
+    if (currentUserPrivileges && currentUserPrivileges < 225805) link('/');
+  }, [currentUserPrivileges]);
 
   return render({
     articles: articlesState,
@@ -67,14 +71,13 @@ const ArticlesLogicLayer = ({ render, articles, ...props }) => {
     handleAddNewArticleButton,
     isEditorActive,
     isEditorActiveInEditMode,
-    handleEditArticleButton
-  })
-}
+    handleEditArticleButton,
+  });
+};
 
 ArticlesLogicLayer.propTypes = {
   render: PropTypes.func.isRequired,
-  articles: PropTypes.array.isRequired
-}
+  articles: PropTypes.array.isRequired,
+};
 
-
-export default ArticlesLogicLayer
+export default ArticlesLogicLayer;
