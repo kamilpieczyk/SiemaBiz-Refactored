@@ -1,41 +1,37 @@
-import React from 'react'
-import Head from 'next/head'
+import React from 'react';
+import Head from 'next/head';
 
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
-import Layout from '../../components/Layout'
-import Separator from '../../components/UI/separator'
-import UserPanel from '../../components/User-panel'
-import ProfileSettingsComponent from '../../components/User-panel/profile-settings'
-import MyCv from '../../components/User-panel/my-cv'
-import ChangePassword from '../../components/User-panel/change-password'
-import DeleteAccount from '../../components/User-panel/delete_account'
+import Layout from '../../components/Layout';
+import Separator from '../../components/UI/separator';
+import UserPanel from '../../components/User-panel';
+import ProfileSettingsComponent from '../../components/User-panel/profile-settings';
+import MyCv from '../../components/User-panel/my-cv';
+import ChangePassword from '../../components/User-panel/change-password';
+import DeleteAccount from '../../components/User-panel/delete_account';
 
 const ProfileSettings = () => {
-
-  const languageSource = useSelector( s => s.language.source );
+  const languageSource = useSelector(s => s.language.source);
 
   return (
     <Layout>
       <Head>
-        <title>
-          { languageSource.userPanel.userSettings.title } - SiemaBiz Forum
-        </title>
+        <title>profile settings - SiemaBiz Forum</title>
       </Head>
 
-      <UserPanel menu = { languageSource.userPanel.usermenu } >
+      <UserPanel menu={languageSource.userPanel.usermenu}>
         <ProfileSettingsComponent />
-        <Separator height = "30px" />
+        <Separator height='30px' />
         <MyCv />
-        <Separator height = "30px" />
+        <Separator height='30px' />
         <ChangePassword />
-        <Separator height = "30px" />
+        <Separator height='30px' />
         <DeleteAccount />
-        <Separator height = "30px" />
+        <Separator height='30px' />
       </UserPanel>
-
     </Layout>
-  )
-}
+  );
+};
 
-export default ProfileSettings
+export default ProfileSettings;

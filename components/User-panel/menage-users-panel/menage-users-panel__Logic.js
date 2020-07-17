@@ -4,19 +4,21 @@ import { useRouter } from 'next/router';
 
 import { render } from './@types';
 import POST from '../../../API/post';
+import { useLink } from '../../../API/link';
 
 const Logic = ({ render }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const currentUserID = useSelector(s => s.user.id);
+  const currentUserPrivileges = useSelector(s => s.user.privileges);
   const router = useRouter();
+  const link = useLink();
 
   const getUserList = async () => {
     const data = await POST('get-users-list', {
       userID: currentUserID,
     });
-    console.log(data);
     if (data) {
       setLoading(false);
       setUsers(data);
@@ -36,6 +38,10 @@ const Logic = ({ render }) => {
   useEffect(() => {
     currentUserID && getUserList();
   }, [currentUserID]);
+
+  useEffect(() => {
+    if (currentUserPrivileges && currentUserPrivileges < 225805) link('/');
+  }, [currentUserPrivileges]);
 
   return render({
     state: { users, loading },

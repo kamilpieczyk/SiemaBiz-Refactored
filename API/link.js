@@ -17,6 +17,7 @@ const Link = ({ adress, callback, children }) => {
     dispatch(setGlobalLoadingActive());
     if (callback) callback();
     router.push(adress).then(() => dispatch(setGlobalLoadingInactive()));
+    window.scrollTo(0, 0);
   };
   return <A onClick={handleClick}>{children}</A>;
 };
@@ -24,6 +25,7 @@ const Link = ({ adress, callback, children }) => {
 export const useLink = () => adress => {
   store.dispatch(setGlobalLoadingActive());
   Router.push(adress).then(() => store.dispatch(setGlobalLoadingInactive()));
+  window.scrollTo(0, 0);
 };
 
 export default Link;

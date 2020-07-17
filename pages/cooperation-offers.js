@@ -7,12 +7,10 @@ import GET from '../API/get';
 import CooperationOffersSite from '../components/cooperation-offers-site';
 
 const CooperationOffers = ({ cooperationOffers }) => {
-  const language = useSelector(s => s.language.source.cooperationOffersPage);
-
   return (
     <Layout>
       <Head>
-        <title>{language.pageTitle} SiemaBiz Forum</title>
+        <title>cooperation offers - SiemaBiz Forum</title>
       </Head>
       <CooperationOffersSite offers={cooperationOffers} />
     </Layout>
