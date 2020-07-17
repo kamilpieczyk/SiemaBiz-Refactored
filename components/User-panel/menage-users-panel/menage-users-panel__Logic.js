@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
 import { render } from './@types';
 import POST from '../../../API/post';
 import { useLink } from '../../../API/link';
+import { setChoiceWindowActive } from '../../../Redux/actions';
 
 const Logic = ({ render }) => {
   const [users, setUsers] = useState([]);
@@ -12,7 +13,9 @@ const Logic = ({ render }) => {
 
   const currentUserID = useSelector(s => s.user.id);
   const currentUserPrivileges = useSelector(s => s.user.privileges);
+  const language = useSelector(s => s.language.source.administrationPanel);
   const router = useRouter();
+  const dispatch = useDispatch();
   const link = useLink();
 
   const getUserList = async () => {
@@ -35,6 +38,15 @@ const Logic = ({ render }) => {
     }
   };
 
+  const handleDeleteUser = (callback, username) => {
+    dispatch(
+      setChoiceWindowActive({
+        question: language.deleteQuestion(username),
+        yesFunction: callback,
+      })
+    );
+  };
+
   useEffect(() => {
     currentUserID && getUserList();
   }, [currentUserID]);
@@ -45,7 +57,7 @@ const Logic = ({ render }) => {
 
   return render({
     state: { users, loading },
-    handlers: { handleDeleteUserButton, getUserList },
+    handlers: { handleDeleteUserButton, getUserList, handleDeleteUser },
   });
 };
 

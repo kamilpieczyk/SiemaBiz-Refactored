@@ -249,6 +249,7 @@ export default {
     loading: 'updating',
     privileges: 'privileges',
     rootUser: 'cannot edit root user',
+    deleteQuestion: username => `are you sure you want to remove ${username} from users?`,
   },
   companyPanel: {
     addCompanyButton: 'add company',
