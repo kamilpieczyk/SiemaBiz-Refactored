@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import Layout from '../components/Layout'
+import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
+import Layout from '../components/Layout';
 
-import ArticleComponent from '../components/article'
+import ArticleComponent from '../components/article';
 
-import post from '../API/post'
+import post from '../API/post';
 
 const Article = ({ ssr_article }) => {
-    
-  return(
+  return (
     <Layout>
-      <Head><title>SiemaBiz Forum</title></Head>
-      <ArticleComponent ssr_article = { ssr_article } />
+      <Head>
+        <title>SiemaBiz Forum</title>
+      </Head>
+      <ArticleComponent ssr_article={ssr_article} />
     </Layout>
-  )
-}
+  );
+};
 
-Article.getInitialProps = async ctx =>{
+Article.getInitialProps = async ctx => {
   const id = ctx.query.id;
-  const data = await post( 'get-article', { id } );
+  const data = await post('get-article', { id });
   const { article } = data;
-  return { ssr_article: article }
-}
+  return { ssr_article: article };
+};
 
-export default Article
+export default Article;

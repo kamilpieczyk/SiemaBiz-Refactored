@@ -509,4 +509,8 @@ export default {
       msg: 'while appoitment was booking error has been thrown - try again later',
     },
   },
+  page404: {
+    text: "this page doesn't exist or is not ready yet",
+    info: 'please remember that siemabiz forum is stil under development and some pages may not be ready yet',
+  },
 };

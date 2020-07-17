@@ -505,4 +505,8 @@ export default {
       msg: 'podczas rezerwowania tego terminu wystąpił błąd - spróbuj ponownie za chwilę',
     },
   },
+  page404: {
+    text: 'taka strona nie istnieje, bądź jeszcze nie powstała',
+    info: 'prosimy pamiętać, że siemabiz jest wciąż w fazie produkcji i nie wszystkie elementy są już gotowe',
+  },
 };
