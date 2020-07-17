@@ -27,6 +27,7 @@ const Presentation = ({ state, handlers }) => {
             index={index}
             user={user}
             key={user._id}
+            initDelete={handlers.handleDeleteUser}
             deleteFunc={handlers.handleDeleteUserButton}
             getUsersList={handlers.getUserList}
           />

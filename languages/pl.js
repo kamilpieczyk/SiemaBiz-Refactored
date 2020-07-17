@@ -248,6 +248,7 @@ export default {
     loading: 'aktualizowanie',
     privileges: 'poziom uprawnień',
     rootUser: 'nie można edytować root usera',
+    deleteQuestion: username => `jesteś pewien że chcesz usunąć użytkownika ${username}?`,
   },
   companyPanel: {
     addCompanyButton: 'dodaj firmę',

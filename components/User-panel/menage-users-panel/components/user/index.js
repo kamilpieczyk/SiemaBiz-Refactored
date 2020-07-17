@@ -9,7 +9,7 @@ import Separator from '../../../../UI/separator';
 import Loading from '../../../../UI/loading-circle';
 import EditWindow from '../editWindow';
 
-const User = ({ user, deleteFunc, index, getUsersList }) => {
+const User = ({ user, deleteFunc, initDelete, index, getUsersList }) => {
   const [isLoading, setLoading] = useState(false);
   const [isEdit, setEdit] = useState(false);
   const language = useSelector(s => s.language.source.administrationPanel);
@@ -36,8 +36,10 @@ const User = ({ user, deleteFunc, index, getUsersList }) => {
                   title={language.deleteUser}
                   icon={faUserTimes}
                   onClick={() => {
-                    setLoading(true);
-                    deleteFunc(user.username, index, () => setLoading(false));
+                    initDelete(() => {
+                      setLoading(true);
+                      deleteFunc(user.username, index, () => setLoading(false));
+                    }, user.username);
                   }}
                 />
               </>
