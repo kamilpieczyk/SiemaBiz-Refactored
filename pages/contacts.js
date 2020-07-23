@@ -10,8 +10,8 @@ const Company = ({}) => {
     <Layout>
       <Head>
         <title>Contact - SiemaBiz Forum</title>
-        <ContactPage />
       </Head>
+      <ContactPage />
     </Layout>
   );
 };

@@ -509,4 +509,7 @@ export default {
     text: 'taka strona nie istnieje, bądź jeszcze nie powstała',
     info: 'prosimy pamiętać, że siemabiz jest wciąż w fazie produkcji i nie wszystkie elementy są już gotowe',
   },
+  contactPage: {
+    howToFind: 'Jak znaleść SiemaBiz Forum?',
+  },
 };
