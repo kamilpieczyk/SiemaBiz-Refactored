@@ -515,5 +515,7 @@ export default {
   },
   contactPage: {
     howToFind: 'How to find SiemaBiz Forum?',
+    team: 'Our team',
+    wordAbout: 'Word about ',
   },
 };

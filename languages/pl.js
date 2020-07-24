@@ -511,5 +511,7 @@ export default {
   },
   contactPage: {
     howToFind: 'Jak znaleść SiemaBiz Forum?',
+    team: 'Nasz zespół',
+    wordAbout: ' o sobie',
   },
 };
