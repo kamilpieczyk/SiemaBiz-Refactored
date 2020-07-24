@@ -513,4 +513,9 @@ export default {
     text: "this page doesn't exist or is not ready yet",
     info: 'please remember that siemabiz forum is stil under development and some pages may not be ready yet',
   },
+  contactPage: {
+    howToFind: 'How to find SiemaBiz Forum?',
+    team: 'Our team',
+    wordAbout: 'Word about ',
+  },
 };
