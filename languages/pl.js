@@ -520,6 +520,7 @@ export default {
     msg: 'treść wiadomości',
     send: 'wyślij wiadomość',
     loading: 'wysyłam email',
+    sponsored: 'projekt sponsorowany przez',
     popup: {
       title: 'wiadomość została prawidłowo wysłana',
       msg: 'ktoś z personelu siemabiz forum niebawem skontaktuje się z tobą',

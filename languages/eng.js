@@ -524,6 +524,7 @@ export default {
     msg: 'message',
     send: 'send message',
     loading: 'email is being sent',
+    sponsored: 'project sponsored by',
     popup: {
       title: 'your message has been sent',
       msg: 'someone will contact you soon',

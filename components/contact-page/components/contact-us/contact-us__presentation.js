@@ -17,13 +17,16 @@ const Presentation = ({ state, inputs, handleSendEmail, isLoading }) => {
       <Form>
         <h2>{language.contactUs}</h2>
         {inputs.map(input => (
-          <Input
-            name={input.name}
-            label={input.label}
-            onChange={input.onChange}
-            type={input.type}
-            value={input.value}
-          />
+          <React.Fragment>
+            <Input
+              name={input.name}
+              label={input.label}
+              onChange={input.onChange}
+              type={input.type}
+              value={input.value}
+            />
+            <Separator height='10px' />
+          </React.Fragment>
         ))}
         <Separator height='10px' />
         {isLoading ? (
@@ -38,7 +41,10 @@ const Presentation = ({ state, inputs, handleSendEmail, isLoading }) => {
           </Button>
         )}
       </Form>
-      <Box>a</Box>
+      <Box>
+        <h1>{language.sponsored}</h1>
+        <img src='/images/welsh-gov.png' width='200px' />
+      </Box>
     </Container>
   );
 };

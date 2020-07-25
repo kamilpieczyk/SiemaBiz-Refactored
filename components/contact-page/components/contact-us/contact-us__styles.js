@@ -8,6 +8,10 @@ export const Container = styled.section`
   padding: 20px 0;
   display: grid;
   grid-template-columns: 50% 50%;
+
+  @media (max-width: ${mobile}px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 export const Form = styled.div`
@@ -21,6 +25,12 @@ export const Form = styled.div`
     color: ${colors.main};
     margin: 0;
   }
+
+  @media (max-width: ${mobile}px) {
+    grid-column-start: 1;
+    width: 100%;
+    padding: 10px 10%;
+  }
 `;
 
 export const Box = styled.div`
@@ -33,4 +43,10 @@ export const Box = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  color: ${colors.white};
+
+  @media (max-width: ${mobile}px) {
+    grid-row-start: 2;
+  }
 `;
