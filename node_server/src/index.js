@@ -97,6 +97,7 @@ class App {
     app.post('/remove-company-from-employees', require('./routes/deleteCompanyFromEmployeesList'));
     app.post('/add-company-to-employers-list', require('./routes/addCompanytoMyEmployersList'));
     app.post('/book-an-appointment', require('./routes/bookAppointment'));
+    app.post('/send-contact-email', require('./routes/sendContactEmail'));
     app.post('/add-new-article', uploadImages.single('image'), require('./routes/addArticle'));
     app.post('/add-new-company', uploadCompanyLogos.single('logo'), require('./routes/addNewCompany'));
   }

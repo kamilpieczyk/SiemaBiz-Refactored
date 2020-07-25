@@ -513,5 +513,17 @@ export default {
     howToFind: 'Jak znaleść SiemaBiz Forum?',
     team: 'Nasz zespół',
     wordAbout: ' o sobie',
+    contactUs: 'skontaktuj się z nami',
+    name: 'imię i nazwisko',
+    email: 'adres email',
+    phone: 'telefon kontaktowy',
+    msg: 'treść wiadomości',
+    send: 'wyślij wiadomość',
+    loading: 'wysyłam email',
+    sponsored: 'projekt sponsorowany przez',
+    popup: {
+      title: 'wiadomość została prawidłowo wysłana',
+      msg: 'ktoś z personelu siemabiz forum niebawem skontaktuje się z tobą',
+    },
   },
 };
