@@ -517,5 +517,16 @@ export default {
     howToFind: 'How to find SiemaBiz Forum?',
     team: 'Our team',
     wordAbout: 'Word about ',
+    contactUs: 'contact us',
+    name: 'name and surname',
+    email: 'email adress',
+    phone: 'contact phone',
+    msg: 'message',
+    send: 'send message',
+    loading: 'email is being sent',
+    popup: {
+      title: 'your message has been sent',
+      msg: 'someone will contact you soon',
+    },
   },
 };

@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
   }
 
-  div, body{
+  div, body, input{
     ::-webkit-scrollbar{
       width: 8px;
     }

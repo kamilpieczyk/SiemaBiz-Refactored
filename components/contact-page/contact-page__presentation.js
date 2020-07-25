@@ -5,6 +5,7 @@ import { Container, OurTeam } from './contact-page__styles';
 import Map from './components/map';
 import { team } from './@types';
 import TeamMember from './components/team-member';
+import ContactUs from './components/contact-us';
 
 const Presentation = ({ team }) => {
   const language = useSelector(s => s.language.source.contactPage);
@@ -17,6 +18,7 @@ const Presentation = ({ team }) => {
           <TeamMember key={index} teamMember={member} />
         ))}
       </OurTeam>
+      <ContactUs />
     </Container>
   );
 };
