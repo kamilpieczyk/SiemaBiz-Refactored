@@ -1,22 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { 
-  Container,
-} from './index-page__styles'
-import SearchBox from './components/search-box'
+import { Container } from './index-page__styles';
+import SearchBox from './components/search-box';
+import LatestArticles from './components/latest-articles';
 
-const IndexPagePresentationLayer = () => {
-
-  return(
+const IndexPagePresentationLayer = ({ articles }) => {
+  return (
     <Container>
       <SearchBox />
+      <LatestArticles articles={articles.slice(1)} />
     </Container>
-  )
-}
+  );
+};
 
-IndexPagePresentationLayer.propTypes = {
-
-}
+IndexPagePresentationLayer.propTypes = {};
 
 export default IndexPagePresentationLayer;
