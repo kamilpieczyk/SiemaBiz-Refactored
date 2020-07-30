@@ -19,9 +19,9 @@ class LayoutLogic extends Component {
   };
 
   checkBrowserLanguage = () => {
-    const browserLanguage = navigator.language;
+    const browserLanguage = navigator.language.slice(0, 2);
 
-    if (browserLanguage === 'pl-PL') {
+    if (browserLanguage === 'pl') {
       this.props.setLanguageToPL();
     } else {
       this.props.setLanguageToEN();
