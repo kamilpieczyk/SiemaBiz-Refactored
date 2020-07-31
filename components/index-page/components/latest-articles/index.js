@@ -4,7 +4,6 @@ import { Container } from './latest-articles__styles';
 import ArticleBox from '../../../UI/article-box';
 
 const LatestArticles = ({ articles }) => {
-  console.log(articles);
   return (
     <Container>
       {articles.map(article => (

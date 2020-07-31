@@ -112,6 +112,8 @@ export default {
   },
   indexPage: {
     searchBoxTitle: 'wyszukaj w katalogu firm',
+    latestArticles: 'ostatnio dodane artykuły',
+    read: 'czytaj',
   },
   userPanel: {
     title: 'panel użytkownika',

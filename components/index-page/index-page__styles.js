@@ -1,8 +1,5 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import colors from '../../styles/colors'
-import { backdropFilter } from '../../styles/mixins'
+import colors from '../../styles/colors';
 
-export const Container = styled.div`
-  
-`
+export const Container = styled.div``;

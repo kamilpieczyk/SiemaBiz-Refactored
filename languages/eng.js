@@ -112,6 +112,8 @@ export default {
   },
   indexPage: {
     searchBoxTitle: 'search at companies cathalogue',
+    latestArticles: 'recently added articles',
+    read: 'read',
   },
   userPanel: {
     title: 'user panel',
