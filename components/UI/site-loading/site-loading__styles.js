@@ -14,6 +14,7 @@ export const Container = styled.div`
   left: 0;
   top: 0%;
   z-index: 1000000;
+  cursor: progress;
 `;
 
 export const LoadingContainer = styled.div`
