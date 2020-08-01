@@ -23,7 +23,6 @@ export const Content = styled.div`
     background: ${({ background }) => `url(${background})`};
     background-position: center;
     background-repeat: no-repeat;
-    /* background-size: 100%; */
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -32,6 +31,10 @@ export const Content = styled.div`
     left: 0;
     transition-duration: 0.5s;
     ${({ isIntroduction }) => isIntroduction && 'filter: blur(8px)grayscale(80%);'}
+  }
+
+  @media (max-width: ${mobile}px) {
+    width: 90%;
   }
 `;
 
