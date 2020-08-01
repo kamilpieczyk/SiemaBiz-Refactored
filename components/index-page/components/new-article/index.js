@@ -1,7 +1,8 @@
-import React, { useCallback, useState, useMemo } from 'react';
+import React, { useCallback, useState, useRef, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCalendar, faTag } from '@fortawesome/free-solid-svg-icons';
+import gsap from 'gsap';
 
 import { Container, Content, TitleContainer, Introduction } from './new-article__styles';
 import { useLink } from '../../../../API/link';
@@ -13,25 +14,52 @@ const NewArticle = ({ article }) => {
 
   const link = useLink();
   const language = useSelector(s => s.language.source.indexPage);
+  const device = useSelector(s => s.deviceScreen);
+
+  const introductionNode = useRef(null);
+
+  const getShortIntroduction = useMemo(() => {
+    const arr = article.introduction.split(' ');
+    const half = arr.length / 2;
+    const newArr = arr.slice(0, half);
+    const newInrto = newArr.join(' ');
+    return newInrto;
+  }, [article]);
 
   const handleReadArticle = useCallback(() => {
     link({ pathname: '/article', query: { id: article._id } });
   }, []);
+
+  const handleIntroductionAnimation = () => {
+    if (isIntroduction) {
+      const tl = gsap.timeline({ repeat: 0, delay: 0.2 });
+      tl.to(introductionNode.current, {
+        opacity: 1,
+        height: 'auto',
+        duration: 0.7,
+      });
+    }
+  };
+
+  useEffect(handleIntroductionAnimation, [isIntroduction]);
 
   return (
     <Container>
       <Content
         background={`/uploads/images/${article.image}`}
         onMouseOver={() => setIntroduction(true)}
-        onMouseOut={() => setIntroduction(false)}
+        onMouseLeave={() => setIntroduction(false)}
+        isIntroduction={isIntroduction}
       >
-        <Introduction visible={isIntroduction}>
-          {article.introduction}
-          <Separator height='30px' />
-          <Button maxWidth click={handleReadArticle}>
-            {language.read}
-          </Button>
-        </Introduction>
+        {isIntroduction && (
+          <Introduction ref={introductionNode} onMouseOver={() => setIntroduction(true)}>
+            {device === 'mobile' ? getShortIntroduction : article.introduction}
+            <Separator height='30px' />
+            <Button maxWidth click={handleReadArticle}>
+              {language.read}
+            </Button>
+          </Introduction>
+        )}
         <TitleContainer>
           <h2 onClick={handleReadArticle}>{article.title}</h2>
           <div>

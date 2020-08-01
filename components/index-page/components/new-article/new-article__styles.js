@@ -14,9 +14,25 @@ export const Container = styled.div`
 export const Content = styled.div`
   width: 80%;
   height: 500px;
-  background: ${({ background }) => `url(${background})`};
-  border-radius: 10px;
   position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+
+  ::before {
+    content: '';
+    background: ${({ background }) => `url(${background})`};
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: 100%; */
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition-duration: 0.5s;
+    ${({ isIntroduction }) => isIntroduction && 'filter: blur(8px)grayscale(80%);'}
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -50,16 +66,28 @@ export const TitleContainer = styled.div`
       color: ${colors.white};
     }
   }
+
+  @media (max-width: ${mobile}px) {
+    bottom: 40px;
+  }
 `;
 
 export const Introduction = styled.div`
-  display: ${({ visible }) => (visible ? 'block' : 'none')};
   background: ${colors.transparentWhite};
   backdrop-filter: blur(5px);
   width: 400px;
+  height: 0;
+  opacity: 0;
   padding: 25px;
   border-radius: 5px;
   position: absolute;
   top: 40px;
   left: 5%;
+  overflow: hidden;
+  text-align: justify;
+
+  @media (max-width: ${mobile}px) {
+    top: 10px;
+    width: 90%;
+  }
 `;
