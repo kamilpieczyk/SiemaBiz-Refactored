@@ -114,7 +114,9 @@ export default {
     searchBoxTitle: 'wyszukaj w katalogu firm',
     latestArticles: 'ostatnio dodane artykuły',
     recentlyAddedJobOffers: 'ostatnio dodane oferty pracy',
+    newCompanies: 'nowe biznesy',
     read: 'czytaj',
+    seeCompany: 'zobacz firmę',
   },
   userPanel: {
     title: 'panel użytkownika',

@@ -114,7 +114,9 @@ export default {
     searchBoxTitle: 'search at companies cathalogue',
     latestArticles: 'recently added articles',
     recentlyAddedJobOffers: 'recentyl added job offers',
+    newCompanies: 'new buisnesses',
     read: 'read',
+    seeCompany: 'see this company',
   },
   userPanel: {
     title: 'user panel',
