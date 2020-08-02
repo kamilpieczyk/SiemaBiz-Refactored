@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faNewspaper, faBriefcase, faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 import { Container } from './index-page__styles';
 import SearchBox from './components/search-box';
@@ -9,8 +9,10 @@ import LatestArticles from './components/latest-articles';
 import NewArticle from './components/new-article';
 import Separator from '../UI/separator';
 import Title from './components/title';
+import LatestJobOffers from './components/latest-job-offers';
+import NewCompanies from './components/new-companies';
 
-const IndexPagePresentationLayer = ({ articles }) => {
+const IndexPagePresentationLayer = ({ articles, jobOffers, companies }) => {
   const language = useSelector(s => s.language.source.indexPage);
   return (
     <Container>
@@ -20,6 +22,14 @@ const IndexPagePresentationLayer = ({ articles }) => {
       <Separator height='15px' />
       <NewArticle article={articles[0]} />
       <LatestArticles articles={articles.slice(1)} />
+      <Separator height='30px' />
+      <Title icon={faUserTie}>{language.newCompanies}</Title>
+      <Separator height='15px' />
+      <NewCompanies companies={companies} />
+      <Separator height='30px' />
+      <Title icon={faBriefcase}>{language.recentlyAddedJobOffers}</Title>
+      <Separator height='15px' />
+      <LatestJobOffers jobOffers={jobOffers} />
     </Container>
   );
 };
