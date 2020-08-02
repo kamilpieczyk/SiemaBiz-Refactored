@@ -5,7 +5,9 @@ import LogicLayer from './index-page__logic';
 import PresentationLayer from './index-page__presentation';
 
 const IndexPage = props => (
-  <LogicLayer>{newProps => <PresentationLayer {...newProps} articles={props.articles} />}</LogicLayer>
+  <LogicLayer>
+    {newProps => <PresentationLayer {...newProps} articles={props.articles} jobOffers={props.jobOffers} />}
+  </LogicLayer>
 );
 
 export default IndexPage;

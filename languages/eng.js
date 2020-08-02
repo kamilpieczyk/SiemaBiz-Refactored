@@ -113,6 +113,7 @@ export default {
   indexPage: {
     searchBoxTitle: 'search at companies cathalogue',
     latestArticles: 'recently added articles',
+    recentlyAddedJobOffers: 'recentyl added job offers',
     read: 'read',
   },
   userPanel: {

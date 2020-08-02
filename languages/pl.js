@@ -113,6 +113,7 @@ export default {
   indexPage: {
     searchBoxTitle: 'wyszukaj w katalogu firm',
     latestArticles: 'ostatnio dodane artykuły',
+    recentlyAddedJobOffers: 'ostatnio dodane oferty pracy',
     read: 'czytaj',
   },
   userPanel: {
