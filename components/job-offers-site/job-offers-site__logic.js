@@ -83,7 +83,7 @@ const Logic = ({ render, jobOffers }) => {
         };
         offersToSet.push(newOfferObj);
       }
-      jobOffers = offersToSet;
+      offers = offersToSet;
       if (process.browser) setStateOffers(offersToSet);
     } else if (sortMode === 'name') {
       const newOffers = [...offers];
@@ -95,7 +95,7 @@ const Logic = ({ render, jobOffers }) => {
         else if (titleA < titleB) comp = -1;
         return comp;
       });
-      jobOffers = newOffers;
+      offers = newOffers;
       if (process.browser) setStateOffers(newOffers);
     }
 
@@ -107,23 +107,27 @@ const Logic = ({ render, jobOffers }) => {
       setNumberOfSites(noSites);
       const second = site * 5;
       const first = second - 5;
-      const offers = [...jobOffers];
+      const newoffers = [...offers];
       setStateOffers(offers.slice(first, second));
     }
   };
 
-  if (!process.browser) sortOffers();
+  // if (!process.browser) sortOffers();
 
   useEffect(() => {
     handleIndustry();
   }, [router.query.industry]);
   useEffect(() => {
-    sortOffers(stateOffers);
+    sortOffers(jobOffers);
   }, [sortMode, router.query.site]);
   useEffect(() => {
     if (router.query.location) handleLocationInput(router.query.location);
     if (router.query.search) handleSearchInput(router.query.search);
   }, []);
+
+  useEffect(() => {
+    console.log(stateOffers);
+  }, [stateOffers]);
 
   return render({
     jobOffers: stateOffers ? stateOffers : jobOffers,
