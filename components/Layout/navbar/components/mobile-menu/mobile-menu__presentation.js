@@ -9,15 +9,20 @@ import UserSignIn from './components/user-sign-in';
 import LoggedUserContainer from './components/logged-user-container';
 import UserMenu from './components/user-menu';
 import { setMenuInactive } from '../../../../../Redux/actions';
+import { useLink } from '../../../../../API/link';
 
 const MobileMenuPresentationLayer = ({ isPageScrolled, menuItems, isUserLogged }) => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const link = useLink();
+
   const handleLink = href => {
     dispatch(setMenuInactive());
     window.scrollTo(0, 0);
-    router.push(href);
+    // router.push(href);
+    link(href);
   };
+
   return (
     <Container isPageScrolled={isPageScrolled}>
       {
