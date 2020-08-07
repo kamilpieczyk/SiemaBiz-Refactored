@@ -1,11 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import gsap from 'gsap';
 
-import { Container, Input, Warning } from './login-popup__styles'
-import Submit from '../../../../UI/submit'
-import Loading from '../../../../UI/loading-circle'
-import colors from '../../../../../styles/colors'
+import { Container, Input, Warning } from './login-popup__styles';
+import Submit from '../../../../UI/submit';
+import Loading from '../../../../UI/loading-circle';
+import colors from '../../../../../styles/colors';
 
 const Present = ({
   isScrolled,
@@ -17,62 +18,78 @@ const Present = ({
   setPassword,
   messangeLogin,
   messangePassword,
-  handleSubmitForm
+  handleSubmitForm,
 }) => {
+  const languageSource = useSelector(state => state.language.source);
+  const containerRef = useRef(null);
 
-  const languageSource = useSelector( state => state.language.source );
+  useEffect(() => {
+    const loginBox = containerRef.current;
+    const tl = gsap.timeline({ repeat: 0, delay: 0 });
+    tl.fromTo(
+      loginBox,
+      {
+        opacity: 0,
+        y: -500,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+      }
+    );
+  }, []);
 
-  return(
-    <Container isScrolled = { isScrolled }>
-
-      <form onSubmit={ handleSubmitForm }>
-
+  return (
+    <Container isScrolled={isScrolled} ref={containerRef}>
+      <form onSubmit={handleSubmitForm}>
         <div>
-          <label>{ languageSource.navbar.login }</label>
+          <label>{languageSource.navbar.login}</label>
           <div>
             <Input
-              type="text"
-              placeholder="np. Siemabiz88"
-              value={ login }
-              onChange={ e => setLogin( e.target.value ) }
+              type='text'
+              placeholder='np. Siemabiz88'
+              value={login}
+              onChange={e => setLogin(e.target.value)}
             />
           </div>
         </div>
 
-        {
-          messangeLogin && (
-          <Warning><strong>! </strong>{ messangeLogin }</Warning>
-          )
-        }
+        {messangeLogin && (
+          <Warning>
+            <strong>! </strong>
+            {messangeLogin}
+          </Warning>
+        )}
 
         <div>
-          <label>{ languageSource.navbar.password }</label>
+          <label>{languageSource.navbar.password}</label>
           <div>
             <Input
-              type="password"
-              placeholder="password"
-              value={ password }
-              onChange={ e => setPassword( e.target.value ) }
+              type='password'
+              placeholder='password'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
           </div>
         </div>
 
-        {
-          messangePassword && (
-          <Warning><strong>! </strong>{ messangePassword }</Warning>
-          )
-        }
+        {messangePassword && (
+          <Warning>
+            <strong>! </strong>
+            {messangePassword}
+          </Warning>
+        )}
 
-        {
-          isLoading
-            ? <Loading color = { colors.main } text = { languageSource.navbar.loading } margin = '10px 0' />
-            : <Submit value = { languageSource.navbar.submit } />
-        }        
-
+        {isLoading ? (
+          <Loading color={colors.main} text={languageSource.navbar.loading} margin='10px 0' />
+        ) : (
+          <Submit value={languageSource.navbar.submit} />
+        )}
       </form>
     </Container>
-  )
-}
+  );
+};
 
 Present.propTypes = {
   isScrolled: PropTypes.bool.isRequired,
@@ -83,7 +100,7 @@ Present.propTypes = {
   password: PropTypes.string.isRequired,
   setPassword: PropTypes.func.isRequired,
   messangeLogin: PropTypes.string,
-  messangePassword: PropTypes.string
-}
+  messangePassword: PropTypes.string,
+};
 
-export default Present
+export default Present;

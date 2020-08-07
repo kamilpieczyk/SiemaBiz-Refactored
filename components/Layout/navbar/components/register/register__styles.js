@@ -15,7 +15,7 @@ export const MobileContainer = styled.div`
 export const Container = styled.div`
   position: fixed;
   top: ${({ position }) => position.y}px;
-  left: ${({ position }) => position.x}px;
+  left: ${({ position }) => position.x - 80}px;
   z-index: 11000;
   background: ${colors.white};
   width: 20%;
@@ -23,6 +23,7 @@ export const Container = styled.div`
   border-radius: 5px;
   box-shadow: 0 0 7px ${colors.grey};
   padding: 10px;
+  opacity: 0;
   @media (max-width: ${mobile}px) {
     width: 90%;
     left: 50%;
