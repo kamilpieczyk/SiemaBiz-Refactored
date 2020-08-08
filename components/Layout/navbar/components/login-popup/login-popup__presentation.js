@@ -30,12 +30,13 @@ const Present = ({
       loginBox,
       {
         opacity: 0,
-        y: -500,
+        y: -50,
+        duration: 0.4,
       },
       {
         opacity: 1,
-        y: 0,
-        duration: 0.3,
+        y: 15,
+        duration: 0.4,
       }
     );
   }, []);

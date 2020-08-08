@@ -14,7 +14,6 @@ export const Container = styled.div`
   top: ${({ isScrolled }) => (isScrolled ? '80px' : '110px')};
   z-index: 1000;
   box-shadow: 0 0 5px ${colors.grey};
-  /* transition-duration: 1s; */
   opacity: 0;
 
   @supports (backdrop-filter: blur()) {
