@@ -109,7 +109,8 @@ const Footer = () => {
       </Column>
       <Signature>
         <MaterialIcon icon='copyright' />
-        siemabiz-forum 2019-2020 created by <a href='https://coding-bear.co.uk/'>coding-bear</a> all rights reserved
+        siemabiz-forum 2019-2020 created by <a href='https://kamilpieczyk.github.io/'>Kamil Pieczyk</a> all
+        rights reserved
       </Signature>
     </Container>
   );
