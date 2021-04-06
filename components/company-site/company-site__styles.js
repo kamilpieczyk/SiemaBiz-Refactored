@@ -17,64 +17,51 @@ export const Map = styled.div`
   position: relative;
 `;
 
-export const LocationMark = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 100;
-  color: ${colors.main};
-
-  i {
-    font-size: 6rem;
-    position: relative;
-    bottom: 20px;
-  }
-`;
-
 export const Label = styled.div`
   position: absolute;
   top: 50%;
   left: 10%;
-  transform: translateY( -30% );
+  transform: translateY(-30%);
   z-index: 100;
   ${backdropFilter()}
   box-shadow: 0 0 20px ${colors.lightGrey};
   border-radius: 5px;
   padding: 40px;
 
-  img{
+  img {
     max-height: 150px;
-    @media (max-width: ${mobile}px){
+    @media (max-width: ${mobile}px) {
       max-height: 100px;
       max-width: 150px;
     }
   }
 
-  strong{
+  strong {
     color: ${colors.main};
-    i{
+    i {
       position: relative;
       top: 5px;
     }
   }
 
-  div{
+  div {
     margin-bottom: 5px;
   }
 
-  a{
+  a {
     color: ${colors.main};
   }
 
-  @media ( max-width: ${mobile}px ) {
+  @media (max-width: ${mobile}px) {
     bottom: 5vw;
     top: initial;
     left: 50%;
-    transform: translateX( -50% );
+    transform: translateX(-50%);
     padding: 20px;
     width: 90%;
     height: auto;
+    max-height: 30vh;
+    overflow-y: auto;
   }
 `;
 

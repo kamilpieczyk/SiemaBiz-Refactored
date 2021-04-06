@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import 'react-datepicker/dist/react-datepicker.css';
+import 'leaflet/dist/leaflet.css';
 
 import store from '../Redux/store';
 import { loginUser, getArticles } from '../Redux/actions';

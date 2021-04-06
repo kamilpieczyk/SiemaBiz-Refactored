@@ -1,13 +1,12 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import PropTypes, { bool } from 'prop-types';
 import { useSelector } from 'react-redux';
-import ReactMapGl from 'react-map-gl';
 import MaterialIcon from '@material/react-material-icon';
 
 import {
   Container,
   Map,
-  LocationMark,
   Label,
   Content,
   Sidebar,
@@ -24,6 +23,10 @@ import { getIndustries } from '../../data/industries';
 import Button from '../UI/small-button';
 import witchClick from '../HOC/withClick';
 import Separator from '../UI/separator';
+
+const LeafletMap = dynamic(() => import('./map'), {
+  ssr: false,
+});
 
 const ClickableButton = witchClick(Button);
 
@@ -48,9 +51,6 @@ const CompanySitePresentation = ({
             <Loading text={language.loading} color={main} />
           ) : (
             <React.Fragment>
-              <LocationMark>
-                <MaterialIcon icon='place' />
-              </LocationMark>
               <Label>
                 <img src={`${key}uploads/logos/${company.logo}`} width='290' />
                 <div>
@@ -98,16 +98,13 @@ const CompanySitePresentation = ({
               </Label>
               {device === 'desktop' && (
                 <ButtonContainer>
-                  <ClickableButton thin onClickFunction={handleButtonClick}>
+                  <ClickableButton onClickFunction={handleButtonClick}>
                     <MaterialIcon icon='expand_more' />
                     {language.button}
                   </ClickableButton>
                 </ButtonContainer>
               )}
-              <ReactMapGl
-                mapboxApiAccessToken='pk.eyJ1IjoiZGVzdHJveWVycGwiLCJhIjoiY2s5NWhxNWZ0MDZvYzNxcjE4cGk1amZxMCJ9.FsivLf589VvIbpMjygY8AA'
-                {...state.geo}
-              />
+              <LeafletMap companyName={company.name} center={[state.geo.latitude, state.geo.longitude]} />
             </React.Fragment>
           )}
         </Map>

@@ -11,12 +11,13 @@ const CompanySiteLogic = ({ company, render }) => {
   const [geo, setGeo] = useState({
     width: '100vw',
     height: '100vh',
-    latitude: 37.7577,
-    longitude: -122.4376,
+    latitude: 37.7577, // y
+    longitude: -122.4376, // x
     zoom: 16,
     mapStyle: 'mapbox://styles/destroyerpl/ck95q5olh1ptj1imwxpdc6cgo',
   });
   const [isLoading, setLoading] = useState(true);
+  const [isBrowser, setBrowser] = useState(false);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -24,24 +25,40 @@ const CompanySiteLogic = ({ company, render }) => {
   const currentUser = useSelector(s => s.user.username);
 
   const getLocation = async () => {
-    const adressArray = company.adress.split(' ');
-    const adress = adressArray.join('+');
-    const url = `https://geocode.xyz/${company.city},.${adress}?json=1`;
+    // const adressArray = company.adress.split(' ');
+    // const adress = adressArray.join('+');
+    // const url = `https://geocode.xyz/${company.city},.${adress}?json=1`;
 
-    let data;
-    do {
-      data = await fetch(url);
-      const geoLoc = await data.json();
+    // let data;
+    // do {
+    //   data = await fetch(url);
+    //   const geoLoc = await data.json();
 
-      if (data.status === 200) {
+    //   if (data.status === 200) {
+    //     setGeo({
+    //       ...geo,
+    //       longitude: Number(geoLoc.longt),
+    //       latitude: Number(geoLoc.latt),
+    //     });
+    //     setLoading(false);
+    //   } else sleep(2000);
+    // } while (data.status !== 200);
+    if (window) {
+      const { EsriProvider } = require('leaflet-geosearch');
+      const provider = new EsriProvider();
+      const results = await provider.search({ query: `${company.adress}, ${company.city}` });
+      if (results && results.length > 0) {
+        const longitude = Number(results[0].x);
+        const latitude = Number(results[0].y);
+        console.log(longitude, latitude);
         setGeo({
           ...geo,
-          longitude: Number(geoLoc.longt),
-          latitude: Number(geoLoc.latt),
+          longitude,
+          latitude,
         });
         setLoading(false);
-      } else sleep(2000);
-    } while (data.status !== 200);
+      }
+    }
   };
 
   const handleButtonClick = () => {
@@ -94,10 +111,15 @@ const CompanySiteLogic = ({ company, render }) => {
     getLocation();
   }, []);
 
+  useEffect(() => {
+    setBrowser(true);
+  }, []);
+
   return render({
     state: {
       geo,
       isLoading,
+      isBrowser,
     },
     handleButtonClick,
     handleUserBoxClick,
