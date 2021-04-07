@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import ArticleComponent from '../components/article';
 
 import post from '../API/post';
+import get from '../API/get';
 
 const Article = ({ ssr_article }) => {
   return (
@@ -19,7 +20,7 @@ const Article = ({ ssr_article }) => {
 
 Article.getInitialProps = async ctx => {
   const id = ctx.query.id;
-  const data = await post('get-article', { id });
+  const data = await get(`article/${id}`);
   const { article } = data;
   return { ssr_article: article };
 };
