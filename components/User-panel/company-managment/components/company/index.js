@@ -73,7 +73,11 @@ const Company = ({ name, logo, city, id, owners, employees, handlers, isLoading 
               icon='edit'
               onClick={() => handlers.handleAddNewCompanyButton(false, true, id)}
             />
-            <MaterialIcon title={language.deleteCompany} icon='delete_forever' onClick={() => setDeleting(true)} />
+            <MaterialIcon
+              title={language.deleteCompany}
+              icon='delete_forever'
+              onClick={() => setDeleting(true)}
+            />
           </IconsContainer>
         </React.Fragment>
       )}
