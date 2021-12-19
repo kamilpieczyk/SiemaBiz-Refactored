@@ -3,15 +3,17 @@ const { createTransport } = mailer;
 
 module.exports = (to, subject, html) => {
   const transport = createTransport({
-    service: 'gmail',
+    host: 'smtpout.europe.secureserver.net',
+    port: 465,
+    secure: true,
     auth: {
-      user: 'siemabizforum@gmail.com',
-      pass: 'Aez@2478144',
+      user: 'username',
+      pass: 'password',
     },
   });
 
   const options = {
-    from: 'SiemaBiz Forum <siemabizforum@gmail.com>',
+    from: 'SiemaBiz Forum <noreplay@siema-biz-forum.com>',
     to,
     subject,
     html,

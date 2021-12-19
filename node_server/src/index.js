@@ -29,7 +29,7 @@ class App {
     this.handle = handle;
     mongoose
       .connect(process.env.DB_URI, { useNewUrlParser: true })
-      .then(() => console.log('connected to database'))
+      .then(() => console.log('💽 connected to database'))
       .catch(err => console.log(err));
 
     const server = http.createServer(app);
@@ -41,7 +41,7 @@ class App {
     this.postRoutes();
     this.deleteRoutes();
     server.listen(process.env.PORT, () => {
-      console.log(`server run at ${process.env.PORT}`);
+      console.log(`server run at ⚓${process.env.PORT}`);
     });
     this.tasks();
   }
