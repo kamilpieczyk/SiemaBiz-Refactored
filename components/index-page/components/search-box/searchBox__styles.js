@@ -5,7 +5,7 @@ import { mobile } from '../../../../styles/devices';
 import { backdropFilter, absoluteCenter, flexCenter } from '../../../../styles/mixins';
 
 export const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: ${({ small }) => (small ? '200px' : '100vh')};
   background-size: ${({ small }) => (small ? '100% 100vh' : 'cover')};
   background-repeat: no-repeat;
@@ -14,6 +14,9 @@ export const Container = styled.div`
   background-attachment: fixed;
   position: relative;
   opacity: ${({ opacity }) => opacity};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   @media (max-width: ${mobile}px) {
     background-size: ${({ small }) => (small ? '400% 100vh' : '400% 100%')};
@@ -23,7 +26,11 @@ export const Container = styled.div`
 `;
 
 export const Box = styled.div`
-  ${absoluteCenter()}
+  /* ${absoluteCenter()} */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 40px 30px;
   border-radius: 5px;
   ${({ small }) => small && 'top: 70%;'}

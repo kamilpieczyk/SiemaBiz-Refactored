@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 200;
     background-color: ${colors.white};
     overflow-x: hidden;
+    width: 100vw;
   }
 
   div, body, input{
