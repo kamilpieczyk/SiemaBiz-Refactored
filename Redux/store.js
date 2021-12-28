@@ -5,7 +5,8 @@ import thunk from 'redux-thunk';
 let store;
 const isFirefox = typeof InstallTrigger !== 'undefined';
 
-if (process.browser && !isFirefox) {
+// if (process.browser && !isFirefox) {
+if (false) {
   store = createStore(
     reducers,
     compose(
