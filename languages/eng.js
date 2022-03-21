@@ -352,7 +352,7 @@ export default {
         msg: 'otherwise customers may not know what your business do',
       },
       mustHaveLogo: {
-        title: 'each company must have a logo',
+        title: 'each company must have a logo or profile image',
         msg: 'otherwise customers may not recognise your business',
       },
       addingErr: {

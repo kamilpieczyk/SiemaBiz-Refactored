@@ -352,7 +352,7 @@ export default {
       },
       mustHaveLogo: {
         title: 'musisz przesłać plik z logo',
-        msg: 'każda firma musi posiadać znak handlowy',
+        msg: 'każda firma musi posiadać logo lub obrazek profilowy',
       },
       addingErr: {
         title: 'wystąpił nieoczekiwany błąd',

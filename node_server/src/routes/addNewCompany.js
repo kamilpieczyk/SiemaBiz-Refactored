@@ -1,56 +1,58 @@
-require( "dotenv" ).config()
+require('dotenv').config();
 
-const CompanyModel = require( "../../models/companyModel" )
+const CompanyModel = require('../../models/companyModel');
 
-module.exports = async ( req, res ) => {
-  const body = req.body
-  const { name, industry, adress, city, description, owners, employees, editMode, editId } = body
+module.exports = async (req, res) => {
+  const body = req.body;
+  const { name, industry, adress, city, description, owners, employees, editMode, editId } = body;
 
-  if( editMode ){
-    if( req.file ) await CompanyModel.findOneAndUpdate( { _id: editId }, { $set: { logo: req.file.filename } } )
-    const edit = await CompanyModel.findOneAndUpdate( { _id: editId }, {
-      $set: {
-        name,
-        industry,
-        adress,
-        city,
-        description,
+  if (editMode) {
+    if (req.file) await CompanyModel.findOneAndUpdate({ _id: editId }, { $set: { logo: req.file.filename } });
+    const edit = await CompanyModel.findOneAndUpdate(
+      { _id: editId },
+      {
+        $set: {
+          name,
+          industry,
+          adress,
+          city,
+          description,
+        },
       }
-    } )
-    if( edit ){
-      res.status( 200 ).json( {
-          status: "ok"
-      } )
+    );
+    if (edit) {
+      res.status(200).json({
+        status: 'ok',
+      });
+    } else {
+      res.status(500).json({
+        status: 'error',
+      });
     }
-    else{
-      res.status( 500 ).json( {
-        status: "error"
-      } )
-    }
-  }
-
-  else{
-    const company = new CompanyModel( {
+  } else {
+    const imageName = req.file.filename ? req.file.filename : 'no-logo.jpg';
+    const company = new CompanyModel({
       name,
       industry,
-      logo: req.file.filename,
+      logo: imageName,
       adress,
       city,
       description,
       owners,
-      employees
-    } )
-    
-    company.save()
-      .then( () => {
-        res.status( 200 ).json( {
-          status: "ok"
-        } )
-      } )
-      .catch( err => {
-        res.status( 500 ).json( {
-          status: "fail"
-        } )
-      } )
+      employees,
+    });
+
+    company
+      .save()
+      .then(() => {
+        res.status(200).json({
+          status: 'ok',
+        });
+      })
+      .catch(err => {
+        res.status(500).json({
+          status: 'fail',
+        });
+      });
   }
-}
+};
