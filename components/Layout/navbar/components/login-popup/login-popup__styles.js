@@ -48,3 +48,12 @@ export const Warning = styled.div`
   text-align: center;
   margin: 5px 0;
 `;
+
+export const ShowPasswordEye = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  transform: translateY(-50%);
+  color: ${colors.main};
+  cursor: pointer;
+`;

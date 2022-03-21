@@ -9,6 +9,7 @@ import { loginUser } from '../../../../../Redux/actions';
 const Logic = ({ render, close }) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [isPasswordShown, setPasswordShown] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [messangeLogin, setMessangeLogin] = useState('');
   const [messangePassword, setMessangePassword] = useState('');
@@ -62,7 +63,9 @@ const Logic = ({ render, close }) => {
     login,
     setLogin,
     password,
+    isPasswordShown,
     setPassword,
+    setPasswordShown,
     messangeLogin,
     messangePassword,
     handleSubmitForm,

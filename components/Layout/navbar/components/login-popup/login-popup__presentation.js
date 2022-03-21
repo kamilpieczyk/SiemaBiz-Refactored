@@ -2,8 +2,9 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import gsap from 'gsap';
+import MaterialIcon from '@material/react-material-icon';
 
-import { Container, Input, Warning } from './login-popup__styles';
+import { Container, Input, Warning, ShowPasswordEye } from './login-popup__styles';
 import Submit from '../../../../UI/submit';
 import Loading from '../../../../UI/loading-circle';
 import colors from '../../../../../styles/colors';
@@ -19,6 +20,8 @@ const Present = ({
   messangeLogin,
   messangePassword,
   handleSubmitForm,
+  isPasswordShown,
+  setPasswordShown,
 }) => {
   const languageSource = useSelector(state => state.language.source);
   const containerRef = useRef(null);
@@ -65,13 +68,16 @@ const Present = ({
 
         <div>
           <label>{languageSource.navbar.password}</label>
-          <div>
+          <div style={{ position: 'relative' }}>
             <Input
-              type='password'
+              type={isPasswordShown ? 'text' : 'password'}
               placeholder='password'
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
+            <ShowPasswordEye onClick={() => setPasswordShown(!isPasswordShown)}>
+              <MaterialIcon icon={isPasswordShown ? 'visibility_off' : 'visibility'} />
+            </ShowPasswordEye>
           </div>
         </div>
 
