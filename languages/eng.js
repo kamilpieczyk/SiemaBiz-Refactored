@@ -52,11 +52,11 @@ export default {
   },
   menu: {
     home: 'home',
-    articles: 'articles',
-    cathalog: 'companies cathalogue',
-    cooperationOffers: 'cooperation offers',
+    articles: 'news stories',
+    cathalog: 'businesses',
+    cooperationOffers: 'business opportunities',
     jobOffers: 'job offers',
-    makeApoitment: 'make an apoitment',
+    makeApoitment: 'twin towns page',
     contact: 'contact us',
   },
   footer: {
@@ -239,7 +239,7 @@ export default {
   },
   administrationPanel: {
     articleList: 'article list',
-    companyManagement: 'manage companies of main',
+    companyManagement: 'manage companies my companies',
     apoitments: 'manage apoitments',
     adminPanel: 'manage users',
     manageUsers: 'manage users',

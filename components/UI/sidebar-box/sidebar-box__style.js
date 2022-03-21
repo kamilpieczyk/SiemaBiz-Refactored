@@ -9,7 +9,8 @@ export const Container = styled.div`
   /* justify-content: center; */
   align-items: center;
   width: 100%;
-  
+  position: relative;
+
   ${({ light }) => light && `box-shadow: -4px 0px 5px -7px ${colors.grey};`}
   ${({ light }) => (light ? `color: ${white}` : `color: ${main}`)};
   ${({ light }) => !light && `background: ${main};`}
@@ -22,4 +23,12 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 80%;
+`;
+
+export const Title = styled.div`
+  position: absolute;
+  color: ${colors.main};
+  left: 0;
+  top: -20px;
+  font-weight: bold;
 `;

@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import { Container, Content } from './sidebar-box__style';
+import { Container, Content, Title } from './sidebar-box__style';
 import Item from './menu-item';
 
 const SidebarBox = ({ menu, light }) => {
   const userPrivileges = useSelector(s => s.user.privileges);
   return (
     <Container light={light}>
+      {!light && <Title>admin toolbox</Title>}
       <Content>
         {menu.map((item, index) => {
           if (item.priv) {
