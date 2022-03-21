@@ -56,7 +56,7 @@ export default {
     cathalog: 'katalog firm',
     cooperationOffers: 'oferty współpracy',
     jobOffers: 'oferty pracy',
-    makeApoitment: 'umów się',
+    makeApoitment: 'miasta partnerskie',
     contact: 'skontaktuj się z nami',
   },
   footer: {

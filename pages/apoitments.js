@@ -2,14 +2,16 @@ import React from 'react';
 import Head from 'next/head';
 
 import Layout from '../components/Layout';
-import ApoitmentPage from '../components/apointment-page';
 
 const Appointment = () => (
   <Layout>
     <Head>
-      <title>Make appointment - SiemaBiz Forum</title>
+      <title>Twin Towns - SiemaBiz Forum</title>
     </Head>
-    <ApoitmentPage />
+    <div style={{ paddingTop: '200px' }} />
+    <div style={{ textAlign: 'center', paddingBottom: '100px', fontWeight: 'bold' }}>
+      this site is under development.
+    </div>
   </Layout>
 );
 
