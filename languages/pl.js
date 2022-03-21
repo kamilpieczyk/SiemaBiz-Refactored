@@ -257,7 +257,7 @@ export default {
   },
   companyPanel: {
     addCompanyButton: 'dodaj firmę',
-    searchForCompanyButton: 'wyszukaj firmę',
+    searchForCompanyButton: 'znajdz mojego pracodawce',
     manageEmployeeButton: 'zarządzaj pracownikami',
     employeeList: 'lista pracowników',
     owners: 'zarząd firmy',

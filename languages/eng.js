@@ -258,7 +258,7 @@ export default {
   },
   companyPanel: {
     addCompanyButton: 'add company',
-    searchForCompanyButton: 'search for company',
+    searchForCompanyButton: 'find my employer',
     manageEmployeeButton: 'manage employee',
     employeeList: 'employee list',
     owners: 'owners',
