@@ -1,6 +1,6 @@
 const key = () => {
   const protocol = 'https:';
-  const host = '18.218.167.24';
+  const host = 'siema-biz-forum.com';
   const port = 5002;
   return `${protocol}//${host}/`;
 };
