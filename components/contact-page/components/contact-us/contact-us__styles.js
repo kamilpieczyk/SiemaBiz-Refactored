@@ -33,7 +33,7 @@ export const Form = styled.div`
   }
 `;
 
-export const Box = styled.div`
+export const Box = styled.a`
   grid-column-start: 1;
   grid-row-start: 1;
   background: ${colors.main};
@@ -45,6 +45,7 @@ export const Box = styled.div`
   align-items: center;
   justify-content: center;
   color: ${colors.white};
+  text-decoration: none;
 
   @media (max-width: ${mobile}px) {
     grid-row-start: 2;

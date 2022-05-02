@@ -41,9 +41,9 @@ const Presentation = ({ state, inputs, handleSendEmail, isLoading }) => {
           </Button>
         )}
       </Form>
-      <Box>
+      <Box href='https://www.osterly-associates.co.uk/' target='_blank'>
         <h1>{language.sponsored}</h1>
-        <img src='/images/welsh-gov.png' width='200px' />
+        <img src='/images/osterly.jpg' width='200px' />
       </Box>
     </Container>
   );
