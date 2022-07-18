@@ -1,21 +1,19 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import colors from '../../../styles/colors'
-import { mobile } from '../../../styles/devices'
+import colors from '../../../styles/colors';
+import { mobile } from '../../../styles/devices';
 
 export const Button = styled.div`
   cursor: pointer;
   display: flex;
 
-  div{
+  div {
     position: relative;
     top: 5px;
-    
-    @media ( max-width: ${ mobile }px ) {
+
+    @media (max-width: ${mobile}px) {
       display: none;
     }
   }
-  color: ${
-    ({ color }) => color ? color : colors.white
-  };
-`
+  color: ${({ color }) => (color ? color : colors.white)};
+`;

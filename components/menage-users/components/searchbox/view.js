@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "styled-components"
-import { colors } from "../../../../styledVars"
+import React from 'react';
+import styled from 'styled-components';
+import { colors } from '../../../../styledVars';
 
 const Container = styled.div`
   width: 100%;
@@ -12,16 +12,16 @@ const Container = styled.div`
   border-radius: 5px;
   font-size: 1.2rem;
 
-  @supports( backdrop-filter: blur() ){
+  @supports (backdrop-filter: blur()) {
     backdrop-filter: blur(5px);
     background: ${colors.transparentWhite};
   }
-`
+`;
 
 const Label = styled.label`
   margin-right: 10px;
   color: ${colors.main};
-`
+`;
 
 const Input = styled.input`
   border: none;
@@ -30,22 +30,15 @@ const Input = styled.input`
   font-size: 1.2rem;
   text-align: center;
   outline-color: ${colors.main};
-`
+`;
 
-export default ( { state, handleInput , ...props } ) => {
-  return(
+export default ({ state, handleInput, ...props }) => {
+  return (
     <Container>
       <Label>
-        {
-          props.language === "pl"
-            ? "wyszukaj użytkownika po nazwie"
-            : "search for user by username"
-        }:
+        {props.language === 'pl' ? 'wyszukaj użytkownika po nazwie' : 'search for user by username'}:
       </Label>
-      <Input 
-        value={state.value}
-        onChange={e => handleInput( e.target.value )}
-      />
+      <Input value={state.value} onChange={e => handleInput(e.target.value)} />
     </Container>
-  )
-}
+  );
+};

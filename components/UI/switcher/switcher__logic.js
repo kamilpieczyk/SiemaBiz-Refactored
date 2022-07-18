@@ -1,23 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-
 const SwitcherLogic = ({ render, text }) => {
-  const [ isSwitched, setSwitched ] = useState( false )
+  const [isSwitched, setSwitched] = useState(false);
 
-  const handleSwitchOption = () => setSwitched( !isSwitched )
+  const handleSwitchOption = () => setSwitched(!isSwitched);
 
-  return render( {
+  return render({
     text,
     switch: handleSwitchOption,
-    isSwitched
-  } )
-
-}
-
+    isSwitched,
+  });
+};
 
 SwitcherLogic.propTypes = {
-  render: PropTypes.func.isRequired
-}
+  render: PropTypes.func.isRequired,
+};
 
-export default SwitcherLogic
+export default SwitcherLogic;

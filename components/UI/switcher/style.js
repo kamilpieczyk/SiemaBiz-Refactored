@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import colors from '../../../styles/colors'
+import styled from 'styled-components';
+import colors from '../../../styles/colors';
 
 export const Container = styled.div`
   width: 85px;
@@ -10,8 +10,8 @@ export const Container = styled.div`
   background-color: ${colors.white};
   margin: 0 0 0 10px;
   position: relative;
-  box-shadow: 0 0 8px ${ colors.lightGrey };
-`
+  box-shadow: 0 0 8px ${colors.lightGrey};
+`;
 
 export const Dot = styled.div`
   position: absolute;
@@ -19,17 +19,14 @@ export const Dot = styled.div`
   height: 100%;
   border-radius: 50%;
   z-index: 100;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
   background-color: ${colors.main};
 
-  ${
-    ({ isSwitched }) => {
-      if( isSwitched ) return "left: 65%;"
-      else return "left: 0;"
-    }
-  }
-
-`
+  ${({ isSwitched }) => {
+    if (isSwitched) return 'left: 65%;';
+    else return 'left: 0;';
+  }}
+`;
 
 export const Text = styled.span`
   position: absolute;
@@ -38,5 +35,5 @@ export const Text = styled.span`
   transform: translate(-50%) translateY(-50%);
   text-transform: uppercase;
   z-index: 99;
-  color: ${ colors.grey };
-`
+  color: ${colors.grey};
+`;

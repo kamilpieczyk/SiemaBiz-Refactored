@@ -1,13 +1,10 @@
-export default ( state = false, action ) =>{
-
-  switch( action.type ){
-
+export default (state = false, action) => {
+  switch (action.type) {
     case 'SET_SCROLL':
       state = action.payload;
-      return state
+      return state;
 
     default:
-      return state
+      return state;
   }
-
-}
+};

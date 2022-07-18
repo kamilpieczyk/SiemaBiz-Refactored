@@ -37,7 +37,10 @@ const ArticlesPresentationLayer = ({
       <Separator height='20px' />
 
       <AddButtonContainer>
-        <AddNewArticleButton onClickFunction={handleAddNewArticleButton} maxWidth={device === 'mobile' ? true : false}>
+        <AddNewArticleButton
+          onClickFunction={handleAddNewArticleButton}
+          maxWidth={device === 'mobile' ? true : false}
+        >
           <MaterialIcon icon='add_circle' />
           <Separator width='5px' />
           {language.articlesPanel.addButton}

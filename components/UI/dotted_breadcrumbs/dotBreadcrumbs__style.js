@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import colors from '../../../styles/colors'
+import styled from 'styled-components';
+import colors from '../../../styles/colors';
 
 export const Container = styled.div`
   margin-top: 10px;
@@ -7,12 +7,12 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const Dot = styled.div`
-  width: ${( { active } ) => active ? "9px" : "7px"};
-  height: ${( { active } ) => active ? "9px" : "7px"};
+  width: ${({ active }) => (active ? '9px' : '7px')};
+  height: ${({ active }) => (active ? '9px' : '7px')};
   margin: 5px;
   border-radius: 50%;
-  background: ${( { active } ) => active ? colors.main  : colors.grey};
-`
+  background: ${({ active }) => (active ? colors.main : colors.grey)};
+`;

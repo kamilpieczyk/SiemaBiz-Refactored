@@ -1,10 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import Logic from './menu__logic'
-import Present from './menu__presentation'
+import Logic from './menu__logic';
+import Present from './menu__presentation';
 
-export default () => (
-  <Logic
-    render = { props => <Present { ...props } /> }
-  />
-)
+export default () => <Logic render={props => <Present {...props} />} />;

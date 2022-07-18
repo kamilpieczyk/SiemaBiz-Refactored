@@ -1,4 +1,4 @@
-const CoopAdsModel = require("../../models/coopAd.model");
+const CoopAdsModel = require('../../models/coopAd.model');
 
 module.exports = async (req, res) => {
   const { id } = req.params;

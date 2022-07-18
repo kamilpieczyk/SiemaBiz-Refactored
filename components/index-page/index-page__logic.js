@@ -1,21 +1,17 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 class IndexPageLogicLayer extends PureComponent {
-
   state = {
     children: PropTypes.func.isRequired,
-    
-  }
+  };
 
-  static propTypes = {
+  static propTypes = {};
 
-  }
-
-  render(){
+  render() {
     return this.props.children({
       state: this.state,
-    })
+    });
   }
 }
 

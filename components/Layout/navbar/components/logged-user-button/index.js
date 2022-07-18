@@ -1,10 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import Logic from './logged-user-button__logic'
-import PresentationLayer from './logged-user-button__presentation'
+import Logic from './logged-user-button__logic';
+import PresentationLayer from './logged-user-button__presentation';
 
-export default () => (
-  <Logic
-    render = { props => <PresentationLayer { ...props } /> }
-  />
-)
+export default () => <Logic render={props => <PresentationLayer {...props} />} />;

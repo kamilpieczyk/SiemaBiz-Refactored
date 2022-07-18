@@ -9,8 +9,12 @@ module.exports = requiredPrivileges => {
       req.originalUrl === '/add-new-company'
     ) {
       next();
-    } else if (req.authCode >= requiredPrivileges) {
+    } else if (req.headers['authCode'] >= requiredPrivileges) {
+      console.log(req.headers);
       next();
-    } else res.status(401).end();
+    } else {
+      console.log(req.headers['authCode']);
+      res.status(401).end();
+    }
   };
 };

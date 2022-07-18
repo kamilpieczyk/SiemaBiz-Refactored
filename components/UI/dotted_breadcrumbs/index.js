@@ -1,36 +1,26 @@
-import React from "react"
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import {
-  Container,
-  Dot
-} from "./dotBreadcrumbs__style"
+import { Container, Dot } from './dotBreadcrumbs__style';
 
-
-const DotedBreadcrumbs = ( { numberOfSites, activeCrumb } ) => {
-
-  const sites = []
-  for( let i = 1 ; i <= numberOfSites ; i++ ){
-    sites.push( i )
+const DotedBreadcrumbs = ({ numberOfSites, activeCrumb }) => {
+  const sites = [];
+  for (let i = 1; i <= numberOfSites; i++) {
+    sites.push(i);
   }
 
-  return(
+  return (
     <Container>
-      {
-        sites.map( site => (
-          <Dot
-            key = { site }
-            active = { site === activeCrumb ? true : false } 
-          />
-        ) )
-      }
+      {sites.map(site => (
+        <Dot key={site} active={site === activeCrumb ? true : false} />
+      ))}
     </Container>
-  )
-}
+  );
+};
 
 DotedBreadcrumbs.propTypes = {
   numberOfSites: PropTypes.number.isRequired,
-  activeCrumb: PropTypes.number.isRequired
-}
+  activeCrumb: PropTypes.number.isRequired,
+};
 
-export default DotedBreadcrumbs
+export default DotedBreadcrumbs;

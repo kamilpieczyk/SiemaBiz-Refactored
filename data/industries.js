@@ -24,7 +24,9 @@ export const getIndustries = (job, cooperation, all) => {
     {
       name: 'IT',
       title: languageSource.it,
-      href: `${job ? 'job-offers' : cooperation ? 'cooperation-offers' : 'companies-cathalogue'}?site=1&industry=IT`,
+      href: `${
+        job ? 'job-offers' : cooperation ? 'cooperation-offers' : 'companies-cathalogue'
+      }?site=1&industry=IT`,
       icon: 'computer',
     },
     {
@@ -46,7 +48,9 @@ export const getIndustries = (job, cooperation, all) => {
     {
       name: 'trade',
       title: languageSource.trade,
-      href: `${job ? 'job-offers' : cooperation ? 'cooperation-offers' : 'companies-cathalogue'}?site=1&industry=trade`,
+      href: `${
+        job ? 'job-offers' : cooperation ? 'cooperation-offers' : 'companies-cathalogue'
+      }?site=1&industry=trade`,
       icon: 'attach_money',
     },
     {
@@ -100,7 +104,9 @@ export const getIndustries = (job, cooperation, all) => {
     {
       name: 'law',
       title: languageSource.law,
-      href: `${job ? 'job-offers' : cooperation ? 'cooperation-offers' : 'companies-cathalogue'}?site=1&industry=law`,
+      href: `${
+        job ? 'job-offers' : cooperation ? 'cooperation-offers' : 'companies-cathalogue'
+      }?site=1&industry=law`,
       icon: 'gavel',
     },
     {
@@ -122,7 +128,9 @@ export const getIndustries = (job, cooperation, all) => {
     {
       name: 'other',
       title: languageSource.other,
-      href: `${job ? 'job-offers' : cooperation ? 'cooperation-offers' : 'companies-cathalogue'}?site=1&industry=other`,
+      href: `${
+        job ? 'job-offers' : cooperation ? 'cooperation-offers' : 'companies-cathalogue'
+      }?site=1&industry=other`,
       icon: 'help',
     },
   ];

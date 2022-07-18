@@ -1,32 +1,29 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { changeLanguageToPL, changeLanguageToENG } from '../../Redux/actions'
+import { changeLanguageToPL, changeLanguageToENG } from '../../Redux/actions';
 
-const withLanguage = ( Component ) => {
-
+const withLanguage = Component => {
   const ComponentWithLanguage = () => {
-
-    const language = useSelector( state => state.language.current )
-    const dispatch = useDispatch()
+    const language = useSelector(state => state.language.current);
+    const dispatch = useDispatch();
 
     const handleLanguageChanger = () => {
-      if( language === "PL" ){
-        return changeLanguageToENG()
+      if (language === 'PL') {
+        return changeLanguageToENG();
+      } else {
+        return changeLanguageToPL();
       }
-      else {
-        return changeLanguageToPL()
-      }
-    }
+    };
 
-    return(
-      <div onClick = { () => dispatch( handleLanguageChanger() ) } >
-        <Component text = { language } />
+    return (
+      <div onClick={() => dispatch(handleLanguageChanger())}>
+        <Component text={language} />
       </div>
-    )
-  }
+    );
+  };
 
-  return ComponentWithLanguage
-}
+  return ComponentWithLanguage;
+};
 
-export default withLanguage
+export default withLanguage;

@@ -127,7 +127,9 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                       <MaterialIcon
                         icon='delete'
                         title={language.deleteFromCompany}
-                        onClick={() => handlers.handleRemoveEmployeeButton(employee, state.employeesWindow.company)}
+                        onClick={() =>
+                          handlers.handleRemoveEmployeeButton(employee, state.employeesWindow.company)
+                        }
                       />
                     </div>
                   </EmployeeBox>
@@ -354,12 +356,16 @@ const CompanyManagementPresentation = ({ state, handlers }) => {
                           <div>{language.archiviseQuestion}</div>
                           <section>
                             <ClickButton
-                              onClickFunction={() => handlers.handleArchiviseCooperationOffer(offer._id, true)}
+                              onClickFunction={() =>
+                                handlers.handleArchiviseCooperationOffer(offer._id, true)
+                              }
                             >
                               {language.archivise}
                             </ClickButton>
                             <ClickButton
-                              onClickFunction={() => handlers.handleArchiviseCooperationOffer(offer._id, false, true)}
+                              onClickFunction={() =>
+                                handlers.handleArchiviseCooperationOffer(offer._id, false, true)
+                              }
                             >
                               {language.cancel}
                             </ClickButton>

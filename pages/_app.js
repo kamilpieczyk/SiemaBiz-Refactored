@@ -11,9 +11,9 @@ import GET from '../API/get';
 
 function MyApp({ Component, pageProps }) {
   const checkIfUserIsLogged = async () => {
-    const passport = window.localStorage.getItem('passport');
+    const token = window.localStorage.getItem('token');
 
-    if (passport) {
+    if (token) {
       const user = await authorisation();
       if (user) {
         store.dispatch(

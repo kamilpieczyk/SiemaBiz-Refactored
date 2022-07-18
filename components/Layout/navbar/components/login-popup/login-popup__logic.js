@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import cookies from 'js-cookie';
 
 import POST from '../../../../../API/post';
 import auth from '../../../../../API/authorisation';
@@ -24,18 +25,20 @@ const Logic = ({ render, close }) => {
     setLoading(true);
     messangeLogin && setMessangeLogin('');
     messangePassword && setMessangePassword('');
-    POST('login', { username: login, password }).then(res => {
+    POST('login', { username: login, password }).then(async res => {
       setLoading(false);
       if (res.status === 'user_not_exisit') setMessangeLogin(languageSource.navbar.userNotExist);
-      if (res.status === 'wrong_pwd') {
+      else if (res.status === 'wrong_pwd') {
         setMessangePassword(languageSource.navbar.wrongPassword);
         setPassword('');
-      }
-      if (res.status === 'logged') {
-        window.localStorage.setItem('passport', res.passport);
-
-        auth(res.passport).then(res => {
-          if (res.status === 'authorised') {
+      } else if (res.status === 'logged') {
+        window.localStorage.setItem('token', res.token);
+        cookies.set('refresh', res.refreshToken, { expires: 1 });
+        auth().then(res => {
+          if (!res) {
+            console.error('no res');
+            setMessangeLogin(languageSource.navbar.somethingWentWrong);
+          } else if (res && res.status === 'authenticated') {
             dispatch(
               loginUser({
                 username: res.username,
@@ -48,8 +51,6 @@ const Logic = ({ render, close }) => {
               })
             );
             close();
-          } else {
-            setMessangeLogin(languageSource.navbar.somethingWentWrong);
           }
         });
       }

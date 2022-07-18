@@ -14,8 +14,8 @@ const UserMenuPresentationLayer = ({ buttonPosition, isPageScrolled, languageSou
 
   return (
     <Container position={buttonPosition} isScrolled={isPageScrolled}>
-      {getMenu().map(({ title, href, icon, priv }) => (
-        <Option key={title} display={priv <= privileges}>
+      {getMenu().map(({ title, href, icon, priv }, index) => (
+        <Option key={`${index}+${title}+${href}`} display={priv <= privileges}>
           <MaterialIcon icon={icon} />
           <Link adress={href} callback={() => dispatch(setUserMenuInactive())}>
             {title}

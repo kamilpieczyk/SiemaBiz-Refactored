@@ -1,12 +1,12 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import colors from '../../../styles/colors'
-import { mobile } from '../../../styles/devices'
+import colors from '../../../styles/colors';
+import { mobile } from '../../../styles/devices';
 
 export const Container = styled.div`
-  color: ${ colors.error };
+  color: ${colors.error};
   border-radius: 5px;
-  border: 2px solid ${ colors.error };
+  border: 2px solid ${colors.error};
   position: relative;
   width: 100%;
   padding: 20px 0;
@@ -14,10 +14,10 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  i{
+  i {
     position: absolute;
     top: -23px;
     left: 10px;
     font-size: 2.5rem;
   }
-`
+`;

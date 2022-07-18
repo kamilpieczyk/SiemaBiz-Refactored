@@ -1,15 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import LogicLayer from './company-site__logic'
-import PresentationLayer from './company-site__presentation'
+import LogicLayer from './company-site__logic';
+import PresentationLayer from './company-site__presentation';
 
-const CompanySite = ( props ) => (
-  <LogicLayer
-    { ...props }
-    render = { newProps => <PresentationLayer company = { props.company } { ...newProps }/> }
-  />
-)
+const CompanySite = props => (
+  <LogicLayer {...props} render={newProps => <PresentationLayer company={props.company} {...newProps} />} />
+);
 
 CompanySite.propTypes = {
   company: PropTypes.shape({
@@ -22,7 +19,7 @@ CompanySite.propTypes = {
     city: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     industry: PropTypes.string.isRequired,
-  })
-}
+  }),
+};
 
 export default CompanySite;

@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import Layout from '../components/Layout'
+import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Layout from '../components/Layout';
 
-import get from '../API/get'
+import get from '../API/get';
 
-import ArticlesPage from '../components/articles'
+import ArticlesPage from '../components/articles';
 
 const Articles = ({ articles }) => {
-  
-  return(
+  return (
     <Layout>
-      <Head><title>SiemaBiz Forum</title></Head>
-      <ArticlesPage articles = { articles } />
+      <Head>
+        <title>SiemaBiz Forum</title>
+      </Head>
+      <ArticlesPage articles={articles} />
     </Layout>
-  )
-}
+  );
+};
 
-Articles.getInitialProps = async ctx =>{
+Articles.getInitialProps = async ctx => {
+  const articles = await get('articles/shorts');
+  return { articles: articles.reverse() };
+};
 
-  const articles = await get( 'articles/shorts' );
-  return { articles: articles.reverse() }
-}
-
-export default Articles
+export default Articles;

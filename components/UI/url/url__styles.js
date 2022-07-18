@@ -1,18 +1,18 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import colors from '../../../styles/colors'
-import { flexCenter } from '../../../styles/mixins'
+import colors from '../../../styles/colors';
+import { flexCenter } from '../../../styles/mixins';
 
 export const Container = styled.div`
-  ${ flexCenter() }
+  ${flexCenter()}
 
-  i{
+  i {
     margin-right: 10px;
     font-size: 2rem;
-    color: ${ colors.main };
+    color: ${colors.main};
   }
 
-  a{
-    color: ${ colors.main };
+  a {
+    color: ${colors.main};
   }
-`
+`;

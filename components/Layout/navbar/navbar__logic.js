@@ -1,27 +1,26 @@
-import { memo, useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { memo, useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { setScroll, logoutUser } from '../../../Redux/actions'
+import { setScroll, logoutUser } from '../../../Redux/actions';
 
-export default memo( (props) => {
+export default memo(props => {
+  const [isLoginPopup, setLoginPopup] = useState(false);
 
-  const [ isLoginPopup, setLoginPopup ] = useState( false )
-  
   const dispatch = useDispatch();
-  const isMenuActive = useSelector( state => state.globalMenu );
-  const languageSource = useSelector( state => state.language.source );
-  const isScrolled = useSelector( state => state.isPageScrolled );
-  const isUserLogged = useSelector( state => state.user.username );
-  const isUserMenuActive = useSelector( state => state.isUserMenuActiv );
-  const deviceScreenResolution = useSelector( state => state.deviceScreen );
+  const isMenuActive = useSelector(state => state.globalMenu);
+  const languageSource = useSelector(state => state.language.source);
+  const isScrolled = useSelector(state => state.isPageScrolled);
+  const isUserLogged = useSelector(state => state.user.username);
+  const isUserMenuActive = useSelector(state => state.isUserMenuActiv);
+  const deviceScreenResolution = useSelector(state => state.deviceScreen);
 
-  useEffect( () => {
-    window.addEventListener( 'scroll', () => {
-      const scrlY = window.scrollY
-      if( scrlY > 150 ) dispatch( setScroll( true ) )
-      else dispatch( setScroll( false ) )
-    } )
-  }, [] )
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const scrlY = window.scrollY;
+      if (scrlY > 150) dispatch(setScroll(true));
+      else dispatch(setScroll(false));
+    });
+  }, []);
 
   return props.render({
     scroll: isScrolled,
@@ -32,8 +31,8 @@ export default memo( (props) => {
     deviceScreenResolution,
     loginPopup: {
       isLoginPopup,
-      setLoginPopup
+      setLoginPopup,
     },
-    logout: () => dispatch( logoutUser() )
-  })
-} )
+    logout: () => dispatch(logoutUser()),
+  });
+});

@@ -71,7 +71,7 @@ class App {
     app.get('*', this.handle);
   }
   postRoutes() {
-    app.post('/authorisation', require('./routes/auth'));
+    app.post('/authentication', require('./routes/authentication'));
     app.post('/register', require('./routes/register'));
     app.post('/login', require('./routes/login'));
     app.post('/logout', require('./routes/logout'));

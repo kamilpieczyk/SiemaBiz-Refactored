@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import colors from '../../../../../styles/colors'
+import colors from '../../../../../styles/colors';
 
 export const Container = styled.div`
   border-radius: 5px;
   width: 100%;
-  background: ${ colors.white };
+  background: ${colors.white};
   padding: 20px 0;
   display: flex;
   justify-content: space-around;
@@ -13,43 +13,39 @@ export const Container = styled.div`
   margin: 0 0 10px 0;
   height: 100px;
 
-  i{
-    color: ${ colors.main };
+  i {
+    color: ${colors.main};
     cursor: pointer;
   }
 
-  section{
+  section {
     display: flex;
   }
-`
+`;
 
-export const ActionContainer = styled.div`
-
-`
+export const ActionContainer = styled.div``;
 
 export const Action = styled.div`
   display: flex;
   cursor: pointer;
 
-  p{
-    font-size: .9rem;
-    color: ${ colors.main };
+  p {
+    font-size: 0.9rem;
+    color: ${colors.main};
   }
 
-  i{
-    font-size: .9rem;
+  i {
+    font-size: 0.9rem;
     position: relative;
     top: 1px;
     margin-right: 3px;
   }
 
-  :hover{
-    p{
+  :hover {
+    p {
       text-decoration: underline;
     }
   }
-`
+`;
 
-export const IconsContainer = styled.div`
-
-`
+export const IconsContainer = styled.div``;

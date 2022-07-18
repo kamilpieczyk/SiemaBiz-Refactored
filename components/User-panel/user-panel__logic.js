@@ -1,38 +1,33 @@
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import router from 'next/router'
-import PropTypes from 'prop-types'
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import router from 'next/router';
+import PropTypes from 'prop-types';
 
 const UserPanelLogicLayer = ({ render, menu }) => {
-
-  const device = useSelector( s => s.deviceScreen );
-  const isScrolled = useSelector( s => s.isPageScrolled );
+  const device = useSelector(s => s.deviceScreen);
+  const isScrolled = useSelector(s => s.isPageScrolled);
 
   const redirectToHomepageIfUserIsNotLogged = () => {
-    const isUserLogged = window.localStorage.getItem( 'passport' );
-    
-    if( !isUserLogged ){
-      router.push( '/' );
+    const isUserLogged = window.localStorage.getItem('token');
+    if (!isUserLogged) {
+      router.push('/');
     }
-  }
+  };
 
-  useEffect(
-    () => {
-      redirectToHomepageIfUserIsNotLogged();
-    },
-    []
-  )
+  useEffect(() => {
+    redirectToHomepageIfUserIsNotLogged();
+  }, []);
 
   return render({
     device,
     menu,
-    isScrolled
-  })
-}
+    isScrolled,
+  });
+};
 
 UserPanelLogicLayer.propTypes = {
   render: PropTypes.func.isRequired,
-  menu: PropTypes.array.isRequired
-}
+  menu: PropTypes.array.isRequired,
+};
 
-export default UserPanelLogicLayer
+export default UserPanelLogicLayer;

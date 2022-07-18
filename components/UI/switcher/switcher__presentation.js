@@ -1,24 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Container, Dot, Text } from './style'
+import { Container, Dot, Text } from './style';
 
 const Presentation = props => (
-  <Container
-    onClick = { props.switch }
-  >
-    <Dot isSwitched = { props.isSwitched } />
-    <Text>
-      { props.text }
-    </Text>
+  <Container onClick={props.switch}>
+    <Dot isSwitched={props.isSwitched} />
+    <Text>{props.text}</Text>
   </Container>
-)
-
+);
 
 Presentation.propTypes = {
   text: PropTypes.string.isRequired,
   switch: PropTypes.func.isRequired,
-  isSwitched: PropTypes.bool
-}
+  isSwitched: PropTypes.bool,
+};
 
-export default Presentation
+export default Presentation;

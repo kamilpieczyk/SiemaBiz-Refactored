@@ -1,35 +1,34 @@
-import PropTypes from 'prop-types'
-import { useSelector, useDispatch } from 'react-redux'
-import { useState, useRef, useEffect } from 'react'
+import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useRef, useEffect } from 'react';
 
-import POST from '../../../API/post'
-import auth from '../../../API/authorisation'
-import { setPopupWindowActive } from '../../../Redux/actions'
+import POST from '../../../API/post';
+import auth from '../../../API/authorisation';
+import { setPopupWindowActive } from '../../../Redux/actions';
 
 const ProfileSettingsLogicLayer = ({ render }) => {
+  const [email, setEmail] = useState('');
+  const [isEmailChanging, setEmailChanging] = useState(false);
+  const [phone, setPhone] = useState('');
+  const [isPhoneChanging, setPhoneChanging] = useState(false);
+  const [name, setName] = useState('');
+  const [isNameChanging, setNameChanging] = useState(false);
+  const [surname, setSurname] = useState('');
+  const [isSurnameChanging, setSurnameChanging] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
-  const [ email, setEmail ] = useState( '' );
-  const [ isEmailChanging, setEmailChanging ] = useState( false );
-  const [ phone, setPhone ] = useState( '' );
-  const [ isPhoneChanging, setPhoneChanging ] = useState( false );
-  const [ name, setName ] = useState( '' );
-  const [ isNameChanging, setNameChanging ] = useState( false );
-  const [ surname, setSurname ] = useState( '' );
-  const [ isSurnameChanging, setSurnameChanging ] = useState( false );
-  const [ isLoading, setLoading ] = useState( false );
+  const user = useSelector(s => s.user);
+  const username = useSelector(s => s.user.username);
+  const emailRedux = useSelector(s => s.user.email);
+  const phoneRexdux = useSelector(s => s.user.phone);
+  const nameRedux = useSelector(s => s.user.name);
+  const surnameRedux = useSelector(s => s.user.surname);
 
-  const user = useSelector( s => s.user );
-  const username = useSelector( s => s.user.username );
-  const emailRedux = useSelector( s => s.user.email );
-  const phoneRexdux = useSelector( s => s.user.phone );
-  const nameRedux = useSelector( s => s.user.name );
-  const surnameRedux = useSelector( s => s.user.surname );
-
-  const language = useSelector( s => s.language.source );
+  const language = useSelector(s => s.language.source);
 
   const dispatch = useDispatch();
 
-  const breadcrumbs = [ language.userPanel.title ];
+  const breadcrumbs = [language.userPanel.title];
 
   const activeInputRef = useRef();
   const handleFocusOnInput = () => activeInputRef.current.focus();
@@ -40,71 +39,70 @@ const ProfileSettingsLogicLayer = ({ render }) => {
       icon: 'alternate_email',
       information: emailRedux,
       value: email,
-      onChangeFunction: e => setEmail( e.target.value ),
-      editFunction: () => setEmailChanging( !isEmailChanging ),
-      changingState: isEmailChanging
+      onChangeFunction: e => setEmail(e.target.value),
+      editFunction: () => setEmailChanging(!isEmailChanging),
+      changingState: isEmailChanging,
     },
     {
       title: language.userPanel.userSettings.phone,
       icon: 'phone_iphone',
       information: phoneRexdux,
       value: phone,
-      onChangeFunction: e => setPhone( e.target.value ),
-      editFunction: () => setPhoneChanging( !isPhoneChanging ),
-      changingState: isPhoneChanging
+      onChangeFunction: e => setPhone(e.target.value),
+      editFunction: () => setPhoneChanging(!isPhoneChanging),
+      changingState: isPhoneChanging,
     },
     {
       title: language.userPanel.userSettings.name,
       icon: 'assignment_ind',
       information: nameRedux,
       value: name,
-      onChangeFunction: e => setName( e.target.value ),
-      editFunction: () => setNameChanging( !isNameChanging ),
-      changingState: isNameChanging
+      onChangeFunction: e => setName(e.target.value),
+      editFunction: () => setNameChanging(!isNameChanging),
+      changingState: isNameChanging,
     },
     {
       title: language.userPanel.userSettings.surname,
       icon: 'assignment',
       information: surnameRedux,
       value: surname,
-      onChangeFunction: e => setSurname( e.target.value ),
-      editFunction: () => setSurnameChanging( !isSurnameChanging ),
-      changingState: isSurnameChanging
-    }
+      onChangeFunction: e => setSurname(e.target.value),
+      editFunction: () => setSurnameChanging(!isSurnameChanging),
+      changingState: isSurnameChanging,
+    },
   ];
 
   const handleSubmitInformations = async () => {
-    setLoading( true );
+    setLoading(true);
 
     const body = {
       id: user.id,
       email: email || null,
       phone: phone || null,
       name: name || null,
-      surname: surname || null
+      surname: surname || null,
     };
 
-    const authorisation = await auth();
-
-    if( authorisation.status === 'authorised' ){
-      const res = await POST( 'edit-user-details', body );
-      if( res.status = 'updated' ){
-        setLoading( false );
-        dispatch( setPopupWindowActive( {
+    const res = await POST('edit-user-details', body);
+    if ((res.status = 'updated')) {
+      setLoading(false);
+      dispatch(
+        setPopupWindowActive({
           title: language.userPanel.userSettings.popup.title,
-          messenge: language.userPanel.userSettings.popup.messenge
-        } ) )
-      }
-      else{
-        setLoading( false);
-        dispatch( setPopupWindowActive( {
+          messenge: language.userPanel.userSettings.popup.messenge,
+        })
+      );
+    } else {
+      setLoading(false);
+      dispatch(
+        setPopupWindowActive({
           title: language.general.popups.wrong.title,
-          messenge: language.general.popups.wrong.messenge
-        } ) )
-      }
+          messenge: language.general.popups.wrong.messenge,
+        })
+      );
     }
-  }
-  
+  };
+
   return render({
     breadcrumbs,
     username,
@@ -112,12 +110,12 @@ const ProfileSettingsLogicLayer = ({ render }) => {
     activeInputRef,
     handleFocusOnInput,
     handleSubmitInformations,
-    isLoading
-  })
-}
+    isLoading,
+  });
+};
 
 ProfileSettingsLogicLayer.propTypes = {
-  render : PropTypes.func.isRequired
-}
+  render: PropTypes.func.isRequired,
+};
 
-export default ProfileSettingsLogicLayer
+export default ProfileSettingsLogicLayer;

@@ -1,10 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import LogicLayer from './logged-user-container__logic'
-import PresentationLayer from './logged-user-container__presentation'
+import LogicLayer from './logged-user-container__logic';
+import PresentationLayer from './logged-user-container__presentation';
 
-export default () => (
-  <LogicLayer
-    render = { props => <PresentationLayer { ...props } /> }
-  />
-)
+export default () => <LogicLayer render={props => <PresentationLayer {...props} />} />;

@@ -1,35 +1,34 @@
-import PropTypes from 'prop-types'
-import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const UserMenuLogicLayer = ({ render }) => {
-  const [ buttonPosition, setButtonPosition ] = useState( document.getElementById( 'logged-user-button' ).offsetLeft );
+  const [buttonPosition, setButtonPosition] = useState(
+    document.getElementById('logged-user-button').offsetLeft
+  );
 
-  const isPageScrolled = useSelector( state => state.isPageScrolled );
-  const languageSource = useSelector( state => state.language.source );
+  const isPageScrolled = useSelector(state => state.isPageScrolled);
+  const languageSource = useSelector(state => state.language.source);
 
-  useEffect(
-    () => {
-      getTheButtonPosition();
-    },
-    []
-  )
+  useEffect(() => {
+    getTheButtonPosition();
+  }, []);
 
   const getTheButtonPosition = () => {
-    const button = document.getElementById( 'logged-user-button' );
+    const button = document.getElementById('logged-user-button');
     const position = button.offsetLeft;
-    setButtonPosition( position )
-  }
+    setButtonPosition(position);
+  };
 
   return render({
     buttonPosition,
     isPageScrolled,
-    languageSource
-  })
-}
+    languageSource,
+  });
+};
 
 UserMenuLogicLayer.propTypes = {
-  render: PropTypes.func.isRequired
-}
+  render: PropTypes.func.isRequired,
+};
 
-export default UserMenuLogicLayer
+export default UserMenuLogicLayer;
